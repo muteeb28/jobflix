@@ -14,8 +14,9 @@ export default function QuickApplyForm() {
     service: "",
     agreeToTerms: false
   });
-
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -25,10 +26,44 @@ export default function QuickApplyForm() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Handle form submission logic here
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/apply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phoneNumber,
+          service: formData.service,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit application");
+      }
+
+      setSubmitStatus("success");
+      setFormData({
+        fullName: "",
+        phoneNumber: "",
+        email: "",
+        service: "",
+        agreeToTerms: false
+      });
+    } catch (error) {
+      setSubmitStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Something went wrong");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -192,6 +227,26 @@ export default function QuickApplyForm() {
                 </label>
               </motion.div>
 
+              {/* Status Messages */}
+              {submitStatus === "success" && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-4 bg-green-500/20 border border-green-500/50 rounded-lg text-green-400"
+                >
+                  ✓ Application submitted successfully! We&apos;ll be in touch soon.
+                </motion.div>
+              )}
+              {submitStatus === "error" && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-4 bg-red-500/20 border border-red-500/50 rounded-lg text-red-400"
+                >
+                  ✗ {errorMessage || "Failed to submit. Please try again."}
+                </motion.div>
+              )}
+
               {/* Submit Button */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -204,8 +259,9 @@ export default function QuickApplyForm() {
                   size="lg"
                   className="w-full"
                   type="submit"
+                  disabled={isSubmitting}
                 >
-                  Register Now
+                  {isSubmitting ? "Submitting..." : "Register Now"}
                 </GradientButton>
               </motion.div>
             </form>

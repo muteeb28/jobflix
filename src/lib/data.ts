@@ -88,6 +88,15 @@ export const courses = [
 
 export const coursesBackend = [
   {
+    title: "Java for Backend",
+    description:
+      "Build backend services with Java, Spring Boot, and RESTful API design.",
+    level: "Intermediate",
+    duration: "8 Weeks",
+    image: "/nature-3481_256.gif",
+    tags: ["Java", "Spring Boot", "Backend"],
+  },
+  {
     title: "JavaScript for Backend",
     description:
       "Build powerful server-side applications with Node.js, Express, and modern JavaScript patterns.",
@@ -124,7 +133,7 @@ export const coursesBackend = [
     tags: ["SQL", "Database", "Data Engineering"],
   },
   {
-    title: "Become an Expert in Git & GitHub in 4 Hours",
+    title: "Master Git & GitHub",
     description:
       "Master version control, branching, merging, and collaboration with a hands-on GitBash terminal experience.",
     level: "Beginner to Intermediate",
@@ -283,3 +292,4 @@ export const jobs: Job[] = [
     url: "#",
   },
 ];
+

@@ -6,13 +6,36 @@ import { AnimatedTooltipPreview } from "@/components/AnimatedTooltipPreview";
 import Link from "next/link";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { CodePlayground } from "@/components/CodePlayground";
-import GoogleGeminiEffectDemo from "@/components/GoogleGeminiEffectDemo";
+import { GoogleGeminiEffect } from "@/components/ui/google-gemini-effect";
 import { DreamJobCTA } from "@/components/DreamJobCTA";
 import { ContactSection } from "@/components/ContactSection";
 
-const flipWords = ["Frontend", "Backend", "AI", "Forward-Deployed", "Beyond"];
+async function getPrepareData() {
+  try {
+    const baseUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+    const res = await fetch(`${baseUrl}/api/prepare`, { cache: 'no-store' });
+    if (!res.ok) {
+      console.error("Failed to fetch prepare data:", res.status, res.statusText);
+      return null;
+    }
+    return res.json();
+  } catch (error) {
+    console.error("Error fetching prepare data:", error);
+    return null;
+  }
+}
 
-export default function PreparePage() {
+export default async function PreparePage() {
+  const data = await getPrepareData();
+
+  // Fallbacks if data fetch fails (prevents crash)
+  const hero = data?.hero || {
+    badge: "Prepare",
+    title: "Prepare for Modern Engineering Roles",
+    flipWords: ["Frontend", "Backend", "AI"],
+    description: "Meet the interview prep platform designed to simplify interviews for modern engineering roles."
+  };
+
   return (
     <div className="min-h-screen bg-black text-white font-pixel">
       <Navbar />
@@ -26,54 +49,52 @@ export default function PreparePage() {
 
         <ContainerScroll
           titleComponent={
-            <div className="relative z-10 flex flex-col items-center justify-center mb-12 md:mb-20">
-              <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.3em] text-cyan-200">
-                Prepare
+            <div className="relative z-10 flex flex-col items-center justify-center mb-8 md:mb-20 px-4">
+              <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 md:px-4 md:py-2 text-[10px] md:text-xs uppercase tracking-[0.3em] text-cyan-200">
+                {hero.badge}
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)] flex flex-wrap items-center justify-center gap-2 text-center max-w-4xl mx-auto mt-4">
-                Prepare for Modern Engineering Roles
+              <h1 className="text-3xl md:text-5xl font-bold leading-tight text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)] flex flex-wrap items-center justify-center gap-2 text-center max-w-4xl mx-auto mt-4 px-2">
+                {hero.title}
                 <FlipWords
-                  words={flipWords}
-                  className="text-4xl md:text-5xl text-cyan-200 !p-0"
+                  words={hero.flipWords}
+                  className="text-3xl md:text-5xl text-cyan-200 !p-0"
                 />
               </h1>
 
-              <div className="mt-3">
+              <div className="mt-3 w-full px-4">
                 <TextGenerateEffect
-                  words="Meet the interview prep platform designed to simplify interviews for modern engineering roles."
-                  className="text-base md:text-lg text-white/70 font-mono font-normal text-center max-w-2xl mx-auto"
+                  words={hero.description}
+                  className="text-sm md:text-lg text-white/70 font-mono font-normal text-center max-w-2xl mx-auto leading-relaxed"
                 />
               </div>
 
-              <div className="flex flex-col items-center justify-center gap-6 mt-4">
+              <div className="flex flex-col items-center justify-center gap-6 mt-6 md:mt-4">
                 <Link
                   href="#"
-                  className="inline-flex items-center justify-center px-8 py-3 bg-yellow-400 text-black font-bold text-lg border-b-4 border-r-4 border-yellow-600 active:border-0 active:translate-y-1 transition-all uppercase"
+                  className="inline-flex items-center justify-center px-6 py-2.5 md:px-8 md:py-3 bg-yellow-400 text-black font-bold text-base md:text-lg border-b-4 border-r-4 border-yellow-600 active:border-0 active:translate-y-1 transition-all uppercase"
                 >
                   Get Started Now
                 </Link>
 
                 <div className="flex flex-col items-center gap-2">
                   <AnimatedTooltipPreview />
-                  <p className="text-xs text-zinc-500 font-medium">Join 1,000+ engineers prepping for top roles</p>
+                  <p className="text-[10px] md:text-xs text-zinc-500 font-medium">Join 1,000+ engineers prepping for top roles</p>
                 </div>
               </div>
             </div>
           }
         >
-          <div className="w-full h-full rounded-2xl overflow-hidden bg-[#1e1e1e] border border-white/10 shadow-2xl">
+          <div className="w-full h-full rounded-xl md:rounded-2xl overflow-hidden bg-[#1e1e1e] border border-white/10 shadow-2xl">
             <CodePlayground />
           </div>
         </ContainerScroll>
       </main>
 
-
-
-      <GoogleGeminiEffectDemo />
-      <DreamJobCTA />
+      <GoogleGeminiEffect roadmap={data?.roadmap} />
+      <DreamJobCTA cta={data?.cta} />
       <ContactSection />
 
       <Footer />
-    </div >
+    </div>
   );
 }

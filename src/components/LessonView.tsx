@@ -112,7 +112,7 @@ export default function LessonView({ lessonId, title, description, task, hint }:
                 <div className="flex items-center gap-4">
                     <Link href="/" className="flex items-center gap-2 group">
                         <div className="text-xl font-bold text-white font-pixel">
-                            <span className="text-yellow-500">👑</span> LevelUp
+                            <span className="text-yellow-500">👑</span> JobFlix
                         </div>
                     </Link>
                 </div>

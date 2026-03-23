@@ -20,10 +20,10 @@ export default function SignupFormDemo() {
   return (
     <div className="dark mx-auto w-full max-w-xl rounded-2xl border border-amber-400/25 bg-gradient-to-b from-zinc-950 via-black to-black p-4 md:p-8 shadow-[0_18px_55px_rgba(0,0,0,0.45)]">
       <h2 className="text-2xl font-bold text-white">
-        Welcome to LevelUp
+        Welcome to JobFlix
       </h2>
       <p className="mt-2 max-w-2xl text-sm text-zinc-200 font-sans">
-        Login to LevelUp if you can because we don't have a login flow yet
+        Login to JobFlix if you can because we don't have a login flow yet
       </p>
 
       <form className="mt-6 space-y-4" onSubmit={handleSubmit}>

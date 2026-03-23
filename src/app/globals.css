@@ -76,6 +76,8 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --font-heading: var(--font-playfair);
+  --font-code: var(--font-jetbrains);
 }
 
 .dark {
@@ -153,3 +155,13 @@
   scrollbar-width: thin;
   scrollbar-color: #333 transparent;
 }
+
+.font-heading {
+  font-family: var(--font-heading), var(--font-geist-sans), "Playfair Display", serif;
+}
+
+.font-code {
+  font-family: var(--font-code), var(--font-geist-mono), "JetBrains Mono", monospace;
+}
+
+

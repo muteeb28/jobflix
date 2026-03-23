@@ -1,5 +1,5 @@
-import GitCoursePage from "@/components/GitCoursePage";
+import { redirect } from "next/navigation";
 
 export default function GitCourse() {
-    return <GitCoursePage />;
+    redirect("/courses/master-git-github");
 }

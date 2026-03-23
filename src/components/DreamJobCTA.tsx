@@ -2,7 +2,13 @@ import React from "react";
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
 
-export const DreamJobCTA = () => {
+export interface CTAData {
+    title: string;
+    buttonText: string;
+    subText: string;
+}
+
+export const DreamJobCTA = ({ cta }: { cta?: CTAData }) => {
     return (
         <div className="w-full bg-black relative overflow-hidden pb-16 pt-0 md:pb-24">
             {/* Background Elements */}
@@ -16,8 +22,7 @@ export const DreamJobCTA = () => {
 
             <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center">
                 <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 max-w-4xl uppercase font-pixel drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)]">
-                    Your dream job is <br className="hidden md:block" />
-                    <span className="text-white">absolutely worth it</span>
+                    {cta?.title || "Your dream job is absolutely worth it"}
                 </h2>
 
                 <div className="flex flex-col items-center gap-4">
@@ -25,10 +30,10 @@ export const DreamJobCTA = () => {
                         href="#"
                         className="inline-flex items-center justify-center px-8 py-4 bg-yellow-400 text-black font-bold text-lg md:text-xl border-b-4 border-r-4 border-yellow-600 active:border-0 active:translate-y-1 transition-all uppercase"
                     >
-                        Get started now
+                        {cta?.buttonText || "Get started now"}
                     </Link>
                     <p className="text-zinc-500 text-sm md:text-base font-medium">
-                        200+ questions are free to do
+                        {cta?.subText || "200+ questions are free to do"}
                     </p>
                 </div>
             </div>

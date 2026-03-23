@@ -4,40 +4,70 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 interface UserProgressContextType {
     xp: number;
-    completedTopics: number[]; // Array of global topic indices
+    completedTopics: string[]; // Changed to string array for UUIDs
     addXp: (amount: number) => void;
-    markTopicAsCompleted: (topicIndex: number) => void;
+    markTopicAsCompleted: (topicId: string) => void;
 }
 
 const UserProgressContext = createContext<UserProgressContextType | undefined>(undefined);
 
 export function UserProgressProvider({ children }: { children: React.ReactNode }) {
     const [xp, setXp] = useState(0);
-    const [completedTopics, setCompletedTopics] = useState<number[]>([]);
+    const [completedTopics, setCompletedTopics] = useState<string[]>([]);
 
-    // Load from localStorage on mount
+    // Fetch progress from API on mount
     useEffect(() => {
-        const savedXp = localStorage.getItem("levelUp_xp");
-        const savedTopics = localStorage.getItem("levelUp_completedTopics");
+        const fetchProgress = async () => {
+            try {
+                const res = await fetch("/api/progress");
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.userProgress) {
+                        setXp(data.userProgress.totalXp || 0);
+                        // Assuming completedLessonIds is stored in the userProgress record
+                        // If the API returns it differently, we might need to adjust.
+                        // Based on the schema 'UserProgress' has 'completedLessonIds String[]'
+                        setCompletedTopics(data.userProgress.completedLessonIds || []);
+                    }
+                }
+            } catch (error) {
+                console.error("Failed to fetch progress:", error);
+            }
+        };
 
-        if (savedXp) setXp(parseInt(savedXp));
-        if (savedTopics) setCompletedTopics(JSON.parse(savedTopics));
+        fetchProgress();
     }, []);
 
-    // Save to localStorage whenever state changes
-    useEffect(() => {
-        localStorage.setItem("levelUp_xp", xp.toString());
-        localStorage.setItem("levelUp_completedTopics", JSON.stringify(completedTopics));
-    }, [xp, completedTopics]);
-
-    const addXp = (amount: number) => {
+    const addXp = async (amount: number) => {
+        // Optimistic update
         setXp((prev) => prev + amount);
+
+        try {
+            await fetch("/api/progress", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ xp: amount })
+            });
+        } catch (e) {
+            console.error("Failed to sync XP:", e);
+        }
     };
 
-    const markTopicAsCompleted = (topicIndex: number) => {
-        if (!completedTopics.includes(topicIndex)) {
-            setCompletedTopics((prev) => [...prev, topicIndex]);
-            addXp(10); // Default 10 XP per topic, can be customized
+    const markTopicAsCompleted = async (topicId: string) => {
+        if (!completedTopics.includes(topicId)) {
+            // Optimistic update
+            setCompletedTopics((prev) => [...prev, topicId]);
+            addXp(10); // Default 10 XP per topic
+
+            try {
+                await fetch("/api/progress", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ topicId: topicId })
+                });
+            } catch (e) {
+                console.error("Failed to sync completion:", e);
+            }
         }
     };
 

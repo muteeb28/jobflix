@@ -1,30 +1,16 @@
-﻿import JSLessonView from "@/components/JSLessonView";
+import JSLessonView from "@/components/JSLessonView";
+import { jsLessonsData } from "@/data/jsLessons";
 
 export default async function LessonPage({ params }: { params: Promise<{ lessonId: string }> }) {
   const { lessonId } = await params;
+  const parsedLessonId = Number.parseInt(lessonId, 10);
+  const lessonNumber = Number.isFinite(parsedLessonId) ? parsedLessonId - 200 : undefined;
 
-  try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/lessons/${lessonId}`
-    );
+  // Get lesson data directly from jsLessons
+  const lessonData = jsLessonsData[lessonId];
 
-    if (!response.ok) {
-      throw new Error('Lesson not found');
-    }
-
-    const lessonData = await response.json();
-
-    return (
-      <JSLessonView
-        lessonId={lessonId}
-        title={lessonData.title}
-        subtopics={lessonData.subtopics}
-        task={lessonData.task}
-        hint={lessonData.hint}
-        initialCode={lessonData.initialCode}
-      />
-    );
-  } catch (_error) {
+  if (!lessonData) {
+    // Fallback for lessons not yet in the data
     const fallbackData = {
       title: "JavaScript Lesson",
       subtopics: [
@@ -41,6 +27,7 @@ export default async function LessonPage({ params }: { params: Promise<{ lessonI
     return (
       <JSLessonView
         lessonId={lessonId}
+        lessonNumber={lessonNumber}
         title={fallbackData.title}
         subtopics={fallbackData.subtopics}
         task={fallbackData.task}
@@ -49,4 +36,16 @@ export default async function LessonPage({ params }: { params: Promise<{ lessonI
       />
     );
   }
+
+  return (
+    <JSLessonView
+      lessonId={lessonId}
+      lessonNumber={lessonNumber}
+      title={lessonData.title}
+      subtopics={lessonData.subtopics}
+      task={lessonData.task}
+      hint={lessonData.hint}
+      initialCode={lessonData.initialCode}
+    />
+  );
 }

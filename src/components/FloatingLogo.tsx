@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function FloatingLogo() {
   const [mounted, setMounted] = useState(false);
@@ -24,8 +25,14 @@ export default function FloatingLogo() {
         whileHover={{ scale: 1.05, backgroundColor: "rgba(0,0,0,0.3)" }}
         transition={{ type: "spring", stiffness: 300 }}
       >
-        <div className="text-xl font-bold text-white">
-          Level<span className="text-orange-500">Up</span>
+        <div className="relative w-24 h-6">
+          <Image
+            src="/assets/files/jobflix-light-logo.png"
+            alt="JobFlix Logo"
+            fill
+            className="object-contain"
+            priority
+          />
         </div>
         <motion.div
           className="ml-2 w-2 h-2 bg-orange-500 rounded-full"

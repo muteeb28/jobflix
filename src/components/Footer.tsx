@@ -21,8 +21,8 @@ export default function Footer() {
             <div>
               <div className="mb-4">
                 <Image
-                  src="/assets/logo/logo.png"
-                  alt="LevelUp Logo"
+                  src="/assets/files/jobflix-light-logo.png"
+                  alt="JobFlix Logo"
                   width={240}
                   height={60}
                   className="object-contain"
@@ -108,7 +108,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-500">
-          <p>© 2025 LevelUp Edutech Solutions Private Limited. All rights reserved.</p>
+          <p>© 2025 JobFlix Edutech Solutions Private Limited. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>

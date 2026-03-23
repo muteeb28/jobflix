@@ -22,7 +22,8 @@ export default function CourseListBackend() {
                     {coursesBackend.map((course, index) => {
                         const isSQLCourse = course.title === "SQL for Web and Data Engineering";
                         const isJSCourse = course.title === "JavaScript for Backend";
-                        const isGitCourse = course.title === "Become an Expert in Git & GitHub in 4 Hours";
+                        const isJavaCourse = course.title === "Java for Backend";
+                        const isGitCourse = course.title === "Master Git & GitHub";
                         const CardContent = (
                             <motion.div
                                 key={index}
@@ -55,7 +56,7 @@ export default function CourseListBackend() {
 
                                     <div className="flex items-center justify-between">
                                         <span className="px-3 py-1 bg-gray-800 rounded text-xs text-white/80 font-mono border border-gray-700">
-                                            📊 {course.level}
+                                            dY"S {course.level}
                                         </span>
                                     </div>
                                 </div>
@@ -78,9 +79,17 @@ export default function CourseListBackend() {
                             );
                         }
 
+                        if (isJavaCourse) {
+                            return (
+                                <Link key={index} href="/courses/java-backend">
+                                    {CardContent}
+                                </Link>
+                            );
+                        }
+
                         if (isGitCourse) {
                             return (
-                                <Link key={index} href="/courses/git">
+                                <Link key={index} href="/courses/master-git-github">
                                     {CardContent}
                                 </Link>
                             );
