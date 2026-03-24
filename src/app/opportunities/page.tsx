@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
@@ -9,6 +9,14 @@ import HackathonsView from "@/components/HackathonsView";
 import StudyAbroadView from "@/components/StudyAbroadView";
 
 export default function OpportunitiesPage() {
+    return (
+        <Suspense>
+            <OpportunitiesPageContent />
+        </Suspense>
+    );
+}
+
+function OpportunitiesPageContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const [activeTab, setActiveTab] = useState<"hackathons" | "study-abroad">("hackathons");

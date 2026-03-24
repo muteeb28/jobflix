@@ -154,7 +154,7 @@ export default function SQLCoursePage() {
                                                     {module.topics.map((topic, topicIndex) => {
                                                         const _globalIndex = moduleIndex * 100 + topicIndex;
                                                         const continuousIndex = startingIndex + topicIndex + 1;
-                                                        const isCompleted = completedTopics.includes(continuousIndex);
+                                                        const isCompleted = completedTopics.includes(String(continuousIndex));
                                                         const isFree = topicIndex < 2; // First 2 topics are free
 
                                                         let label = "Lesson";

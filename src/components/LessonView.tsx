@@ -34,11 +34,11 @@ export default function LessonView({ lessonId, title, description, task, hint }:
     const inputRef = useRef<HTMLInputElement>(null);
     const terminalEndRef = useRef<HTMLDivElement>(null);
 
-    const isCompleted = completedTopics.includes(parseInt(lessonId));
+    const isCompleted = completedTopics.includes(lessonId);
 
     const handleComplete = () => {
         if (!isCompleted) {
-            markTopicAsCompleted(parseInt(lessonId));
+            markTopicAsCompleted(lessonId);
         }
     };
 

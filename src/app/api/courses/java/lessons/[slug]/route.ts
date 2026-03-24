@@ -6,9 +6,10 @@ export const dynamic = "force-dynamic";
 
 export async function GET(
   _request: Request,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
-  const lesson = getJavaLessonBySlug(params.slug);
+  const { slug } = await params;
+  const lesson = getJavaLessonBySlug(slug);
 
   const headers = {
     "Cache-Control": "no-store"

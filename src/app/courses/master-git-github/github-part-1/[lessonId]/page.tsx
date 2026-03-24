@@ -19,7 +19,7 @@ export default async function MasterGitGithubLessonPage({ params }: { params: Pr
                 {
                     title: "Content coming soon",
                     contentBlocks: [
-                        { type: "p", text: "TODO: Replace with provided GitHub (Part 1) content." }
+                        { type: "p" as const, text: "TODO: Replace with provided GitHub (Part 1) content." }
                     ],
                     code: {
                         defaultFileName: "main.js",

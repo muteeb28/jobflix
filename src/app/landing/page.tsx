@@ -1,7 +1,7 @@
 
 "use client";
 
-import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import {
   Cpu,
@@ -16,8 +16,16 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { SparklesCore } from "@/components/ui/sparkles-core";
-import { EncryptedText } from "@/components/ui/encrypted-text";
+
+const SparklesCore = dynamic(
+  () => import("@/components/ui/sparkles-core").then((mod) => mod.SparklesCore),
+  { ssr: false }
+);
+
+const EncryptedText = dynamic(
+  () => import("@/components/ui/encrypted-text").then((mod) => mod.EncryptedText),
+  { ssr: false, loading: () => <span className="text-amber-100">Built for Engineers Navigating a Tough Job Market</span> }
+);
 
 
 const services = [
@@ -117,12 +125,9 @@ type Service = (typeof services)[number];
 
 function ServiceCard({ service, index }: { service: Service; index: number }) {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.05 }}
-      whileHover={{ y: -6 }}
-      className="relative flex flex-col gap-3 rounded-2xl border border-amber-400/20 bg-black/60 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.45)] hover:border-amber-300/50 transition-colors"
+    <article
+      style={{ animationDelay: `${index * 50}ms` }}
+      className="relative flex flex-col gap-3 rounded-2xl border border-amber-400/20 bg-black/60 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.45)] hover:border-amber-300/50 hover:-translate-y-1.5 transition-all duration-300 animate-fade-in-up"
     >
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 via-transparent to-white/5 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
       <div className="relative flex items-center justify-between">
@@ -154,15 +159,15 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       <div className="mt-auto pt-3">
         <Link
           href={service.href}
-          className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-amber-100 hover:text-amber-200 transition-colors"
+          className="group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-amber-100 hover:text-amber-200 transition-colors"
         >
           {service.ctaText}
-          <motion.span initial={{ x: 0 }} whileHover={{ x: 4 }} className="inline-flex">
+          <span className="inline-flex transition-transform duration-200 group-hover:translate-x-1">
             <ArrowRight className="w-4 h-4" />
-          </motion.span>
+          </span>
         </Link>
       </div>
-    </motion.article>
+    </article>
   );
 }
 export default function Landing() {
@@ -182,7 +187,7 @@ export default function Landing() {
               background="transparent"
               minSize={0.6}
               maxSize={1.4}
-              particleDensity={80}
+              particleDensity={40}
               particleColor="#fbbf24"
               speed={0.35}
               className="w-full h-full"
@@ -193,10 +198,8 @@ export default function Landing() {
         <div className="container mx-auto max-w-7xl relative z-10">
           {/* Hero */}
           <div className="text-center mb-14 md:mb-20">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-amber-400/30 text-xs md:text-sm text-amber-100 mb-6 font-mono uppercase tracking-[0.3em] shadow-[0_10px_40px_rgba(251,191,36,0.08)]"
+            <div
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-amber-400/30 text-xs md:text-sm text-amber-100 mb-6 font-mono uppercase tracking-[0.3em] shadow-[0_10px_40px_rgba(251,191,36,0.08)] animate-fade-in-up"
             >
               <Cpu className="w-4 h-4 text-amber-300" />
               <EncryptedText
@@ -205,25 +208,21 @@ export default function Landing() {
                 revealedClassName="text-amber-100"
                 revealDelayMs={35}
               />
-            </motion.div>
+            </div>
 
-            <motion.h1
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight mb-6 glitch-text"
+            <h1
+              style={{ animationDelay: "100ms" }}
+              className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight mb-6 glitch-text animate-fade-in-up"
             >
               Get Ahead in a Market That Rewards the Prepared
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="text-zinc-300 text-base md:text-lg max-w-3xl mx-auto font-sans leading-relaxed"
+            <p
+              style={{ animationDelay: "200ms" }}
+              className="text-zinc-300 text-base md:text-lg max-w-3xl mx-auto font-sans leading-relaxed animate-fade-in-up"
             >
               Curated learning and interview preparation for engineers who want a real advantage in today’s job market.
-            </motion.p>
+            </p>
 
             <div className="mt-7 flex flex-wrap items-center justify-center gap-4">
               <Link

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
@@ -9,6 +9,14 @@ import MentorsView from "@/components/MentorsView";
 import AskView from "@/components/AskView";
 
 export default function ConnectPage() {
+    return (
+        <Suspense>
+            <ConnectPageContent />
+        </Suspense>
+    );
+}
+
+function ConnectPageContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const [activeTab, setActiveTab] = useState<"mentors" | "ask">("mentors");

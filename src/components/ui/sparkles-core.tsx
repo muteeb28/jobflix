@@ -52,7 +52,7 @@ export const SparklesCore = (props: SparklesCoreProps) => {
       fullScreen: {
         enable: false,
       },
-      fpsLimit: 120,
+      fpsLimit: 60,
       interactivity: {
         events: {
           onClick: {
