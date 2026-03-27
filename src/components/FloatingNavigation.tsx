@@ -24,56 +24,56 @@ export default function FloatingNavigation() {
     {
       title: "Home",
       icon: (
-        <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-600" />
       ),
       href: "#home",
     },
     {
       title: "Career Launchpad",
       icon: (
-        <IconBriefcase className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconBriefcase className="h-full w-full text-neutral-500 dark:text-neutral-600" />
       ),
       href: "#career",
     },
     {
       title: "Professional Courses",
       icon: (
-        <IconUser className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconUser className="h-full w-full text-neutral-500 dark:text-neutral-600" />
       ),
       href: "#courses",
     },
     {
       title: "Study Abroad",
       icon: (
-        <IconSchool className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconSchool className="h-full w-full text-neutral-500 dark:text-neutral-600" />
       ),
       href: "/study-abroad",
     },
     {
       title: "Healthcare Jobs",
       icon: (
-        <IconHeart className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconHeart className="h-full w-full text-neutral-500 dark:text-neutral-600" />
       ),
       href: "#healthcare",
     },
     {
       title: "Contact",
       icon: (
-        <IconPhone className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconPhone className="h-full w-full text-neutral-500 dark:text-neutral-600" />
       ),
       href: "#contact",
     },
     {
       title: "Login",
       icon: (
-        <IconLogin className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconLogin className="h-full w-full text-neutral-500 dark:text-neutral-600" />
       ),
       href: "#login",
     },
     {
       title: "Sign Up",
       icon: (
-        <IconUserPlus className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconUserPlus className="h-full w-full text-neutral-500 dark:text-neutral-600" />
       ),
       href: "/signup",
     },
@@ -85,8 +85,8 @@ export default function FloatingNavigation() {
     <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
       <FloatingDock
         items={links}
-        desktopClassName="bg-black/60 backdrop-blur-xl border border-white/20 shadow-2xl shadow-orange-500/10"
-        mobileClassName="bg-black/60 backdrop-blur-xl border border-white/20"
+        desktopClassName="bg-neutral-1000 backdrop-blur-xl border border-neutral-200 shadow-2xl shadow-orange-500/10"
+        mobileClassName="bg-neutral-1000 backdrop-blur-xl border border-neutral-200"
       />
     </div>
   );

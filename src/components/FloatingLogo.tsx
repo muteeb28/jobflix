@@ -21,7 +21,7 @@ export default function FloatingLogo() {
       className="fixed top-6 left-6 z-50"
     >
       <motion.div
-        className="flex items-center bg-black/20 backdrop-blur-md border border-white/10 rounded-full px-4 py-2"
+        className="flex items-center bg-white/20 backdrop-blur-md border border-neutral-200 rounded-full px-4 py-2"
         whileHover={{ scale: 1.05, backgroundColor: "rgba(0,0,0,0.3)" }}
         transition={{ type: "spring", stiffness: 300 }}
       >

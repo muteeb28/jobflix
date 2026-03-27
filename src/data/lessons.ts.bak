@@ -1,0 +1,54 @@
+export interface Subtopic {
+    title: string;
+    content: string;
+}
+
+export interface Lesson {
+    title: string;
+    description?: string;
+    subtopics?: Subtopic[];
+    task: string;
+    hint: string;
+    initialCode: string;
+}
+
+export const lessonsData: Record<string, Lesson> = {
+    "1": {
+        title: "Introduction to DBMS",
+        description: "A Database Management System (DBMS) is a software layer that sits between applications and the stored database, providing the necessary tools and interfaces to manage and interact with the database efficiently.",
+        task: "Read through the concepts of DBMS and RDBMS to understand how databases work.",
+        hint: "Remember, RDBMS stores data in tables with rows and columns.",
+        initialCode: "-- Welcome to the DBMS Lesson\n-- This is a SQL comment\nSHOW DATABASES;",
+    },
+    "2": {
+        title: "File Systems vs Databases",
+        description: "Before databases, we used file systems. Lets understand the limitations of file systems like data redundancy and inconsistency, and how databases solve these problems.",
+        task: "Compare the file system approach with the database approach.",
+        hint: "Files are hard to query efficiently.",
+        initialCode: "// File System Simulation\nconst fileData = \"User: John, Age: 30\";\nconsole.log(fileData);",
+    },
+    "201": {
+        title: "Basic of JavaScript",
+        subtopics: [
+            {
+                title: "JavaScript as a Multi-Paradigm Language",
+                content: "JavaScript is a versatile language that supports multiple programming paradigms."
+            },
+        ],
+        task: "Review the notes above.",
+        hint: "Use let or const to declare variables.",
+        initialCode: "// Write your JavaScript code here\nlet hero = \"Batman\";\nconsole.log(hero);",
+    },
+    "301": {
+        title: "Git and Version Control Mastery",
+        subtopics: [
+            {
+                title: "VCS - Introduction",
+                content: "A Version Control System (VCS) is an integral part of a software engineer's journey."
+            }
+        ],
+        task: "Grasp the core concepts of VCS and Git.",
+        hint: "Use git init to start tracking your project.",
+        initialCode: "# Git Session Initialized\n# Use git init to begin",
+    },
+};

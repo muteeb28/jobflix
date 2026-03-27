@@ -62,7 +62,7 @@ export default function StudyAbroadView() {
                         Study <span className="text-green-400">Abroad</span>
                     </h1>
 
-                    <p className="text-zinc-400 max-w-2xl mx-auto mb-10 font-sans leading-relaxed">
+                    <p className="text-neutral-500 max-w-2xl mx-auto mb-10 font-sans leading-relaxed">
                         Curated list of international scholarships. Updated daily using AI.
                     </p>
                 </div>
@@ -70,7 +70,7 @@ export default function StudyAbroadView() {
 
             {/* Results Section */}
             <main className="container mx-auto max-w-6xl px-6 pb-24 flex-grow">
-                <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-4">
+                <div className="flex items-center justify-between mb-8 border-b border-neutral-200 pb-4">
                     <h2 className="text-2xl font-bold flex items-center gap-2 uppercase">
                         <GraduationCap className="text-green-500" />
                         Latest Opportunities
@@ -81,7 +81,7 @@ export default function StudyAbroadView() {
                 {loading ? (
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {[...Array(6)].map((_, i) => (
-                            <div key={i} className="h-64 bg-zinc-900/50 border border-white/5 animate-pulse" />
+                            <div key={i} className="h-64 bg-neutral-100 border border-white/5 animate-pulse" />
                         ))}
                     </div>
                 ) : (
@@ -93,7 +93,7 @@ export default function StudyAbroadView() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="group bg-zinc-900 border border-white/10 p-6 hover:border-green-400 transition-all flex flex-col hover:shadow-[0_0_20px_rgba(74,222,128,0.1)] relative overflow-hidden"
+                                    className="group bg-white border border-neutral-200 p-6 hover:border-green-400 transition-all flex flex-col hover:shadow-[0_0_20px_rgba(74,222,128,0.1)] relative overflow-hidden"
                                 >
                                     <div className="flex justify-between items-start mb-4">
                                         <div className="text-3xl group-hover:scale-110 transition-transform cursor-default" title={s.country}>
@@ -107,19 +107,19 @@ export default function StudyAbroadView() {
                                     <h3 className="text-lg font-bold mb-2 group-hover:text-green-400 transition-colors line-clamp-2 leading-tight">
                                         {s.title}
                                     </h3>
-                                    <p className="text-zinc-500 text-xs uppercase tracking-wide mb-4 font-bold">{s.provider}</p>
+                                    <p className="text-neutral-400 text-xs uppercase tracking-wide mb-4 font-bold">{s.provider}</p>
 
                                     <div className="space-y-3 mb-6 mt-auto">
-                                        <div className="flex items-center gap-2 text-xs text-zinc-300 font-mono">
-                                            <MapPin className="w-4 h-4 text-zinc-600" />
+                                        <div className="flex items-center gap-2 text-xs text-neutral-600 font-mono">
+                                            <MapPin className="w-4 h-4 text-neutral-500" />
                                             {s.country}
                                         </div>
                                         <div className="flex items-center gap-2 text-xs text-green-300 font-mono">
                                             <DollarSign className="w-4 h-4 text-green-600" />
                                             {s.amount}
                                         </div>
-                                        <div className="flex items-center gap-2 text-xs text-zinc-300 font-mono">
-                                            <Calendar className="w-4 h-4 text-zinc-600" />
+                                        <div className="flex items-center gap-2 text-xs text-neutral-600 font-mono">
+                                            <Calendar className="w-4 h-4 text-neutral-500" />
                                             Deadline: {s.deadline}
                                         </div>
                                     </div>
@@ -139,7 +139,7 @@ export default function StudyAbroadView() {
                 )}
 
                 {!loading && scholarships.length === 0 && (
-                    <div className="text-center py-24 text-zinc-500 font-mono">
+                    <div className="text-center py-24 text-neutral-400 font-mono">
                         [NO_DATA] Try reloading.
                     </div>
                 )}

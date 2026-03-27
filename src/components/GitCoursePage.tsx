@@ -63,9 +63,9 @@ export default function GitCoursePage() {
 
     if (isLoading) {
         return (
-            <div className="min-h-screen bg-black flex items-center justify-center text-white">
+            <div className="min-h-screen bg-white flex items-center justify-center text-neutral-900">
                 <div className="flex flex-col items-center gap-4">
-                    <Loader2 className="w-8 h-8 animate-spin text-white" />
+                    <Loader2 className="w-8 h-8 animate-spin text-neutral-900" />
                     <p>Loading course content...</p>
                 </div>
             </div>
@@ -74,12 +74,12 @@ export default function GitCoursePage() {
 
     if (error || !course) {
         return (
-            <div className="min-h-screen bg-black flex items-center justify-center text-white">
+            <div className="min-h-screen bg-white flex items-center justify-center text-neutral-900">
                 <div className="text-center space-y-4">
                     <p className="text-red-400 text-xl">{error || "Course not found"}</p>
                     <button
                         onClick={() => window.location.reload()}
-                        className="px-6 py-2 bg-white text-black font-bold rounded hover:bg-neutral-200"
+                        className="px-6 py-2 bg-teal-500 text-neutral-900 font-bold rounded hover:bg-neutral-200"
                     >
                         Retry
                     </button>
@@ -96,7 +96,7 @@ export default function GitCoursePage() {
     const progressPercent = totalTopics > 0 ? Math.round((completedCount / totalTopics) * 100) : 0;
 
     return (
-        <div className="min-h-screen bg-black text-white font-pixel">
+        <div className="min-h-screen bg-white text-neutral-900 font-pixel">
             {/* Hero Banner */}
             <div className="relative h-64 md:h-80 overflow-hidden">
                 <Image
@@ -116,16 +116,16 @@ export default function GitCoursePage() {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-                            <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-white font-mono mb-3">
+                            <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-neutral-900 font-mono mb-3">
                                 {course.title}
                             </p>
-                            <h1 className="text-2xl md:text-5xl font-bold mb-4 text-white drop-shadow-[4px_4px_0_rgba(0,0,0,1)] break-words">
+                            <h1 className="text-2xl md:text-5xl font-bold mb-4 text-neutral-900 drop-shadow-[4px_4px_0_rgba(0,0,0,1)] break-words">
                                 Become an Expert in Git & GitHub
                             </h1>
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-6 py-2 md:px-8 md:py-3 bg-white text-black font-bold text-sm md:text-lg border-b-4 border-r-4 border-neutral-900 uppercase"
+                                className="px-6 py-2 md:px-8 md:py-3 bg-teal-500 text-neutral-900 font-bold text-sm md:text-lg border-b-4 border-r-4 border-neutral-200 uppercase"
                             >
                                 Start Hacking Git →
                             </motion.button>
@@ -156,13 +156,13 @@ export default function GitCoursePage() {
                                     {/* Module Header */}
                                     <button
                                         onClick={() => setExpandedModule(isExpanded ? null : moduleIndex)}
-                                        className="w-full flex items-center justify-between p-4 md:p-6 bg-black border-2 border-gray-800 hover:border-gray-700 transition-colors group text-left"
+                                        className="w-full flex items-center justify-between p-4 md:p-6 bg-white border-2 border-neutral-200 hover:border-teal-300 transition-colors group text-left"
                                     >
                                         <div className="flex items-center gap-3 md:gap-6 flex-1">
-                                            <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-900 text-white font-bold text-sm md:text-xl font-mono border-2 border-gray-800 group-hover:border-gray-600 transition-colors">
+                                            <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-neutral-100 text-neutral-900 font-bold text-sm md:text-xl font-mono border-2 border-neutral-200 group-hover:border-gray-600 transition-colors">
                                                 {moduleIndex + 1}
                                             </div>
-                                            <h3 className="text-lg md:text-2xl font-bold text-white group-hover:text-white transition-colors break-words">
+                                            <h3 className="text-lg md:text-2xl font-bold text-neutral-900 group-hover:text-teal-600 transition-colors break-words">
                                                 {module.title}
                                             </h3>
                                         </div>
@@ -183,7 +183,7 @@ export default function GitCoursePage() {
                                                 transition={{ duration: 0.3, ease: "easeInOut" }}
                                                 className="overflow-hidden"
                                             >
-                                                <div className="bg-gray-900/50 border-x-2 border-b-2 border-gray-800 p-2 md:p-4 space-y-2">
+                                                <div className="bg-neutral-100 border-x-2 border-b-2 border-neutral-200 p-2 md:p-4 space-y-2">
                                                     {module.topics.map((topic, topicIndex) => {
                                                         const continuousIndex = startingIndex + topicIndex + 1;
                                                         const isCompleted = completedTopics.includes(topic.id);
@@ -197,14 +197,14 @@ export default function GitCoursePage() {
                                                                         router.push(`/courses/git/${topic.lessonId}`);
                                                                     }
                                                                 }}
-                                                                className={`flex flex-col sm:flex-row sm:items-center justify-between p-3 md:p-4 rounded-lg gap-3 ${isCompleted ? 'bg-green-900/20 border border-green-500/30' : 'bg-gray-900 border border-gray-800'
+                                                                className={`flex flex-col sm:flex-row sm:items-center justify-between p-3 md:p-4 rounded-lg gap-3 ${isCompleted ? 'bg-green-900/20 border border-green-500/30' : 'bg-neutral-100 border border-neutral-200'
                                                                     } ${topic.isFree ? 'hover:border-gray-600 cursor-pointer' : 'opacity-75 cursor-not-allowed'} transition-all group`}
                                                             >
                                                                 <div className="flex items-start gap-3 md:gap-4 flex-1">
-                                                                    <span className="text-white font-bold font-mono text-xs md:text-sm min-w-[4rem] md:min-w-[8rem] mt-1 sm:mt-0">
+                                                                    <span className="text-neutral-900 font-bold font-mono text-xs md:text-sm min-w-[4rem] md:min-w-[8rem] mt-1 sm:mt-0">
                                                                         Lesson {continuousIndex}
                                                                     </span>
-                                                                    <span className={`${isCompleted ? 'text-green-400 line-through' : 'text-white'} font-bold text-sm md:text-lg leading-tight break-words`}>
+                                                                    <span className={`${isCompleted ? 'text-green-400 line-through' : 'text-neutral-900'} font-bold text-sm md:text-lg leading-tight break-words`}>
                                                                         {topic.title}
                                                                     </span>
                                                                 </div>
@@ -228,19 +228,19 @@ export default function GitCoursePage() {
 
                     {/* Sidebar */}
                     <div className="lg:col-span-1">
-                        <div className="bg-gray-900 border-4 border-gray-800 p-6 sticky top-4">
-                            <h3 className="text-xl font-bold mb-4 text-white">GIT MASTERY</h3>
-                            <div className="mb-6 h-4 bg-gray-800 border-2 border-gray-700">
+                        <div className="bg-neutral-100 border-4 border-neutral-200 p-6 sticky top-4">
+                            <h3 className="text-xl font-bold mb-4 text-neutral-900">GIT MASTERY</h3>
+                            <div className="mb-6 h-4 bg-gray-800 border-2 border-neutral-200">
                                 <motion.div
                                     initial={{ width: 0 }}
                                     animate={{ width: `${progressPercent}%` }}
                                     className="h-full bg-white"
                                 />
                             </div>
-                            <p className="text-sm text-zinc-400 mb-6 uppercase tracking-widest font-mono">
+                            <p className="text-sm text-neutral-500 mb-6 uppercase tracking-widest font-mono">
                                 Status: {progressPercent === 100 ? "COMPLETED" : "IN PROGRESS"}
                             </p>
-                            <button className="w-full py-4 bg-white text-black font-bold border-b-4 border-r-4 border-neutral-900 hover:scale-[1.02] transition-transform">
+                            <button className="w-full py-4 bg-teal-500 text-neutral-900 font-bold border-b-4 border-r-4 border-neutral-200 hover:scale-[1.02] transition-transform">
                                 VIEW PROGRESS
                             </button>
                         </div>

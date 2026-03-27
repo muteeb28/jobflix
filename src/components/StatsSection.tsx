@@ -21,7 +21,7 @@ export default function StatsSection() {
   ];
 
   return (
-    <section className="bg-black text-white py-16 relative overflow-hidden">
+    <section className="bg-white text-neutral-900 py-16 relative overflow-hidden">
       {/* Decorative orange stripes */}
       <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-orange-500 to-orange-400 transform -skew-x-12 -translate-x-16"></div>
 
@@ -35,7 +35,7 @@ export default function StatsSection() {
               key={index}
               className="text-center relative"
             >
-              <div className="text-4xl lg:text-6xl font-bold mb-2 text-white">
+              <div className="text-4xl lg:text-6xl font-bold mb-2 text-neutral-900">
                 {stat.number}
               </div>
               <div className="text-sm lg:text-base text-gray-300 max-w-[120px] mx-auto leading-tight">

@@ -78,7 +78,7 @@ export default function BackgroundImageHero() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium mb-6"
+            className="inline-flex items-center px-4 py-2 rounded-full bg-neutral-100 backdrop-blur-sm border border-neutral-200 text-neutral-900/90 text-sm font-medium mb-6"
           >
             <span className="w-2 h-2 bg-orange-500 rounded-full mr-2 animate-pulse"></span>
             Exclusively Curated Programs
@@ -89,7 +89,7 @@ export default function BackgroundImageHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold text-neutral-900 mb-6 leading-tight"
           >
             <TextFlip
               words={[
@@ -109,7 +109,7 @@ export default function BackgroundImageHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-xl md:text-2xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-neutral-900/80 mb-8 max-w-2xl mx-auto leading-relaxed"
           >
             Transform your career with industry-leading training, expert guidance, and
             personalized mentorship to achieve your professional and academic dreams.
@@ -159,10 +159,10 @@ export default function BackgroundImageHero() {
               { number: "500+", label: "Partner Universities" },
             ].map((stat, index) => (
               <div key={index} className="group">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors">
+                <div className="text-3xl md:text-4xl font-bold text-neutral-900 mb-2 group-hover:text-orange-400 transition-colors">
                   {stat.number}
                 </div>
-                <div className="text-white/60 text-sm font-medium">
+                <div className="text-neutral-900/60 text-sm font-medium">
                   {stat.label}
                 </div>
               </div>

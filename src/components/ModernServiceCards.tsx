@@ -19,10 +19,10 @@ export default function ModernServiceCards() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-4">
             Transform Your <span className="text-orange-500">Future</span>
           </h2>
-          <p className="text-white/70 text-xl max-w-2xl mx-auto">
+          <p className="text-neutral-900/70 text-xl max-w-2xl mx-auto">
             Choose your path to success with our comprehensive programs designed to elevate your career.
           </p>
         </motion.div>
@@ -41,7 +41,7 @@ export default function ModernServiceCards() {
             minSize={0.4}
             maxSize={1.2}
             particleDensity={120}
-            particleColor="#ffffff"
+            particleColor="#14b8a6"
             speed={0.4}
             className="w-full h-full"
           />
@@ -60,7 +60,7 @@ export default function ModernServiceCards() {
               whileHover={{ y: -10 }}
               className="group"
             >
-              <Card className="relative h-full bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 overflow-hidden hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-300">
+              <Card className="relative h-full bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-neutral-200 overflow-hidden hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-300">
                 {/* Gradient overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
 
@@ -71,12 +71,12 @@ export default function ModernServiceCards() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-neutral-900 mb-3 group-hover:text-orange-400 transition-colors duration-300">
                     {service.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-white/70 text-sm mb-6 flex-grow leading-relaxed">
+                  <p className="text-neutral-900/70 text-sm mb-6 flex-grow leading-relaxed">
                     {service.description}
                   </p>
 
@@ -85,7 +85,7 @@ export default function ModernServiceCards() {
                     {service.features.map((feature, featureIndex) => (
                       <div
                         key={featureIndex}
-                        className="flex items-center text-white/60 text-xs"
+                        className="flex items-center text-neutral-900/60 text-xs"
                       >
                         <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2" />
                         {feature}

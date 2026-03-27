@@ -22,7 +22,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
   const codeLines = lesson.codeSnippet.split("\n");
 
   return (
-    <div className="min-h-screen bg-[#05070f] text-white">
+    <div className="min-h-screen bg-[#05070f] text-neutral-900">
       <div className="max-w-6xl mx-auto px-4 py-8 space-y-6">
         <header className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-3">
@@ -31,14 +31,14 @@ export default async function LessonPage({ params }: LessonPageProps) {
             </div>
             <div className="space-y-1">
               <p className="text-[11px] uppercase tracking-[0.6em] text-slate-500">Lesson</p>
-              <h1 className="text-2xl font-heading leading-tight text-white md:text-3xl">
+              <h1 className="text-2xl font-heading leading-tight text-neutral-900 md:text-3xl">
                 {lesson.title}
               </h1>
             </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <span className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-black/60 px-4 py-1 text-[11px] font-bold uppercase tracking-[0.35em] text-slate-300">
+            <span className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-neutral-1000 px-4 py-1 text-[11px] font-bold uppercase tracking-[0.35em] text-slate-300">
               {lesson.chapter}
             </span>
             <span className="text-[11px] uppercase tracking-[0.4em] text-slate-500">
@@ -59,9 +59,9 @@ export default async function LessonPage({ params }: LessonPageProps) {
                 ) : null}
               </div>
 
-              <div className="space-y-3 rounded-2xl border border-slate-900 bg-black/40 p-5 shadow-[0_20px_45px_rgba(0,0,0,0.45)]">
+              <div className="space-y-3 rounded-2xl border border-slate-900 bg-white/70 p-5 shadow-[0_20px_45px_rgba(0,0,0,0.45)]">
                 <div className="flex items-center justify-between">
-                  <p className="text-[10px] uppercase tracking-[0.6em] text-white">
+                  <p className="text-[10px] uppercase tracking-[0.6em] text-neutral-900">
                     Assignment Instructions
                   </p>
                   <span className="text-[9px] uppercase tracking-[0.4em] text-slate-500">RAW</span>
@@ -80,7 +80,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
                           key={index}
                           className={
                             isTopicHeading
-                              ? "text-neutral-300 font-heading text-sm leading-[1.4] tracking-tight"
+                              ? "text-neutral-600 font-heading text-sm leading-[1.4] tracking-tight"
                               : "text-slate-100"
                           }
                         >
@@ -128,7 +128,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
             </button>
             <button
               type="button"
-              className="rounded-full border border-slate-800 bg-white/5 px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.35em] text-white transition hover:border-slate-600"
+              className="rounded-full border border-slate-800 bg-neutral-100 px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.35em] text-neutral-900 transition hover:border-slate-600"
             >
               Submit
             </button>

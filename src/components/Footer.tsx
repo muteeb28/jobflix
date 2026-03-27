@@ -12,7 +12,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white border-t border-white/10 pt-20 pb-10 relative">
+    <footer className="bg-white text-neutral-900 border-t border-neutral-200 pt-20 pb-10 relative">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-8">
 
@@ -28,14 +28,14 @@ export default function Footer() {
                   className="object-contain"
                 />
               </div>
-              <p className="text-zinc-400 text-lg max-w-sm">
+              <p className="text-neutral-500 text-lg max-w-sm">
                 Your dream job is absolutely worth it.
               </p>
             </div>
 
             <div className="flex flex-col gap-4">
               <h3 className="font-bold text-lg">Join our OG WhatsApp Group</h3>
-              <p className="text-zinc-400 text-sm">
+              <p className="text-neutral-500 text-sm">
                 Get exclusive job alerts, coding challenges, and mentorship.
               </p>
               <a href="https://chat.whatsapp.com/KQ4sWcUF5OTEy7ngJA6j7h" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 bg-[#25D366] text-black px-5 py-3 font-bold rounded hover:bg-[#20bd5a] transition-colors w-fit">
@@ -56,8 +56,8 @@ export default function Footer() {
           <div className="lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-8">
 
             <div className="flex flex-col gap-4">
-              <h3 className="font-bold text-white uppercase tracking-wider">Practice</h3>
-              <ul className="flex flex-col gap-3 text-zinc-400 text-sm">
+              <h3 className="font-bold text-neutral-900 uppercase tracking-wider">Practice</h3>
+              <ul className="flex flex-col gap-3 text-neutral-500 text-sm">
                 <FooterLink href="#">Get started</FooterLink>
                 <FooterLink href="#">JavaScript functions</FooterLink>
                 <FooterLink href="#">User interface coding</FooterLink>
@@ -67,8 +67,8 @@ export default function Footer() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <h3 className="font-bold text-white uppercase tracking-wider">Guides</h3>
-              <ul className="flex flex-col gap-3 text-zinc-400 text-sm">
+              <h3 className="font-bold text-neutral-900 uppercase tracking-wider">Guides</h3>
+              <ul className="flex flex-col gap-3 text-neutral-500 text-sm">
                 <FooterLink href="#">API Integration Playbook</FooterLink>
                 <FooterLink href="#">System Design Playbook</FooterLink>
                 <FooterLink href="#">Design Patterns Playbook</FooterLink>
@@ -77,8 +77,8 @@ export default function Footer() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <h3 className="font-bold text-white uppercase tracking-wider">Mentor Plans</h3>
-              <ul className="flex flex-col gap-3 text-zinc-400 text-sm">
+              <h3 className="font-bold text-neutral-900 uppercase tracking-wider">Mentor Plans</h3>
+              <ul className="flex flex-col gap-3 text-neutral-500 text-sm">
                 <FooterLink href="#">1 Week Plan</FooterLink>
                 <FooterLink href="#">1 Month Plan</FooterLink>
                 <FooterLink href="#">3 Months Plan</FooterLink>
@@ -86,15 +86,15 @@ export default function Footer() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <h3 className="font-bold text-white uppercase tracking-wider">Company</h3>
-              <ul className="flex flex-col gap-3 text-zinc-400 text-sm">
+              <h3 className="font-bold text-neutral-900 uppercase tracking-wider">Company</h3>
+              <ul className="flex flex-col gap-3 text-neutral-500 text-sm">
                 <FooterLink href="#">Pricing</FooterLink>
                 <FooterLink href="#">Promotions</FooterLink>
                 <FooterLink href="#">Roadmap</FooterLink>
                 <FooterLink href="#">About</FooterLink>
                 <FooterLink href="#">Team</FooterLink>
                 <FooterLink href="#">Contact us</FooterLink>
-                <FooterLink href="#">Advertise with us <span className="text-white text-[10px] ml-1 px-1 border border-white/20 rounded bg-white/10">NEW</span></FooterLink>
+                <FooterLink href="#">Advertise with us <span className="text-neutral-900 text-[10px] ml-1 px-1 border border-neutral-200 rounded bg-neutral-100">NEW</span></FooterLink>
                 <FooterLink href="#">Become an affiliate</FooterLink>
                 <FooterLink href="#">Careers</FooterLink>
                 <FooterLink href="#">Blog</FooterLink>
@@ -107,11 +107,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-500">
+        <div className="border-t border-neutral-200 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-400">
           <p>© 2025 JobFlix Edutech Solutions Private Limited. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="#" className="hover:text-teal-600 transition-colors">Privacy Policy</Link>
+            <Link href="#" className="hover:text-teal-600 transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
@@ -123,14 +123,14 @@ export default function Footer() {
 
 const FooterLink = ({ href, children }: { href: string, children: React.ReactNode }) => (
   <li>
-    <Link href={href} className="hover:text-white transition-colors block leading-relaxed">
+    <Link href={href} className="hover:text-teal-600 transition-colors block leading-relaxed">
       {children}
     </Link>
   </li>
 )
 
 const SocialIcon = ({ icon, href }: { icon: React.ReactNode, href: string }) => (
-  <a href={href} className="text-zinc-400 hover:text-white transition-colors">
+  <a href={href} className="text-neutral-500 hover:text-teal-600 transition-colors">
     {icon}
   </a>
 )

@@ -17,7 +17,7 @@ export default function ModernCollaborations() {
             <span className="text-orange-400 text-sm font-medium">Our Collaborations</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-white max-w-4xl mx-auto leading-tight mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 max-w-4xl mx-auto leading-tight mb-6">
             We don't just teach.{" "}
             <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
               We connect you
@@ -25,7 +25,7 @@ export default function ModernCollaborations() {
             with the best in the industry.
           </h2>
 
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
+          <p className="text-neutral-900/60 text-lg max-w-2xl mx-auto">
             Our partnerships with leading companies and universities ensure you get real-world experience and opportunities.
           </p>
         </motion.div>
@@ -45,9 +45,9 @@ export default function ModernCollaborations() {
               transition={{ type: "spring", stiffness: 300 }}
               className="group"
             >
-              <div className="h-20 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center backdrop-blur-sm hover:bg-white/10 hover:border-orange-500/30 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-orange-500/25">
+              <div className="h-20 bg-neutral-100 border border-neutral-200 rounded-xl flex items-center justify-center backdrop-blur-sm hover:bg-neutral-100 hover:border-orange-500/30 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-orange-500/25">
                 <div className="w-16 h-12 bg-gradient-to-r from-white/20 to-white/10 rounded-lg flex items-center justify-center">
-                  <span className="text-white/70 text-xs font-medium group-hover:text-orange-400 transition-colors">
+                  <span className="text-neutral-900/70 text-xs font-medium group-hover:text-orange-400 transition-colors">
                     LOGO
                   </span>
                 </div>
@@ -89,10 +89,10 @@ export default function ModernCollaborations() {
               <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
                 {achievement.icon}
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-orange-400 transition-colors">
+              <h3 className="text-xl font-semibold text-neutral-900 mb-2 group-hover:text-orange-400 transition-colors">
                 {achievement.title}
               </h3>
-              <p className="text-white/60 text-sm">
+              <p className="text-neutral-900/60 text-sm">
                 {achievement.description}
               </p>
             </motion.div>

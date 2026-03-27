@@ -45,14 +45,14 @@ export default function StudyDestinations() {
             <div className="mb-8">
               <TextGenerateEffect
                 words="Find Your Perfect Study Destination"
-                className="text-4xl md:text-5xl font-bold text-white mb-6"
+                className="text-4xl md:text-5xl font-bold text-neutral-900 mb-6"
                 filter={true}
                 duration={0.5}
               />
 
               <TextGenerateEffect
                 words="Explore top study-abroad destinations across the globe, from the USA, UK, and Australia, to New Zealand, Europe, Dubai, and many more. Discover world-class universities, vibrant cultures, and endless opportunities that await you in your journey to academic excellence."
-                className="text-white/70 text-lg leading-relaxed mb-8"
+                className="text-neutral-900/70 text-lg leading-relaxed mb-8"
                 filter={true}
                 duration={0.3}
               />
@@ -102,10 +102,10 @@ export default function StudyDestinations() {
 
                   {/* Content */}
                   <div className="absolute bottom-4 left-4 right-4">
-                    <h4 className="text-white font-bold text-lg mb-2 group-hover:text-orange-400 transition-colors">
+                    <h4 className="text-neutral-900 font-bold text-lg mb-2 group-hover:text-orange-400 transition-colors">
                       {destination.name}
                     </h4>
-                    <p className="text-white/80 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-neutral-900/80 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       {destination.description}
                     </p>
                   </div>

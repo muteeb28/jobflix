@@ -54,7 +54,7 @@ export default function ProfessionalCourses() {
 
           <TextGenerateEffect
             words="Master SaaS, AI, and Automation — Skills That Power Today's Industries"
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 max-w-4xl mx-auto"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-6 max-w-4xl mx-auto"
             filter={true}
             duration={0.5}
           />
@@ -88,7 +88,7 @@ export default function ProfessionalCourses() {
 
                       {/* Trending Badge */}
                       {course.trending && (
-                        <div className="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1 z-10">
+                        <div className="absolute top-4 left-4 bg-orange-500 text-neutral-900 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1 z-10">
                           ⭐ Trending 2025
                         </div>
                       )}
@@ -98,7 +98,7 @@ export default function ProfessionalCourses() {
 
                       {/* Course Title Overlay */}
                       <div className="absolute bottom-4 left-4 right-4">
-                        <h3 className="text-white font-bold text-lg mb-1">
+                        <h3 className="text-neutral-900 font-bold text-lg mb-1">
                           {course.title}
                         </h3>
                       </div>
@@ -109,8 +109,8 @@ export default function ProfessionalCourses() {
                   <div className="mt-3 p-4 bg-[#2A2A2A] rounded-xl">
                     {/* Rating */}
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="text-white font-bold text-lg">{course.rating}</span>
-                      <div className="flex text-white text-sm">
+                      <span className="text-neutral-900 font-bold text-lg">{course.rating}</span>
+                      <div className="flex text-neutral-900 text-sm">
                         {[...Array(5)].map((_, i) => (
                           <span key={i}>⭐</span>
                         ))}
@@ -119,7 +119,7 @@ export default function ProfessionalCourses() {
                     </div>
 
                     {/* Course Name */}
-                    <h4 className="text-white font-bold text-lg mb-3 flex items-center gap-2">
+                    <h4 className="text-neutral-900 font-bold text-lg mb-3 flex items-center gap-2">
                       <span className="w-3 h-3 bg-orange-500 rounded-full"></span>
                       {course.title}
                     </h4>

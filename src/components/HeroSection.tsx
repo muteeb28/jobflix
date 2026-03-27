@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black font-pixel">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white font-pixel">
       {/* Full-screen GIF background */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -18,7 +18,7 @@ export default function HeroSection() {
         />
 
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 bg-white/60"></div>
       </div>
 
       {/* Content */}
@@ -30,12 +30,12 @@ export default function HeroSection() {
         >
           {/* Title matching LevelUp */}
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-            <span className="text-white block">Start Your</span>
-            <span className="text-white block">Coding Adventure</span>
+            <span className="text-neutral-900 block">Start Your</span>
+            <span className="text-neutral-900 block">Coding Adventure</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-white text-xl md:text-2xl mb-12">
+          <p className="text-neutral-900 text-xl md:text-2xl mb-12">
             Beginner friendly coding courses and projects
           </p>
 
@@ -43,7 +43,7 @@ export default function HeroSection() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 bg-white text-black font-bold text-xl uppercase tracking-wider rounded-md hover:bg-neutral-200 transition-colors"
+            className="px-10 py-4 bg-teal-500 text-neutral-900 font-bold text-xl uppercase tracking-wider rounded-md hover:bg-neutral-200 transition-colors"
           >
             Get Started
           </motion.button>

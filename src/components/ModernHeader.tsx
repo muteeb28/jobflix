@@ -24,7 +24,7 @@ export default function ModernHeader() {
       transition={{ duration: 0.6 }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-black/80 backdrop-blur-md border-b border-white/10"
+          ? "bg-neutral-1000 backdrop-blur-md border-b border-neutral-200"
           : "bg-transparent"
       }`}
     >
@@ -36,7 +36,7 @@ export default function ModernHeader() {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <div className="text-2xl font-bold text-white">
+            <div className="text-2xl font-bold text-neutral-900">
               Level<span className="text-orange-500">Up</span>
             </div>
             <motion.div
@@ -49,24 +49,24 @@ export default function ModernHeader() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             <div className="relative group">
-              <button className="flex items-center text-white/90 hover:text-white transition-colors py-2">
+              <button className="flex items-center text-neutral-900/90 hover:text-teal-600 transition-colors py-2">
                 Career Launchpad
                 <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
               </button>
-              <div className="absolute top-full left-0 mt-2 w-64 bg-black/90 backdrop-blur-md rounded-lg border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div className="absolute top-full left-0 mt-2 w-64 bg-white/90 backdrop-blur-md rounded-lg border border-neutral-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <div className="p-4">
-                  <p className="text-white/70 text-sm">Transform your career with expert guidance</p>
+                  <p className="text-neutral-900/70 text-sm">Transform your career with expert guidance</p>
                 </div>
               </div>
             </div>
 
-            <a href="#" className="text-white/90 hover:text-white transition-colors">
+            <a href="#" className="text-neutral-900/90 hover:text-teal-600 transition-colors">
               Professional Courses
             </a>
-            <a href="#" className="text-white/90 hover:text-white transition-colors">
+            <a href="#" className="text-neutral-900/90 hover:text-teal-600 transition-colors">
               Healthcare Jobs
             </a>
-            <a href="#" className="text-white/90 hover:text-white transition-colors">
+            <a href="#" className="text-neutral-900/90 hover:text-teal-600 transition-colors">
               Study Abroad
             </a>
           </nav>
@@ -75,11 +75,11 @@ export default function ModernHeader() {
           <div className="hidden lg:flex items-center gap-3">
             <Button
               variant="ghost"
-              className="text-white/90 hover:text-white hover:bg-white/10"
+              className="text-neutral-900/90 hover:text-neutral-900 hover:bg-neutral-100"
             >
               Log In
             </Button>
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-6">
+            <Button className="bg-orange-500 hover:bg-orange-600 text-neutral-900 rounded-full px-6">
               Sign Up
             </Button>
           </div>
@@ -87,7 +87,7 @@ export default function ModernHeader() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-white p-2"
+            className="lg:hidden text-neutral-900 p-2"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -100,24 +100,24 @@ export default function ModernHeader() {
           transition={{ duration: 0.3 }}
           className="lg:hidden overflow-hidden"
         >
-          <nav className="py-4 space-y-4 border-t border-white/10 mt-4">
-            <a href="#" className="block text-white/90 hover:text-white transition-colors py-2">
+          <nav className="py-4 space-y-4 border-t border-neutral-200 mt-4">
+            <a href="#" className="block text-neutral-900/90 hover:text-teal-600 transition-colors py-2">
               Career Launchpad
             </a>
-            <a href="#" className="block text-white/90 hover:text-white transition-colors py-2">
+            <a href="#" className="block text-neutral-900/90 hover:text-teal-600 transition-colors py-2">
               Professional Courses
             </a>
-            <a href="#" className="block text-white/90 hover:text-white transition-colors py-2">
+            <a href="#" className="block text-neutral-900/90 hover:text-teal-600 transition-colors py-2">
               Healthcare Jobs
             </a>
-            <a href="#" className="block text-white/90 hover:text-white transition-colors py-2">
+            <a href="#" className="block text-neutral-900/90 hover:text-teal-600 transition-colors py-2">
               Study Abroad
             </a>
             <div className="flex flex-col gap-3 pt-4">
-              <Button variant="ghost" className="text-white/90 hover:text-white hover:bg-white/10 justify-start">
+              <Button variant="ghost" className="text-neutral-900/90 hover:text-neutral-900 hover:bg-neutral-100 justify-start">
                 Log In
               </Button>
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+              <Button className="bg-orange-500 hover:bg-orange-600 text-neutral-900">
                 Sign Up
               </Button>
             </div>

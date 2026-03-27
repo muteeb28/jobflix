@@ -7,7 +7,7 @@ export default function EncryptedTextDemoSecond() {
       <EncryptedText
         text="Welcome to the Matrix, Neo."
         encryptedClassName="text-neutral-500"
-        revealedClassName="dark:text-white text-black"
+        revealedClassName="dark:text-neutral-900 text-black"
         revealDelayMs={50}
       />
     </p>

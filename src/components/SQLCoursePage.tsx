@@ -61,7 +61,7 @@ export default function SQLCoursePage() {
     const progress = Math.round((completedTopics.length / freeTopics) * 100);
 
     return (
-        <div className="min-h-screen bg-black text-white font-pixel">
+        <div className="min-h-screen bg-white text-neutral-900 font-pixel">
             {/* Hero Banner */}
             <div className="relative h-64 md:h-80 overflow-hidden">
                 <Image
@@ -81,13 +81,13 @@ export default function SQLCoursePage() {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-                            <h1 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-[4px_4px_0_rgba(0,0,0,1)]">
+                            <h1 className="text-3xl md:text-5xl font-bold mb-4 text-neutral-900 drop-shadow-[4px_4px_0_rgba(0,0,0,1)]">
                                 Master SQL for Web and Data Engineering
                             </h1>
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-8 py-3 bg-white text-black font-bold text-lg border-b-4 border-r-4 border-neutral-900 uppercase"
+                                className="px-8 py-3 bg-teal-500 text-neutral-900 font-bold text-lg border-b-4 border-r-4 border-neutral-200 uppercase"
                             >
                                 Continue Learning →
                             </motion.button>
@@ -119,20 +119,20 @@ export default function SQLCoursePage() {
                                     {/* Module Header */}
                                     <button
                                         onClick={() => setExpandedModule(isExpanded ? null : moduleIndex)}
-                                        className="w-full flex items-center justify-between p-6 bg-black border-2 border-gray-800 hover:border-gray-700 transition-colors group text-left"
+                                        className="w-full flex items-center justify-between p-6 bg-white border-2 border-neutral-200 hover:border-teal-300 transition-colors group text-left"
                                     >
                                         <div className="flex items-center gap-6">
-                                            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-900 text-white font-bold text-xl font-mono border-2 border-gray-800 group-hover:border-gray-600 transition-colors">
+                                            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 text-neutral-900 font-bold text-xl font-mono border-2 border-neutral-200 group-hover:border-gray-600 transition-colors">
                                                 {moduleIndex + 1}
                                             </div>
-                                            <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-white transition-colors">
+                                            <h3 className="text-xl md:text-2xl font-bold text-neutral-900 group-hover:text-teal-600 transition-colors">
                                                 {module.title}
                                             </h3>
                                         </div>
                                         <div className="flex items-center gap-4">
                                             {/* Show Pro badge if module index is > 0 (assuming first module is free-ish or just following pattern) */}
                                             {moduleIndex > 0 && (
-                                                <span className="text-white font-bold uppercase tracking-wider text-sm">Pro</span>
+                                                <span className="text-neutral-900 font-bold uppercase tracking-wider text-sm">Pro</span>
                                             )}
                                             <ChevronDown
                                                 className={`w-6 h-6 text-gray-500 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
@@ -150,7 +150,7 @@ export default function SQLCoursePage() {
                                                 transition={{ duration: 0.3, ease: "easeInOut" }}
                                                 className="overflow-hidden"
                                             >
-                                                <div className="bg-gray-900/50 border-x-2 border-b-2 border-gray-800 p-4 space-y-2">
+                                                <div className="bg-neutral-100 border-x-2 border-b-2 border-neutral-200 p-4 space-y-2">
                                                     {module.topics.map((topic, topicIndex) => {
                                                         const _globalIndex = moduleIndex * 100 + topicIndex;
                                                         const continuousIndex = startingIndex + topicIndex + 1;
@@ -173,14 +173,14 @@ export default function SQLCoursePage() {
                                                                         router.push(`/courses/sql/${continuousIndex}`);
                                                                     }
                                                                 }}
-                                                                className={`flex items-center justify-between p-4 rounded-lg ${isCompleted ? 'bg-green-900/20 border border-green-500/30' : 'bg-gray-900 border border-gray-800'
+                                                                className={`flex items-center justify-between p-4 rounded-lg ${isCompleted ? 'bg-green-900/20 border border-green-500/30' : 'bg-neutral-100 border border-neutral-200'
                                                                     } ${isFree ? 'hover:border-gray-600 cursor-pointer' : 'opacity-75 cursor-not-allowed'} transition-all group`}
                                                             >
                                                                 <div className="flex items-center gap-4 flex-1">
-                                                                    <span className="text-white font-bold font-mono text-sm min-w-[8rem]">
+                                                                    <span className="text-neutral-900 font-bold font-mono text-sm min-w-[8rem]">
                                                                         {label} {continuousIndex}
                                                                     </span>
-                                                                    <span className={`${isCompleted ? 'text-green-400 line-through' : 'text-white'} font-bold text-lg`}>
+                                                                    <span className={`${isCompleted ? 'text-green-400 line-through' : 'text-neutral-900'} font-bold text-lg`}>
                                                                         {topic.title}
                                                                     </span>
                                                                 </div>
@@ -208,17 +208,17 @@ export default function SQLCoursePage() {
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className="bg-gray-900 border-4 border-gray-800 p-6 mb-6 sticky top-4"
+                            className="bg-neutral-100 border-4 border-neutral-200 p-6 mb-6 sticky top-4"
                         >
-                            <h3 className="text-xl font-bold mb-4 text-white">Course Progress</h3>
+                            <h3 className="text-xl font-bold mb-4 text-neutral-900">Course Progress</h3>
 
                             {/* Exercises */}
                             <div className="mb-4">
                                 <div className="flex items-center gap-2 mb-2">
                                     <span className="text-3xl">📚</span>
                                     <div>
-                                        <p className="text-white font-bold">Exercises</p>
-                                        <p className="text-white text-2xl">{completedTopics.length}/{freeTopics}</p>
+                                        <p className="text-neutral-900 font-bold">Exercises</p>
+                                        <p className="text-neutral-900 text-2xl">{completedTopics.length}/{freeTopics}</p>
                                     </div>
                                 </div>
                             </div>
@@ -228,8 +228,8 @@ export default function SQLCoursePage() {
                                 <div className="flex items-center gap-2 mb-2">
                                     <span className="text-3xl">⭐</span>
                                     <div>
-                                        <p className="text-white font-bold">XP Earned</p>
-                                        <p className="text-white text-2xl">{xp}/780</p>
+                                        <p className="text-neutral-900 font-bold">XP Earned</p>
+                                        <p className="text-neutral-900 text-2xl">{xp}/780</p>
                                     </div>
                                 </div>
                             </div>
@@ -237,10 +237,10 @@ export default function SQLCoursePage() {
                             {/* Progress Bar */}
                             <div className="mb-6">
                                 <div className="flex justify-between mb-2">
-                                    <span className="text-white/60 text-sm">Progress</span>
-                                    <span className="text-white font-bold">{progress}%</span>
+                                    <span className="text-neutral-900/60 text-sm">Progress</span>
+                                    <span className="text-neutral-900 font-bold">{progress}%</span>
                                 </div>
-                                <div className="h-4 bg-gray-800 border-2 border-gray-700">
+                                <div className="h-4 bg-gray-800 border-2 border-neutral-200">
                                     <motion.div
                                         initial={{ width: 0 }}
                                         animate={{ width: `${progress}%` }}
@@ -250,24 +250,24 @@ export default function SQLCoursePage() {
                             </div>
 
                             {/* Upgrade to Pro */}
-                            <div className="bg-gradient-to-br from-neutral-800 to-neutral-900 p-6 text-center border-4 border-neutral-900">
+                            <div className="bg-gradient-to-br from-neutral-800 to-neutral-900 p-6 text-center border-4 border-neutral-200">
                                 <span className="text-4xl mb-2 block">👑</span>
                                 <h4 className="text-black font-bold text-lg mb-2">Upgrade to Pro</h4>
                                 <p className="text-black/80 text-sm mb-4">
                                     Unlock premium content!
                                 </p>
-                                <button className="w-full px-4 py-2 bg-black text-white font-bold border-2 border-black hover:bg-gray-900 transition-colors">
+                                <button className="w-full px-4 py-2 bg-white text-neutral-900 font-bold border-2 border-black hover:bg-neutral-100 transition-colors">
                                     Upgrade
                                 </button>
                             </div>
 
                             {/* Need Help */}
-                            <div className="mt-6 p-4 bg-gray-800 border-2 border-gray-700">
-                                <h4 className="text-white font-bold mb-2">Need Help?</h4>
-                                <p className="text-white/60 text-sm mb-3">
+                            <div className="mt-6 p-4 bg-gray-800 border-2 border-neutral-200">
+                                <h4 className="text-neutral-900 font-bold mb-2">Need Help?</h4>
+                                <p className="text-neutral-900/60 text-sm mb-3">
                                     Ask question in our community!
                                 </p>
-                                <button className="w-full px-4 py-2 bg-white text-black font-bold hover:bg-neutral-200 transition-colors">
+                                <button className="w-full px-4 py-2 bg-teal-500 text-neutral-900 font-bold hover:bg-neutral-200 transition-colors">
                                     Go To Community
                                 </button>
                             </div>

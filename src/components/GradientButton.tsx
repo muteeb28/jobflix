@@ -27,9 +27,9 @@ export default function GradientButton({
   };
 
   const variantClasses = {
-    primary: "bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700",
-    secondary: "bg-gradient-to-r from-gray-800 to-gray-900 text-white hover:from-gray-700 hover:to-gray-800",
-    outline: "bg-transparent border border-orange-500/30 text-white hover:bg-orange-500/10",
+    primary: "bg-gradient-to-r from-orange-500 to-orange-600 text-neutral-900 hover:from-orange-600 hover:to-orange-700",
+    secondary: "bg-gradient-to-r from-gray-800 to-gray-900 text-neutral-900 hover:from-gray-700 hover:to-gray-800",
+    outline: "bg-transparent border border-orange-500/30 text-neutral-900 hover:bg-orange-500/10",
   };
 
   return (

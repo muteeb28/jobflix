@@ -42,10 +42,10 @@ export const GoogleGeminiEffect = ({
 
     return (
         <div className={cn("relative pt-0 pb-10", className)}>
-            <h2 className="text-3xl md:text-5xl font-bold text-center text-white mb-6 uppercase font-pixel drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)]">
+            <h2 className="text-3xl md:text-5xl font-bold text-center text-neutral-900 mb-6 uppercase font-pixel drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)]">
                 {title || roadmap?.title || `Build with Aceternity UI`}
             </h2>
-            <p className="text-sm md:text-lg text-center text-zinc-400 max-w-2xl mx-auto mb-0 px-4">
+            <p className="text-sm md:text-lg text-center text-neutral-500 max-w-2xl mx-auto mb-0 px-4">
                 {description || roadmap?.description ||
                     `Scroll this component and see the bottom SVG come to life wow this
         works!`}
@@ -91,13 +91,13 @@ export const GoogleGeminiEffect = ({
                     <div className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none">
 
                         {/* Center Block */}
-                        <div className="absolute left-[470px] top-[250px] w-[280px] h-fit z-20 border border-white/10 bg-black/80 rounded-xl p-4 flex flex-col gap-4 backdrop-blur-md shadow-2xl">
+                        <div className="absolute left-[470px] top-[250px] w-[280px] h-fit z-20 border border-neutral-200 bg-neutral-1000 rounded-xl p-4 flex flex-col gap-4 backdrop-blur-md shadow-2xl">
                             {steps.map((step, idx) => (
                                 <div key={idx} className={cn("flex items-center gap-3 p-2 rounded-lg border h-10",
-                                    step.id === 3 ? "bg-white/5 border-white/30 shadow-[0_0_15px_rgba(234,179,8,0.2)]" : "bg-white/5 border-white/5"
+                                    step.id === 3 ? "bg-neutral-100 border-white/30 shadow-[0_0_15px_rgba(234,179,8,0.2)]" : "bg-neutral-100 border-white/5"
                                 )}>
-                                    <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/10 text-xs font-mono text-zinc-400">{step.id}</span>
-                                    <span className={cn("text-sm font-medium", step.id === 3 ? "text-white" : "text-zinc-300")}>{step.title}</span>
+                                    <span className="flex items-center justify-center w-6 h-6 rounded-full bg-neutral-100 text-xs font-mono text-neutral-500">{step.id}</span>
+                                    <span className={cn("text-sm font-medium", step.id === 3 ? "text-neutral-900" : "text-neutral-600")}>{step.title}</span>
                                 </div>
                             ))}
                         </div>
@@ -112,8 +112,8 @@ export const GoogleGeminiEffect = ({
                                         <span className={cn(
                                             "text-sm px-4 py-1.5 whitespace-nowrap",
                                             node.type === "primary"
-                                                ? "text-white border-l-2 border-white/30 bg-white/5 rounded-r-full"
-                                                : "text-zinc-400 border border-white/10 bg-black/50 rounded-full"
+                                                ? "text-neutral-900 border-l-2 border-white/30 bg-neutral-100 rounded-r-full"
+                                                : "text-neutral-500 border border-neutral-200 bg-neutral-1000 rounded-full"
                                         )}>
                                             {node.text}
                                         </span>
@@ -132,8 +132,8 @@ export const GoogleGeminiEffect = ({
                                         <span className={cn(
                                             "text-sm px-4 py-1.5 whitespace-nowrap",
                                             node.type === "primary"
-                                                ? "text-white border-l-2 border-white/30 bg-white/5 rounded-r-full"
-                                                : "text-zinc-400 border border-white/10 bg-black/50 rounded-full"
+                                                ? "text-neutral-900 border-l-2 border-white/30 bg-neutral-100 rounded-r-full"
+                                                : "text-neutral-500 border border-neutral-200 bg-neutral-1000 rounded-full"
                                         )}>
                                             {node.text}
                                         </span>
@@ -150,22 +150,22 @@ export const GoogleGeminiEffect = ({
                 {steps.map((step) => (
                     <div key={step.id} className={cn(
                         "flex flex-col gap-4 border p-4 rounded-xl",
-                        step.id === 3 ? "border-white/15 bg-white/5 relative overflow-hidden" : "border-white/10 bg-white/5"
+                        step.id === 3 ? "border-neutral-200 bg-neutral-100 relative overflow-hidden" : "border-neutral-200 bg-neutral-100"
                     )}>
                         {step.id === 3 && (
-                            <div className="absolute top-0 right-0 w-24 h-24 bg-white/8 blur-2xl rounded-full translate-x-10 -translate-y-10" />
+                            <div className="absolute top-0 right-0 w-24 h-24 bg-neutral-100 blur-2xl rounded-full translate-x-10 -translate-y-10" />
                         )}
                         <div className={cn("flex items-center gap-3 border-b  pb-3 relative z-10", step.id === 3 ? "border-white/5" : "border-white/5")}>
-                            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 text-xs font-mono text-zinc-400 shrink-0">{step.id}</span>
-                            <span className="text-white font-medium text-base">{step.title}</span>
+                            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-neutral-100 text-xs font-mono text-neutral-500 shrink-0">{step.id}</span>
+                            <span className="text-neutral-900 font-medium text-base">{step.title}</span>
                         </div>
                         <div className="flex flex-wrap gap-2 pl-2 relative z-10">
                             {[...step.leftNodes, ...step.rightNodes].map((node, idx) => (
                                 <span key={idx} className={cn(
                                     "text-xs px-3 py-1",
                                     node.type === "primary"
-                                        ? "text-white border-l-2 border-white/30 bg-white/5 rounded-r-full"
-                                        : "text-zinc-400 border border-white/10 bg-black/50 rounded-full"
+                                        ? "text-neutral-900 border-l-2 border-white/30 bg-neutral-100 rounded-r-full"
+                                        : "text-neutral-500 border border-neutral-200 bg-neutral-1000 rounded-full"
                                 )}>
                                     {node.text}
                                 </span>

@@ -21,14 +21,14 @@ export default function JobFilter({
         <div className="space-y-8 mb-12">
             {/* Experience Level Toggle */}
             <div className="flex justify-center">
-                <div className="bg-gray-900 p-1 border-2 border-gray-800 inline-flex rounded-lg">
+                <div className="bg-neutral-100 p-1 border-2 border-neutral-200 inline-flex rounded-lg">
                     {["All", "Fresher/Internship", "Experienced"].map((level) => (
                         <button
                             key={level}
                             onClick={() => onSelectExperience(level)}
                             className={`px-6 py-2 text-sm font-bold uppercase tracking-wide transition-all ${experienceLevel === level
                                 ? "bg-white text-black shadow-[2px_2px_0_rgba(0,0,0,1)]"
-                                : "text-white/60 hover:text-white hover:bg-gray-800"
+                                : "text-neutral-900/60 hover:text-neutral-900 hover:bg-gray-800"
                                 }`}
                         >
                             {level}
@@ -43,7 +43,7 @@ export default function JobFilter({
                     onClick={() => onSelectCategory("All")}
                     className={`px-4 py-2 border-2 text-sm font-bold uppercase tracking-wide transition-all ${selectedCategory === "All"
                         ? "bg-white text-black border-white shadow-[4px_4px_0_rgba(255,255,255,0.2)]"
-                        : "bg-black text-white border-gray-800 hover:border-gray-600 text-white/60"
+                        : "bg-white text-neutral-900 border-neutral-200 hover:border-gray-600 text-neutral-900/60"
                         }`}
                 >
                     All Roles
@@ -54,7 +54,7 @@ export default function JobFilter({
                         onClick={() => onSelectCategory(category)}
                         className={`px-4 py-2 border-2 text-sm font-bold uppercase tracking-wide transition-all ${selectedCategory === category
                             ? "bg-white text-black border-white shadow-[4px_4px_0_rgba(255,255,255,0.2)]"
-                            : "bg-black text-white border-gray-800 hover:border-gray-600 text-white/60"
+                            : "bg-white text-neutral-900 border-neutral-200 hover:border-gray-600 text-neutral-900/60"
                             }`}
                     >
                         {category}

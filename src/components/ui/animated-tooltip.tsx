@@ -34,8 +34,8 @@ export function AnimatedTooltip({ items, className }: AnimatedTooltipProps) {
             <motion.div
               whileHover={{ scale: 1.05, y: -1 }}
               className={cn(
-                "h-8 w-8 rounded-full border overflow-hidden bg-white/10",
-                isActive ? "border-cyan-200/70 shadow-[0_0_0_2px_rgba(34,211,238,0.22)]" : "border-white/20",
+                "h-8 w-8 rounded-full border overflow-hidden bg-neutral-100",
+                isActive ? "border-cyan-200/70 shadow-[0_0_0_2px_rgba(34,211,238,0.22)]" : "border-neutral-200",
               )}
             >
               <Image
@@ -53,10 +53,10 @@ export function AnimatedTooltip({ items, className }: AnimatedTooltipProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 8 }}
                 transition={{ duration: 0.18 }}
-                className="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/15 bg-black/85 px-3 py-1.5 text-[11px] text-white shadow-lg backdrop-blur-sm"
+                className="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md border border-neutral-200 bg-neutral-1005 px-3 py-1.5 text-[11px] text-neutral-900 shadow-lg backdrop-blur-sm"
               >
-                <div className="font-semibold text-white">{item.name}</div>
-                <div className="text-white/60">{item.designation}</div>
+                <div className="font-semibold text-neutral-900">{item.name}</div>
+                <div className="text-neutral-900/60">{item.designation}</div>
               </motion.div>
             )}
           </div>

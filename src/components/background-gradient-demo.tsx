@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function BackgroundGradientDemo() {
   return (
     <div>
-      <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
+      <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-white">
         <Image
           src="/jordans.png"
           alt="jordans"
@@ -14,7 +14,7 @@ export default function BackgroundGradientDemo() {
           width="400"
           className="object-contain"
         />
-        <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
+        <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-700">
           Air Jordan 4 Retro Reimagined
         </p>
 
@@ -23,9 +23,9 @@ export default function BackgroundGradientDemo() {
           February 17, 2024. Your best opportunity to get these right now is by
           entering raffles and waiting for the official releases.
         </p>
-        <button className="rounded-full pl-4 pr-1 py-1 text-white flex items-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
+        <button className="rounded-full pl-4 pr-1 py-1 text-neutral-900 flex items-center space-x-1 bg-white mt-4 text-xs font-bold dark:bg-neutral-100">
           <span>Buy now </span>
-          <span className="bg-zinc-700 rounded-full text-[0.6rem] px-2 py-0 text-white">
+          <span className="bg-zinc-700 rounded-full text-[0.6rem] px-2 py-0 text-neutral-900">
             $100
           </span>
         </button>

@@ -18,8 +18,8 @@ export default function SignupFormDemo() {
     setStatus("Submitted! (stub) — wire this to your signup handler.");
   };
   return (
-    <div className="dark mx-auto w-full max-w-xl rounded-2xl border border-white/20 bg-gradient-to-b from-zinc-950 via-black to-black p-4 md:p-8 shadow-[0_18px_55px_rgba(0,0,0,0.45)]">
-      <h2 className="text-2xl font-bold text-white">
+    <div className="dark mx-auto w-full max-w-xl rounded-2xl border border-neutral-200 bg-gradient-to-b from-zinc-950 via-black to-black p-4 md:p-8 shadow-[0_18px_55px_rgba(0,0,0,0.45)]">
+      <h2 className="text-2xl font-bold text-neutral-900">
         Welcome to JobFlix
       </h2>
       <p className="mt-2 max-w-2xl text-sm text-zinc-200 font-sans">
@@ -29,24 +29,24 @@ export default function SignupFormDemo() {
       <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-3 md:grid md:grid-cols-2">
           <LabelInputContainer>
-            <Label htmlFor="firstname" className="text-white">First name</Label>
+            <Label htmlFor="firstname" className="text-neutral-900">First name</Label>
             <Input id="firstname" placeholder="Tyler" type="text" />
           </LabelInputContainer>
           <LabelInputContainer>
-            <Label htmlFor="lastname" className="text-white">Last name</Label>
+            <Label htmlFor="lastname" className="text-neutral-900">Last name</Label>
             <Input id="lastname" placeholder="Durden" type="text" />
           </LabelInputContainer>
         </div>
         <LabelInputContainer>
-          <Label htmlFor="email" className="text-white">Email Address</Label>
+          <Label htmlFor="email" className="text-neutral-900">Email Address</Label>
           <Input id="email" placeholder="projectmayhem@fc.com" type="email" />
         </LabelInputContainer>
         <LabelInputContainer>
-          <Label htmlFor="password" className="text-white">Password</Label>
+          <Label htmlFor="password" className="text-neutral-900">Password</Label>
           <Input id="password" placeholder="••••••••" type="password" />
         </LabelInputContainer>
         <LabelInputContainer>
-          <Label htmlFor="universityId" className="text-white">Your university rollno (optional)</Label>
+          <Label htmlFor="universityId" className="text-neutral-900">Your university rollno (optional)</Label>
           <Input
             id="universityId"
             placeholder="Enter your university ID"
@@ -55,7 +55,7 @@ export default function SignupFormDemo() {
         </LabelInputContainer>
 
         <button
-          className="group/btn relative block h-11 w-full rounded-md bg-white text-black font-bold uppercase tracking-[0.16em] shadow-[0_0_30px_rgba(255,255,255,0.12)] border-b-2 border-r-2 border-neutral-900 active:translate-y-[1px] transition-all"
+          className="group/btn relative block h-11 w-full rounded-md bg-teal-500 text-neutral-900 font-bold uppercase tracking-[0.16em] shadow-[0_0_30px_rgba(0,0,0,0.08)] border-b-2 border-r-2 border-neutral-200 active:translate-y-[1px] transition-all"
           type="submit"
         >
           Sign up
@@ -66,31 +66,31 @@ export default function SignupFormDemo() {
 
         <div className="flex flex-col space-y-4">
           <button
-            className="group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-white/5 px-4 font-medium text-white border border-white/10 hover:border-white/35 transition-colors"
+            className="group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-neutral-100 px-4 font-medium text-neutral-900 border border-neutral-200 hover:border-neutral-300 transition-colors"
             type="submit"
           >
-            <IconBrandGithub className="h-4 w-4 text-white" />
-            <span className="text-sm text-white">
+            <IconBrandGithub className="h-4 w-4 text-neutral-900" />
+            <span className="text-sm text-neutral-900">
               GitHub
             </span>
             <BottomGradient />
           </button>
           <button
-            className="group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-white/5 px-4 font-medium text-white border border-white/10 hover:border-white/35 transition-colors"
+            className="group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-neutral-100 px-4 font-medium text-neutral-900 border border-neutral-200 hover:border-neutral-300 transition-colors"
             type="submit"
           >
-            <IconBrandGoogle className="h-4 w-4 text-white" />
-            <span className="text-sm text-white">
+            <IconBrandGoogle className="h-4 w-4 text-neutral-900" />
+            <span className="text-sm text-neutral-900">
               Google
             </span>
             <BottomGradient />
           </button>
           <button
-            className="group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-white/5 px-4 font-medium text-white border border-white/10 hover:border-white/35 transition-colors"
+            className="group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-neutral-100 px-4 font-medium text-neutral-900 border border-neutral-200 hover:border-neutral-300 transition-colors"
             type="submit"
           >
-            <IconUserPlus className="h-4 w-4 text-white" />
-            <span className="text-sm text-white">
+            <IconUserPlus className="h-4 w-4 text-neutral-900" />
+            <span className="text-sm text-neutral-900">
               Join as Mentor
             </span>
             <BottomGradient />

@@ -7,13 +7,13 @@ import { coursesBackend } from "@/lib/data";
 
 export default function CourseListBackend() {
     return (
-        <section className="py-20 bg-gray-950 font-pixel">
+        <section className="py-20 bg-gray-50 font-pixel">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 drop-shadow-[4px_4px_0_rgba(0,0,0,1)]">
+                    <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 mb-4 drop-shadow-[4px_4px_0_rgba(0,0,0,1)]">
                         Backend & Data Courses
                     </h2>
-                    <p className="text-white/60 text-lg max-w-2xl mx-auto font-mono">
+                    <p className="text-neutral-900/60 text-lg max-w-2xl mx-auto font-mono">
                         Master server-side development and data engineering with industry-standard tools!
                     </p>
                 </div>
@@ -32,10 +32,10 @@ export default function CourseListBackend() {
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 viewport={{ once: true }}
                                 whileHover={{ y: -10 }}
-                                className="bg-gray-900 rounded-xl overflow-hidden border-4 border-gray-800 hover:border-white/30 transition-colors group shadow-[8px_8px_0_rgba(0,0,0,0.5)] cursor-pointer"
+                                className="bg-neutral-100 rounded-xl overflow-hidden border-4 border-neutral-200 hover:border-white/30 transition-colors group shadow-[0_2px_12px_rgba(0,0,0,0.08)] cursor-pointer"
                             >
                                 {/* Course Image */}
-                                <div className="relative h-56 w-full border-b-4 border-gray-800">
+                                <div className="relative h-56 w-full border-b-4 border-neutral-200">
                                     <Image
                                         src={course.image}
                                         alt={course.title}
@@ -47,15 +47,15 @@ export default function CourseListBackend() {
 
                                 {/* Content */}
                                 <div className="p-6">
-                                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-white transition-colors">
+                                    <h3 className="text-xl font-bold text-neutral-900 mb-3 group-hover:text-teal-600 transition-colors">
                                         {course.title}
                                     </h3>
-                                    <p className="text-white/60 text-sm mb-6 font-mono leading-relaxed h-20">
+                                    <p className="text-neutral-900/60 text-sm mb-6 font-mono leading-relaxed h-20">
                                         {course.description}
                                     </p>
 
                                     <div className="flex items-center justify-between">
-                                        <span className="px-3 py-1 bg-gray-800 rounded text-xs text-white/80 font-mono border border-gray-700">
+                                        <span className="px-3 py-1 bg-gray-800 rounded text-xs text-neutral-900/80 font-mono border border-neutral-200">
                                             dY"S {course.level}
                                         </span>
                                     </div>
@@ -103,7 +103,7 @@ export default function CourseListBackend() {
                     <motion.button
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95, y: 2 }}
-                        className="px-8 py-4 bg-white text-black font-bold text-xl border-b-8 border-r-8 border-neutral-900 active:border-0 active:translate-y-2 transition-all uppercase tracking-widest shadow-[0_0_20px_rgba(250,204,21,0.4)]"
+                        className="px-8 py-4 bg-teal-500 text-neutral-900 font-bold text-xl border-b-8 border-r-8 border-neutral-200 active:border-0 active:translate-y-2 transition-all uppercase tracking-widest shadow-[0_0_20px_rgba(250,204,21,0.4)]"
                     >
                         Explore More Courses
                     </motion.button>

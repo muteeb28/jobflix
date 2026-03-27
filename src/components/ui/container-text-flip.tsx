@@ -55,9 +55,9 @@ export function ContainerTextFlip({
       animate={{ width }}
       transition={{ duration: animationDuration / 2000 }}
       className={cn(
-        "relative inline-flex items-center justify-center rounded-lg px-4 py-3 text-center text-4xl font-bold text-white md:text-6xl",
-        "bg-white/5 border border-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.45)] backdrop-blur-sm",
-        "dark:bg-white/5 dark:border-white/15",
+        "relative inline-flex items-center justify-center rounded-lg px-4 py-3 text-center text-4xl font-bold text-neutral-900 md:text-6xl",
+        "bg-neutral-100 border border-neutral-200 shadow-[0_8px_40px_rgba(0,0,0,0.45)] backdrop-blur-sm",
+        "dark:bg-neutral-100 dark:border-neutral-200",
         className,
       )}
       key={words[currentWordIndex]}

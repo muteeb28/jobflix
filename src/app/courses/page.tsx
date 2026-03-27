@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 
 export default function CoursesHome() {
   return (
-    <div className="min-h-screen bg-black text-white font-pixel">
+    <div className="min-h-screen bg-white text-neutral-900 font-pixel">
       <Navbar />
       <HeroSection />
       <CourseListBackend />

@@ -13,7 +13,7 @@ import FloatingLogo from "@/components/FloatingLogo";
 
 export default function CareerLaunchpad() {
     return (
-        <div className="min-h-screen bg-black">
+        <div className="min-h-screen bg-white">
             <FloatingLogo />
             <BackgroundImageHero />
             <ModernServiceCards />

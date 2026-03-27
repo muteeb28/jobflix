@@ -63,9 +63,9 @@ export default function JavaCoursePage() {
 
     if (isLoading) {
         return (
-            <div className="min-h-screen bg-black flex items-center justify-center text-white">
+            <div className="min-h-screen bg-white flex items-center justify-center text-neutral-900">
                 <div className="flex flex-col items-center gap-4">
-                    <Loader2 className="w-8 h-8 animate-spin text-white" />
+                    <Loader2 className="w-8 h-8 animate-spin text-neutral-900" />
                     <p>Loading course content...</p>
                 </div>
             </div>
@@ -74,12 +74,12 @@ export default function JavaCoursePage() {
 
     if (error || !course) {
         return (
-            <div className="min-h-screen bg-black flex items-center justify-center text-white">
+            <div className="min-h-screen bg-white flex items-center justify-center text-neutral-900">
                 <div className="text-center space-y-4">
                     <p className="text-red-400 text-xl">{error || "Course not found"}</p>
                     <button
                         onClick={() => window.location.reload()}
-                        className="px-6 py-2 bg-white text-black font-bold rounded hover:bg-neutral-200"
+                        className="px-6 py-2 bg-teal-500 text-neutral-900 font-bold rounded hover:bg-neutral-200"
                     >
                         Retry
                     </button>
@@ -96,7 +96,7 @@ export default function JavaCoursePage() {
     const progressPercent = totalTopics > 0 ? Math.round((completedCount / totalTopics) * 100) : 0;
 
     return (
-        <div className="min-h-screen bg-black text-white font-pixel">
+        <div className="min-h-screen bg-white text-neutral-900 font-pixel">
             {/* Hero Banner */}
             <div className="relative h-64 md:h-80 overflow-hidden">
                 <Image
@@ -116,7 +116,7 @@ export default function JavaCoursePage() {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-                            <h1 className="text-2xl md:text-5xl font-bold mb-4 text-white drop-shadow-[4px_4px_0_rgba(0,0,0,1)] break-words">
+                            <h1 className="text-2xl md:text-5xl font-bold mb-4 text-neutral-900 drop-shadow-[4px_4px_0_rgba(0,0,0,1)] break-words">
                                 {course.title}
                             </h1>
                             <p className="text-gray-300 max-w-xl mb-6 text-sm md:text-lg">
@@ -125,7 +125,7 @@ export default function JavaCoursePage() {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-6 py-2 md:px-8 md:py-3 bg-white text-black font-bold text-sm md:text-lg border-b-4 border-r-4 border-neutral-900 uppercase"
+                                className="px-6 py-2 md:px-8 md:py-3 bg-teal-500 text-neutral-900 font-bold text-sm md:text-lg border-b-4 border-r-4 border-neutral-200 uppercase"
                             >
                                 Continue Learning
                             </motion.button>
@@ -156,19 +156,19 @@ export default function JavaCoursePage() {
                                     {/* Module Header */}
                                     <button
                                         onClick={() => setExpandedModule(isExpanded ? null : moduleIndex)}
-                                        className="w-full flex items-center justify-between p-4 md:p-6 bg-black border-2 border-gray-800 hover:border-gray-700 transition-colors group text-left"
+                                        className="w-full flex items-center justify-between p-4 md:p-6 bg-white border-2 border-neutral-200 hover:border-teal-300 transition-colors group text-left"
                                     >
                                         <div className="flex items-center gap-3 md:gap-6 flex-1">
-                                            <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-900 text-white font-bold text-sm md:text-xl font-mono border-2 border-gray-800 group-hover:border-gray-600 transition-colors">
+                                            <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-neutral-100 text-neutral-900 font-bold text-sm md:text-xl font-mono border-2 border-neutral-200 group-hover:border-gray-600 transition-colors">
                                                 {moduleIndex + 1}
                                             </div>
-                                            <h3 className="text-lg md:text-2xl font-bold text-white group-hover:text-white transition-colors break-words">
+                                            <h3 className="text-lg md:text-2xl font-bold text-neutral-900 group-hover:text-teal-600 transition-colors break-words">
                                                 {module.title}
                                             </h3>
                                         </div>
                                         <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
                                             {moduleIndex > 0 && (
-                                                <span className="hidden md:inline text-white font-bold uppercase tracking-wider text-sm">Pro</span>
+                                                <span className="hidden md:inline text-neutral-900 font-bold uppercase tracking-wider text-sm">Pro</span>
                                             )}
                                             <ChevronDown
                                                 className={`w-5 h-5 md:w-6 md:h-6 text-gray-500 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
@@ -186,7 +186,7 @@ export default function JavaCoursePage() {
                                                 transition={{ duration: 0.3, ease: "easeInOut" }}
                                                 className="overflow-hidden"
                                             >
-                                                <div className="bg-gray-900/50 border-x-2 border-b-2 border-gray-800 p-2 md:p-4 space-y-2">
+                                                <div className="bg-neutral-100 border-x-2 border-b-2 border-neutral-200 p-2 md:p-4 space-y-2">
                                                     {module.topics.map((topic, topicIndex) => {
                                                         const continuousIndex = startingIndex + topicIndex + 1;
                                                         const isCompleted = completedTopics.includes(topic.id);
@@ -200,14 +200,14 @@ export default function JavaCoursePage() {
                                                                         router.push(`/courses/java-backend/${topic.lessonId}`);
                                                                     }
                                                                 }}
-                                                                className={`flex flex-col sm:flex-row sm:items-center justify-between p-3 md:p-4 rounded-lg gap-3 ${isCompleted ? "bg-green-900/20 border border-green-500/30" : "bg-gray-900 border border-gray-800"
+                                                                className={`flex flex-col sm:flex-row sm:items-center justify-between p-3 md:p-4 rounded-lg gap-3 ${isCompleted ? "bg-green-900/20 border border-green-500/30" : "bg-neutral-100 border border-neutral-200"
                                                                     } ${topic.isFree ? "hover:border-gray-600 cursor-pointer" : "opacity-75 cursor-not-allowed"} transition-all group`}
                                                             >
                                                                 <div className="flex items-start gap-3 md:gap-4 flex-1">
-                                                                    <span className="text-white font-bold font-mono text-xs md:text-sm min-w-[4rem] md:min-w-[8rem] mt-1 sm:mt-0">
+                                                                    <span className="text-neutral-900 font-bold font-mono text-xs md:text-sm min-w-[4rem] md:min-w-[8rem] mt-1 sm:mt-0">
                                                                         Lesson {continuousIndex}
                                                                     </span>
-                                                                    <span className={`${isCompleted ? "text-green-400 line-through" : "text-white"} font-bold text-sm md:text-lg leading-tight`}>
+                                                                    <span className={`${isCompleted ? "text-green-400 line-through" : "text-neutral-900"} font-bold text-sm md:text-lg leading-tight`}>
                                                                         {topic.title}
                                                                     </span>
                                                                 </div>
@@ -234,16 +234,16 @@ export default function JavaCoursePage() {
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className="bg-gray-900 border-4 border-gray-800 p-6 mb-6 sticky top-4"
+                            className="bg-neutral-100 border-4 border-neutral-200 p-6 mb-6 sticky top-4"
                         >
-                            <h3 className="text-xl font-bold mb-4 text-white">Course Progress</h3>
+                            <h3 className="text-xl font-bold mb-4 text-neutral-900">Course Progress</h3>
 
                             <div className="mb-4">
                                 <div className="flex items-center gap-2 mb-2">
                                     <span className="text-3xl">DYs</span>
                                     <div>
-                                        <p className="text-white font-bold">Lessons</p>
-                                        <p className="text-white text-2xl">{completedCount}/{totalTopics}</p>
+                                        <p className="text-neutral-900 font-bold">Lessons</p>
+                                        <p className="text-neutral-900 text-2xl">{completedCount}/{totalTopics}</p>
                                     </div>
                                 </div>
                             </div>
@@ -252,18 +252,18 @@ export default function JavaCoursePage() {
                                 <div className="flex items-center gap-2 mb-2">
                                     <span className="text-3xl">XP</span>
                                     <div>
-                                        <p className="text-white font-bold">XP Earned</p>
-                                        <p className="text-white text-2xl">{xp}</p>
+                                        <p className="text-neutral-900 font-bold">XP Earned</p>
+                                        <p className="text-neutral-900 text-2xl">{xp}</p>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="mb-6">
                                 <div className="flex justify-between mb-2">
-                                    <span className="text-white/60 text-sm">Progress</span>
-                                    <span className="text-white font-bold">{progressPercent}%</span>
+                                    <span className="text-neutral-900/60 text-sm">Progress</span>
+                                    <span className="text-neutral-900 font-bold">{progressPercent}%</span>
                                 </div>
-                                <div className="h-4 bg-gray-800 border-2 border-gray-700">
+                                <div className="h-4 bg-gray-800 border-2 border-neutral-200">
                                     <motion.div
                                         initial={{ width: 0 }}
                                         animate={{ width: `${progressPercent}%` }}
@@ -272,13 +272,13 @@ export default function JavaCoursePage() {
                                 </div>
                             </div>
 
-                            <div className="bg-gradient-to-br from-neutral-800 to-neutral-900 p-6 text-center border-4 border-neutral-900">
+                            <div className="bg-gradient-to-br from-neutral-800 to-neutral-900 p-6 text-center border-4 border-neutral-200">
                                 <span className="text-4xl mb-2 block">Pro</span>
                                 <h4 className="text-black font-bold text-lg mb-2">Upgrade to Pro</h4>
                                 <p className="text-black/80 text-sm mb-4">
                                     Unlock premium content!
                                 </p>
-                                <button className="w-full px-4 py-2 bg-black text-white font-bold border-2 border-black hover:bg-gray-900 transition-colors">
+                                <button className="w-full px-4 py-2 bg-white text-neutral-900 font-bold border-2 border-black hover:bg-neutral-100 transition-colors">
                                     Upgrade
                                 </button>
                             </div>

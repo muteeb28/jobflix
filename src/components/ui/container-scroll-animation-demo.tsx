@@ -8,7 +8,7 @@ export default function HeroScrollDemo() {
       <ContainerScroll
         titleComponent={
           <>
-            <h1 className="text-4xl font-semibold text-black dark:text-white">
+            <h1 className="text-4xl font-semibold text-black dark:text-neutral-900">
               Unleash the power of <br />
               <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
                 Scroll Animations
@@ -17,15 +17,15 @@ export default function HeroScrollDemo() {
           </>
         }
       >
-        <div className="h-full w-full rounded-2xl bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden border border-white/10">
-          <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
-            <div className="flex items-center gap-2 text-sm font-mono text-white/70">
+        <div className="h-full w-full rounded-2xl bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-neutral-900 overflow-hidden border border-neutral-200">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200">
+            <div className="flex items-center gap-2 text-sm font-mono text-neutral-900/70">
               <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
               <span>greatfrontend.com</span>
-              <span className="text-white/30">/interviews/todo-list</span>
+              <span className="text-neutral-900/30">/interviews/todo-list</span>
             </div>
             <div className="flex items-center gap-3">
-              <span className="rounded-full bg-white/10 border border-white/20 px-3 py-1 text-xs uppercase tracking-[0.2em] text-neutral-400">
+              <span className="rounded-full bg-neutral-100 border border-neutral-200 px-3 py-1 text-xs uppercase tracking-[0.2em] text-neutral-400">
                 React
               </span>
               <span className="rounded-full bg-cyan-500/10 border border-cyan-500/40 px-3 py-1 text-xs uppercase tracking-[0.2em] text-cyan-200">
@@ -37,25 +37,25 @@ export default function HeroScrollDemo() {
           <div className="grid h-[calc(100%-52px)] grid-cols-1 md:grid-cols-2">
             <div className="border-r border-white/5 bg-slate-900/60 p-4 md:p-6 flex flex-col gap-4">
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center text-neutral-400 font-bold">
+                <div className="h-10 w-10 rounded-lg bg-neutral-100 border border-neutral-200 flex items-center justify-center text-neutral-400 font-bold">
                   TL
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-white/50">Prompt</p>
-                  <h3 className="text-xl font-semibold text-white">Todo List</h3>
-                  <p className="text-xs text-white/50">20 mins - Medium</p>
+                  <p className="text-xs uppercase tracking-[0.2em] text-neutral-900/50">Prompt</p>
+                  <h3 className="text-xl font-semibold text-neutral-900">Todo List</h3>
+                  <p className="text-xs text-neutral-900/50">20 mins - Medium</p>
                 </div>
               </div>
 
-              <div className="space-y-2 text-sm font-mono text-white/70">
+              <div className="space-y-2 text-sm font-mono text-neutral-900/70">
                 <p>- Add new tasks on clicking "Submit".</p>
                 <p>- Clear the input on successful addition.</p>
                 <p>- Delete tasks when "Delete" is clicked.</p>
                 <p className="text-emerald-300">Focus is on JavaScript correctness.</p>
               </div>
 
-              <div className="mt-auto rounded-lg border border-white/10 bg-white/5 p-3 text-xs text-white/60 font-mono">
-                <p className="text-white">Notes</p>
+              <div className="mt-auto rounded-lg border border-neutral-200 bg-neutral-100 p-3 text-xs text-neutral-900/60 font-mono">
+                <p className="text-neutral-900">Notes</p>
                 <p className="mt-1">
                   Use a real DOM event flow; keep state simple and avoid over-engineering. Handle empty input gracefully.
                 </p>
@@ -63,12 +63,12 @@ export default function HeroScrollDemo() {
             </div>
 
             <div className="grid grid-rows-2 bg-slate-950/70">
-              <div className="border-b border-white/10 bg-[#0b1224] p-4 overflow-auto">
-                <div className="flex items-center justify-between text-xs text-white/50 font-mono">
+              <div className="border-b border-neutral-200 bg-[#0b1224] p-4 overflow-auto">
+                <div className="flex items-center justify-between text-xs text-neutral-900/50 font-mono">
                   <span>App.jsx</span>
                   <span>Live coding</span>
                 </div>
-                <pre className="mt-3 text-xs leading-relaxed text-white/80 font-mono whitespace-pre-wrap">
+                <pre className="mt-3 text-xs leading-relaxed text-neutral-900/80 font-mono whitespace-pre-wrap">
 {`export default function App() {
   const [items, setItems] = useState([
     "Walk the dog",
@@ -104,9 +104,9 @@ export default function HeroScrollDemo() {
                 </pre>
               </div>
 
-              <div className="bg-black p-6">
-                <div className="mx-auto w-full max-w-xl rounded-lg border border-white/10 bg-slate-900/80 p-4 shadow-inner">
-                  <div className="flex items-center justify-between text-xs text-white/60 font-mono">
+              <div className="bg-white p-6">
+                <div className="mx-auto w-full max-w-xl rounded-lg border border-neutral-200 bg-slate-900/80 p-4 shadow-inner">
+                  <div className="flex items-center justify-between text-xs text-neutral-900/60 font-mono">
                     <span>Browser</span>
                     <div className="flex gap-1">
                       <span className="inline-flex h-2 w-2 rounded-full bg-red-400" />
@@ -119,12 +119,12 @@ export default function HeroScrollDemo() {
                     <h3 className="text-lg font-semibold">Todo List</h3>
                     <div className="flex gap-2 text-sm">
                       <input
-                        className="w-full rounded-md border border-white/20 bg-black/50 px-3 py-2 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                        className="w-full rounded-md border border-neutral-200 bg-neutral-1000 px-3 py-2 text-neutral-900 placeholder:text-neutral-900/40 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                         placeholder="Keep..."
                         value="Keep..."
                         readOnly
                       />
-                      <button className="rounded-md border border-white/20 bg-white/10 px-3 py-2 text-neutral-300 font-semibold">
+                      <button className="rounded-md border border-neutral-200 bg-neutral-100 px-3 py-2 text-neutral-600 font-semibold">
                         Submit
                       </button>
                     </div>
@@ -132,10 +132,10 @@ export default function HeroScrollDemo() {
                       {["Walk the dog", "Water the plants", "Wash the dishes"].map((item) => (
                         <li
                           key={item}
-                          className="flex items-center justify-between rounded-md border border-white/10 bg-white/5 px-3 py-2"
+                          className="flex items-center justify-between rounded-md border border-neutral-200 bg-neutral-100 px-3 py-2"
                         >
                           <span>{item}</span>
-                          <button className="rounded-sm border border-white/20 bg-white/10 px-2 py-1 text-xs text-white/80">
+                          <button className="rounded-sm border border-neutral-200 bg-neutral-100 px-2 py-1 text-xs text-neutral-900/80">
                             Delete
                           </button>
                         </li>

@@ -116,7 +116,7 @@ export default function QuickApplyForm() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold text-white mb-8"
+              className="text-4xl md:text-5xl font-bold text-neutral-900 mb-8"
             >
               Your journey starts here!
             </motion.h2>
@@ -129,14 +129,14 @@ export default function QuickApplyForm() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                <label className="block text-white/80 text-sm mb-2">Full Name</label>
+                <label className="block text-neutral-900/80 text-sm mb-2">Full Name</label>
                 <input
                   type="text"
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleInputChange}
                   placeholder="Full Name"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-orange-500 transition-colors"
+                  className="w-full px-4 py-3 bg-neutral-100 border border-neutral-200 rounded-lg text-neutral-900 placeholder-white/50 focus:outline-none focus:border-orange-500 transition-colors"
                   required
                 />
               </motion.div>
@@ -148,14 +148,14 @@ export default function QuickApplyForm() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                <label className="block text-white/80 text-sm mb-2">Phone Number</label>
+                <label className="block text-neutral-900/80 text-sm mb-2">Phone Number</label>
                 <input
                   type="tel"
                   name="phoneNumber"
                   value={formData.phoneNumber}
                   onChange={handleInputChange}
                   placeholder="Phone Number"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-orange-500 transition-colors"
+                  className="w-full px-4 py-3 bg-neutral-100 border border-neutral-200 rounded-lg text-neutral-900 placeholder-white/50 focus:outline-none focus:border-orange-500 transition-colors"
                   required
                 />
               </motion.div>
@@ -167,14 +167,14 @@ export default function QuickApplyForm() {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 viewport={{ once: true }}
               >
-                <label className="block text-white/80 text-sm mb-2">Email Id</label>
+                <label className="block text-neutral-900/80 text-sm mb-2">Email Id</label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="Email Id"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-orange-500 transition-colors"
+                  className="w-full px-4 py-3 bg-neutral-100 border border-neutral-200 rounded-lg text-neutral-900 placeholder-white/50 focus:outline-none focus:border-orange-500 transition-colors"
                   required
                 />
               </motion.div>
@@ -186,12 +186,12 @@ export default function QuickApplyForm() {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 viewport={{ once: true }}
               >
-                <label className="block text-white/80 text-sm mb-2">Service you are interested in</label>
+                <label className="block text-neutral-900/80 text-sm mb-2">Service you are interested in</label>
                 <select
                   name="service"
                   value={formData.service}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-orange-500 transition-colors appearance-none cursor-pointer"
+                  className="w-full px-4 py-3 bg-neutral-100 border border-neutral-200 rounded-lg text-neutral-900 focus:outline-none focus:border-orange-500 transition-colors appearance-none cursor-pointer"
                   required
                 >
                   <option value="" disabled className="bg-gray-800">Choose a service</option>
@@ -216,10 +216,10 @@ export default function QuickApplyForm() {
                   name="agreeToTerms"
                   checked={formData.agreeToTerms}
                   onChange={handleInputChange}
-                  className="w-4 h-4 bg-white/10 border border-white/20 rounded focus:ring-orange-500"
+                  className="w-4 h-4 bg-neutral-100 border border-neutral-200 rounded focus:ring-orange-500"
                   required
                 />
-                <label className="text-white/80 text-sm">
+                <label className="text-neutral-900/80 text-sm">
                   I agree with{" "}
                   <span className="text-orange-500 hover:underline cursor-pointer">
                     Terms & Conditions

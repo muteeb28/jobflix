@@ -59,7 +59,7 @@ export default function HackathonsView() {
                         Global <span className="text-emerald-400">Hackathons</span>
                     </h1>
 
-                    <p className="text-zinc-400 max-w-2xl mx-auto mb-10 font-sans leading-relaxed">
+                    <p className="text-neutral-500 max-w-2xl mx-auto mb-10 font-sans leading-relaxed">
                         Discover upcoming hackathons, coding challenges, and innovation sprints.
                     </p>
                 </div>
@@ -67,7 +67,7 @@ export default function HackathonsView() {
 
             {/* Feed Section */}
             <main className="container mx-auto max-w-6xl px-6 pb-24 flex-grow">
-                <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-4">
+                <div className="flex items-center justify-between mb-8 border-b border-neutral-200 pb-4">
                     <h2 className="text-2xl font-bold flex items-center gap-2 uppercase">
                         <Code2 className="text-emerald-500" />
                         Live Events
@@ -78,7 +78,7 @@ export default function HackathonsView() {
                 {loading ? (
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {[...Array(6)].map((_, i) => (
-                            <div key={i} className="h-64 bg-zinc-900/50 border border-white/5 animate-pulse" />
+                            <div key={i} className="h-64 bg-neutral-100 border border-white/5 animate-pulse" />
                         ))}
                     </div>
                 ) : (
@@ -90,10 +90,10 @@ export default function HackathonsView() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="group bg-zinc-900 border border-white/10 p-6 hover:border-emerald-400 transition-all flex flex-col hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] relative overflow-hidden"
+                                    className="group bg-white border border-neutral-200 p-6 hover:border-emerald-400 transition-all flex flex-col hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] relative overflow-hidden"
                                 >
                                     <div className="flex justify-between items-start mb-4">
-                                        <div className="p-2 bg-zinc-800 rounded-lg group-hover:bg-emerald-500/20 transition-colors">
+                                        <div className="p-2 bg-neutral-100 rounded-lg group-hover:bg-emerald-500/20 transition-colors">
                                             <Code2 className="w-6 h-6 text-emerald-400" />
                                         </div>
                                         <span className="px-2 py-1 bg-emerald-900/20 text-emerald-400 text-[10px] font-bold uppercase border border-emerald-500/20">
@@ -104,26 +104,26 @@ export default function HackathonsView() {
                                     <h3 className="text-lg font-bold mb-2 group-hover:text-emerald-400 transition-colors line-clamp-2 leading-tight">
                                         {h.title}
                                     </h3>
-                                    <p className="text-zinc-500 text-xs uppercase tracking-wide mb-4 font-bold">{h.provider}</p>
+                                    <p className="text-neutral-400 text-xs uppercase tracking-wide mb-4 font-bold">{h.provider}</p>
 
                                     <div className="space-y-3 mb-6 mt-auto">
-                                        <div className="flex items-center gap-2 text-xs text-zinc-300 font-mono">
-                                            <Calendar className="w-4 h-4 text-zinc-600" />
+                                        <div className="flex items-center gap-2 text-xs text-neutral-600 font-mono">
+                                            <Calendar className="w-4 h-4 text-neutral-500" />
                                             {h.date}
                                         </div>
                                         <div className="flex items-center gap-2 text-xs text-emerald-300 font-mono">
                                             <Trophy className="w-4 h-4 text-emerald-600" />
                                             {h.prizes}
                                         </div>
-                                        <div className="flex items-center gap-2 text-xs text-zinc-300 font-mono">
-                                            <MapPin className="w-4 h-4 text-zinc-600" />
+                                        <div className="flex items-center gap-2 text-xs text-neutral-600 font-mono">
+                                            <MapPin className="w-4 h-4 text-neutral-500" />
                                             {h.location}
                                         </div>
                                     </div>
 
                                     <div className="flex flex-wrap gap-2 mb-6">
                                         {h.tags?.slice(0, 2).map(tag => (
-                                            <span key={tag} className="text-[10px] text-zinc-500 bg-zinc-800/50 px-2 py-1 rounded border border-white/5">
+                                            <span key={tag} className="text-[10px] text-neutral-400 bg-neutral-100/50 px-2 py-1 rounded border border-white/5">
                                                 #{tag}
                                             </span>
                                         ))}

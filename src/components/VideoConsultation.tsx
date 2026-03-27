@@ -38,7 +38,7 @@ export default function VideoConsultation() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight"
             >
               Still not sure if this{" "}
               <span className="text-orange-500">course is right</span> for you?
@@ -52,8 +52,8 @@ export default function VideoConsultation() {
               viewport={{ once: true }}
               className="space-y-4"
             >
-              <p className="text-white/80 text-lg leading-relaxed">
-                <span className="font-semibold text-white">Book a free 15-min call</span> — we'll chat about your
+              <p className="text-neutral-900/80 text-lg leading-relaxed">
+                <span className="font-semibold text-neutral-900">Book a free 15-min call</span> — we'll chat about your
                 goals and see if it's the right fit. No pressure, just honest advice.
               </p>
             </motion.div>
@@ -100,12 +100,12 @@ export default function VideoConsultation() {
                   <div className="w-3 h-3 bg-white rounded-full"></div>
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 </div>
-                <div className="text-white/60 text-sm">meet.google.com</div>
+                <div className="text-neutral-900/60 text-sm">meet.google.com</div>
                 <div className="w-6 h-6"></div>
               </div>
 
               {/* Video Content */}
-              <div className="relative aspect-video bg-gray-900">
+              <div className="relative aspect-video bg-neutral-100">
                 {/* Main Video - Consultant */}
                 <div className="relative w-full h-full">
                   <Image
@@ -120,15 +120,15 @@ export default function VideoConsultation() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 
                   {/* Name tag */}
-                  <div className="absolute bottom-4 left-4 bg-black/50 backdrop-blur-sm px-3 py-1 rounded-lg">
-                    <p className="text-white font-medium">Iqram</p>
+                  <div className="absolute bottom-4 left-4 bg-neutral-1000 backdrop-blur-sm px-3 py-1 rounded-lg">
+                    <p className="text-neutral-900 font-medium">Iqram</p>
                   </div>
 
                   {/* Small user video in corner */}
-                  <div className="absolute bottom-4 right-4 w-24 h-16 bg-gray-700 rounded-lg overflow-hidden border-2 border-white/20">
+                  <div className="absolute bottom-4 right-4 w-24 h-16 bg-gray-700 rounded-lg overflow-hidden border-2 border-neutral-200">
                     <div className="w-full h-full bg-gray-600 flex items-center justify-center">
                       <div className="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center">
-                        <span className="text-white text-xs">👤</span>
+                        <span className="text-neutral-900 text-xs">👤</span>
                       </div>
                     </div>
                   </div>
@@ -145,7 +145,7 @@ export default function VideoConsultation() {
                     }}
                   >
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-white text-xs font-medium">Speaking</span>
+                    <span className="text-neutral-900 text-xs font-medium">Speaking</span>
                   </motion.div>
                 </div>
               </div>
@@ -153,16 +153,16 @@ export default function VideoConsultation() {
               {/* Bottom Controls Bar */}
               <div className="bg-gray-800 px-6 py-4 flex items-center justify-center gap-4">
                 <button className="w-10 h-10 bg-gray-600 hover:bg-gray-500 rounded-full flex items-center justify-center transition-colors">
-                  <span className="text-white text-sm">🎤</span>
+                  <span className="text-neutral-900 text-sm">🎤</span>
                 </button>
                 <button className="w-10 h-10 bg-gray-600 hover:bg-gray-500 rounded-full flex items-center justify-center transition-colors">
-                  <span className="text-white text-sm">📹</span>
+                  <span className="text-neutral-900 text-sm">📹</span>
                 </button>
                 <button className="w-10 h-10 bg-red-500 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors">
-                  <span className="text-white text-sm">📞</span>
+                  <span className="text-neutral-900 text-sm">📞</span>
                 </button>
                 <button className="w-10 h-10 bg-gray-600 hover:bg-gray-500 rounded-full flex items-center justify-center transition-colors">
-                  <span className="text-white text-sm">💬</span>
+                  <span className="text-neutral-900 text-sm">💬</span>
                 </button>
               </div>
             </div>

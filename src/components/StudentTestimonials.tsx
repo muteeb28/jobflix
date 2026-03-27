@@ -44,12 +44,12 @@ export default function StudentTestimonials() {
   ];
 
   return (
-    <section className="py-20 bg-black font-pixel">
+    <section className="py-20 bg-white font-pixel">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
           <div className="relative">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 max-w-5xl mx-auto leading-tight drop-shadow-[4px_4px_0_rgba(0,0,0,1)]">
+            <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 mb-6 max-w-5xl mx-auto leading-tight drop-shadow-[4px_4px_0_rgba(0,0,0,1)]">
               Loved by thousands of students
             </h2>
           </div>
@@ -64,7 +64,7 @@ export default function StudentTestimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-gray-900 border-4 border-gray-800 p-6 hover:border-white/30 transition-all duration-300 group shadow-[8px_8px_0_rgba(0,0,0,0.5)]"
+              className="bg-neutral-100 border-4 border-neutral-200 p-6 hover:border-white/30 transition-all duration-300 group shadow-[0_2px_12px_rgba(0,0,0,0.08)]"
             >
               {/* Profile Section */}
               <div className="flex items-center gap-4 mb-4">
@@ -74,20 +74,20 @@ export default function StudentTestimonials() {
                     alt={testimonial.name}
                     width={48}
                     height={48}
-                    className="w-12 h-12 object-cover border-2 border-white/20 pixelated"
+                    className="w-12 h-12 object-cover border-2 border-neutral-200 pixelated"
                   />
                   <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-black"></div>
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-lg">{testimonial.name}</h4>
-                  <p className="text-white/60 text-sm font-mono">{testimonial.role}</p>
+                  <h4 className="text-neutral-900 font-bold text-lg">{testimonial.name}</h4>
+                  <p className="text-neutral-900/60 text-sm font-mono">{testimonial.role}</p>
                 </div>
               </div>
 
               {/* Testimonial Text */}
               <div className="relative">
-                <div className="text-6xl text-white/10 absolute -top-2 -left-2 font-serif">"</div>
-                <p className="text-white/80 text-sm leading-relaxed relative z-10 pl-6 font-mono">
+                <div className="text-6xl text-neutral-900/10 absolute -top-2 -left-2 font-serif">"</div>
+                <p className="text-neutral-900/80 text-sm leading-relaxed relative z-10 pl-6 font-mono">
                   {testimonial.testimonial}
                 </p>
               </div>
@@ -100,7 +100,7 @@ export default function StudentTestimonials() {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: i * 0.1 }}
-                    className="text-white text-sm"
+                    className="text-neutral-900 text-sm"
                   >
                     ⭐
                   </motion.span>
@@ -118,12 +118,12 @@ export default function StudentTestimonials() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <p className="text-white/60 text-lg mb-6 font-mono">
+          <p className="text-neutral-900/60 text-lg mb-6 font-mono">
             Join thousands of successful graduates who transformed their careers
           </p>
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold rounded-none border-b-8 border-r-8 border-neutral-900 hover:shadow-xl transition-all duration-300 uppercase tracking-widest"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-teal-500 text-neutral-900 font-bold rounded-none border-b-8 border-r-8 border-neutral-200 hover:shadow-xl transition-all duration-300 uppercase tracking-widest"
           >
             Start Your Journey Today
             <motion.span

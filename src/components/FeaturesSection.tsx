@@ -28,13 +28,13 @@ const features = [
 
 export default function FeaturesSection() {
     return (
-        <section className="py-20 bg-gray-900/50 font-pixel">
+        <section className="py-20 bg-neutral-100 font-pixel">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-[4px_4px_0_rgba(0,0,0,1)]">
-                        Why Choose <span className="text-white">Level Up</span>?
+                    <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4 drop-shadow-[4px_4px_0_rgba(0,0,0,1)]">
+                        Why Choose <span className="text-neutral-900">Level Up</span>?
                     </h2>
-                    <p className="text-white/60 max-w-2xl mx-auto font-mono">
+                    <p className="text-neutral-900/60 max-w-2xl mx-auto font-mono">
                         We provide everything you need to go from beginner to professional developer.
                     </p>
                 </div>
@@ -47,13 +47,13 @@ export default function FeaturesSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             viewport={{ once: true }}
-                            className="bg-gray-800 border-4 border-gray-700 rounded-none p-6 hover:bg-gray-700 transition-colors group shadow-[8px_8px_0_rgba(0,0,0,0.5)]"
+                            className="bg-gray-800 border-4 border-neutral-200 rounded-none p-6 hover:bg-gray-700 transition-colors group shadow-[0_2px_12px_rgba(0,0,0,0.08)]"
                         >
-                            <div className="w-14 h-14 bg-black border-2 border-gray-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <div className="w-14 h-14 bg-white border-2 border-gray-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                                 {feature.icon}
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                            <p className="text-white/60 leading-relaxed font-mono text-sm">
+                            <h3 className="text-xl font-bold text-neutral-900 mb-3">{feature.title}</h3>
+                            <p className="text-neutral-900/60 leading-relaxed font-mono text-sm">
                                 {feature.description}
                             </p>
                         </motion.div>

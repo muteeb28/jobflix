@@ -35,14 +35,14 @@ export const HoverBorderGradient = ({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={cn(
-        "relative flex rounded-full border content-center bg-black/20 hover:bg-black/10 transition duration-500 dark:bg-white/20 items-center flex-col flex-shrink-0 overflow-hidden",
+        "relative flex rounded-full border content-center bg-white/20 hover:bg-neutral-100 transition duration-500 dark:bg-white/20 items-center flex-col flex-shrink-0 overflow-hidden",
         containerClassName
       )}
       {...otherProps}
     >
       <div
         className={cn(
-          "w-auto text-white dark:text-white z-10 bg-black px-4 py-2 rounded-[inherit]",
+          "w-auto text-neutral-900 dark:text-neutral-900 z-10 bg-white px-4 py-2 rounded-[inherit]",
           className
         )}
       >
@@ -58,7 +58,7 @@ export const HoverBorderGradient = ({
           animation: hovered ? `spin ${duration}s linear infinite ${gradientDirection === 'clockwise' ? 'normal' : 'reverse'}` : undefined,
         }}
       />
-      <div className={cn("bg-black absolute z-1 flex-shrink-0 rounded-[inherit] inset-[2px]")} />
+      <div className={cn("bg-white absolute z-1 flex-shrink-0 rounded-[inherit] inset-[2px]")} />
     </Component>
   );
 };

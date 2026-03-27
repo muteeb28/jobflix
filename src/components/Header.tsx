@@ -63,7 +63,7 @@ export default function Header() {
           <Button variant="outline" className="text-gray-700 border-gray-300 hover:bg-gray-50">
             Log In
           </Button>
-          <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+          <Button className="bg-orange-500 hover:bg-orange-600 text-neutral-900">
             Sign Up
           </Button>
         </div>

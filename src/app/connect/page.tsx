@@ -37,17 +37,17 @@ function ConnectPageContent() {
     };
 
     return (
-        <div className="min-h-screen bg-black text-white font-pixel flex flex-col">
+        <div className="min-h-screen bg-white text-neutral-900 font-pixel flex flex-col">
             <Navbar />
 
             <div className="flex-grow pt-24 pb-12">
                 {/* Tab Navigation */}
                 <div className="container mx-auto px-6 max-w-6xl mb-8">
                     <div className="flex justify-center">
-                        <div className="flex p-1 bg-zinc-900 border border-white/10 rounded-xl relative">
+                        <div className="flex p-1 bg-white border border-neutral-200 rounded-xl relative">
                             {/* Sliding Background */}
                             <motion.div
-                                className="absolute top-1 bottom-1 bg-zinc-800 rounded-lg shadow-sm z-0"
+                                className="absolute top-1 bottom-1 bg-neutral-100 rounded-lg shadow-sm z-0"
                                 initial={false}
                                 animate={{
                                     left: activeTab === "mentors" ? "4px" : "50%",
@@ -59,14 +59,14 @@ function ConnectPageContent() {
 
                             <button
                                 onClick={() => handleTabChange("mentors")}
-                                className={`relative z-10 px-6 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors w-40 md:w-48 text-center ${activeTab === "mentors" ? "text-white" : "text-zinc-500 hover:text-zinc-300"
+                                className={`relative z-10 px-6 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors w-40 md:w-48 text-center ${activeTab === "mentors" ? "text-neutral-900" : "text-neutral-400 hover:text-neutral-600"
                                     }`}
                             >
                                 Mentors
                             </button>
                             <button
                                 onClick={() => handleTabChange("ask")}
-                                className={`relative z-10 px-6 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors w-40 md:w-48 text-center ${activeTab === "ask" ? "text-white" : "text-zinc-500 hover:text-zinc-300"
+                                className={`relative z-10 px-6 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors w-40 md:w-48 text-center ${activeTab === "ask" ? "text-neutral-900" : "text-neutral-400 hover:text-neutral-600"
                                     }`}
                             >
                                 Ask AI
