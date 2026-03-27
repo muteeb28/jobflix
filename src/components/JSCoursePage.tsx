@@ -65,7 +65,7 @@ export default function JSCoursePage() {
         return (
             <div className="min-h-screen bg-black flex items-center justify-center text-white">
                 <div className="flex flex-col items-center gap-4">
-                    <Loader2 className="w-8 h-8 animate-spin text-yellow-400" />
+                    <Loader2 className="w-8 h-8 animate-spin text-white" />
                     <p>Loading course content...</p>
                 </div>
             </div>
@@ -79,7 +79,7 @@ export default function JSCoursePage() {
                     <p className="text-red-400 text-xl">{error || "Course not found"}</p>
                     <button
                         onClick={() => window.location.reload()}
-                        className="px-6 py-2 bg-yellow-400 text-black font-bold rounded hover:bg-yellow-500"
+                        className="px-6 py-2 bg-white text-black font-bold rounded hover:bg-neutral-200"
                     >
                         Retry
                     </button>
@@ -128,7 +128,7 @@ export default function JSCoursePage() {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-6 py-2 md:px-8 md:py-3 bg-yellow-400 text-black font-bold text-sm md:text-lg border-b-4 border-r-4 border-yellow-600 uppercase"
+                                className="px-6 py-2 md:px-8 md:py-3 bg-white text-black font-bold text-sm md:text-lg border-b-4 border-r-4 border-neutral-900 uppercase"
                             >
                                 Continue Learning →
                             </motion.button>
@@ -165,7 +165,7 @@ export default function JSCoursePage() {
                                             <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-900 text-white font-bold text-sm md:text-xl font-mono border-2 border-gray-800 group-hover:border-gray-600 transition-colors">
                                                 {moduleIndex + 1}
                                             </div>
-                                            <h3 className="text-lg md:text-2xl font-bold text-white group-hover:text-yellow-400 transition-colors break-words">
+                                            <h3 className="text-lg md:text-2xl font-bold text-white group-hover:text-white transition-colors break-words">
                                                 {module.title}
                                             </h3>
                                         </div>
@@ -213,7 +213,7 @@ export default function JSCoursePage() {
                                                                 </div>
 
                                                                 <div className="flex items-center justify-end sm:justify-start gap-3">
-                                                                    <div className={`px-2 py-1 md:px-4 md:py-1 rounded bg-yellow-400 text-black text-[10px] md:text-xs font-bold font-mono border border-yellow-500 ${topic.isFree ? 'group-hover:bg-yellow-500' : ''}`}>
+                                                                    <div className={`px-2 py-1 md:px-4 md:py-1 rounded bg-white text-black text-[10px] md:text-xs font-bold font-mono border border-white/30 ${topic.isFree ? 'group-hover:bg-neutral-200' : ''}`}>
                                                                         {topic.xp} xp
                                                                     </div>
                                                                 </div>
@@ -245,7 +245,7 @@ export default function JSCoursePage() {
                                     <span className="text-3xl">📚</span>
                                     <div>
                                         <p className="text-white font-bold">Topics</p>
-                                        <p className="text-yellow-400 text-2xl">{completedCount}/{totalTopics}</p>
+                                        <p className="text-white text-2xl">{completedCount}/{totalTopics}</p>
                                     </div>
                                 </div>
                             </div>
@@ -257,7 +257,7 @@ export default function JSCoursePage() {
                                     <div>
                                         <p className="text-white font-bold">XP Earned</p>
                                         {/* TODO: Calculate actual XP earned for this course */}
-                                        <p className="text-yellow-400 text-2xl">{xp}</p>
+                                        <p className="text-white text-2xl">{xp}</p>
                                     </div>
                                 </div>
                             </div>
@@ -272,19 +272,19 @@ export default function JSCoursePage() {
                                     <motion.div
                                         initial={{ width: 0 }}
                                         animate={{ width: `${progressPercent}%` }}
-                                        className="h-full bg-yellow-400"
+                                        className="h-full bg-white"
                                     />
                                 </div>
                             </div>
 
                             {/* Upgrade to Pro */}
-                            <div className="bg-gradient-to-br from-yellow-500 to-orange-500 p-6 text-center border-4 border-yellow-600">
+                            <div className="bg-gradient-to-br from-neutral-800 to-neutral-900 p-6 text-center border-4 border-neutral-900">
                                 <span className="text-4xl mb-2 block">👑</span>
                                 <h4 className="text-black font-bold text-lg mb-2">Upgrade to Pro</h4>
                                 <p className="text-black/80 text-sm mb-4">
                                     Unlock premium content!
                                 </p>
-                                <button className="w-full px-4 py-2 bg-black text-yellow-400 font-bold border-2 border-black hover:bg-gray-900 transition-colors">
+                                <button className="w-full px-4 py-2 bg-black text-white font-bold border-2 border-black hover:bg-gray-900 transition-colors">
                                     Upgrade
                                 </button>
                             </div>

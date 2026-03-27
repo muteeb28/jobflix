@@ -66,7 +66,7 @@ export default function JobBoard() {
                         animate={{ opacity: 1, y: 0 }}
                         className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-[4px_4px_0_rgba(0,0,0,1)]"
                     >
-                        Level Up <span className="text-yellow-500">Careers</span>
+                        Level Up <span className="text-white">Careers</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -103,7 +103,7 @@ export default function JobBoard() {
                                     setSelectedCategory("All");
                                     setExperienceLevel("All");
                                 }}
-                                className="mt-4 text-yellow-500 hover:underline"
+                                className="mt-4 text-white hover:underline"
                             >
                                 Clear Filters
                             </button>

@@ -118,7 +118,7 @@ export default function GitLessonView({ lessonId, title, description, task, hint
                 <div className="flex items-center gap-4">
                     <Link href="/landing" className="flex items-center gap-2 group">
                         <div className="text-xl font-bold text-white font-pixel">
-                            <span className="text-yellow-500">👑</span> JobFlix
+                            <span className="text-white">👑</span> JobFlix
                         </div>
                     </Link>
                 </div>
@@ -126,7 +126,7 @@ export default function GitLessonView({ lessonId, title, description, task, hint
                     {title}
                 </div>
                 <div className="flex items-center gap-4">
-                    <button className="px-3 py-1.5 md:px-4 md:py-2 bg-yellow-400 text-black font-bold font-pixel text-xs md:text-sm rounded transition-colors">
+                    <button className="px-3 py-1.5 md:px-4 md:py-2 bg-white text-black font-bold font-pixel text-xs md:text-sm rounded transition-colors">
                         <span className="hidden md:inline">GIT TRACKER</span>
                         <span className="md:hidden">GIT</span>
                     </button>
@@ -156,8 +156,8 @@ export default function GitLessonView({ lessonId, title, description, task, hint
                                 {task}
                             </p>
                         </div>
-                        <div className="bg-yellow-900/10 border border-yellow-500/20 rounded p-4">
-                            <div className="flex items-center gap-2 text-yellow-500 mb-3 font-pixel text-xs">
+                        <div className="bg-white/5 border border-white/10 rounded p-4">
+                            <div className="flex items-center gap-2 text-white mb-3 font-pixel text-xs">
                                 <Lightbulb className="w-4 h-4" />
                                 <h3>HINT</h3>
                             </div>
@@ -172,7 +172,7 @@ export default function GitLessonView({ lessonId, title, description, task, hint
                     <div className="h-7 bg-[#1e1e1e] border-b border-gray-800 flex items-center px-4 gap-2 shrink-0">
                         <div className="flex gap-1.5 mr-2">
                             <div className="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
-                            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                            <div className="w-2.5 h-2.5 rounded-full bg-white/50"></div>
                             <div className="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
                         </div>
                         <div className="text-gray-500 text-[10px] uppercase tracking-tighter">MINGW64:/c/projects/repo</div>
@@ -182,7 +182,7 @@ export default function GitLessonView({ lessonId, title, description, task, hint
                         {terminalHistory.map((line, index) => (
                             <div key={index} className={`mb-1 whitespace-pre-wrap ${line.type === 'input' ? 'text-white' :
                                 line.type === 'error' ? 'text-red-500' :
-                                    line.type === 'system' ? 'text-yellow-500/70' :
+                                    line.type === 'system' ? 'text-white/70' :
                                         'text-green-400/90'
                                 }`}>
                                 {line.content}
@@ -216,13 +216,13 @@ export default function GitLessonView({ lessonId, title, description, task, hint
                     <span className="hidden md:inline">Exit Mission</span>
                 </Link>
 
-                <div className="flex items-center gap-2 text-yellow-400 font-pixel text-xs md:text-sm">
-                    <Star className="w-4 h-4 fill-yellow-400" />
+                <div className="flex items-center gap-2 text-white font-pixel text-xs md:text-sm">
+                    <Star className="w-4 h-4 fill-white" />
                     XP: {xp}
                 </div>
 
                 <div className="flex gap-4">
-                    <button onClick={handleComplete} className="px-4 py-2 md:px-5 md:py-2 bg-yellow-400 text-black font-pixel text-[10px] md:text-xs border-b-2 border-r-2 border-yellow-600 active:border-0 transition-all">
+                    <button onClick={handleComplete} className="px-4 py-2 md:px-5 md:py-2 bg-white text-black font-pixel text-[10px] md:text-xs border-b-2 border-r-2 border-neutral-900 active:border-0 transition-all">
                         {isCompleted ? 'SYNCED' : 'COMMIT PROGRESS'}
                     </button>
                 </div>

@@ -31,7 +31,7 @@ export default function HeroSection() {
           {/* Title matching LevelUp */}
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
             <span className="text-white block">Start Your</span>
-            <span className="text-yellow-400 block">Coding Adventure</span>
+            <span className="text-white block">Coding Adventure</span>
           </h1>
 
           {/* Subtitle */}
@@ -43,7 +43,7 @@ export default function HeroSection() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 bg-yellow-400 text-black font-bold text-xl uppercase tracking-wider rounded-md hover:bg-yellow-500 transition-colors"
+            className="px-10 py-4 bg-white text-black font-bold text-xl uppercase tracking-wider rounded-md hover:bg-neutral-200 transition-colors"
           >
             Get Started
           </motion.button>

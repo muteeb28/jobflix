@@ -224,7 +224,7 @@ const ContentRenderer = ({ content }: { content: string }) => {
                             <ul key={index} className="space-y-2">
                                 {block.items.map((item, itemIndex) => (
                                     <li key={`${index}-${itemIndex}`} className="flex items-start gap-3 ml-2">
-                                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-yellow-500 shrink-0" />
+                                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-white shrink-0" />
                                         <span className="text-gray-200">{item}</span>
                                     </li>
                                 ))}
@@ -234,7 +234,7 @@ const ContentRenderer = ({ content }: { content: string }) => {
                         return (
                             <pre
                                 key={index}
-                                className="bg-gray-900/60 border border-gray-800 rounded-lg p-4 font-mono text-sm text-yellow-100/90 whitespace-pre-wrap shadow-sm"
+                                className="bg-gray-900/60 border border-gray-800 rounded-lg p-4 font-mono text-sm text-neutral-300 whitespace-pre-wrap shadow-sm"
                             >
                                 {block.text}
                             </pre>
@@ -274,7 +274,7 @@ const ContentBlocksRenderer = ({ blocks }: { blocks: ContentBlock[] }) => {
                             <ul key={index} className="space-y-2">
                                 {block.items.map((item, itemIndex) => (
                                     <li key={`${index}-${itemIndex}`} className="flex items-start gap-3 ml-2">
-                                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-yellow-500 shrink-0" />
+                                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-white shrink-0" />
                                         <span className="text-gray-200">{item}</span>
                                     </li>
                                 ))}
@@ -290,11 +290,11 @@ const ContentBlocksRenderer = ({ blocks }: { blocks: ContentBlock[] }) => {
                         );
                     case "note":
                         return (
-                            <div key={index} className="bg-yellow-900/10 border border-yellow-500/20 rounded-lg p-4">
-                                <div className="text-yellow-400 mb-2 font-bold font-pixel uppercase text-xs">
+                            <div key={index} className="bg-white/5 border border-white/10 rounded-lg p-4">
+                                <div className="text-white mb-2 font-bold font-pixel uppercase text-xs">
                                     {block.title || "Note"}
                                 </div>
-                                <p className="text-yellow-100/70 text-sm leading-relaxed">{block.text}</p>
+                                <p className="text-neutral-400 text-sm leading-relaxed">{block.text}</p>
                             </div>
                         );
                     case "warning":
@@ -308,7 +308,7 @@ const ContentBlocksRenderer = ({ blocks }: { blocks: ContentBlock[] }) => {
                         );
                     case "code":
                         return (
-                            <pre key={index} className="bg-gray-900/50 border-l-2 border-yellow-500/50 pl-4 py-2 my-2 font-mono text-sm text-yellow-100/90 rounded-r shadow-sm whitespace-pre-wrap">
+                            <pre key={index} className="bg-gray-900/50 border-l-2 border-white/30 pl-4 py-2 my-2 font-mono text-sm text-neutral-300 rounded-r shadow-sm whitespace-pre-wrap">
                                 {block.text}
                             </pre>
                         );
@@ -462,11 +462,11 @@ export default function JSLessonView({
                 </div>
 
                 <div className="flex items-center gap-2 md:gap-4">
-                    <button className="px-3 py-1.5 md:px-4 md:py-2 bg-yellow-400 text-black font-bold font-pixel text-xs md:text-sm rounded hover:bg-yellow-500 transition-colors">
+                    <button className="px-3 py-1.5 md:px-4 md:py-2 bg-white text-black font-bold font-pixel text-xs md:text-sm rounded hover:bg-neutral-200 transition-colors">
                         <span className="hidden md:inline">Dashboard</span>
                         <span className="md:hidden">DB</span>
                     </button>
-                    <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-tr from-yellow-400 to-purple-500 border-2 border-white"></div>
+                    <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-tr from-neutral-600 to-neutral-800 border-2 border-white"></div>
                 </div>
             </header>
 
@@ -531,12 +531,12 @@ export default function JSLessonView({
                                     )}
 
                                     {showHint && (
-                                        <div className="bg-yellow-900/10 border border-yellow-500/20 rounded-lg p-4 md:p-5">
-                                            <div className="flex items-center gap-2 text-yellow-400 mb-2">
+                                        <div className="bg-white/5 border border-white/10 rounded-lg p-4 md:p-5">
+                                            <div className="flex items-center gap-2 text-white mb-2">
                                                 <Lightbulb className="w-4 h-4" />
                                                 <h3 className="font-bold font-pixel uppercase text-xs">Hint</h3>
                                             </div>
-                                            <p className="text-yellow-100/70 text-sm">
+                                            <p className="text-neutral-400 text-sm">
                                                 {hintText}
                                             </p>
                                         </div>
@@ -555,7 +555,7 @@ export default function JSLessonView({
                         </div>
                         <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-5">
                             <div className="bg-gray-900 border border-gray-800 rounded-xl p-4 md:p-5">
-                                <div className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-yellow-400 font-mono mb-3">
+                                <div className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-white font-mono mb-3">
                                     Answer
                                 </div>
                                 <p className="text-gray-200 leading-relaxed text-xs md:text-sm">
@@ -570,7 +570,7 @@ export default function JSLessonView({
                                     <ul className="space-y-2 text-xs md:text-sm text-gray-300">
                                         {answerLines.slice(0, 6).map((line, index) => (
                                             <li key={index} className="flex items-start gap-2">
-                                                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-yellow-500 shrink-0" />
+                                                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-white shrink-0" />
                                                 <span>{line}</span>
                                             </li>
                                         ))}
@@ -650,14 +650,14 @@ export default function JSLessonView({
                     <span className="md:hidden">Back</span>
                 </Link>
 
-                <div className="flex items-center gap-2 text-yellow-400 font-bold font-pixel text-sm md:text-lg animate-pulse">
-                    <Star className="w-5 h-5 md:w-6 md:h-6 fill-yellow-400" />
+                <div className="flex items-center gap-2 text-white font-bold font-pixel text-sm md:text-lg animate-pulse">
+                    <Star className="w-5 h-5 md:w-6 md:h-6 fill-white" />
                     <span className="hidden md:inline">Total XP:</span> {xp}
                 </div>
 
                 <button
                     onClick={handleComplete}
-                    className="px-4 py-2 md:px-6 md:py-2 bg-yellow-400 text-black font-bold rounded hover:bg-yellow-500 transition-colors text-xs md:text-base"
+                    className="px-4 py-2 md:px-6 md:py-2 bg-white text-black font-bold rounded hover:bg-neutral-200 transition-colors text-xs md:text-base"
                 >
                     {isCompleted ? 'Completed' : 'Complete & Next'}
                 </button>

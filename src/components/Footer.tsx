@@ -94,7 +94,7 @@ export default function Footer() {
                 <FooterLink href="#">About</FooterLink>
                 <FooterLink href="#">Team</FooterLink>
                 <FooterLink href="#">Contact us</FooterLink>
-                <FooterLink href="#">Advertise with us <span className="text-yellow-400 text-[10px] ml-1 px-1 border border-yellow-400/30 rounded bg-yellow-400/10">NEW</span></FooterLink>
+                <FooterLink href="#">Advertise with us <span className="text-white text-[10px] ml-1 px-1 border border-white/20 rounded bg-white/10">NEW</span></FooterLink>
                 <FooterLink href="#">Become an affiliate</FooterLink>
                 <FooterLink href="#">Careers</FooterLink>
                 <FooterLink href="#">Blog</FooterLink>

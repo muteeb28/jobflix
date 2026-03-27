@@ -15,13 +15,13 @@ export default function JobCard({ job }: JobCardProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             whileHover={{ y: -5 }}
-            className="bg-gray-900 border-4 border-gray-800 p-6 hover:border-yellow-500 transition-colors group relative overflow-hidden"
+            className="bg-gray-900 border-4 border-gray-800 p-6 hover:border-white/30 transition-colors group relative overflow-hidden"
         >
             {/* Pixel corner decorations */}
-            <div className="absolute top-0 left-0 w-2 h-2 bg-gray-800 group-hover:bg-yellow-500 transition-colors" />
-            <div className="absolute top-0 right-0 w-2 h-2 bg-gray-800 group-hover:bg-yellow-500 transition-colors" />
-            <div className="absolute bottom-0 left-0 w-2 h-2 bg-gray-800 group-hover:bg-yellow-500 transition-colors" />
-            <div className="absolute bottom-0 right-0 w-2 h-2 bg-gray-800 group-hover:bg-yellow-500 transition-colors" />
+            <div className="absolute top-0 left-0 w-2 h-2 bg-gray-800 group-hover:bg-neutral-200 transition-colors" />
+            <div className="absolute top-0 right-0 w-2 h-2 bg-gray-800 group-hover:bg-neutral-200 transition-colors" />
+            <div className="absolute bottom-0 left-0 w-2 h-2 bg-gray-800 group-hover:bg-neutral-200 transition-colors" />
+            <div className="absolute bottom-0 right-0 w-2 h-2 bg-gray-800 group-hover:bg-neutral-200 transition-colors" />
 
             <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
                 {/* Logo Placeholder */}
@@ -31,7 +31,7 @@ export default function JobCard({ job }: JobCardProps) {
 
                 <div className="flex-1">
                     <div className="flex flex-wrap gap-2 mb-2">
-                        <span className="px-2 py-1 bg-yellow-500/10 text-yellow-500 text-xs font-bold uppercase tracking-wider border border-yellow-500/20">
+                        <span className="px-2 py-1 bg-white/8 text-white text-xs font-bold uppercase tracking-wider border border-white/15">
                             {job.category}
                         </span>
                         <span className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold uppercase tracking-wider border border-blue-500/20">
@@ -39,7 +39,7 @@ export default function JobCard({ job }: JobCardProps) {
                         </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-white mb-1 group-hover:text-yellow-400 transition-colors font-pixel">
+                    <h3 className="text-xl font-bold text-white mb-1 group-hover:text-white transition-colors font-pixel">
                         {job.title}
                     </h3>
                     <p className="text-white/60 font-mono text-sm mb-4">
@@ -67,7 +67,7 @@ export default function JobCard({ job }: JobCardProps) {
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="w-full px-6 py-3 bg-yellow-400 text-black font-bold border-b-4 border-r-4 border-yellow-600 active:border-0 active:translate-y-1 transition-all uppercase text-sm tracking-wide"
+                            className="w-full px-6 py-3 bg-white text-black font-bold border-b-4 border-r-4 border-neutral-900 active:border-0 active:translate-y-1 transition-all uppercase text-sm tracking-wide"
                         >
                             Apply Now
                         </motion.button>

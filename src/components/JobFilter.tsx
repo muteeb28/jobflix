@@ -27,7 +27,7 @@ export default function JobFilter({
                             key={level}
                             onClick={() => onSelectExperience(level)}
                             className={`px-6 py-2 text-sm font-bold uppercase tracking-wide transition-all ${experienceLevel === level
-                                ? "bg-yellow-400 text-black shadow-[2px_2px_0_rgba(0,0,0,1)]"
+                                ? "bg-white text-black shadow-[2px_2px_0_rgba(0,0,0,1)]"
                                 : "text-white/60 hover:text-white hover:bg-gray-800"
                                 }`}
                         >

@@ -31,7 +31,7 @@ export const CodePlayground = () => {
                 <div className="w-1/2 flex flex-col border-r border-[#333]">
                     {/* Tabs */}
                     <div className="flex border-b border-[#333]">
-                        <div className="px-4 py-2 bg-[#1e1e1e] border-b-2 border-yellow-500 text-yellow-500 text-sm font-medium">
+                        <div className="px-4 py-2 bg-[#1e1e1e] border-b-2 border-white/30 text-white text-sm font-medium">
                             App.js
                         </div>
                         <div className="px-4 py-2 text-gray-500 text-sm font-medium hover:text-gray-300 cursor-pointer">
@@ -46,7 +46,7 @@ export const CodePlayground = () => {
                         </div>
                         <br />
                         <div className="text-gray-300">
-                            <span className="text-blue-400">function</span> <span className="text-yellow-400">App</span>() {'{'}
+                            <span className="text-blue-400">function</span> <span className="text-white">App</span>() {'{'}
                         </div>
                         <div className="text-gray-300 pl-4">
                             <span className="text-purple-400">return</span> (
@@ -55,19 +55,19 @@ export const CodePlayground = () => {
                             &lt;<span className="text-red-400">main</span>&gt;
                         </div>
                         <div className="text-gray-300 pl-12">
-                            &lt;<span className="text-red-400">section</span> <span className="text-yellow-300">className</span>=<span className="text-green-400">"column"</span>&gt;
+                            &lt;<span className="text-red-400">section</span> <span className="text-white">className</span>=<span className="text-green-400">"column"</span>&gt;
                         </div>
                         <div className="text-gray-300 pl-16">
                             &lt;<span className="text-red-400">header</span>&gt;Upcoming&lt;/<span className="text-red-400">header</span>&gt;
                         </div>
                         <div className="text-gray-300 pl-16">
-                            &lt;<span className="text-red-400">div</span> <span className="text-yellow-300">className</span>=<span className="text-green-400">"cards"</span>&gt;
+                            &lt;<span className="text-red-400">div</span> <span className="text-white">className</span>=<span className="text-green-400">"cards"</span>&gt;
                         </div>
                         <div className="text-gray-300 pl-20">
-                            &lt;<span className="text-red-400">button</span> <span className="text-yellow-300">className</span>=<span className="text-green-400">"card"</span>&gt;Buy cat food&lt;/<span className="text-red-400">button</span>&gt;
+                            &lt;<span className="text-red-400">button</span> <span className="text-white">className</span>=<span className="text-green-400">"card"</span>&gt;Buy cat food&lt;/<span className="text-red-400">button</span>&gt;
                         </div>
                         <div className="text-gray-300 pl-20">
-                            &lt;<span className="text-red-400">button</span> <span className="text-yellow-300">className</span>=<span className="text-green-400">"card"</span>&gt;File taxes&lt;/<span className="text-red-400">button</span>&gt;
+                            &lt;<span className="text-red-400">button</span> <span className="text-white">className</span>=<span className="text-green-400">"card"</span>&gt;File taxes&lt;/<span className="text-red-400">button</span>&gt;
                         </div>
                         <div className="text-gray-300 pl-16">
                             &lt;/<span className="text-red-400">div</span>&gt;
@@ -77,21 +77,21 @@ export const CodePlayground = () => {
                         </div>
                         <br />
                         <div className="text-gray-300 pl-12">
-                            &lt;<span className="text-red-400">section</span> <span className="text-yellow-300">className</span>=<span className="text-green-400">"column"</span>&gt;
+                            &lt;<span className="text-red-400">section</span> <span className="text-white">className</span>=<span className="text-green-400">"column"</span>&gt;
                         </div>
                         <div className="text-gray-300 pl-16">
                             &lt;<span className="text-red-400">header</span>&gt;Finished&lt;/<span className="text-red-400">header</span>&gt;
                         </div>
                         <div className="text-gray-300 pl-16">
-                            &lt;<span className="text-red-400">div</span> <span className="text-yellow-300">className</span>=<span className="text-green-400">"cards"</span>&gt;
+                            &lt;<span className="text-red-400">div</span> <span className="text-white">className</span>=<span className="text-green-400">"cards"</span>&gt;
                         </div>
                         <div className="text-gray-300 pl-20">
-                            &lt;<span className="text-red-400">button</span> <span className="text-yellow-300">className</span>=<span className="text-green-400">"card"</span>&gt;
+                            &lt;<span className="text-red-400">button</span> <span className="text-white">className</span>=<span className="text-green-400">"card"</span>&gt;
                             <div className="pl-4">Buy Amina's birthday present</div>
                             &lt;/<span className="text-red-400">button</span>&gt;
                         </div>
                         <div className="text-gray-300 pl-20">
-                            &lt;<span className="text-red-400">button</span> <span className="text-yellow-300">className</span>=<span className="text-green-400">"card"</span>&gt;
+                            &lt;<span className="text-red-400">button</span> <span className="text-white">className</span>=<span className="text-green-400">"card"</span>&gt;
                             <div className="pl-4">Schedule haircut</div>
                             &lt;/<span className="text-red-400">button</span>&gt;
                         </div>
@@ -121,7 +121,7 @@ export const CodePlayground = () => {
                 <div className="w-1/2 bg-[#1e1e1e] flex flex-col">
                     {/* Preview Header */}
                     <div className="h-10 border-b border-[#333] flex items-center px-4 gap-4 text-sm text-gray-400">
-                        <span className="text-white border-b-2 border-yellow-500 pb-[10px] pt-2">Result</span>
+                        <span className="text-white border-b-2 border-white/30 pb-[10px] pt-2">Result</span>
                         <span className="pb-[10px] pt-2 hover:text-white cursor-pointer">Console</span>
                     </div>
 

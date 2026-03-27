@@ -61,7 +61,7 @@ const difficultyConfig: Record<
   { label: string; color: string; bg: string }
 > = {
   easy: { label: "Easy", color: "text-emerald-400", bg: "bg-emerald-400/10" },
-  medium: { label: "Medium", color: "text-amber-400", bg: "bg-amber-400/10" },
+  medium: { label: "Medium", color: "text-white", bg: "bg-white/10" },
   hard: { label: "Hard", color: "text-red-400", bg: "bg-red-400/10" },
 };
 
@@ -73,14 +73,14 @@ const languageTemplates: Record<string, string> = {
 const statusIcons: Record<string, React.ReactNode> = {
   AC: <CheckCircle2 className="w-4 h-4 text-emerald-400" />,
   WA: <XCircle className="w-4 h-4 text-red-400" />,
-  TLE: <Clock className="w-4 h-4 text-amber-400" />,
+  TLE: <Clock className="w-4 h-4 text-white" />,
   Error: <AlertTriangle className="w-4 h-4 text-red-400" />,
 };
 
 const statusLabels: Record<string, { text: string; color: string }> = {
   AC: { text: "Accepted", color: "text-emerald-400" },
   WA: { text: "Wrong Answer", color: "text-red-400" },
-  TLE: { text: "Time Limit Exceeded", color: "text-amber-400" },
+  TLE: { text: "Time Limit Exceeded", color: "text-white" },
   Error: { text: "Runtime Error", color: "text-red-400" },
 };
 
@@ -202,7 +202,7 @@ export default function ProblemWorkspace() {
   if (loading) {
     return (
       <div className="h-screen bg-gray-950 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 text-amber-400 animate-spin" />
+        <Loader2 className="w-8 h-8 text-white animate-spin" />
       </div>
     );
   }
@@ -214,7 +214,7 @@ export default function ProblemWorkspace() {
         <p className="text-zinc-400">{error || "Problem not found"}</p>
         <button
           onClick={() => router.push("/prepare")}
-          className="px-4 py-2 bg-amber-400 text-black font-bold text-xs uppercase tracking-widest"
+          className="px-4 py-2 bg-white text-black font-bold text-xs uppercase tracking-widest"
         >
           Back to Problems
         </button>
@@ -258,7 +258,7 @@ export default function ProblemWorkspace() {
                 <button
                   onClick={() => handleLanguageChange("python")}
                   className={`w-full px-3 py-2 text-xs text-left hover:bg-white/5 ${
-                    language === "python" ? "text-amber-400" : "text-white"
+                    language === "python" ? "text-white" : "text-white"
                   }`}
                 >
                   Python
@@ -266,7 +266,7 @@ export default function ProblemWorkspace() {
                 <button
                   onClick={() => handleLanguageChange("cpp")}
                   className={`w-full px-3 py-2 text-xs text-left hover:bg-white/5 ${
-                    language === "cpp" ? "text-amber-400" : "text-white"
+                    language === "cpp" ? "text-white" : "text-white"
                   }`}
                 >
                   C++
@@ -312,7 +312,7 @@ export default function ProblemWorkspace() {
               className="prose prose-invert prose-sm max-w-none
                 [&_p]:text-zinc-300 [&_p]:leading-relaxed [&_p]:font-sans
                 [&_pre]:bg-zinc-900 [&_pre]:border [&_pre]:border-white/10 [&_pre]:rounded-lg [&_pre]:p-3
-                [&_code]:text-amber-300 [&_code]:text-xs [&_code]:font-mono
+                [&_code]:text-white [&_code]:text-xs [&_code]:font-mono
                 [&_h3]:text-white [&_h3]:text-base [&_h3]:font-bold [&_h3]:mt-5 [&_h3]:mb-2
                 [&_ul]:text-zinc-300 [&_ul]:font-sans [&_li]:text-zinc-300
                 [&_strong]:text-white"
@@ -409,7 +409,7 @@ export default function ProblemWorkspace() {
             <div className="p-3">
               {submitting ? (
                 <div className="flex items-center justify-center py-6 gap-2">
-                  <Loader2 className="w-5 h-5 text-amber-400 animate-spin" />
+                  <Loader2 className="w-5 h-5 text-white animate-spin" />
                   <span className="text-sm text-zinc-400">
                     Running test cases...
                   </span>

@@ -24,7 +24,7 @@ const SparklesCore = dynamic(
 
 const EncryptedText = dynamic(
   () => import("@/components/ui/encrypted-text").then((mod) => mod.EncryptedText),
-  { ssr: false, loading: () => <span className="text-amber-100">Built for Engineers Navigating a Tough Job Market</span> }
+  { ssr: false, loading: () => <span className="text-neutral-300">Built for Engineers Navigating a Tough Job Market</span> }
 );
 
 
@@ -42,7 +42,7 @@ const services = [
     ],
     ctaText: "Explore Courses",
     href: "/courses",
-    icon: <BookOpen className="w-8 h-8 md:w-10 md:h-10 text-amber-300" />
+    icon: <BookOpen className="w-8 h-8 md:w-10 md:h-10 text-white" />
   },
   {
     id: "prepare",
@@ -57,7 +57,7 @@ const services = [
     ],
     ctaText: "Start Interview Prep",
     href: "/prepare",
-    icon: <TerminalSquare className="w-8 h-8 md:w-10 md:h-10 text-amber-300" />
+    icon: <TerminalSquare className="w-8 h-8 md:w-10 md:h-10 text-white" />
   },
   {
     id: "hackathons",
@@ -72,7 +72,7 @@ const services = [
     ],
     ctaText: "Explore Live Hackathons",
     href: "/hackathons",
-    icon: <Trophy className="w-8 h-8 md:w-10 md:h-10 text-amber-300" />
+    icon: <Trophy className="w-8 h-8 md:w-10 md:h-10 text-white" />
   },
   {
     id: "jobs",
@@ -87,7 +87,7 @@ const services = [
     ],
     ctaText: "Browse Fresh Jobs",
     href: "/jobs",
-    icon: <Briefcase className="w-8 h-8 md:w-10 md:h-10 text-amber-300" />
+    icon: <Briefcase className="w-8 h-8 md:w-10 md:h-10 text-white" />
   },
   {
     id: "scholarships",
@@ -102,7 +102,7 @@ const services = [
     ],
     ctaText: "Explore Scholarships",
     href: "/study-abroad",
-    icon: <GraduationCap className="w-8 h-8 md:w-10 md:h-10 text-amber-300" />
+    icon: <GraduationCap className="w-8 h-8 md:w-10 md:h-10 text-white" />
   },
   {
     id: "mentorship",
@@ -117,7 +117,7 @@ const services = [
     ],
     ctaText: "Find a Mentor",
     href: "/mentorship",
-    icon: <Users className="w-8 h-8 md:w-10 md:h-10 text-amber-300" />
+    icon: <Users className="w-8 h-8 md:w-10 md:h-10 text-white" />
   }
 ];
 
@@ -127,21 +127,21 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
   return (
     <article
       style={{ animationDelay: `${index * 50}ms` }}
-      className="relative flex flex-col gap-3 rounded-2xl border border-amber-400/20 bg-black/60 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.45)] hover:border-amber-300/50 hover:-translate-y-1.5 transition-all duration-300 animate-fade-in-up"
+      className="relative flex flex-col gap-3 rounded-2xl border border-white/15 bg-black/60 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.45)] hover:border-white/35 hover:-translate-y-1.5 transition-all duration-300 animate-fade-in-up"
     >
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 via-transparent to-white/5 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
       <div className="relative flex items-center justify-between">
         <div className="p-3 rounded-lg border border-white/10 bg-black/50">
           {service.icon}
         </div>
-        <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-amber-200/70">
+        <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-white/60">
           {`Pillar ${index + 1}/6`}
         </span>
       </div>
 
       <div className="relative z-10 flex flex-col gap-1">
         <h3 className="text-xl font-bold uppercase tracking-wide">{service.title}</h3>
-        <p className="text-amber-200 text-sm font-mono">{service.punchline}</p>
+        <p className="text-neutral-400 text-sm font-mono">{service.punchline}</p>
         <p className="text-sm text-zinc-300 font-sans leading-relaxed mt-1">
           {service.description}
         </p>
@@ -150,7 +150,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       <ul className="mt-2 space-y-2">
         {service.bullets.map((bullet) => (
           <li key={bullet} className="flex items-start gap-2 text-sm text-zinc-300 font-sans">
-            <Check className="w-4 h-4 text-amber-300 mt-[2px]" />
+            <Check className="w-4 h-4 text-white mt-[2px]" />
             <span>{bullet}</span>
           </li>
         ))}
@@ -159,7 +159,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       <div className="mt-auto pt-3">
         <Link
           href={service.href}
-          className="group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-amber-100 hover:text-amber-200 transition-colors"
+          className="group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-neutral-300 hover:text-neutral-400 transition-colors"
         >
           {service.ctaText}
           <span className="inline-flex transition-transform duration-200 group-hover:translate-x-1">
@@ -172,15 +172,15 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 }
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-950 via-black to-gray-950 text-white font-pixel flex flex-col">
+    <div className="min-h-screen bg-black text-white font-pixel flex flex-col">
       <Navbar />
 
       <main className="flex-grow pt-28 md:pt-32 pb-20 px-4 md:px-6 relative overflow-hidden">
         {/* Background FX */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-[55%] bg-gradient-to-b from-amber-500/10 via-orange-500/5 to-black" />
-          <div className="absolute -left-28 top-10 w-96 h-96 bg-amber-400/15 blur-[120px]" />
-          <div className="absolute right-[-120px] bottom-[-80px] w-[520px] h-[520px] bg-amber-500/8 blur-[140px]" />
+          <div className="absolute top-0 left-0 w-full h-[55%] bg-gradient-to-b from-white/5 via-transparent to-black" />
+          <div className="absolute -left-28 top-10 w-96 h-96 bg-white/10 blur-[120px]" />
+          <div className="absolute right-[-120px] bottom-[-80px] w-[520px] h-[520px] bg-white/5 blur-[140px]" />
           <div className="absolute inset-0 opacity-70">
             <SparklesCore
               id="landing-sparkles"
@@ -188,7 +188,7 @@ export default function Landing() {
               minSize={0.6}
               maxSize={1.4}
               particleDensity={40}
-              particleColor="#fbbf24"
+              particleColor="#ffffff"
               speed={0.35}
               className="w-full h-full"
             />
@@ -199,13 +199,13 @@ export default function Landing() {
           {/* Hero */}
           <div className="text-center mb-14 md:mb-20">
             <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-amber-400/30 text-xs md:text-sm text-amber-100 mb-6 font-mono uppercase tracking-[0.3em] shadow-[0_10px_40px_rgba(251,191,36,0.08)] animate-fade-in-up"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/20 text-xs md:text-sm text-neutral-300 mb-6 font-mono uppercase tracking-[0.3em] shadow-[0_10px_40px_rgba(255,255,255,0.06)] animate-fade-in-up"
             >
-              <Cpu className="w-4 h-4 text-amber-300" />
+              <Cpu className="w-4 h-4 text-white" />
               <EncryptedText
                 text="Built for Engineers Navigating a Tough Job Market"
-                encryptedClassName="text-amber-200/50"
-                revealedClassName="text-amber-100"
+                encryptedClassName="text-white/40"
+                revealedClassName="text-neutral-300"
                 revealDelayMs={35}
               />
             </div>
@@ -227,13 +227,13 @@ export default function Landing() {
             <div className="mt-7 flex flex-wrap items-center justify-center gap-4">
               <Link
                 href="/jobs"
-                className="inline-flex items-center justify-center px-8 py-3 bg-amber-400 text-black font-bold text-sm md:text-base border-b-4 border-r-4 border-amber-600 active:border-0 active:translate-y-1 transition-all uppercase tracking-widest shadow-[0_10px_40px_rgba(251,191,36,0.3)]"
+                className="inline-flex items-center justify-center px-8 py-3 bg-white text-black font-bold text-sm md:text-base border-b-4 border-r-4 border-neutral-900 active:border-0 active:translate-y-1 transition-all uppercase tracking-widest shadow-[0_10px_40px_rgba(255,255,255,0.15)]"
               >
                 Explore Opportunities
               </Link>
               <Link
                 href="/courses"
-                className="inline-flex items-center justify-center px-8 py-3 border border-white/15 text-sm md:text-base font-bold uppercase tracking-widest bg-white/5 hover:border-amber-300/60 transition-colors"
+                className="inline-flex items-center justify-center px-8 py-3 border border-white/15 text-sm md:text-base font-bold uppercase tracking-widest bg-white/5 hover:border-white/40 transition-colors"
               >
                 Explore Courses
               </Link>
@@ -244,7 +244,7 @@ export default function Landing() {
           <section
             id="service-hub"
             aria-labelledby="service-hub-title"
-            className="bg-gradient-to-br from-white/5 via-white/0 to-white/5 border border-amber-400/25 rounded-3xl p-6 md:p-8 shadow-[0_25px_80px_rgba(0,0,0,0.55)] backdrop-blur-xl"
+            className="bg-gradient-to-br from-white/5 via-white/0 to-white/5 border border-white/20 rounded-3xl p-6 md:p-8 shadow-[0_25px_80px_rgba(0,0,0,0.55)] backdrop-blur-xl"
           >
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6 md:mb-8">
               <div>
@@ -272,10 +272,10 @@ export default function Landing() {
       {/* Pricing Teaser */}
       <section className="px-4 pb-16">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-gradient-to-br from-black via-zinc-950 to-black border border-amber-400/20 rounded-3xl p-6 md:p-8 shadow-[0_25px_80px_rgba(0,0,0,0.45)]">
+          <div className="bg-gradient-to-br from-black via-zinc-950 to-black border border-white/15 rounded-3xl p-6 md:p-8 shadow-[0_25px_80px_rgba(0,0,0,0.45)]">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
               <div>
-                <p className="text-xs font-mono uppercase tracking-[0.3em] text-amber-200/80">Pricing</p>
+                <p className="text-xs font-mono uppercase tracking-[0.3em] text-white/70">Pricing</p>
                 <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-1">
                   Plans built for engineers in a tough market
                 </h2>
@@ -285,7 +285,7 @@ export default function Landing() {
               </div>
               <Link
                 href="/pricing"
-                className="inline-flex items-center justify-center px-6 py-3 bg-amber-400 text-black font-bold text-xs md:text-sm border-b-4 border-r-4 border-amber-600 active:border-0 active:translate-y-1 transition-all uppercase tracking-[0.18em] shadow-[0_10px_30px_rgba(251,191,36,0.2)]"
+                className="inline-flex items-center justify-center px-6 py-3 bg-white text-black font-bold text-xs md:text-sm border-b-4 border-r-4 border-neutral-900 active:border-0 active:translate-y-1 transition-all uppercase tracking-[0.18em] shadow-[0_10px_30px_rgba(255,255,255,0.10)]"
               >
                 View Pricing
               </Link>
@@ -318,11 +318,11 @@ export default function Landing() {
               ].map((plan) => (
                 <div
                   key={plan.title}
-                  className={`relative rounded-2xl border bg-black/60 p-4 md:p-5 ${plan.badge ? "border-amber-400/40" : "border-white/10"
+                  className={`relative rounded-2xl border bg-black/60 p-4 md:p-5 ${plan.badge ? "border-white/25/40" : "border-white/10"
                     }`}
                 >
                   {plan.badge && (
-                    <span className="absolute -top-3 right-3 bg-amber-400 text-black text-[10px] font-bold uppercase tracking-[0.16em] px-3 py-1 rounded-full">
+                    <span className="absolute -top-3 right-3 bg-white text-black text-[10px] font-bold uppercase tracking-[0.16em] px-3 py-1 rounded-full">
                       {plan.badge}
                     </span>
                   )}
@@ -336,7 +336,7 @@ export default function Landing() {
                   <div className="text-zinc-500 text-sm mt-1">{plan.note}</div>
                   <Link
                     href={plan.href}
-                    className="mt-4 inline-flex w-full items-center justify-center px-4 py-2.5 rounded-full border border-amber-400/40 text-amber-100 font-bold uppercase tracking-[0.16em] hover:bg-amber-400 hover:text-black transition-colors text-xs"
+                    className="mt-4 inline-flex w-full items-center justify-center px-4 py-2.5 rounded-full border border-white/25/40 text-neutral-300 font-bold uppercase tracking-[0.16em] hover:bg-white hover:text-black transition-colors text-xs"
                   >
                     Buy now
                   </Link>

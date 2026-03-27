@@ -78,9 +78,9 @@ const difficultyConfig: Record<
   },
   medium: {
     label: "Medium",
-    color: "text-amber-400",
-    bg: "bg-amber-400/10",
-    border: "border-amber-400/30",
+    color: "text-white",
+    bg: "bg-white/10",
+    border: "border-white/20",
   },
   hard: {
     label: "Hard",
@@ -95,7 +95,7 @@ const topicColors: Record<string, string> = {
   "Strings": "text-purple-400 bg-purple-400/10",
   "Linked List": "text-cyan-400 bg-cyan-400/10",
   "Stack": "text-orange-400 bg-orange-400/10",
-  "Binary Search": "text-yellow-400 bg-yellow-400/10",
+  "Binary Search": "text-white bg-white/10",
   "Trees": "text-green-400 bg-green-400/10",
   "DP": "text-pink-400 bg-pink-400/10",
   "Graph": "text-indigo-400 bg-indigo-400/10",
@@ -105,12 +105,12 @@ const topicColors: Record<string, string> = {
   "Greedy": "text-lime-400 bg-lime-400/10",
   "Bit Manipulation": "text-sky-400 bg-sky-400/10",
   "Intervals": "text-fuchsia-400 bg-fuchsia-400/10",
-  "Math": "text-amber-300 bg-amber-300/10",
+  "Math": "text-white bg-neutral-100/10",
   "Trie": "text-emerald-300 bg-emerald-300/10",
   "Design": "text-red-300 bg-red-300/10",
   "Two Pointers": "text-cyan-300 bg-cyan-300/10",
   "Hash Map": "text-blue-300 bg-blue-300/10",
-  "JS Utilities": "text-yellow-400 bg-yellow-400/10",
+  "JS Utilities": "text-white bg-white/10",
   "DOM": "text-orange-400 bg-orange-400/10",
   "UI Components": "text-blue-400 bg-blue-400/10",
   "React Hooks": "text-cyan-400 bg-cyan-400/10",
@@ -189,7 +189,7 @@ export default function PreparePage() {
   }, [categoryFiltered]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-950 via-black to-gray-950 text-white font-pixel flex flex-col">
+    <div className="min-h-screen bg-black text-white font-pixel flex flex-col">
       <Navbar />
 
       <main className="flex-grow pt-24 pb-16 px-4 md:px-6">
@@ -197,8 +197,8 @@ export default function PreparePage() {
           {/* Header */}
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-3">
-              <div className="p-2.5 rounded-xl bg-amber-400/10 border border-amber-400/20">
-                <Terminal className="w-6 h-6 text-amber-400" />
+              <div className="p-2.5 rounded-xl bg-white/10 border border-white/15">
+                <Terminal className="w-6 h-6 text-white" />
               </div>
               <div>
                 <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -223,7 +223,7 @@ export default function PreparePage() {
                 onClick={() => setCategory(tab.key)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all border ${
                   category === tab.key
-                    ? "bg-amber-400/10 text-amber-400 border-amber-400/30"
+                    ? "bg-white/10 text-white border-white/20"
                     : "bg-zinc-900/40 text-zinc-500 border-white/5 hover:text-zinc-300 hover:border-white/10"
                 }`}
               >
@@ -244,7 +244,7 @@ export default function PreparePage() {
                   placeholder="Search problems..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 bg-zinc-900/80 border border-white/10 rounded-xl text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-amber-400/50 transition-colors"
+                  className="w-full pl-10 pr-4 py-2.5 bg-zinc-900/80 border border-white/10 rounded-xl text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-white/25/50 transition-colors"
                 />
               </div>
 
@@ -305,7 +305,7 @@ export default function PreparePage() {
           {/* Problem List */}
           {loading ? (
             <div className="flex flex-col items-center justify-center py-20 gap-3">
-              <Loader2 className="w-8 h-8 text-amber-400 animate-spin" />
+              <Loader2 className="w-8 h-8 text-white animate-spin" />
               <p className="text-zinc-400 text-sm">Loading problems...</p>
             </div>
           ) : error ? (
@@ -319,7 +319,7 @@ export default function PreparePage() {
               </div>
               <button
                 onClick={fetchProblems}
-                className="mt-2 px-5 py-2 bg-amber-400 text-black font-bold text-xs uppercase tracking-widest border-b-4 border-r-4 border-amber-600 active:border-0 active:translate-y-1 transition-all"
+                className="mt-2 px-5 py-2 bg-white text-black font-bold text-xs uppercase tracking-widest border-b-4 border-r-4 border-neutral-900 active:border-0 active:translate-y-1 transition-all"
               >
                 Retry
               </button>
@@ -352,13 +352,13 @@ export default function PreparePage() {
                   <Link
                     key={problem.id}
                     href={`/prepare/${problem.id}`}
-                    className="group grid grid-cols-[1fr_80px_80px_40px] md:grid-cols-[1fr_100px_100px_80px_40px] items-center px-4 py-3.5 rounded-xl border border-white/5 bg-zinc-900/40 hover:bg-zinc-900/80 hover:border-amber-400/20 transition-all"
+                    className="group grid grid-cols-[1fr_80px_80px_40px] md:grid-cols-[1fr_100px_100px_80px_40px] items-center px-4 py-3.5 rounded-xl border border-white/5 bg-zinc-900/40 hover:bg-zinc-900/80 hover:border-white/15 transition-all"
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <span className="text-zinc-600 text-xs font-mono w-6 shrink-0">
                         {String(idx + 1).padStart(2, "0")}
                       </span>
-                      <span className="text-sm font-semibold text-white truncate group-hover:text-amber-100 transition-colors">
+                      <span className="text-sm font-semibold text-white truncate group-hover:text-neutral-300 transition-colors">
                         {problem.title}
                       </span>
                     </div>
@@ -384,7 +384,7 @@ export default function PreparePage() {
                     </div>
 
                     <div className="flex justify-end">
-                      <ChevronRight className="w-4 h-4 text-zinc-600 group-hover:text-amber-400 transition-colors" />
+                      <ChevronRight className="w-4 h-4 text-zinc-600 group-hover:text-white transition-colors" />
                     </div>
                   </Link>
                 );

@@ -32,7 +32,7 @@ export default function FeaturesSection() {
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-[4px_4px_0_rgba(0,0,0,1)]">
-                        Why Choose <span className="text-yellow-500">Level Up</span>?
+                        Why Choose <span className="text-white">Level Up</span>?
                     </h2>
                     <p className="text-white/60 max-w-2xl mx-auto font-mono">
                         We provide everything you need to go from beginner to professional developer.

@@ -55,18 +55,18 @@ const plans = [
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-950 via-black to-gray-950 text-white font-pixel flex flex-col">
+    <div className="min-h-screen bg-black text-white font-pixel flex flex-col">
       <Navbar />
 
       <main className="flex-grow pt-28 pb-20 px-4 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -left-24 top-20 w-80 h-80 bg-amber-400/10 blur-[120px]" />
-          <div className="absolute right-[-120px] bottom-[-60px] w-[520px] h-[520px] bg-amber-500/12 blur-[150px]" />
+          <div className="absolute -left-24 top-20 w-80 h-80 bg-white/10 blur-[120px]" />
+          <div className="absolute right-[-120px] bottom-[-60px] w-[520px] h-[520px] bg-white/5 blur-[150px]" />
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-amber-400/30 text-xs md:text-sm text-amber-100 font-mono uppercase tracking-[0.3em] shadow-[0_10px_40px_rgba(251,191,36,0.08)]">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/20 text-xs md:text-sm text-neutral-300 font-mono uppercase tracking-[0.3em] shadow-[0_10px_40px_rgba(255,255,255,0.06)]">
               Pricing · Built for Engineers Navigating a Tough Job Market
             </div>
             <h1 className="mt-6 text-4xl md:text-5xl font-bold tracking-tight leading-tight">
@@ -82,11 +82,11 @@ export default function PricingPage() {
               <div
                 key={plan.title}
                 className={`relative border rounded-2xl bg-black/60 p-6 md:p-7 shadow-[0_25px_80px_rgba(0,0,0,0.45)] ${
-                  plan.highlight ? "border-amber-400/40" : "border-white/10"
+                  plan.highlight ? "border-white/25/40" : "border-white/10"
                 }`}
               >
                 {plan.badge && (
-                  <span className="absolute -top-3 right-4 bg-amber-400 text-black text-[11px] font-bold uppercase tracking-[0.16em] px-3 py-1 rounded-full">
+                  <span className="absolute -top-3 right-4 bg-white text-black text-[11px] font-bold uppercase tracking-[0.16em] px-3 py-1 rounded-full">
                     {plan.badge}
                   </span>
                 )}
@@ -100,7 +100,7 @@ export default function PricingPage() {
                     <span className="text-4xl md:text-5xl font-bold">{plan.price}</span>
                     <span className="text-zinc-400 text-sm">{plan.cadence}</span>
                   </div>
-                  <div className="text-amber-200 text-sm font-mono uppercase tracking-[0.2em]">
+                  <div className="text-neutral-400 text-sm font-mono uppercase tracking-[0.2em]">
                     {plan.discount}
                   </div>
                   <div className="text-zinc-400 text-sm">{plan.billed}</div>
@@ -108,7 +108,7 @@ export default function PricingPage() {
 
                 <Link
                   href={plan.ctaHref}
-                  className="inline-flex w-full items-center justify-center px-6 py-3 rounded-full border border-amber-400/40 text-amber-100 font-bold uppercase tracking-[0.2em] hover:bg-amber-400 hover:text-black transition-colors"
+                  className="inline-flex w-full items-center justify-center px-6 py-3 rounded-full border border-white/25/40 text-neutral-300 font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-colors"
                 >
                   Buy now
                 </Link>
@@ -118,7 +118,7 @@ export default function PricingPage() {
                 <ul className="space-y-3 text-sm text-zinc-200">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
-                      <Check className="w-4 h-4 text-amber-300 mt-[2px]" />
+                      <Check className="w-4 h-4 text-white mt-[2px]" />
                       <span className="font-sans">{feature}</span>
                     </li>
                   ))}

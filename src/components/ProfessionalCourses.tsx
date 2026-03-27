@@ -23,7 +23,7 @@ export default function ProfessionalCourses() {
       reviews: 785,
       image: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       description: "Step into the role of a Frontend Developer and learn to create stunning user interfaces...",
-      bgColor: "bg-gradient-to-br from-yellow-400 to-orange-500",
+      bgColor: "bg-gradient-to-br from-neutral-100 to-neutral-300",
       trending: true
     },
     {
@@ -110,7 +110,7 @@ export default function ProfessionalCourses() {
                     {/* Rating */}
                     <div className="flex items-center gap-2 mb-3">
                       <span className="text-white font-bold text-lg">{course.rating}</span>
-                      <div className="flex text-yellow-400 text-sm">
+                      <div className="flex text-white text-sm">
                         {[...Array(5)].map((_, i) => (
                           <span key={i}>⭐</span>
                         ))}

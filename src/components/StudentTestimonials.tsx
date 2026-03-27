@@ -64,7 +64,7 @@ export default function StudentTestimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-gray-900 border-4 border-gray-800 p-6 hover:border-yellow-500 transition-all duration-300 group shadow-[8px_8px_0_rgba(0,0,0,0.5)]"
+              className="bg-gray-900 border-4 border-gray-800 p-6 hover:border-white/30 transition-all duration-300 group shadow-[8px_8px_0_rgba(0,0,0,0.5)]"
             >
               {/* Profile Section */}
               <div className="flex items-center gap-4 mb-4">
@@ -100,7 +100,7 @@ export default function StudentTestimonials() {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: i * 0.1 }}
-                    className="text-yellow-400 text-sm"
+                    className="text-white text-sm"
                   >
                     ⭐
                   </motion.span>
@@ -123,7 +123,7 @@ export default function StudentTestimonials() {
           </p>
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-yellow-400 text-black font-bold rounded-none border-b-8 border-r-8 border-yellow-600 hover:shadow-xl transition-all duration-300 uppercase tracking-widest"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold rounded-none border-b-8 border-r-8 border-neutral-900 hover:shadow-xl transition-all duration-300 uppercase tracking-widest"
           >
             Start Your Journey Today
             <motion.span

@@ -18,7 +18,7 @@ export default function SignupFormDemo() {
     setStatus("Submitted! (stub) — wire this to your signup handler.");
   };
   return (
-    <div className="dark mx-auto w-full max-w-xl rounded-2xl border border-amber-400/25 bg-gradient-to-b from-zinc-950 via-black to-black p-4 md:p-8 shadow-[0_18px_55px_rgba(0,0,0,0.45)]">
+    <div className="dark mx-auto w-full max-w-xl rounded-2xl border border-white/20 bg-gradient-to-b from-zinc-950 via-black to-black p-4 md:p-8 shadow-[0_18px_55px_rgba(0,0,0,0.45)]">
       <h2 className="text-2xl font-bold text-white">
         Welcome to JobFlix
       </h2>
@@ -55,41 +55,41 @@ export default function SignupFormDemo() {
         </LabelInputContainer>
 
         <button
-          className="group/btn relative block h-11 w-full rounded-md bg-amber-400 text-black font-bold uppercase tracking-[0.16em] shadow-[0_12px_30px_rgba(251,191,36,0.35)] border-b-2 border-r-2 border-amber-600 active:translate-y-[1px] transition-all"
+          className="group/btn relative block h-11 w-full rounded-md bg-white text-black font-bold uppercase tracking-[0.16em] shadow-[0_0_30px_rgba(255,255,255,0.12)] border-b-2 border-r-2 border-neutral-900 active:translate-y-[1px] transition-all"
           type="submit"
         >
           Sign up
           <BottomGradient />
         </button>
 
-        <div className="my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-amber-300/60 to-transparent" />
+        <div className="my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
         <div className="flex flex-col space-y-4">
           <button
-            className="group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-white/5 px-4 font-medium text-white border border-white/10 hover:border-amber-300/50 transition-colors"
+            className="group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-white/5 px-4 font-medium text-white border border-white/10 hover:border-white/35 transition-colors"
             type="submit"
           >
-            <IconBrandGithub className="h-4 w-4 text-amber-300" />
+            <IconBrandGithub className="h-4 w-4 text-white" />
             <span className="text-sm text-white">
               GitHub
             </span>
             <BottomGradient />
           </button>
           <button
-            className="group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-white/5 px-4 font-medium text-white border border-white/10 hover:border-amber-300/50 transition-colors"
+            className="group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-white/5 px-4 font-medium text-white border border-white/10 hover:border-white/35 transition-colors"
             type="submit"
           >
-            <IconBrandGoogle className="h-4 w-4 text-amber-300" />
+            <IconBrandGoogle className="h-4 w-4 text-white" />
             <span className="text-sm text-white">
               Google
             </span>
             <BottomGradient />
           </button>
           <button
-            className="group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-white/5 px-4 font-medium text-white border border-white/10 hover:border-amber-300/50 transition-colors"
+            className="group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-white/5 px-4 font-medium text-white border border-white/10 hover:border-white/35 transition-colors"
             type="submit"
           >
-            <IconUserPlus className="h-4 w-4 text-amber-300" />
+            <IconUserPlus className="h-4 w-4 text-white" />
             <span className="text-sm text-white">
               Join as Mentor
             </span>
@@ -110,8 +110,8 @@ export default function SignupFormDemo() {
 const BottomGradient = () => {
   return (
     <>
-      <span className="absolute inset-x-0 -bottom-px block h-px w-full bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-0 transition duration-500 group-hover/btn:opacity-100" />
-      <span className="absolute inset-x-10 -bottom-px mx-auto block h-px w-1/2 bg-gradient-to-r from-transparent via-yellow-300 to-transparent opacity-0 blur-sm transition duration-500 group-hover/btn:opacity-100" />
+      <span className="absolute inset-x-0 -bottom-px block h-px w-full bg-gradient-to-r from-transparent via-white/60 to-transparent opacity-0 transition duration-500 group-hover/btn:opacity-100" />
+      <span className="absolute inset-x-10 -bottom-px mx-auto block h-px w-1/2 bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 blur-sm transition duration-500 group-hover/btn:opacity-100" />
     </>
   );
 };

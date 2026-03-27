@@ -21,9 +21,9 @@ const jobFairs: JobFair[] = [
     registerUrl: "#",
     image: "/assets/job-fair-career-synergy-2026.jpg",
     color: "from-red-900/40 via-zinc-900 to-blue-900/30",
-    accent: "text-yellow-400",
-    border: "border-yellow-400/30",
-    glow: "shadow-[0_0_40px_rgba(250,204,21,0.08)]",
+    accent: "text-white",
+    border: "border-white/20",
+    glow: "shadow-[0_0_40px_rgba(255,255,255,0.06)]",
   },
 ];
 
@@ -52,7 +52,7 @@ function JobFairCard({ fair }: { fair: JobFair }) {
       className={`relative overflow-hidden rounded-2xl border ${fair.border} bg-gradient-to-br ${fair.color} ${fair.glow} p-6 md:p-8`}
     >
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-400/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-48 h-48 bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6">
@@ -72,9 +72,9 @@ function JobFairCard({ fair }: { fair: JobFair }) {
         {/* Middle: Info */}
         <div className="flex-1 min-w-0">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-400/10 border border-yellow-400/20 mb-4">
-            <Zap className="w-3.5 h-3.5 text-yellow-400" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-yellow-400">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 mb-4">
+            <Zap className="w-3.5 h-3.5 text-white" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white">
               {fair.tagline}
             </span>
           </div>
@@ -102,8 +102,8 @@ function JobFairCard({ fair }: { fair: JobFair }) {
 
           {/* Stats */}
           <div className="flex gap-4">
-            <div className="bg-yellow-400/10 border border-yellow-400/20 rounded-xl px-5 py-3 text-center">
-              <div className="text-2xl font-black text-yellow-400">{fair.package}</div>
+            <div className="bg-white/10 border border-white/15 rounded-xl px-5 py-3 text-center">
+              <div className="text-2xl font-black text-white">{fair.package}</div>
               <div className="text-[10px] text-zinc-400 uppercase tracking-wider mt-0.5">Package</div>
             </div>
             <div className="bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-center">
@@ -119,7 +119,7 @@ function JobFairCard({ fair }: { fair: JobFair }) {
             href={fair.registerUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 px-6 py-3 bg-yellow-400 hover:bg-yellow-300 text-black font-black text-sm uppercase tracking-wider rounded-xl transition-colors border-b-4 border-yellow-600 active:border-0 active:translate-y-1"
+            className="flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-neutral-100 text-black font-black text-sm uppercase tracking-wider rounded-xl transition-colors border-b-4 border-neutral-900 active:border-0 active:translate-y-1"
           >
             Register Now
             <ExternalLink className="w-4 h-4" />
@@ -191,7 +191,7 @@ export default function JobsPage() {
 
             <main className="flex-grow pt-32 pb-16 px-4 relative overflow-hidden">
                 {/* Retro Background Elements */}
-                <div className="absolute top-0 left-0 w-full h-[500px] bg-yellow-500/5 blur-[120px] pointer-events-none" />
+                <div className="absolute top-0 left-0 w-full h-[500px] bg-white/5 blur-[120px] pointer-events-none" />
 
                 <div className="container mx-auto max-w-6xl relative z-10">
 
@@ -201,8 +201,8 @@ export default function JobsPage() {
                             <h1 className="text-2xl md:text-3xl font-black text-white uppercase tracking-wider">
                                 Job Fair
                             </h1>
-                            <div className="h-px flex-1 bg-gradient-to-r from-yellow-400/30 to-transparent" />
-                            <span className="text-xs text-yellow-400 font-mono uppercase tracking-widest">
+                            <div className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent" />
+                            <span className="text-xs text-white font-mono uppercase tracking-widest">
                                 {jobFairs.length} upcoming
                             </span>
                         </div>
@@ -241,7 +241,7 @@ export default function JobsPage() {
                         <div className="text-center py-24 bg-zinc-900/30 rounded border border-white/5 border-dashed">
                             <IconBriefcase className="w-16 h-16 text-zinc-700 mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-zinc-400 mb-2">NO SIGNALS DETECTED</h3>
-                            <button onClick={handleRefresh} className="text-yellow-400 hover:underline text-sm uppercase">
+                            <button onClick={handleRefresh} className="text-white hover:underline text-sm uppercase">
                                 Try Scanning Again
                             </button>
                         </div>
@@ -256,10 +256,10 @@ export default function JobsPage() {
                                             animate={{ opacity: 1, y: 0 }}
                                             exit={{ opacity: 0, scale: 0.95 }}
                                             whileHover={{ y: -5 }}
-                                            className="group relative bg-zinc-900 border border-white/10 p-6 rounded hover:border-yellow-400 transition-all flex flex-col h-full hover:shadow-[0_0_20px_rgba(250,204,21,0.1)]"
+                                            className="group relative bg-zinc-900 border border-white/10 p-6 rounded hover:border-white/25 transition-all flex flex-col h-full hover:shadow-[0_0_20px_rgba(255,255,255,0.08)]"
                                         >
                                             <div className="flex items-start justify-between mb-4">
-                                                <div className="bg-zinc-800 p-2 rounded border border-white/5 text-zinc-400 group-hover:text-yellow-400 transition-colors">
+                                                <div className="bg-zinc-800 p-2 rounded border border-white/5 text-zinc-400 group-hover:text-white transition-colors">
                                                     <IconBriefcase size={20} />
                                                 </div>
                                                 <span className="text-[10px] font-bold px-2 py-1 bg-blue-900/20 text-blue-400 rounded uppercase tracking-wider border border-blue-500/20">
@@ -267,7 +267,7 @@ export default function JobsPage() {
                                                 </span>
                                             </div>
 
-                                            <h3 className="text-lg font-bold text-white mb-1 line-clamp-2 leading-tight group-hover:text-yellow-400 transition-colors" title={job.title}>
+                                            <h3 className="text-lg font-bold text-white mb-1 line-clamp-2 leading-tight group-hover:text-white transition-colors" title={job.title}>
                                                 {job.title}
                                             </h3>
                                             <p className="text-sm text-zinc-500 mb-4 font-mono truncate">
@@ -289,7 +289,7 @@ export default function JobsPage() {
                                                         href={job.url}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        className="flex-1 bg-white hover:bg-yellow-400 text-black font-bold text-center py-2.5 rounded text-sm transition-all flex items-center justify-center gap-2 uppercase tracking-wide group-hover:translate-x-1"
+                                                        className="flex-1 bg-white hover:bg-white text-black font-bold text-center py-2.5 rounded text-sm transition-all flex items-center justify-center gap-2 uppercase tracking-wide group-hover:translate-x-1"
                                                     >
                                                         Apply <IconExternalLink size={14} />
                                                     </a>
@@ -310,19 +310,19 @@ export default function JobsPage() {
                                     <button
                                         onClick={() => setPage(p => Math.max(1, p - 1))}
                                         disabled={page === 1}
-                                        className="p-3 bg-zinc-900 border border-white/10 hover:border-yellow-400 text-white rounded transition-colors disabled:opacity-30 disabled:hover:border-white/10"
+                                        className="p-3 bg-zinc-900 border border-white/10 hover:border-white/25 text-white rounded transition-colors disabled:opacity-30 disabled:hover:border-white/10"
                                     >
                                         <IconArrowLeft size={20} />
                                     </button>
 
                                     <div className="font-pixel text-sm bg-zinc-900 px-4 py-2 rounded border border-white/10 text-zinc-400">
-                                        Page <span className="text-yellow-400 mx-1">{page}</span> / {totalPages}
+                                        Page <span className="text-white mx-1">{page}</span> / {totalPages}
                                     </div>
 
                                     <button
                                         onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                                         disabled={page === totalPages}
-                                        className="p-3 bg-zinc-900 border border-white/10 hover:border-yellow-400 text-white rounded transition-colors disabled:opacity-30 disabled:hover:border-white/10"
+                                        className="p-3 bg-zinc-900 border border-white/10 hover:border-white/25 text-white rounded transition-colors disabled:opacity-30 disabled:hover:border-white/10"
                                     >
                                         <IconArrowRight size={20} />
                                     </button>

@@ -65,7 +65,7 @@ export default function GitCoursePage() {
         return (
             <div className="min-h-screen bg-black flex items-center justify-center text-white">
                 <div className="flex flex-col items-center gap-4">
-                    <Loader2 className="w-8 h-8 animate-spin text-yellow-400" />
+                    <Loader2 className="w-8 h-8 animate-spin text-white" />
                     <p>Loading course content...</p>
                 </div>
             </div>
@@ -79,7 +79,7 @@ export default function GitCoursePage() {
                     <p className="text-red-400 text-xl">{error || "Course not found"}</p>
                     <button
                         onClick={() => window.location.reload()}
-                        className="px-6 py-2 bg-yellow-400 text-black font-bold rounded hover:bg-yellow-500"
+                        className="px-6 py-2 bg-white text-black font-bold rounded hover:bg-neutral-200"
                     >
                         Retry
                     </button>
@@ -116,7 +116,7 @@ export default function GitCoursePage() {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-                            <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-yellow-400 font-mono mb-3">
+                            <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-white font-mono mb-3">
                                 {course.title}
                             </p>
                             <h1 className="text-2xl md:text-5xl font-bold mb-4 text-white drop-shadow-[4px_4px_0_rgba(0,0,0,1)] break-words">
@@ -125,7 +125,7 @@ export default function GitCoursePage() {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-6 py-2 md:px-8 md:py-3 bg-yellow-400 text-black font-bold text-sm md:text-lg border-b-4 border-r-4 border-yellow-600 uppercase"
+                                className="px-6 py-2 md:px-8 md:py-3 bg-white text-black font-bold text-sm md:text-lg border-b-4 border-r-4 border-neutral-900 uppercase"
                             >
                                 Start Hacking Git →
                             </motion.button>
@@ -162,7 +162,7 @@ export default function GitCoursePage() {
                                             <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-900 text-white font-bold text-sm md:text-xl font-mono border-2 border-gray-800 group-hover:border-gray-600 transition-colors">
                                                 {moduleIndex + 1}
                                             </div>
-                                            <h3 className="text-lg md:text-2xl font-bold text-white group-hover:text-yellow-400 transition-colors break-words">
+                                            <h3 className="text-lg md:text-2xl font-bold text-white group-hover:text-white transition-colors break-words">
                                                 {module.title}
                                             </h3>
                                         </div>
@@ -210,7 +210,7 @@ export default function GitCoursePage() {
                                                                 </div>
 
                                                                 <div className="flex items-center justify-end sm:justify-start gap-3">
-                                                                    <div className={`px-2 py-1 md:px-4 md:py-1 rounded bg-yellow-400 text-black text-[10px] md:text-xs font-bold font-mono border border-yellow-500 ${topic.isFree ? 'group-hover:bg-yellow-500' : ''}`}>
+                                                                    <div className={`px-2 py-1 md:px-4 md:py-1 rounded bg-white text-black text-[10px] md:text-xs font-bold font-mono border border-white/30 ${topic.isFree ? 'group-hover:bg-neutral-200' : ''}`}>
                                                                         {topic.xp} xp
                                                                     </div>
                                                                 </div>
@@ -234,13 +234,13 @@ export default function GitCoursePage() {
                                 <motion.div
                                     initial={{ width: 0 }}
                                     animate={{ width: `${progressPercent}%` }}
-                                    className="h-full bg-yellow-400"
+                                    className="h-full bg-white"
                                 />
                             </div>
                             <p className="text-sm text-zinc-400 mb-6 uppercase tracking-widest font-mono">
                                 Status: {progressPercent === 100 ? "COMPLETED" : "IN PROGRESS"}
                             </p>
-                            <button className="w-full py-4 bg-yellow-400 text-black font-bold border-b-4 border-r-4 border-yellow-600 hover:scale-[1.02] transition-transform">
+                            <button className="w-full py-4 bg-white text-black font-bold border-b-4 border-r-4 border-neutral-900 hover:scale-[1.02] transition-transform">
                                 VIEW PROGRESS
                             </button>
                         </div>

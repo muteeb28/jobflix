@@ -114,8 +114,8 @@ export default function MentorsView() {
     return (
         <div className="flex flex-col w-full relative overflow-hidden">
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute -left-24 top-16 w-80 h-80 bg-amber-400/10 blur-[120px]" />
-                <div className="absolute right-[-140px] bottom-[-80px] w-[520px] h-[520px] bg-amber-500/12 blur-[150px]" />
+                <div className="absolute -left-24 top-16 w-80 h-80 bg-white/10 blur-[120px]" />
+                <div className="absolute right-[-140px] bottom-[-80px] w-[520px] h-[520px] bg-white/5 blur-[150px]" />
                 <div className="absolute inset-0 opacity-70">
                     <SparklesCore
                         id="mentors-sparkles"
@@ -123,7 +123,7 @@ export default function MentorsView() {
                         minSize={0.6}
                         maxSize={1.4}
                         particleDensity={60}
-                        particleColor="#fbbf24"
+                        particleColor="#ffffff"
                         speed={0.35}
                         className="w-full h-full"
                     />
@@ -133,7 +133,7 @@ export default function MentorsView() {
             <div className="max-w-6xl mx-auto relative z-10 w-full px-4 pt-10 pb-16">
 
                 <div className="text-center mb-10">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-amber-400/30 text-xs md:text-sm text-amber-100 font-mono uppercase tracking-[0.3em] shadow-[0_10px_40px_rgba(251,191,36,0.08)]">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/20 text-xs md:text-sm text-neutral-300 font-mono uppercase tracking-[0.3em] shadow-[0_10px_40px_rgba(255,255,255,0.06)]">
                         Mentors
                     </div>
                     <h1 className="mt-4 text-4xl md:text-5xl font-bold tracking-tight leading-tight">
@@ -152,8 +152,8 @@ export default function MentorsView() {
                                 key={cat.id}
                                 onClick={() => setActiveCategory(cat.id)}
                                 className={`px-4 py-2 rounded-full border text-sm font-bold uppercase tracking-[0.14em] transition-colors ${isActive
-                                    ? "bg-amber-400 text-black border-amber-500 shadow-[0_10px_30px_rgba(251,191,36,0.25)]"
-                                    : "border-amber-400/30 text-amber-100 hover:border-amber-300/60"
+                                    ? "bg-white text-black border-white/40 shadow-[0_0_30px_rgba(255,255,255,0.15)]"
+                                    : "border-white/20 text-neutral-300 hover:border-white/40"
                                     }`}
                             >
                                 {cat.label}
@@ -171,7 +171,7 @@ export default function MentorsView() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -10 }}
                                 transition={{ delay: idx * 0.05 }}
-                                className="group rounded-2xl border border-amber-400/20 bg-black/60 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.45)] hover:border-amber-300/50 hover:-translate-y-1 transition-all"
+                                className="group rounded-2xl border border-white/15 bg-black/60 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.45)] hover:border-white/35 hover:-translate-y-1 transition-all"
                             >
                                 <div className="aspect-[4/3] bg-gradient-to-br from-white/5 via-white/0 to-white/5 relative overflow-hidden">
                                     <div className="absolute inset-0 bg-[url('/assets/noise.png')] opacity-10" />
@@ -185,7 +185,7 @@ export default function MentorsView() {
                                             className="h-full w-full object-cover"
                                         />
                                     ) : (
-                                        <div className="h-full w-full flex items-center justify-center text-amber-200/70">
+                                        <div className="h-full w-full flex items-center justify-center text-white/60">
                                             <Users className="w-10 h-10" />
                                         </div>
                                     )}
@@ -194,10 +194,10 @@ export default function MentorsView() {
                                     <div className="flex items-center justify-between">
                                         <div>
                                             <h3 className="text-lg font-bold">{mentor.name}</h3>
-                                            <p className="text-amber-200 text-sm font-mono">{mentor.role}</p>
+                                            <p className="text-neutral-400 text-sm font-mono">{mentor.role}</p>
                                         </div>
-                                        <div className="flex items-center gap-1 text-amber-300 text-xs font-bold uppercase tracking-[0.14em]">
-                                            <Star className="w-4 h-4 fill-amber-300 text-amber-300" />
+                                        <div className="flex items-center gap-1 text-white text-xs font-bold uppercase tracking-[0.14em]">
+                                            <Star className="w-4 h-4 fill-white text-white" />
                                             Mentor
                                         </div>
                                     </div>
@@ -206,7 +206,7 @@ export default function MentorsView() {
                                         {mentor.tags.map((tag) => (
                                             <span
                                                 key={tag}
-                                                className="px-2 py-1 rounded-full border border-amber-400/30 text-[11px] text-amber-100"
+                                                className="px-2 py-1 rounded-full border border-white/20 text-[11px] text-neutral-300"
                                             >
                                                 {tag}
                                             </span>
@@ -215,7 +215,7 @@ export default function MentorsView() {
                                     <div className="pt-3">
                                         <Link
                                             href="/prepare"
-                                            className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-amber-100 hover:text-amber-200 transition-colors"
+                                            className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-neutral-300 hover:text-neutral-400 transition-colors"
                                         >
                                             Book a session
                                             <motion.span initial={{ x: 0 }} whileHover={{ x: 4 }} className="inline-flex">

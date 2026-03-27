@@ -52,37 +52,37 @@ const AnimatedMarkdown = ({ content }: { content: string }) => {
                 remarkPlugins={[remarkGfm]}
                 components={{
                     table: ({ ...props }) => (
-                        <div className="overflow-x-auto my-4 border-2 border-amber-500/20 rounded-lg">
+                        <div className="overflow-x-auto my-4 border-2 border-white/10 rounded-lg">
                             <table className="w-full border-collapse bg-black/40" {...props} />
                         </div>
                     ),
                     th: ({ children, ...props }) => (
-                        <th className="border border-amber-500/20 px-4 py-2 bg-amber-500/10 text-amber-400 text-left font-bold" {...props}>
+                        <th className="border border-white/10 px-4 py-2 bg-white/10 text-white text-left font-bold" {...props}>
                             <WordWrapper>{children}</WordWrapper>
                         </th>
                     ),
                     td: ({ children, ...props }) => (
-                        <td className="border border-amber-500/20 px-4 py-2 text-sm" {...props}>
+                        <td className="border border-white/10 px-4 py-2 text-sm" {...props}>
                             <WordWrapper>{children}</WordWrapper>
                         </td>
                     ),
                     strong: ({ children, ...props }) => (
-                        <strong className="text-amber-400 font-bold" {...props}>
+                        <strong className="text-white font-bold" {...props}>
                             <WordWrapper>{children}</WordWrapper>
                         </strong>
                     ),
                     h1: ({ children, ...props }) => (
-                        <h1 className="text-2xl font-bold text-amber-400 mb-4" {...props}>
+                        <h1 className="text-2xl font-bold text-white mb-4" {...props}>
                             <WordWrapper>{children}</WordWrapper>
                         </h1>
                     ),
                     h2: ({ children, ...props }) => (
-                        <h2 className="text-xl font-bold text-amber-500 mb-3" {...props}>
+                        <h2 className="text-xl font-bold text-white mb-3" {...props}>
                             <WordWrapper>{children}</WordWrapper>
                         </h2>
                     ),
                     h3: ({ children, ...props }) => (
-                        <h3 className="text-lg font-bold text-amber-600 mb-2" {...props}>
+                        <h3 className="text-lg font-bold text-white mb-2" {...props}>
                             <WordWrapper>{children}</WordWrapper>
                         </h3>
                     ),
@@ -178,7 +178,7 @@ export default function PlaceholdersAndVanishInputDemo() {
             {/* Response Area */}
             <div className="mt-10 w-full">
                 {loading && (
-                    <div className="text-center text-amber-300 font-mono animate-pulse">
+                    <div className="text-center text-white font-mono animate-pulse">
                         Thinking...
                     </div>
                 )}
@@ -188,9 +188,9 @@ export default function PlaceholdersAndVanishInputDemo() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.4 }}
-                        className="p-6 rounded-2xl bg-zinc-900/90 border-2 border-amber-500/30 shadow-[0_0_30px_rgba(245,158,11,0.1)] overflow-hidden"
+                        className="p-6 rounded-2xl bg-zinc-900/90 border-2 border-white/15 shadow-[0_0_30px_rgba(255,255,255,0.05)] overflow-hidden"
                     >
-                        <div className="prose prose-invert max-w-none prose-p:leading-relaxed prose-pre:bg-black/50 prose-pre:border prose-pre:border-white/10 scrollbar-thin scrollbar-thumb-amber-400/20 scrollbar-track-transparent max-h-[60vh] overflow-y-auto font-pixel text-zinc-200">
+                        <div className="prose prose-invert max-w-none prose-p:leading-relaxed prose-pre:bg-black/50 prose-pre:border prose-pre:border-white/10 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent max-h-[60vh] overflow-y-auto font-pixel text-zinc-200">
                             <AnimatedMarkdown content={response} />
                         </div>
                     </motion.div>

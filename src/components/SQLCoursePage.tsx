@@ -87,7 +87,7 @@ export default function SQLCoursePage() {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-8 py-3 bg-yellow-400 text-black font-bold text-lg border-b-4 border-r-4 border-yellow-600 uppercase"
+                                className="px-8 py-3 bg-white text-black font-bold text-lg border-b-4 border-r-4 border-neutral-900 uppercase"
                             >
                                 Continue Learning →
                             </motion.button>
@@ -125,14 +125,14 @@ export default function SQLCoursePage() {
                                             <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-900 text-white font-bold text-xl font-mono border-2 border-gray-800 group-hover:border-gray-600 transition-colors">
                                                 {moduleIndex + 1}
                                             </div>
-                                            <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-yellow-400 transition-colors">
+                                            <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-white transition-colors">
                                                 {module.title}
                                             </h3>
                                         </div>
                                         <div className="flex items-center gap-4">
                                             {/* Show Pro badge if module index is > 0 (assuming first module is free-ish or just following pattern) */}
                                             {moduleIndex > 0 && (
-                                                <span className="text-yellow-500 font-bold uppercase tracking-wider text-sm">Pro</span>
+                                                <span className="text-white font-bold uppercase tracking-wider text-sm">Pro</span>
                                             )}
                                             <ChevronDown
                                                 className={`w-6 h-6 text-gray-500 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
@@ -186,7 +186,7 @@ export default function SQLCoursePage() {
                                                                 </div>
 
                                                                 <div className="flex items-center gap-3">
-                                                                    <div className={`px-4 py-1 rounded bg-yellow-400 text-black text-xs font-bold font-mono border border-yellow-500 ${isFree ? 'group-hover:bg-yellow-500' : ''}`}>
+                                                                    <div className={`px-4 py-1 rounded bg-white text-black text-xs font-bold font-mono border border-white/30 ${isFree ? 'group-hover:bg-neutral-200' : ''}`}>
                                                                         {topic.xp} xp
                                                                     </div>
                                                                 </div>
@@ -218,7 +218,7 @@ export default function SQLCoursePage() {
                                     <span className="text-3xl">📚</span>
                                     <div>
                                         <p className="text-white font-bold">Exercises</p>
-                                        <p className="text-yellow-400 text-2xl">{completedTopics.length}/{freeTopics}</p>
+                                        <p className="text-white text-2xl">{completedTopics.length}/{freeTopics}</p>
                                     </div>
                                 </div>
                             </div>
@@ -229,7 +229,7 @@ export default function SQLCoursePage() {
                                     <span className="text-3xl">⭐</span>
                                     <div>
                                         <p className="text-white font-bold">XP Earned</p>
-                                        <p className="text-yellow-400 text-2xl">{xp}/780</p>
+                                        <p className="text-white text-2xl">{xp}/780</p>
                                     </div>
                                 </div>
                             </div>
@@ -244,19 +244,19 @@ export default function SQLCoursePage() {
                                     <motion.div
                                         initial={{ width: 0 }}
                                         animate={{ width: `${progress}%` }}
-                                        className="h-full bg-yellow-400"
+                                        className="h-full bg-white"
                                     />
                                 </div>
                             </div>
 
                             {/* Upgrade to Pro */}
-                            <div className="bg-gradient-to-br from-yellow-500 to-orange-500 p-6 text-center border-4 border-yellow-600">
+                            <div className="bg-gradient-to-br from-neutral-800 to-neutral-900 p-6 text-center border-4 border-neutral-900">
                                 <span className="text-4xl mb-2 block">👑</span>
                                 <h4 className="text-black font-bold text-lg mb-2">Upgrade to Pro</h4>
                                 <p className="text-black/80 text-sm mb-4">
                                     Unlock premium content!
                                 </p>
-                                <button className="w-full px-4 py-2 bg-black text-yellow-400 font-bold border-2 border-black hover:bg-gray-900 transition-colors">
+                                <button className="w-full px-4 py-2 bg-black text-white font-bold border-2 border-black hover:bg-gray-900 transition-colors">
                                     Upgrade
                                 </button>
                             </div>
@@ -267,7 +267,7 @@ export default function SQLCoursePage() {
                                 <p className="text-white/60 text-sm mb-3">
                                     Ask question in our community!
                                 </p>
-                                <button className="w-full px-4 py-2 bg-yellow-400 text-black font-bold hover:bg-yellow-500 transition-colors">
+                                <button className="w-full px-4 py-2 bg-white text-black font-bold hover:bg-neutral-200 transition-colors">
                                     Go To Community
                                 </button>
                             </div>

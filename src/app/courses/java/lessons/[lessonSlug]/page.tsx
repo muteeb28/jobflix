@@ -26,7 +26,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
       <div className="max-w-6xl mx-auto px-4 py-8 space-y-6">
         <header className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-yellow-500 to-orange-600 text-sm font-semibold uppercase tracking-[0.5em] text-black shadow-[0_10px_35px_rgba(0,0,0,0.45)]">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-neutral-300 to-neutral-500 text-sm font-semibold uppercase tracking-[0.5em] text-black shadow-[0_10px_35px_rgba(0,0,0,0.45)]">
               LVL
             </div>
             <div className="space-y-1">
@@ -61,7 +61,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
 
               <div className="space-y-3 rounded-2xl border border-slate-900 bg-black/40 p-5 shadow-[0_20px_45px_rgba(0,0,0,0.45)]">
                 <div className="flex items-center justify-between">
-                  <p className="text-[10px] uppercase tracking-[0.6em] text-yellow-300">
+                  <p className="text-[10px] uppercase tracking-[0.6em] text-white">
                     Assignment Instructions
                   </p>
                   <span className="text-[9px] uppercase tracking-[0.4em] text-slate-500">RAW</span>
@@ -80,7 +80,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
                           key={index}
                           className={
                             isTopicHeading
-                              ? "text-yellow-200 font-heading text-sm leading-[1.4] tracking-tight"
+                              ? "text-neutral-300 font-heading text-sm leading-[1.4] tracking-tight"
                               : "text-slate-100"
                           }
                         >
@@ -122,7 +122,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
           <div className="mt-6 flex flex-wrap items-center justify-end gap-3">
             <button
               type="button"
-              className="rounded-full border border-transparent bg-gradient-to-br from-yellow-400 to-orange-500 px-5 py-3 text-[11px] font-bold uppercase tracking-[0.35em] text-black shadow-[0_15px_50px_rgba(252,211,77,0.5)] transition hover:opacity-90"
+              className="rounded-full border border-transparent bg-gradient-to-br from-neutral-100 to-neutral-300 px-5 py-3 text-[11px] font-bold uppercase tracking-[0.35em] text-black shadow-[0_15px_50px_rgba(252,211,77,0.5)] transition hover:opacity-90"
             >
               Run
             </button>

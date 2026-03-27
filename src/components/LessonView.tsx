@@ -112,7 +112,7 @@ export default function LessonView({ lessonId, title, description, task, hint }:
                 <div className="flex items-center gap-4">
                     <Link href="/" className="flex items-center gap-2 group">
                         <div className="text-xl font-bold text-white font-pixel">
-                            <span className="text-yellow-500">👑</span> JobFlix
+                            <span className="text-white">👑</span> JobFlix
                         </div>
                     </Link>
                 </div>
@@ -122,10 +122,10 @@ export default function LessonView({ lessonId, title, description, task, hint }:
                 </div>
 
                 <div className="flex items-center gap-4">
-                    <button className="px-4 py-2 bg-yellow-400 text-black font-bold font-pixel text-sm rounded hover:bg-yellow-500 transition-colors">
+                    <button className="px-4 py-2 bg-white text-black font-bold font-pixel text-sm rounded hover:bg-neutral-200 transition-colors">
                         Dashboard
                     </button>
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 to-purple-500 border-2 border-white"></div>
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-neutral-600 to-neutral-800 border-2 border-white"></div>
                 </div>
             </header>
 
@@ -158,12 +158,12 @@ export default function LessonView({ lessonId, title, description, task, hint }:
                         </div>
 
                         {/* Hint */}
-                        <div className="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-5">
-                            <div className="flex items-center gap-2 text-yellow-400 mb-3">
+                        <div className="bg-white/5 border border-white/10 rounded-lg p-5">
+                            <div className="flex items-center gap-2 text-white mb-3">
                                 <Lightbulb className="w-5 h-5" />
                                 <h3 className="font-bold font-pixel uppercase">Hint</h3>
                             </div>
-                            <p className="text-yellow-100/80 text-sm leading-relaxed">
+                            <p className="text-neutral-400 text-sm leading-relaxed">
                                 {hint}
                             </p>
                         </div>
@@ -216,8 +216,8 @@ export default function LessonView({ lessonId, title, description, task, hint }:
                     Back To Course Detail
                 </Link>
 
-                <div className="flex items-center gap-2 text-yellow-400 font-bold font-pixel text-lg animate-pulse">
-                    <Star className="w-6 h-6 fill-yellow-400" />
+                <div className="flex items-center gap-2 text-white font-bold font-pixel text-lg animate-pulse">
+                    <Star className="w-6 h-6 fill-white" />
                     Total XP: {xp}
                 </div>
 
@@ -227,7 +227,7 @@ export default function LessonView({ lessonId, title, description, task, hint }:
                     </button>
                     <button
                         onClick={handleComplete}
-                        className="px-6 py-2 bg-yellow-400 text-black font-bold rounded hover:bg-yellow-500 transition-colors"
+                        className="px-6 py-2 bg-white text-black font-bold rounded hover:bg-neutral-200 transition-colors"
                     >
                         {isCompleted ? 'Completed' : 'Next'}
                     </button>

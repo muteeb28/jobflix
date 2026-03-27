@@ -13,11 +13,11 @@ export const DreamJobCTA = ({ cta }: { cta?: CTAData }) => {
         <div className="w-full bg-black relative overflow-hidden pb-16 pt-0 md:pb-24">
             {/* Background Elements */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
-                <div className="absolute right-10 top-10 text-yellow-500/20">
+                <div className="absolute right-10 top-10 text-white/20">
                     <Sparkles size={120} />
                 </div>
                 {/* Gradient glow for depth */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-yellow-500/5 rounded-full blur-[100px]" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-white/5 rounded-full blur-[100px]" />
             </div>
 
             <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center">
@@ -28,7 +28,7 @@ export const DreamJobCTA = ({ cta }: { cta?: CTAData }) => {
                 <div className="flex flex-col items-center gap-4">
                     <Link
                         href="#"
-                        className="inline-flex items-center justify-center px-8 py-4 bg-yellow-400 text-black font-bold text-lg md:text-xl border-b-4 border-r-4 border-yellow-600 active:border-0 active:translate-y-1 transition-all uppercase"
+                        className="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-bold text-lg md:text-xl border-b-4 border-r-4 border-neutral-900 active:border-0 active:translate-y-1 transition-all uppercase"
                     >
                         {cta?.buttonText || "Get started now"}
                     </Link>

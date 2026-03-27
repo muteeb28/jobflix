@@ -94,7 +94,7 @@ export const GoogleGeminiEffect = ({
                         <div className="absolute left-[470px] top-[250px] w-[280px] h-fit z-20 border border-white/10 bg-black/80 rounded-xl p-4 flex flex-col gap-4 backdrop-blur-md shadow-2xl">
                             {steps.map((step, idx) => (
                                 <div key={idx} className={cn("flex items-center gap-3 p-2 rounded-lg border h-10",
-                                    step.id === 3 ? "bg-white/5 border-yellow-500/50 shadow-[0_0_15px_rgba(234,179,8,0.2)]" : "bg-white/5 border-white/5"
+                                    step.id === 3 ? "bg-white/5 border-white/30 shadow-[0_0_15px_rgba(234,179,8,0.2)]" : "bg-white/5 border-white/5"
                                 )}>
                                     <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/10 text-xs font-mono text-zinc-400">{step.id}</span>
                                     <span className={cn("text-sm font-medium", step.id === 3 ? "text-white" : "text-zinc-300")}>{step.title}</span>
@@ -112,7 +112,7 @@ export const GoogleGeminiEffect = ({
                                         <span className={cn(
                                             "text-sm px-4 py-1.5 whitespace-nowrap",
                                             node.type === "primary"
-                                                ? "text-white border-l-2 border-yellow-500 bg-white/5 rounded-r-full"
+                                                ? "text-white border-l-2 border-white/30 bg-white/5 rounded-r-full"
                                                 : "text-zinc-400 border border-white/10 bg-black/50 rounded-full"
                                         )}>
                                             {node.text}
@@ -132,7 +132,7 @@ export const GoogleGeminiEffect = ({
                                         <span className={cn(
                                             "text-sm px-4 py-1.5 whitespace-nowrap",
                                             node.type === "primary"
-                                                ? "text-white border-l-2 border-yellow-500 bg-white/5 rounded-r-full"
+                                                ? "text-white border-l-2 border-white/30 bg-white/5 rounded-r-full"
                                                 : "text-zinc-400 border border-white/10 bg-black/50 rounded-full"
                                         )}>
                                             {node.text}
@@ -150,10 +150,10 @@ export const GoogleGeminiEffect = ({
                 {steps.map((step) => (
                     <div key={step.id} className={cn(
                         "flex flex-col gap-4 border p-4 rounded-xl",
-                        step.id === 3 ? "border-yellow-500/20 bg-yellow-900/10 relative overflow-hidden" : "border-white/10 bg-white/5"
+                        step.id === 3 ? "border-white/15 bg-white/5 relative overflow-hidden" : "border-white/10 bg-white/5"
                     )}>
                         {step.id === 3 && (
-                            <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-500/10 blur-2xl rounded-full translate-x-10 -translate-y-10" />
+                            <div className="absolute top-0 right-0 w-24 h-24 bg-white/8 blur-2xl rounded-full translate-x-10 -translate-y-10" />
                         )}
                         <div className={cn("flex items-center gap-3 border-b  pb-3 relative z-10", step.id === 3 ? "border-white/5" : "border-white/5")}>
                             <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 text-xs font-mono text-zinc-400 shrink-0">{step.id}</span>
@@ -164,7 +164,7 @@ export const GoogleGeminiEffect = ({
                                 <span key={idx} className={cn(
                                     "text-xs px-3 py-1",
                                     node.type === "primary"
-                                        ? "text-white border-l-2 border-yellow-500 bg-white/5 rounded-r-full"
+                                        ? "text-white border-l-2 border-white/30 bg-white/5 rounded-r-full"
                                         : "text-zinc-400 border border-white/10 bg-black/50 rounded-full"
                                 )}>
                                     {node.text}

@@ -46,12 +46,12 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             href="/signup"
-            className="px-6 py-2 bg-yellow-400 text-black font-bold text-sm rounded-lg active:scale-95 transition-all hover:scale-[1.03]"
+            className="px-6 py-2 bg-white text-black font-bold text-sm rounded-lg active:scale-95 transition-all hover:scale-[1.03]"
           >
             Signup
           </Link>
           <button
-            className="md:hidden p-2 rounded border border-gray-800 text-white hover:border-amber-400/50 transition"
+            className="md:hidden p-2 rounded border border-gray-800 text-white hover:border-white/25/50 transition"
             aria-label="Toggle navigation"
             onClick={() => setOpen((prev) => !prev)}
           >

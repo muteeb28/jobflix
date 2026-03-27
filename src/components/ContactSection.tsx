@@ -46,7 +46,7 @@ export const ContactSection = () => {
                                     id="message"
                                     rows={6}
                                     placeholder="WRITE YOUR MESSAGE..."
-                                    className="w-full bg-zinc-950 border-2 border-white/10 p-4 text-white placeholder-zinc-600 focus:outline-none focus:border-yellow-500 resize-none font-pixel"
+                                    className="w-full bg-zinc-950 border-2 border-white/10 p-4 text-white placeholder-zinc-600 focus:outline-none focus:border-white/30 resize-none font-pixel"
                                 />
                             </div>
 
@@ -59,14 +59,14 @@ export const ContactSection = () => {
                                     type="email"
                                     id="email"
                                     placeholder="JOHN@EXAMPLE.COM"
-                                    className="w-full bg-zinc-950 border-2 border-white/10 p-4 text-white placeholder-zinc-600 focus:outline-none focus:border-yellow-500 font-pixel"
+                                    className="w-full bg-zinc-950 border-2 border-white/10 p-4 text-white placeholder-zinc-600 focus:outline-none focus:border-white/30 font-pixel"
                                 />
                             </div>
 
                             <div className="flex justify-end pt-2">
                                 <button
                                     type="submit"
-                                    className="bg-yellow-400 text-black font-bold px-8 py-3 border-b-4 border-r-4 border-yellow-600 active:border-0 active:translate-y-1 transition-all uppercase"
+                                    className="bg-white text-black font-bold px-8 py-3 border-b-4 border-r-4 border-neutral-900 active:border-0 active:translate-y-1 transition-all uppercase"
                                 >
                                     Send message
                                 </button>
@@ -84,10 +84,10 @@ const ContactLink = ({ icon, label, href, highlighted }: { icon: React.ReactNode
     return (
         <Link
             href={href}
-            className={`group flex items-center justify-between p-4 border border-transparent hover:border-white/5 transition-all ${highlighted ? 'bg-yellow-500/10 text-yellow-400 hover:bg-yellow-500/20' : 'text-zinc-400 hover:bg-white/5 hover:text-white'}`}
+            className={`group flex items-center justify-between p-4 border border-transparent hover:border-white/5 transition-all ${highlighted ? 'bg-white/8 text-white hover:bg-neutral-200/20' : 'text-zinc-400 hover:bg-white/5 hover:text-white'}`}
         >
             <div className="flex items-center gap-4">
-                <span className={highlighted ? "text-yellow-400" : "text-zinc-500 group-hover:text-white transition-colors"}>
+                <span className={highlighted ? "text-white" : "text-zinc-500 group-hover:text-white transition-colors"}>
                     {icon}
                 </span>
                 <span className="font-medium text-base">{label}</span>

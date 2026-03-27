@@ -26,7 +26,7 @@ export default function CourseList() {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             viewport={{ once: true }}
                             whileHover={{ y: -10 }}
-                            className="bg-gray-900 rounded-xl overflow-hidden border-4 border-gray-800 hover:border-yellow-500 transition-colors group shadow-[8px_8px_0_rgba(0,0,0,0.5)]"
+                            className="bg-gray-900 rounded-xl overflow-hidden border-4 border-gray-800 hover:border-white/30 transition-colors group shadow-[8px_8px_0_rgba(0,0,0,0.5)]"
                         >
                             {/* Course Image */}
                             <div className="relative h-56 w-full border-b-4 border-gray-800">
@@ -41,7 +41,7 @@ export default function CourseList() {
 
                             {/* Content */}
                             <div className="p-6">
-                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors">
+                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-white transition-colors">
                                     {course.title}
                                 </h3>
                                 <p className="text-white/60 text-sm mb-6 font-mono leading-relaxed h-20">
@@ -62,7 +62,7 @@ export default function CourseList() {
                     <motion.button
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95, y: 2 }}
-                        className="px-8 py-4 bg-yellow-400 text-black font-bold text-xl border-b-8 border-r-8 border-yellow-600 active:border-0 active:translate-y-2 transition-all uppercase tracking-widest shadow-[0_0_20px_rgba(250,204,21,0.4)]"
+                        className="px-8 py-4 bg-white text-black font-bold text-xl border-b-8 border-r-8 border-neutral-900 active:border-0 active:translate-y-2 transition-all uppercase tracking-widest shadow-[0_0_20px_rgba(250,204,21,0.4)]"
                     >
                         Explore More Courses
                     </motion.button>

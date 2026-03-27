@@ -76,7 +76,7 @@ export default function VideoConsultation() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <GradientButton variant="primary" size="lg" className="bg-yellow-500 hover:bg-yellow-600">
+                <GradientButton variant="primary" size="lg" className="bg-white hover:bg-neutral-300">
                   Book a Free Call
                 </GradientButton>
               </div>
@@ -97,7 +97,7 @@ export default function VideoConsultation() {
               <div className="bg-gray-700 px-4 py-3 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-white rounded-full"></div>
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 </div>
                 <div className="text-white/60 text-sm">meet.google.com</div>
