@@ -68,7 +68,7 @@ export const GoogleGeminiEffect = ({
                         {/* Center 1 to Left 2 */}
                         <motion.path d="M 470 270 C 350 270 350 225 250 225" stroke="#3f3f46" strokeWidth="1.5" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, ease: "easeInOut" }} />
                         {/* Center 2 to Left 3 */}
-                        <motion.path d="M 470 310 C 350 310 350 300 250 300" stroke="#eab308" strokeOpacity="0.8" strokeWidth="1.5" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, ease: "easeInOut" }} />
+                        <motion.path d="M 470 310 C 350 310 350 300 250 300" stroke="#ffffff" strokeOpacity="0.8" strokeWidth="1.5" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, ease: "easeInOut" }} />
                         {/* Center 3 to Left 4 */}
                         <motion.path d="M 470 350 C 350 350 350 375 250 375" stroke="#3f3f46" strokeWidth="1.5" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, ease: "easeInOut" }} />
                         {/* Center 3 to Left 5 */}
@@ -80,7 +80,7 @@ export const GoogleGeminiEffect = ({
                         {/* Center 1 to Right 2 */}
                         <motion.path d="M 750 270 C 850 270 850 225 970 225" stroke="#3f3f46" strokeWidth="1.5" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, ease: "easeInOut" }} />
                         {/* Center 2 to Right 3 */}
-                        <motion.path d="M 750 310 C 850 310 850 300 970 300" stroke="#eab308" strokeOpacity="0.8" strokeWidth="1.5" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, ease: "easeInOut" }} />
+                        <motion.path d="M 750 310 C 850 310 850 300 970 300" stroke="#ffffff" strokeOpacity="0.8" strokeWidth="1.5" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, ease: "easeInOut" }} />
                         {/* Center 3 to Right 4 */}
                         <motion.path d="M 750 350 C 850 350 850 375 970 375" stroke="#3f3f46" strokeWidth="1.5" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, ease: "easeInOut" }} />
                         {/* Center 3 to Right 5 */}

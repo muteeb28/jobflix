@@ -54,7 +54,7 @@ export const HoverBorderGradient = ({
           hovered && "opacity-100"
         )}
         style={{
-          background: `conic-gradient(from 0deg at 50% 50%, transparent 0deg, #f97316 60deg, #fb923c 120deg, #fdba74 180deg, #fed7aa 240deg, #f97316 300deg, transparent 360deg)`,
+          background: `conic-gradient(from 0deg at 50% 50%, transparent 0deg, #ffffff 60deg, #d4d4d4 120deg, #a3a3a3 180deg, #d4d4d4 240deg, #ffffff 300deg, transparent 360deg)`,
           animation: hovered ? `spin ${duration}s linear infinite ${gradientDirection === 'clockwise' ? 'normal' : 'reverse'}` : undefined,
         }}
       />

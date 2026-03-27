@@ -21,7 +21,7 @@ export const services = [
     title: "Professional Courses",
     description:
       "Master in-demand skills with our comprehensive training programs designed by industry experts.",
-    gradient: "from-yellow-500 to-orange-500",
+    gradient: "from-neutral-700 to-neutral-900",
     icon: "PC",
     features: ["Certified Programs", "Hands-on Training", "Industry Projects"],
     delay: 0.3,
