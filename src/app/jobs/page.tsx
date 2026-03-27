@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import { IconBriefcase, IconExternalLink, IconArrowLeft, IconArrowRight, IconMapPin, IconClock } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Calendar, Building2, Zap, ExternalLink } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const jobFairs = [
+const jobFairs: JobFair[] = [
   {
     id: "1",
     name: "Career Synergy Summit 2026",
@@ -18,6 +19,7 @@ const jobFairs = [
     package: "30+ LPA",
     companies: "25+",
     registerUrl: "#",
+    image: "/assets/job-fair-career-synergy-2026.jpg",
     color: "from-red-900/40 via-zinc-900 to-blue-900/30",
     accent: "text-yellow-400",
     border: "border-yellow-400/30",
@@ -25,7 +27,24 @@ const jobFairs = [
   },
 ];
 
-function JobFairCard({ fair }: { fair: typeof jobFairs[0] }) {
+type JobFair = {
+  id: string;
+  name: string;
+  tagline: string;
+  organizer: string;
+  location: string;
+  dates: string;
+  package: string;
+  companies: string;
+  registerUrl: string;
+  image?: string;
+  color: string;
+  accent: string;
+  border: string;
+  glow: string;
+};
+
+function JobFairCard({ fair }: { fair: JobFair }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -37,7 +56,20 @@ function JobFairCard({ fair }: { fair: typeof jobFairs[0] }) {
       <div className="absolute bottom-0 left-0 w-48 h-48 bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6">
-        {/* Left: Info */}
+        {/* Image */}
+        {fair.image && (
+          <div className="shrink-0 w-full md:w-48 h-56 md:h-64 rounded-xl overflow-hidden border border-white/10">
+            <Image
+              src={fair.image}
+              alt={fair.name}
+              width={192}
+              height={256}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+
+        {/* Middle: Info */}
         <div className="flex-1 min-w-0">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-400/10 border border-yellow-400/20 mb-4">
