@@ -37,7 +37,7 @@ function OpportunitiesPageContent() {
     };
 
     return (
-        <div className="min-h-screen bg-white text-neutral-900 font-pixel flex flex-col">
+        <div className="min-h-screen bg-white text-neutral-900 font-sans flex flex-col">
             <Navbar />
 
             <div className="flex-grow pt-24 pb-12">

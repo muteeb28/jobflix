@@ -189,7 +189,7 @@ export default function PreparePage() {
   }, [categoryFiltered]);
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900 font-pixel flex flex-col">
+    <div className="min-h-screen bg-white text-neutral-900 font-sans flex flex-col">
       <Navbar />
 
       <main className="flex-grow pt-24 pb-16 px-4 md:px-6">

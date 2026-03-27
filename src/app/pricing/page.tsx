@@ -55,7 +55,7 @@ const plans = [
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-white text-neutral-900 font-pixel flex flex-col">
+    <div className="min-h-screen bg-white text-neutral-900 font-sans flex flex-col">
       <Navbar />
 
       <main className="flex-grow pt-28 pb-20 px-4 relative overflow-hidden">
