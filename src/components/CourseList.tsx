@@ -3,71 +3,65 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { courses } from "@/lib/data";
+import { CornerBracket } from "@/components/ui/aceternity-decorations";
 
 export default function CourseList() {
-    return (
-        <section className="py-20 bg-white font-pixel">
-            <div className="container mx-auto px-4">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 mb-4 drop-shadow-[4px_4px_0_rgba(0,0,0,1)]">
-                        Frontend Course to Explore
-                    </h2>
-                    <p className="text-neutral-900/60 text-lg max-w-2xl mx-auto font-mono">
-                        Learn Coding with interactive courses, Practical hands-on with real life example!
-                    </p>
-                </div>
+  return (
+    <section className="py-20 bg-neutral-50/50 px-4">
+      <div className="container mx-auto max-w-5xl">
+        {/* Section header */}
+        <div className="mb-12">
+          <p className="text-xs font-mono uppercase tracking-widest text-emerald-500 mb-2">Frontend</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-neutral-900 tracking-tight mb-3"
+            style={{ fontFamily: "var(--font-bricolage)" }}>
+            Frontend Courses
+          </h2>
+          <p className="text-neutral-500 text-base max-w-xl">
+            Learn with interactive courses and practical, real-world examples.
+          </p>
+        </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                    {courses.map((course, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            viewport={{ once: true }}
-                            whileHover={{ y: -10 }}
-                            className="bg-neutral-100 rounded-xl overflow-hidden border-4 border-neutral-200 hover:border-white/30 transition-colors group shadow-[0_2px_12px_rgba(0,0,0,0.08)]"
-                        >
-                            {/* Course Image */}
-                            <div className="relative h-56 w-full border-b-4 border-neutral-200">
-                                <Image
-                                    src={course.image}
-                                    alt={course.title}
-                                    fill
-                                    className="object-cover pixelated"
-                                    unoptimized // Required for GIFs
-                                />
-                            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {courses.map((course, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -4 }}
+              className="group relative bg-white rounded-2xl border border-neutral-200 overflow-hidden hover:border-emerald-300 hover:shadow-[0_8px_32px_rgba(16,185,129,0.1)] transition-all duration-300"
+            >
+              <CornerBracket className="absolute top-0 left-0 opacity-40 group-hover:opacity-70 transition-opacity z-10" />
+              <CornerBracket className="absolute top-0 right-0 rotate-90 opacity-40 group-hover:opacity-70 transition-opacity z-10" />
 
-                            {/* Content */}
-                            <div className="p-6">
-                                <h3 className="text-xl font-bold text-neutral-900 mb-3 group-hover:text-teal-600 transition-colors">
-                                    {course.title}
-                                </h3>
-                                <p className="text-neutral-900/60 text-sm mb-6 font-mono leading-relaxed h-20">
-                                    {course.description}
-                                </p>
+              {/* Course image */}
+              <div className="relative h-48 w-full border-b border-neutral-100 overflow-hidden">
+                <Image
+                  src={course.image}
+                  alt={course.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  unoptimized
+                />
+              </div>
 
-                                <div className="flex items-center justify-between">
-                                    <span className="px-3 py-1 bg-gray-800 rounded text-xs text-neutral-900/80 font-mono border border-neutral-200">
-                                        📊 {course.level}
-                                    </span>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-
-                <div className="text-center mt-16">
-                    <motion.button
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95, y: 2 }}
-                        className="px-8 py-4 bg-teal-500 text-neutral-900 font-bold text-xl border-b-8 border-r-8 border-neutral-200 active:border-0 active:translate-y-2 transition-all uppercase tracking-widest shadow-[0_0_20px_rgba(250,204,21,0.4)]"
-                    >
-                        Explore More Courses
-                    </motion.button>
-                </div>
-            </div>
-        </section>
-    );
+              {/* Content */}
+              <div className="p-5">
+                <h3 className="text-base font-bold text-neutral-900 mb-1.5 leading-snug group-hover:text-emerald-600 transition-colors">
+                  {course.title}
+                </h3>
+                <p className="text-sm text-neutral-400 leading-relaxed mb-4 line-clamp-2">
+                  {course.description}
+                </p>
+                <span className="px-2.5 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-[11px] font-semibold text-emerald-700 uppercase tracking-wider">
+                  {course.level}
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

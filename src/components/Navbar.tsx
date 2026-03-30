@@ -46,7 +46,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             href="/signup"
-            className="px-6 py-2 bg-teal-500 text-neutral-900 font-bold text-sm rounded-lg active:scale-95 transition-all hover:scale-[1.03] hover:bg-teal-600"
+            className="px-6 py-2 bg-[#10b981] hover:bg-[#059669] text-white font-bold text-sm rounded-full active:scale-95 transition-all hover:scale-[1.03] shadow-[0_0_16px_rgba(16,185,129,0.3)]"
           >
             Signup
           </Link>

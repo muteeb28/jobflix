@@ -2,11 +2,12 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { IconBriefcase, IconExternalLink, IconArrowLeft, IconArrowRight, IconMapPin, IconClock } from "@tabler/icons-react";
+import { IconBriefcase, IconExternalLink, IconArrowLeft, IconArrowRight, IconMapPin, IconClock, IconX } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Calendar, Building2, Zap, ExternalLink } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { CornerBracket } from "@/components/ui/aceternity-decorations";
 
 const jobFairs: JobFair[] = [
   {
@@ -20,10 +21,10 @@ const jobFairs: JobFair[] = [
     companies: "25+",
     registerUrl: "#",
     image: "/assets/job-fair-career-synergy-2026.jpg",
-    color: "from-red-900/40 via-zinc-900 to-blue-900/30",
+    color: "from-white to-emerald-50/40",
     accent: "text-neutral-900",
     border: "border-neutral-200",
-    glow: "shadow-[0_0_40px_rgba(0,0,0,0.05)]",
+    glow: "shadow-[0_4px_40px_rgba(0,0,0,0.06)]",
   },
 ];
 
@@ -44,7 +45,137 @@ type JobFair = {
   glow: string;
 };
 
-function JobFairCard({ fair }: { fair: JobFair }) {
+/* ── Registration Modal ─────────────────────────────────────────────── */
+function RegistrationModal({ fair, onClose }: { fair: JobFair; onClose: () => void }) {
+  const [submitted, setSubmitted] = React.useState(false);
+  const [form, setForm] = React.useState({
+    name: "", email: "", phone: "", college: "", branch: "", year: "", rollNo: "",
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={onClose} />
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 10 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 10 }}
+        className="relative w-full max-w-lg bg-white rounded-2xl border border-neutral-200 shadow-[0_20px_60px_rgba(0,0,0,0.12)] overflow-hidden"
+      >
+        {/* Header */}
+        <div className="px-6 pt-6 pb-4 border-b border-neutral-100">
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 p-1.5 rounded-lg hover:bg-neutral-100 text-neutral-400 hover:text-neutral-700 transition-colors"
+          >
+            <IconX size={18} />
+          </button>
+          <p className="text-[10px] font-mono uppercase tracking-widest text-emerald-500 mb-1">
+            {fair.tagline}
+          </p>
+          <h2 className="text-lg font-extrabold text-neutral-900 leading-tight">{fair.name}</h2>
+          <p className="text-xs text-neutral-400 mt-0.5">{fair.location} · {fair.dates}</p>
+        </div>
+
+        {/* Body */}
+        <div className="px-6 py-5">
+          {submitted ? (
+            <div className="text-center py-8">
+              <div className="w-14 h-14 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center mx-auto mb-4">
+                <svg className="w-7 h-7 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="text-base font-bold text-neutral-800 mb-1">You&apos;re registered!</h3>
+              <p className="text-sm text-neutral-400">We&apos;ll send confirmation to <span className="text-neutral-700 font-medium">{form.email}</span></p>
+              <button
+                onClick={onClose}
+                className="mt-6 px-6 py-2.5 bg-[#10b981] hover:bg-[#059669] text-white text-sm font-bold rounded-full transition-all"
+              >
+                Done
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="col-span-2">
+                  <label className="block text-[11px] font-semibold text-neutral-500 mb-1">Full Name *</label>
+                  <input required value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                    placeholder="Arjun Kumar"
+                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-semibold text-neutral-500 mb-1">Email *</label>
+                  <input required type="email" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                    placeholder="arjun@example.com"
+                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-semibold text-neutral-500 mb-1">Phone *</label>
+                  <input required type="tel" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
+                    placeholder="9876543210"
+                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition"
+                  />
+                </div>
+                <div className="col-span-2">
+                  <label className="block text-[11px] font-semibold text-neutral-500 mb-1">College / University *</label>
+                  <input required value={form.college} onChange={e => setForm(f => ({ ...f, college: e.target.value }))}
+                    placeholder="RIMT University"
+                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-semibold text-neutral-500 mb-1">Branch *</label>
+                  <input required value={form.branch} onChange={e => setForm(f => ({ ...f, branch: e.target.value }))}
+                    placeholder="CSE / IT / ECE"
+                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-semibold text-neutral-500 mb-1">Year *</label>
+                  <select required value={form.year} onChange={e => setForm(f => ({ ...f, year: e.target.value }))}
+                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition text-neutral-700"
+                  >
+                    <option value="">Select year</option>
+                    <option>1st Year</option>
+                    <option>2nd Year</option>
+                    <option>3rd Year</option>
+                    <option>4th Year</option>
+                    <option>Passout</option>
+                  </select>
+                </div>
+                <div className="col-span-2">
+                  <label className="block text-[11px] font-semibold text-neutral-500 mb-1">University Roll No <span className="font-normal text-neutral-400">(optional)</span></label>
+                  <input value={form.rollNo} onChange={e => setForm(f => ({ ...f, rollNo: e.target.value }))}
+                    placeholder="e.g. 21CSE045"
+                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full h-11 mt-1 bg-[#10b981] hover:bg-[#059669] text-white font-bold text-sm rounded-full transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] active:scale-[0.98]"
+              >
+                Register for Job Fair
+              </button>
+            </form>
+          )}
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+function JobFairCard({ fair, onRegister }: { fair: JobFair; onRegister: () => void }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -115,15 +246,13 @@ function JobFairCard({ fair }: { fair: JobFair }) {
 
         {/* Right: CTA */}
         <div className="flex flex-col gap-3 md:w-44 shrink-0">
-          <a
-            href={fair.registerUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 px-6 py-3 bg-teal-500 hover:bg-teal-600 text-neutral-900 font-black text-sm uppercase tracking-wider rounded-xl transition-colors border-b-4 border-neutral-200 active:border-0 active:translate-y-1"
+          <button
+            onClick={onRegister}
+            className="flex items-center justify-center gap-2 px-6 py-3 bg-[#10b981] hover:bg-[#059669] text-white font-black text-sm uppercase tracking-wider rounded-full transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] active:scale-95"
           >
             Register Now
             <ExternalLink className="w-4 h-4" />
-          </a>
+          </button>
           <div className="text-[10px] text-neutral-400 text-center uppercase tracking-wider">
             Limited Seats
           </div>
@@ -150,6 +279,7 @@ export default function JobsPage() {
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [registerFair, setRegisterFair] = useState<JobFair | null>(null);
 
     const LIMIT = 9;
 
@@ -191,39 +321,38 @@ export default function JobsPage() {
 
             <main className="flex-grow pt-32 pb-16 px-4 relative overflow-hidden">
                 {/* Retro Background Elements */}
-                <div className="absolute top-0 left-0 w-full h-[500px] bg-neutral-100 blur-[120px] pointer-events-none" />
+                <div className="absolute -left-28 top-10 w-96 h-96 bg-emerald-100/40 blur-[120px] pointer-events-none" />
 
                 <div className="container mx-auto max-w-6xl relative z-10">
 
                     {/* Job Fair Section */}
                     <div className="mb-12">
-                        <div className="flex items-center gap-3 mb-6">
-                            <h1 className="text-2xl md:text-3xl font-black text-neutral-900 uppercase tracking-wider">
+                        <div className="flex items-center gap-4 mb-6">
+                            <h1 className="text-xl font-extrabold text-neutral-900 tracking-tight">
                                 Job Fair
                             </h1>
-                            <div className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent" />
-                            <span className="text-xs text-neutral-900 font-mono uppercase tracking-widest">
-                                {jobFairs.length} upcoming
-                            </span>
+                            <div className="h-px flex-1 bg-neutral-100" />
+                            <span className="text-xs text-neutral-400 font-mono">{jobFairs.length} upcoming</span>
                         </div>
                         <div className="space-y-4">
                             {jobFairs.map((fair) => (
-                                <JobFairCard key={fair.id} fair={fair} />
+                                <JobFairCard key={fair.id} fair={fair} onRegister={() => setRegisterFair(fair)} />
                             ))}
                         </div>
                     </div>
 
-                    {/* Divider */}
-                    <div className="flex items-center gap-3 mb-8">
-                        <h2 className="text-xl font-black text-neutral-900 uppercase tracking-wider">
+                    {/* Section header */}
+                    <div className="flex items-center gap-4 mb-8">
+                        <h2 className="text-xl font-extrabold text-neutral-900 tracking-tight">
                             Latest Jobs
                         </h2>
-                        <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent" />
+                        <div className="h-px flex-1 bg-neutral-100" />
+                        <span className="text-xs text-neutral-400 font-mono">{total} listings</span>
                     </div>
 
                     {/* Error */}
                     {error && (
-                        <div className="bg-red-900/20 border border-red-500/50 text-red-400 p-4 rounded mb-8 text-center font-mono text-sm">
+                        <div className="bg-red-50 border border-red-200 text-red-600 p-4 rounded-xl mb-8 text-center text-sm">
                             [ERROR] {error}
                         </div>
                     )}
@@ -238,10 +367,10 @@ export default function JobsPage() {
                             ))}
                         </div>
                     ) : jobs.length === 0 ? (
-                        <div className="text-center py-24 bg-neutral-50 rounded border border-white/5 border-dashed">
-                            <IconBriefcase className="w-16 h-16 text-zinc-700 mx-auto mb-4" />
-                            <h3 className="text-xl font-bold text-neutral-500 mb-2">NO SIGNALS DETECTED</h3>
-                            <button onClick={handleRefresh} className="text-neutral-900 hover:underline text-sm uppercase">
+                        <div className="text-center py-24 bg-neutral-50 rounded-2xl border border-neutral-200 border-dashed">
+                            <IconBriefcase className="w-16 h-16 text-neutral-300 mx-auto mb-4" />
+                            <h3 className="text-xl font-bold text-neutral-400 mb-2">No jobs found</h3>
+                            <button onClick={handleRefresh} className="text-emerald-600 hover:underline text-sm">
                                 Try Scanning Again
                             </button>
                         </div>
@@ -250,51 +379,58 @@ export default function JobsPage() {
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                                 <AnimatePresence mode="popLayout">
                                     {jobs.map((job) => (
-                                        <motion.div
+                                                        <motion.div
                                             key={job.id}
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             exit={{ opacity: 0, scale: 0.95 }}
-                                            whileHover={{ y: -5 }}
-                                            className="group relative bg-white border border-neutral-200 p-6 rounded hover:border-teal-300 transition-all flex flex-col h-full hover:shadow-[0_0_20px_rgba(0,0,0,0.06)]"
+                                            whileHover={{ y: -4 }}
+                                            className="group relative bg-white border border-neutral-200 rounded-2xl p-5 flex flex-col hover:border-emerald-300 hover:shadow-[0_8px_32px_rgba(16,185,129,0.1)] transition-all duration-300"
                                         >
+                                            <CornerBracket className="absolute top-0 left-0 opacity-40 group-hover:opacity-70 transition-opacity" />
+                                            <CornerBracket className="absolute top-0 right-0 rotate-90 opacity-40 group-hover:opacity-70 transition-opacity" />
+                                            <CornerBracket className="absolute bottom-0 left-0 -rotate-90 opacity-40 group-hover:opacity-70 transition-opacity" />
+                                            <CornerBracket className="absolute bottom-0 right-0 rotate-180 opacity-40 group-hover:opacity-70 transition-opacity" />
+
+                                            {/* Top row */}
                                             <div className="flex items-start justify-between mb-4">
-                                                <div className="bg-neutral-100 p-2 rounded border border-white/5 text-neutral-500 group-hover:text-teal-600 transition-colors">
-                                                    <IconBriefcase size={20} />
+                                                <div className="p-2 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-400 group-hover:text-emerald-500 group-hover:border-emerald-200 group-hover:bg-emerald-50 transition-all">
+                                                    <IconBriefcase size={18} />
                                                 </div>
-                                                <span className="text-[10px] font-bold px-2 py-1 bg-blue-900/20 text-blue-400 rounded uppercase tracking-wider border border-blue-500/20">
+                                                <span className="text-[10px] font-bold px-2.5 py-1 bg-emerald-50 text-emerald-600 rounded-full border border-emerald-200 uppercase tracking-widest">
                                                     {job.platform}
                                                 </span>
                                             </div>
 
-                                            <h3 className="text-lg font-bold text-neutral-900 mb-1 line-clamp-2 leading-tight group-hover:text-teal-600 transition-colors" title={job.title}>
+                                            {/* Title + company */}
+                                            <h3 className="text-[15px] font-bold text-neutral-900 mb-0.5 line-clamp-2 leading-snug group-hover:text-emerald-600 transition-colors" title={job.title}>
                                                 {job.title}
                                             </h3>
-                                            <p className="text-sm text-neutral-400 mb-4 font-mono truncate">
-                                                {job.company}
-                                            </p>
+                                            <p className="text-xs text-neutral-400 mb-4 truncate font-medium">{job.company}</p>
 
-                                            <div className="flex flex-wrap gap-2 mb-6 mt-auto">
-                                                <div className="flex items-center gap-1 text-xs text-neutral-500 bg-gray-50 px-2 py-1 rounded border border-neutral-200">
-                                                    <IconMapPin size={12} /> {job.location}
-                                                </div>
-                                                <div className="flex items-center gap-1 text-xs text-green-400 bg-green-900/10 px-2 py-1 rounded border border-green-500/20">
-                                                    <IconClock size={12} /> {job.postedDate}
-                                                </div>
+                                            {/* Tags */}
+                                            <div className="flex flex-wrap gap-2 mt-auto mb-4">
+                                                <span className="inline-flex items-center gap-1 text-[11px] text-neutral-500 bg-neutral-50 border border-neutral-200 px-2 py-1 rounded-lg">
+                                                    <IconMapPin size={11} />{job.location}
+                                                </span>
+                                                <span className="inline-flex items-center gap-1 text-[11px] text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-1 rounded-lg">
+                                                    <IconClock size={11} />{job.postedDate}
+                                                </span>
                                             </div>
 
-                                            <div className="pt-4 border-t border-neutral-200 flex gap-2">
+                                            {/* CTA */}
+                                            <div className="border-t border-neutral-100 pt-4">
                                                 {job.url ? (
                                                     <a
                                                         href={job.url}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        className="flex-1 bg-white hover:bg-teal-500 text-neutral-900 font-bold text-center py-2.5 rounded text-sm transition-all flex items-center justify-center gap-2 uppercase tracking-wide group-hover:translate-x-1"
+                                                        className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-[13px] font-bold bg-neutral-50 border border-neutral-200 text-neutral-600 hover:bg-[#10b981] hover:text-white hover:border-[#10b981] transition-all"
                                                     >
-                                                        Apply <IconExternalLink size={14} />
+                                                        Apply <IconExternalLink size={13} />
                                                     </a>
                                                 ) : (
-                                                    <button disabled className="flex-1 bg-neutral-100 text-neutral-500 font-bold py-2 rounded text-sm cursor-not-allowed">
+                                                    <button disabled className="w-full py-2.5 rounded-xl text-[13px] font-bold bg-neutral-100 text-neutral-400 cursor-not-allowed">
                                                         Closed
                                                     </button>
                                                 )}
@@ -334,6 +470,13 @@ export default function JobsPage() {
             </main>
 
             <Footer />
+
+            {/* Registration Modal */}
+            <AnimatePresence>
+                {registerFair && (
+                    <RegistrationModal fair={registerFair} onClose={() => setRegisterFair(null)} />
+                )}
+            </AnimatePresence>
         </div>
     );
 }

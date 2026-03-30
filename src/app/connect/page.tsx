@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MentorsView from "@/components/MentorsView";
-import AskView from "@/components/AskView";
+import AlumniView from "@/components/AlumniView";
 
 export default function ConnectPage() {
     return (
@@ -69,7 +69,7 @@ function ConnectPageContent() {
                                 className={`relative z-10 px-6 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors w-40 md:w-48 text-center ${activeTab === "ask" ? "text-neutral-900" : "text-neutral-400 hover:text-neutral-600"
                                     }`}
                             >
-                                Ask AI
+                                Find Alumni
                             </button>
                         </div>
                     </div>
@@ -95,7 +95,7 @@ function ConnectPageContent() {
                             exit={{ opacity: 0, x: -20 }}
                             transition={{ duration: 0.3 }}
                         >
-                            <AskView />
+                            <AlumniView />
                         </motion.div>
                     )}
                 </div>
