@@ -1,136 +1,170 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+import {
+  Mail, MessageCircle, Linkedin, Twitter, Youtube,
+  Github,
+} from "lucide-react";
 import {
   IconBrandDiscord,
   IconBrandGithub,
   IconBrandLinkedin,
   IconBrandX,
-  IconBrandWhatsapp
+  IconBrandYoutube,
 } from "@tabler/icons-react";
-import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-neutral-900 border-t border-neutral-200 pt-20 pb-10 relative">
+    <footer className="bg-[#09090b] text-zinc-100 border-t border-white/[0.06] pt-20 pb-10 relative">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-8">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-12">
 
-          {/* Left Column: Brand & Newsletter */}
-          <div className="lg:w-1/3 flex flex-col gap-8">
+          {/* ── Left: Brand + Contact ── */}
+          <div className="lg:w-[38%] flex flex-col gap-7">
+            {/* Logo */}
             <div>
               <div className="mb-4">
                 <Image
                   src="/assets/files/jobflix-light-logo.png"
                   alt="JobFlix Logo"
-                  width={240}
-                  height={60}
-                  className="object-contain"
+                  width={180}
+                  height={45}
+                  className="object-contain brightness-0 invert opacity-80"
                 />
               </div>
-              <p className="text-neutral-500 text-lg max-w-sm">
+              <p className="text-zinc-400 text-sm leading-relaxed">
                 Your dream job is absolutely worth it.
               </p>
             </div>
 
-            <div className="flex flex-col gap-4">
-              <h3 className="font-bold text-lg">Join our OG WhatsApp Group</h3>
-              <p className="text-neutral-500 text-sm">
-                Get exclusive job alerts, coding challenges, and mentorship.
+            {/* Contact copy */}
+            <div className="flex flex-col gap-1.5">
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                Don&apos;t hesitate to reach out. We&apos;re always here to help.
               </p>
-              <a href="https://chat.whatsapp.com/KQ4sWcUF5OTEy7ngJA6j7h" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 bg-[#25D366] text-black px-5 py-3 font-bold rounded hover:bg-[#20bd5a] transition-colors w-fit">
-                <IconBrandWhatsapp size={24} />
-                <span>Join Community</span>
-              </a>
+              <p className="text-zinc-500 text-sm leading-relaxed">
+                Have questions, feedback, or anything to say? Tell us.
+                We usually get back within 1–2 days.
+              </p>
             </div>
 
-            <div className="flex gap-4">
-              <SocialIcon icon={<IconBrandLinkedin size={24} />} href="#" />
-              <SocialIcon icon={<IconBrandDiscord size={24} />} href="#" />
-              <SocialIcon icon={<IconBrandX size={24} />} href="#" />
-              <SocialIcon icon={<IconBrandGithub size={24} />} href="#" />
-            </div>
+            {/* Contact links */}
+            <ul className="flex flex-col gap-3">
+              <ContactLink icon={<Mail className="w-4 h-4" />} href="mailto:hello@jobflix.in" label="Email us" />
+              <ContactLink icon={<MessageCircle className="w-4 h-4" />} href="#" label="Join Discord (private)" />
+              <ContactLink icon={<Linkedin className="w-4 h-4" />} href="#" label="Follow our LinkedIn page" />
+              <ContactLink icon={<Twitter className="w-4 h-4" />} label="Follow us on X" href="#" />
+              <ContactLink icon={<Youtube className="w-4 h-4" />} label="Follow us on YouTube" href="#" />
+            </ul>
           </div>
 
-          {/* Right Columns: Links Grid */}
-          <div className="lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-8">
+          {/* ── Right: 3 link columns ── */}
+          <div className="lg:flex-1 grid grid-cols-2 md:grid-cols-3 gap-8">
 
+            {/* Products */}
             <div className="flex flex-col gap-4">
-              <h3 className="font-bold text-neutral-900 uppercase tracking-wider">Practice</h3>
-              <ul className="flex flex-col gap-3 text-neutral-500 text-sm">
-                <FooterLink href="#">Get started</FooterLink>
-                <FooterLink href="#">JavaScript functions</FooterLink>
-                <FooterLink href="#">User interface coding</FooterLink>
-                <FooterLink href="#">System design</FooterLink>
-                <FooterLink href="#">Quiz</FooterLink>
+              <h3 className="text-[10px] font-bold text-zinc-500 uppercase tracking-[0.2em]">Products</h3>
+              <ul className="flex flex-col gap-2.5 text-zinc-500 text-sm">
+                <FooterLink href="https://resumeassist-ai.vercel.app/" external>ResumeAssist</FooterLink>
+                <FooterLink href="https://shop-career-sprint.vercel.app/" external>Shop</FooterLink>
+                <FooterLink href="/courses">Courses</FooterLink>
+                <FooterLink href="/jobs">Jobs</FooterLink>
+                <FooterLink href="/connect">Connect</FooterLink>
               </ul>
             </div>
 
+            {/* Company */}
             <div className="flex flex-col gap-4">
-              <h3 className="font-bold text-neutral-900 uppercase tracking-wider">Guides</h3>
-              <ul className="flex flex-col gap-3 text-neutral-500 text-sm">
-                <FooterLink href="#">API Integration Playbook</FooterLink>
-                <FooterLink href="#">System Design Playbook</FooterLink>
-                <FooterLink href="#">Design Patterns Playbook</FooterLink>
-                <FooterLink href="#">Behavioral Interview Playbook</FooterLink>
-              </ul>
-            </div>
-
-            <div className="flex flex-col gap-4">
-              <h3 className="font-bold text-neutral-900 uppercase tracking-wider">Mentor Plans</h3>
-              <ul className="flex flex-col gap-3 text-neutral-500 text-sm">
-                <FooterLink href="#">1 Week Plan</FooterLink>
-                <FooterLink href="#">1 Month Plan</FooterLink>
-                <FooterLink href="#">3 Months Plan</FooterLink>
-              </ul>
-            </div>
-
-            <div className="flex flex-col gap-4">
-              <h3 className="font-bold text-neutral-900 uppercase tracking-wider">Company</h3>
-              <ul className="flex flex-col gap-3 text-neutral-500 text-sm">
-                <FooterLink href="#">Pricing</FooterLink>
-                <FooterLink href="#">Promotions</FooterLink>
+              <h3 className="text-[10px] font-bold text-zinc-500 uppercase tracking-[0.2em]">Company</h3>
+              <ul className="flex flex-col gap-2.5 text-zinc-500 text-sm">
+                <FooterLink href="/pricing">Pricing</FooterLink>
+                <FooterLink href="#">Team</FooterLink>
                 <FooterLink href="#">Roadmap</FooterLink>
                 <FooterLink href="#">About</FooterLink>
-                <FooterLink href="#">Team</FooterLink>
                 <FooterLink href="#">Contact us</FooterLink>
-                <FooterLink href="#">Advertise with us <span className="text-neutral-900 text-[10px] ml-1 px-1 border border-neutral-200 rounded bg-neutral-100">NEW</span></FooterLink>
-                <FooterLink href="#">Become an affiliate</FooterLink>
-                <FooterLink href="#">Careers</FooterLink>
                 <FooterLink href="#">Blog</FooterLink>
-                <FooterLink href="#">Medium</FooterLink>
-                <FooterLink href="#">DEV Community</FooterLink>
+              </ul>
+            </div>
+
+            {/* Practice */}
+            <div className="flex flex-col gap-4">
+              <h3 className="text-[10px] font-bold text-zinc-500 uppercase tracking-[0.2em]">Practice</h3>
+              <ul className="flex flex-col gap-2.5 text-zinc-500 text-sm">
+                <FooterLink href="/prepare">Get started</FooterLink>
+                <FooterLink href="/prepare">JavaScript functions</FooterLink>
+                <FooterLink href="/prepare">User interface coding</FooterLink>
+                <FooterLink href="/prepare">System design</FooterLink>
+                <FooterLink href="/prepare">Quiz</FooterLink>
               </ul>
             </div>
 
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-neutral-200 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-400">
-          <p>© 2025 JobFlix Edutech Solutions Private Limited. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link href="#" className="hover:text-teal-600 transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-teal-600 transition-colors">Terms of Service</Link>
+        {/* ── Bottom bar ── */}
+        <div className="border-t border-white/[0.06] mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-zinc-600">
+            © 2025 Jobflix by careersprint. All rights reserved.
+          </p>
+          <div className="flex items-center gap-2">
+            <SocialIcon icon={<IconBrandLinkedin size={16} />} href="#" label="LinkedIn" />
+            <SocialIcon icon={<IconBrandDiscord size={16} />} href="#" label="Discord" />
+            <SocialIcon icon={<IconBrandX size={16} />} href="#" label="X" />
+            <SocialIcon icon={<IconBrandGithub size={16} />} href="#" label="GitHub" />
+            <SocialIcon icon={<IconBrandYoutube size={16} />} href="#" label="YouTube" />
           </div>
         </div>
       </div>
-
-
     </footer>
   );
 }
 
-const FooterLink = ({ href, children }: { href: string, children: React.ReactNode }) => (
-  <li>
-    <Link href={href} className="hover:text-teal-600 transition-colors block leading-relaxed">
-      {children}
-    </Link>
-  </li>
-)
+function ContactLink({ icon, href, label }: { icon: React.ReactNode; href: string; label: string }) {
+  return (
+    <li>
+      <a
+        href={href}
+        target={href.startsWith("http") ? "_blank" : undefined}
+        rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+        className="inline-flex items-center gap-2.5 text-sm text-zinc-500 hover:text-brand-400 transition-colors"
+      >
+        {icon}
+        {label}
+      </a>
+    </li>
+  );
+}
 
-const SocialIcon = ({ icon, href }: { icon: React.ReactNode, href: string }) => (
-  <a href={href} className="text-neutral-500 hover:text-teal-600 transition-colors">
-    {icon}
-  </a>
-)
+function FooterLink({ href, children, external }: { href: string; children: React.ReactNode; external?: boolean }) {
+  return (
+    <li>
+      {external ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-zinc-200 transition-colors block leading-relaxed"
+        >
+          {children}
+        </a>
+      ) : (
+        <Link href={href} className="hover:text-zinc-200 transition-colors block leading-relaxed">
+          {children}
+        </Link>
+      )}
+    </li>
+  );
+}
+
+function SocialIcon({ icon, href, label }: { icon: React.ReactNode; href: string; label: string }) {
+  return (
+    <a
+      href={href}
+      aria-label={label}
+      className="w-8 h-8 flex items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.03] text-zinc-500 hover:text-zinc-100 hover:border-white/[0.15] transition-all"
+    >
+      {icon}
+    </a>
+  );
+}

@@ -66,7 +66,7 @@ export const ContactSection = () => {
                             <div className="flex justify-end pt-2">
                                 <button
                                     type="submit"
-                                    className="bg-teal-500 text-neutral-900 font-bold px-8 py-3 border-b-4 border-r-4 border-neutral-200 active:border-0 active:translate-y-1 transition-all uppercase"
+                                    className="bg-brand-500 text-neutral-900 font-bold px-8 py-3 border-b-4 border-r-4 border-neutral-200 active:border-0 active:translate-y-1 transition-all uppercase"
                                 >
                                     Send message
                                 </button>
@@ -87,7 +87,7 @@ const ContactLink = ({ icon, label, href, highlighted }: { icon: React.ReactNode
             className={`group flex items-center justify-between p-4 border border-transparent hover:border-white/5 transition-all ${highlighted ? 'bg-neutral-100 text-neutral-900 hover:bg-neutral-200/20' : 'text-neutral-500 hover:bg-neutral-100 hover:text-neutral-900'}`}
         >
             <div className="flex items-center gap-4">
-                <span className={highlighted ? "text-neutral-900" : "text-neutral-400 group-hover:text-teal-600 transition-colors"}>
+                <span className={highlighted ? "text-neutral-900" : "text-neutral-400 group-hover:text-brand-600 transition-colors"}>
                     {icon}
                 </span>
                 <span className="font-medium text-base">{label}</span>

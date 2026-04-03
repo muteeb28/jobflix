@@ -123,7 +123,7 @@ export default function MentorsView() {
                         minSize={0.6}
                         maxSize={1.4}
                         particleDensity={60}
-                        particleColor="#14b8a6"
+                        particleColor="#00B5A3"
                         speed={0.35}
                         className="w-full h-full"
                     />
@@ -152,7 +152,7 @@ export default function MentorsView() {
                                 key={cat.id}
                                 onClick={() => setActiveCategory(cat.id)}
                                 className={`px-4 py-2 rounded-full border text-sm font-bold uppercase tracking-[0.14em] transition-colors ${isActive
-                                    ? "bg-white text-black border-neutral-300 shadow-[0_0_30px_rgba(20,184,166,0.25)]"
+                                    ? "bg-white text-black border-neutral-300 shadow-[0_0_30px_rgba(16,185,129,0.25)]"
                                     : "border-neutral-200 text-neutral-600 hover:border-neutral-300"
                                     }`}
                             >
@@ -194,7 +194,7 @@ export default function MentorsView() {
                                     <div className="flex items-center justify-between">
                                         <div>
                                             <h3 className="text-lg font-bold">{mentor.name}</h3>
-                                            <p className="text-teal-600 text-sm font-mono">{mentor.role}</p>
+                                            <p className="text-brand-600 text-sm font-mono">{mentor.role}</p>
                                         </div>
                                         <div className="flex items-center gap-1 text-neutral-900 text-xs font-bold uppercase tracking-[0.14em]">
                                             <Star className="w-4 h-4 fill-white text-neutral-900" />

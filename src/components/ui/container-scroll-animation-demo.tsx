@@ -20,7 +20,7 @@ export default function HeroScrollDemo() {
         <div className="h-full w-full rounded-2xl bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-neutral-900 overflow-hidden border border-neutral-200">
           <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200">
             <div className="flex items-center gap-2 text-sm font-mono text-neutral-900/70">
-              <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+              <span className="inline-flex h-2 w-2 rounded-full bg-brand-400"></span>
               <span>greatfrontend.com</span>
               <span className="text-neutral-900/30">/interviews/todo-list</span>
             </div>
@@ -51,7 +51,7 @@ export default function HeroScrollDemo() {
                 <p>- Add new tasks on clicking "Submit".</p>
                 <p>- Clear the input on successful addition.</p>
                 <p>- Delete tasks when "Delete" is clicked.</p>
-                <p className="text-emerald-300">Focus is on JavaScript correctness.</p>
+                <p className="text-brand-300">Focus is on JavaScript correctness.</p>
               </div>
 
               <div className="mt-auto rounded-lg border border-neutral-200 bg-neutral-100 p-3 text-xs text-neutral-900/60 font-mono">
@@ -111,7 +111,7 @@ export default function HeroScrollDemo() {
                     <div className="flex gap-1">
                       <span className="inline-flex h-2 w-2 rounded-full bg-red-400" />
                       <span className="inline-flex h-2 w-2 rounded-full bg-white" />
-                      <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                      <span className="inline-flex h-2 w-2 rounded-full bg-brand-400" />
                     </div>
                   </div>
 

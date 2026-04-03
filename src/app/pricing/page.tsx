@@ -100,7 +100,7 @@ export default function PricingPage() {
                     <span className="text-4xl md:text-5xl font-bold">{plan.price}</span>
                     <span className="text-neutral-500 text-sm">{plan.cadence}</span>
                   </div>
-                  <div className="text-teal-600 text-sm font-mono uppercase tracking-[0.2em]">
+                  <div className="text-brand-600 text-sm font-mono uppercase tracking-[0.2em]">
                     {plan.discount}
                   </div>
                   <div className="text-neutral-500 text-sm">{plan.billed}</div>
@@ -118,7 +118,7 @@ export default function PricingPage() {
                 <ul className="space-y-3 text-sm text-zinc-200">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
-                      <Check className="w-4 h-4 text-teal-500 mt-[2px]" />
+                      <Check className="w-4 h-4 text-brand-500 mt-[2px]" />
                       <span className="font-sans">{feature}</span>
                     </li>
                   ))}

@@ -1,0 +1,7 @@
+class="cs-56 absolute animate-spin [animation-duration:1s]"
+class="absolute cs-80 animate-spin [animation-delay:-0.5s]"
+class="overlay animate-spin [animation-duration:32s] features-cached-inner-cache-or-web"
+class="size-50 absolute duration-[400ms] transition-[translate,width,height,opacity,filter] features-cached-inner-cache animate-spin-reverse [animation-duration:inherit] -top-1 -left-1"
+class="size-50 absolute duration-[400ms] transition-[translate,width,height,opacity,filter] features-cached-inner-web animate-spin-reverse [animation-duration:inherit] -bottom-1 -right-1"
+class="overlay opacity-0 transition-[opacity] animate-spin-reverse [animation-duration:10s]"
+class="absolute cw-88 animate-spin [animation-duration:30s] ch-88"

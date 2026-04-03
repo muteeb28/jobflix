@@ -8,7 +8,7 @@ const alumni = [
   {
     name: "Arjun Kumar",
     initials: "AK",
-    color: "bg-teal-500",
+    color: "bg-brand-500",
     batch: "2023",
     college: "RIMT University",
     company: "Wipro",
@@ -68,7 +68,7 @@ const alumni = [
   {
     name: "Divya Nair",
     initials: "DN",
-    color: "bg-emerald-500",
+    color: "bg-brand-500",
     batch: "2023",
     college: "Amity University",
     company: "Infosys",
@@ -98,7 +98,7 @@ export default function AlumniView() {
     <div className="px-4 pt-10 pb-20 max-w-5xl mx-auto w-full">
       {/* Header */}
       <div className="text-center mb-10">
-        <p className="text-xs font-mono uppercase tracking-widest text-emerald-500 mb-2">Alumni Network</p>
+        <p className="text-xs font-mono uppercase tracking-widest text-brand-500 mb-2">Alumni Network</p>
         <h2
           className="text-3xl md:text-4xl font-extrabold text-neutral-900 tracking-tight mb-3"
           style={{ fontFamily: "var(--font-bricolage)" }}
@@ -117,7 +117,7 @@ export default function AlumniView() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search by name, company, or college…"
-          className="w-full h-11 pl-10 pr-4 text-sm bg-white border border-neutral-200 rounded-full focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition"
+          className="w-full h-11 pl-10 pr-4 text-sm bg-white border border-neutral-200 rounded-full focus:outline-none focus:ring-2 focus:ring-brand-400/50 focus:border-brand-400 transition"
         />
       </div>
 
@@ -130,7 +130,7 @@ export default function AlumniView() {
             className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all ${
               activeField === f
                 ? "bg-[#10b981] text-white border-[#10b981] shadow-[0_0_12px_rgba(16,185,129,0.3)]"
-                : "bg-white text-neutral-500 border-neutral-200 hover:border-emerald-300 hover:text-emerald-600"
+                : "bg-white text-neutral-500 border-neutral-200 hover:border-brand-300 hover:text-brand-600"
             }`}
           >
             {f}
@@ -146,7 +146,7 @@ export default function AlumniView() {
           {filtered.map((a) => (
             <div
               key={a.name}
-              className="group relative bg-white border border-neutral-200 rounded-2xl p-5 hover:border-emerald-300 hover:shadow-[0_8px_32px_rgba(16,185,129,0.1)] transition-all duration-300"
+              className="group relative bg-white border border-neutral-200 rounded-2xl p-5 hover:border-brand-300 hover:shadow-[0_8px_32px_rgba(16,185,129,0.1)] transition-all duration-300"
             >
               <CornerBracket className="absolute top-0 left-0 opacity-40 group-hover:opacity-70 transition-opacity" />
               <CornerBracket className="absolute top-0 right-0 rotate-90 opacity-40 group-hover:opacity-70 transition-opacity" />
@@ -163,7 +163,7 @@ export default function AlumniView() {
 
               <div className="space-y-1.5 mb-4">
                 <div className="flex items-center gap-2 text-xs text-neutral-600">
-                  <Briefcase className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                  <Briefcase className="w-3.5 h-3.5 text-brand-500 shrink-0" />
                   <span className="font-medium">{a.role}</span>
                   <span className="text-neutral-400">@ {a.company}</span>
                 </div>

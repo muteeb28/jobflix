@@ -44,19 +44,19 @@ export default function HackathonsView() {
         <div className="flex flex-col w-full">
             {/* Hero Section */}
             <section className="relative pt-10 pb-16 px-6 overflow-hidden">
-                <div className="absolute top-0 right-0 w-full h-[500px] bg-emerald-500/5 blur-[120px] pointer-events-none" />
+                <div className="absolute top-0 right-0 w-full h-[500px] bg-brand-500/5 blur-[120px] pointer-events-none" />
 
                 <div className="container mx-auto max-w-6xl relative z-10 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-block mb-4 px-4 py-1.5 rounded bg-emerald-900/20 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest"
+                        className="inline-block mb-4 px-4 py-1.5 rounded bg-brand-900/20 border border-brand-500/20 text-brand-400 text-xs font-bold uppercase tracking-widest"
                     >
                         BUILD & COMPETE 🚀
                     </motion.div>
 
                     <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight glitch-text uppercase">
-                        Global <span className="text-emerald-400">Hackathons</span>
+                        Global <span className="text-brand-400">Hackathons</span>
                     </h1>
 
                     <p className="text-neutral-500 max-w-2xl mx-auto mb-10 font-sans leading-relaxed">
@@ -69,10 +69,10 @@ export default function HackathonsView() {
             <main className="container mx-auto max-w-6xl px-6 pb-24 flex-grow">
                 <div className="flex items-center justify-between mb-8 border-b border-neutral-200 pb-4">
                     <h2 className="text-2xl font-bold flex items-center gap-2 uppercase">
-                        <Code2 className="text-emerald-500" />
+                        <Code2 className="text-brand-500" />
                         Live Events
                     </h2>
-                    {loading && <span className="text-emerald-400 text-xs animate-pulse">Scanning Devpost & MLH...</span>}
+                    {loading && <span className="text-brand-400 text-xs animate-pulse">Scanning Devpost & MLH...</span>}
                 </div>
 
                 {loading ? (
@@ -90,18 +90,18 @@ export default function HackathonsView() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="group bg-white border border-neutral-200 p-6 hover:border-emerald-400 transition-all flex flex-col hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] relative overflow-hidden"
+                                    className="group bg-white border border-neutral-200 p-6 hover:border-brand-400 transition-all flex flex-col hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] relative overflow-hidden"
                                 >
                                     <div className="flex justify-between items-start mb-4">
-                                        <div className="p-2 bg-neutral-100 rounded-lg group-hover:bg-emerald-500/20 transition-colors">
-                                            <Code2 className="w-6 h-6 text-emerald-400" />
+                                        <div className="p-2 bg-neutral-100 rounded-lg group-hover:bg-brand-500/20 transition-colors">
+                                            <Code2 className="w-6 h-6 text-brand-400" />
                                         </div>
-                                        <span className="px-2 py-1 bg-emerald-900/20 text-emerald-400 text-[10px] font-bold uppercase border border-emerald-500/20">
+                                        <span className="px-2 py-1 bg-brand-900/20 text-brand-400 text-[10px] font-bold uppercase border border-brand-500/20">
                                             {h.type}
                                         </span>
                                     </div>
 
-                                    <h3 className="text-lg font-bold mb-2 group-hover:text-emerald-400 transition-colors line-clamp-2 leading-tight">
+                                    <h3 className="text-lg font-bold mb-2 group-hover:text-brand-400 transition-colors line-clamp-2 leading-tight">
                                         {h.title}
                                     </h3>
                                     <p className="text-neutral-400 text-xs uppercase tracking-wide mb-4 font-bold">{h.provider}</p>
@@ -111,8 +111,8 @@ export default function HackathonsView() {
                                             <Calendar className="w-4 h-4 text-neutral-500" />
                                             {h.date}
                                         </div>
-                                        <div className="flex items-center gap-2 text-xs text-emerald-300 font-mono">
-                                            <Trophy className="w-4 h-4 text-emerald-600" />
+                                        <div className="flex items-center gap-2 text-xs text-brand-300 font-mono">
+                                            <Trophy className="w-4 h-4 text-brand-600" />
                                             {h.prizes}
                                         </div>
                                         <div className="flex items-center gap-2 text-xs text-neutral-600 font-mono">
@@ -133,7 +133,7 @@ export default function HackathonsView() {
                                         href={h.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="w-full py-3 bg-white hover:bg-emerald-400 text-black font-bold text-sm uppercase transition-colors flex items-center justify-center gap-2 group-hover:translate-x-1"
+                                        className="w-full py-3 bg-white hover:bg-brand-400 text-black font-bold text-sm uppercase transition-colors flex items-center justify-center gap-2 group-hover:translate-x-1"
                                     >
                                         Register Now <ExternalLink className="w-4 h-4" />
                                     </a>

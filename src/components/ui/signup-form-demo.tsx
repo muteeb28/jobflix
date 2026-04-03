@@ -82,7 +82,7 @@ export default function SignupFormDemo() {
         </div>
 
         {status && (
-          <p className="mt-4 text-sm font-medium text-emerald-600" role="status">
+          <p className="mt-4 text-sm font-medium text-brand-600" role="status">
             {status}
           </p>
         )}
@@ -94,7 +94,7 @@ export default function SignupFormDemo() {
 function SocialButton({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
     <button
-      className="group/btn relative flex h-10 w-full items-center justify-start gap-3 rounded-lg bg-neutral-50 px-4 font-medium text-neutral-700 border border-neutral-200 hover:border-emerald-300 hover:bg-emerald-50/50 transition-all text-sm"
+      className="group/btn relative flex h-10 w-full items-center justify-start gap-3 rounded-lg bg-neutral-50 px-4 font-medium text-neutral-700 border border-neutral-200 hover:border-brand-300 hover:bg-brand-50/50 transition-all text-sm"
       type="button"
     >
       {icon}
@@ -106,8 +106,8 @@ function SocialButton({ icon, label }: { icon: React.ReactNode; label: string })
 
 const BottomGradient = () => (
   <>
-    <span className="absolute inset-x-0 -bottom-px block h-px w-full bg-gradient-to-r from-transparent via-emerald-400/60 to-transparent opacity-0 transition duration-500 group-hover/btn:opacity-100" />
-    <span className="absolute inset-x-10 -bottom-px mx-auto block h-px w-1/2 bg-gradient-to-r from-transparent via-emerald-300/40 to-transparent opacity-0 blur-sm transition duration-500 group-hover/btn:opacity-100" />
+    <span className="absolute inset-x-0 -bottom-px block h-px w-full bg-gradient-to-r from-transparent via-brand-400/60 to-transparent opacity-0 transition duration-500 group-hover/btn:opacity-100" />
+    <span className="absolute inset-x-10 -bottom-px mx-auto block h-px w-1/2 bg-gradient-to-r from-transparent via-brand-300/40 to-transparent opacity-0 blur-sm transition duration-500 group-hover/btn:opacity-100" />
   </>
 );
 

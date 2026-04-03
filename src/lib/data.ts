@@ -3,7 +3,7 @@ export const services = [
     title: "Study Abroad",
     description:
       "Launch your international career with expert guidance for top university admissions and comprehensive support.",
-    gradient: "from-green-500 to-emerald-600",
+    gradient: "from-green-500 to-brand-600",
     icon: "SA",
     features: ["Top Universities", "Visa Support", "Scholarship Guidance"],
     delay: 0.1,

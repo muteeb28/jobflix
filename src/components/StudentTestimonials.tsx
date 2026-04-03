@@ -123,7 +123,7 @@ export default function StudentTestimonials() {
           </p>
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-teal-500 text-neutral-900 font-bold rounded-none border-b-8 border-r-8 border-neutral-200 hover:shadow-xl transition-all duration-300 uppercase tracking-widest"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-brand-500 text-neutral-900 font-bold rounded-none border-b-8 border-r-8 border-neutral-200 hover:shadow-xl transition-all duration-300 uppercase tracking-widest"
           >
             Start Your Journey Today
             <motion.span

@@ -28,7 +28,7 @@ export const DreamJobCTA = ({ cta }: { cta?: CTAData }) => {
                 <div className="flex flex-col items-center gap-4">
                     <Link
                         href="#"
-                        className="inline-flex items-center justify-center px-8 py-4 bg-teal-500 text-neutral-900 font-bold text-lg md:text-xl border-b-4 border-r-4 border-neutral-200 active:border-0 active:translate-y-1 transition-all uppercase"
+                        className="inline-flex items-center justify-center px-8 py-4 bg-brand-500 text-neutral-900 font-bold text-lg md:text-xl border-b-4 border-r-4 border-neutral-200 active:border-0 active:translate-y-1 transition-all uppercase"
                     >
                         {cta?.buttonText || "Get started now"}
                     </Link>

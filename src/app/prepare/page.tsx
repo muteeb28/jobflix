@@ -72,9 +72,9 @@ const difficultyConfig: Record<
 > = {
   easy: {
     label: "Easy",
-    color: "text-emerald-400",
-    bg: "bg-emerald-400/10",
-    border: "border-emerald-400/30",
+    color: "text-brand-400",
+    bg: "bg-brand-400/10",
+    border: "border-brand-400/30",
   },
   medium: {
     label: "Medium",
@@ -99,14 +99,14 @@ const topicColors: Record<string, string> = {
   "Trees": "text-green-400 bg-green-400/10",
   "DP": "text-pink-400 bg-pink-400/10",
   "Graph": "text-indigo-400 bg-indigo-400/10",
-  "Matrix": "text-teal-400 bg-teal-400/10",
+  "Matrix": "text-brand-400 bg-brand-400/10",
   "Backtracking": "text-rose-400 bg-rose-400/10",
   "Heap": "text-violet-400 bg-violet-400/10",
   "Greedy": "text-lime-400 bg-lime-400/10",
   "Bit Manipulation": "text-sky-400 bg-sky-400/10",
   "Intervals": "text-fuchsia-400 bg-fuchsia-400/10",
   "Math": "text-neutral-900 bg-neutral-100/10",
-  "Trie": "text-emerald-300 bg-emerald-300/10",
+  "Trie": "text-brand-300 bg-brand-300/10",
   "Design": "text-red-300 bg-red-300/10",
   "Two Pointers": "text-cyan-300 bg-cyan-300/10",
   "Hash Map": "text-blue-300 bg-blue-300/10",
@@ -224,7 +224,7 @@ export default function PreparePage() {
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all border ${
                   category === tab.key
                     ? "bg-neutral-100 text-neutral-900 border-neutral-200"
-                    : "bg-white/40 text-neutral-400 border-white/5 hover:text-neutral-600 hover:border-teal-300"
+                    : "bg-white/40 text-neutral-400 border-white/5 hover:text-neutral-600 hover:border-brand-300"
                 }`}
               >
                 {tab.icon}
@@ -319,7 +319,7 @@ export default function PreparePage() {
               </div>
               <button
                 onClick={fetchProblems}
-                className="mt-2 px-5 py-2 bg-teal-500 text-neutral-900 font-bold text-xs uppercase tracking-widest border-b-4 border-r-4 border-neutral-200 active:border-0 active:translate-y-1 transition-all"
+                className="mt-2 px-5 py-2 bg-brand-500 text-neutral-900 font-bold text-xs uppercase tracking-widest border-b-4 border-r-4 border-neutral-200 active:border-0 active:translate-y-1 transition-all"
               >
                 Retry
               </button>
@@ -352,7 +352,7 @@ export default function PreparePage() {
                   <Link
                     key={problem.id}
                     href={`/prepare/${problem.id}`}
-                    className="group grid grid-cols-[1fr_80px_80px_40px] md:grid-cols-[1fr_100px_100px_80px_40px] items-center px-4 py-3.5 rounded-xl border border-white/5 bg-white/40 hover:bg-neutral-1000 hover:border-teal-300 transition-all"
+                    className="group grid grid-cols-[1fr_80px_80px_40px] md:grid-cols-[1fr_100px_100px_80px_40px] items-center px-4 py-3.5 rounded-xl border border-white/5 bg-white/40 hover:bg-neutral-1000 hover:border-brand-300 transition-all"
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <span className="text-neutral-500 text-xs font-mono w-6 shrink-0">
@@ -384,7 +384,7 @@ export default function PreparePage() {
                     </div>
 
                     <div className="flex justify-end">
-                      <ChevronRight className="w-4 h-4 text-neutral-500 group-hover:text-teal-600 transition-colors" />
+                      <ChevronRight className="w-4 h-4 text-neutral-500 group-hover:text-brand-600 transition-colors" />
                     </div>
                   </Link>
                 );

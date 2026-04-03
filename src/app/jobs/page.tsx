@@ -21,7 +21,7 @@ const jobFairs: JobFair[] = [
     companies: "25+",
     registerUrl: "#",
     image: "/assets/job-fair-career-synergy-2026.jpg",
-    color: "from-white to-emerald-50/40",
+    color: "from-white to-brand-50/40",
     accent: "text-neutral-900",
     border: "border-neutral-200",
     glow: "shadow-[0_4px_40px_rgba(0,0,0,0.06)]",
@@ -76,7 +76,7 @@ function RegistrationModal({ fair, onClose }: { fair: JobFair; onClose: () => vo
           >
             <IconX size={18} />
           </button>
-          <p className="text-[10px] font-mono uppercase tracking-widest text-emerald-500 mb-1">
+          <p className="text-[10px] font-mono uppercase tracking-widest text-brand-500 mb-1">
             {fair.tagline}
           </p>
           <h2 className="text-lg font-extrabold text-neutral-900 leading-tight">{fair.name}</h2>
@@ -87,8 +87,8 @@ function RegistrationModal({ fair, onClose }: { fair: JobFair; onClose: () => vo
         <div className="px-6 py-5">
           {submitted ? (
             <div className="text-center py-8">
-              <div className="w-14 h-14 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center mx-auto mb-4">
-                <svg className="w-7 h-7 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <div className="w-14 h-14 rounded-full bg-brand-50 border border-brand-200 flex items-center justify-center mx-auto mb-4">
+                <svg className="w-7 h-7 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
@@ -108,41 +108,41 @@ function RegistrationModal({ fair, onClose }: { fair: JobFair; onClose: () => vo
                   <label className="block text-[11px] font-semibold text-neutral-500 mb-1">Full Name *</label>
                   <input required value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                     placeholder="Arjun Kumar"
-                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition"
+                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-400/50 focus:border-brand-400 transition"
                   />
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold text-neutral-500 mb-1">Email *</label>
                   <input required type="email" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                     placeholder="arjun@example.com"
-                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition"
+                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-400/50 focus:border-brand-400 transition"
                   />
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold text-neutral-500 mb-1">Phone *</label>
                   <input required type="tel" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
                     placeholder="9876543210"
-                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition"
+                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-400/50 focus:border-brand-400 transition"
                   />
                 </div>
                 <div className="col-span-2">
                   <label className="block text-[11px] font-semibold text-neutral-500 mb-1">College / University *</label>
                   <input required value={form.college} onChange={e => setForm(f => ({ ...f, college: e.target.value }))}
                     placeholder="RIMT University"
-                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition"
+                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-400/50 focus:border-brand-400 transition"
                   />
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold text-neutral-500 mb-1">Branch *</label>
                   <input required value={form.branch} onChange={e => setForm(f => ({ ...f, branch: e.target.value }))}
                     placeholder="CSE / IT / ECE"
-                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition"
+                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-400/50 focus:border-brand-400 transition"
                   />
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold text-neutral-500 mb-1">Year *</label>
                   <select required value={form.year} onChange={e => setForm(f => ({ ...f, year: e.target.value }))}
-                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition text-neutral-700"
+                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-400/50 focus:border-brand-400 transition text-neutral-700"
                   >
                     <option value="">Select year</option>
                     <option>1st Year</option>
@@ -156,7 +156,7 @@ function RegistrationModal({ fair, onClose }: { fair: JobFair; onClose: () => vo
                   <label className="block text-[11px] font-semibold text-neutral-500 mb-1">University Roll No <span className="font-normal text-neutral-400">(optional)</span></label>
                   <input value={form.rollNo} onChange={e => setForm(f => ({ ...f, rollNo: e.target.value }))}
                     placeholder="e.g. 21CSE045"
-                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition"
+                    className="w-full h-10 px-3 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-400/50 focus:border-brand-400 transition"
                   />
                 </div>
               </div>
@@ -321,7 +321,7 @@ export default function JobsPage() {
 
             <main className="flex-grow pt-32 pb-16 px-4 relative overflow-hidden">
                 {/* Retro Background Elements */}
-                <div className="absolute -left-28 top-10 w-96 h-96 bg-emerald-100/40 blur-[120px] pointer-events-none" />
+                <div className="absolute -left-28 top-10 w-96 h-96 bg-brand-100/40 blur-[120px] pointer-events-none" />
 
                 <div className="container mx-auto max-w-6xl relative z-10">
 
@@ -370,7 +370,7 @@ export default function JobsPage() {
                         <div className="text-center py-24 bg-neutral-50 rounded-2xl border border-neutral-200 border-dashed">
                             <IconBriefcase className="w-16 h-16 text-neutral-300 mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-neutral-400 mb-2">No jobs found</h3>
-                            <button onClick={handleRefresh} className="text-emerald-600 hover:underline text-sm">
+                            <button onClick={handleRefresh} className="text-brand-600 hover:underline text-sm">
                                 Try Scanning Again
                             </button>
                         </div>
@@ -385,7 +385,7 @@ export default function JobsPage() {
                                             animate={{ opacity: 1, y: 0 }}
                                             exit={{ opacity: 0, scale: 0.95 }}
                                             whileHover={{ y: -4 }}
-                                            className="group relative bg-white border border-neutral-200 rounded-2xl p-5 flex flex-col hover:border-emerald-300 hover:shadow-[0_8px_32px_rgba(16,185,129,0.1)] transition-all duration-300"
+                                            className="group relative bg-white border border-neutral-200 rounded-2xl p-5 flex flex-col hover:border-brand-300 hover:shadow-[0_8px_32px_rgba(16,185,129,0.1)] transition-all duration-300"
                                         >
                                             <CornerBracket className="absolute top-0 left-0 opacity-40 group-hover:opacity-70 transition-opacity" />
                                             <CornerBracket className="absolute top-0 right-0 rotate-90 opacity-40 group-hover:opacity-70 transition-opacity" />
@@ -394,16 +394,16 @@ export default function JobsPage() {
 
                                             {/* Top row */}
                                             <div className="flex items-start justify-between mb-4">
-                                                <div className="p-2 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-400 group-hover:text-emerald-500 group-hover:border-emerald-200 group-hover:bg-emerald-50 transition-all">
+                                                <div className="p-2 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-400 group-hover:text-brand-500 group-hover:border-brand-200 group-hover:bg-brand-50 transition-all">
                                                     <IconBriefcase size={18} />
                                                 </div>
-                                                <span className="text-[10px] font-bold px-2.5 py-1 bg-emerald-50 text-emerald-600 rounded-full border border-emerald-200 uppercase tracking-widest">
+                                                <span className="text-[10px] font-bold px-2.5 py-1 bg-brand-50 text-brand-600 rounded-full border border-brand-200 uppercase tracking-widest">
                                                     {job.platform}
                                                 </span>
                                             </div>
 
                                             {/* Title + company */}
-                                            <h3 className="text-[15px] font-bold text-neutral-900 mb-0.5 line-clamp-2 leading-snug group-hover:text-emerald-600 transition-colors" title={job.title}>
+                                            <h3 className="text-[15px] font-bold text-neutral-900 mb-0.5 line-clamp-2 leading-snug group-hover:text-brand-600 transition-colors" title={job.title}>
                                                 {job.title}
                                             </h3>
                                             <p className="text-xs text-neutral-400 mb-4 truncate font-medium">{job.company}</p>
@@ -413,7 +413,7 @@ export default function JobsPage() {
                                                 <span className="inline-flex items-center gap-1 text-[11px] text-neutral-500 bg-neutral-50 border border-neutral-200 px-2 py-1 rounded-lg">
                                                     <IconMapPin size={11} />{job.location}
                                                 </span>
-                                                <span className="inline-flex items-center gap-1 text-[11px] text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-1 rounded-lg">
+                                                <span className="inline-flex items-center gap-1 text-[11px] text-brand-600 bg-brand-50 border border-brand-200 px-2 py-1 rounded-lg">
                                                     <IconClock size={11} />{job.postedDate}
                                                 </span>
                                             </div>
@@ -446,7 +446,7 @@ export default function JobsPage() {
                                     <button
                                         onClick={() => setPage(p => Math.max(1, p - 1))}
                                         disabled={page === 1}
-                                        className="p-3 bg-white border border-neutral-200 hover:border-teal-300 text-neutral-900 rounded transition-colors disabled:opacity-30 disabled:hover:border-teal-300"
+                                        className="p-3 bg-white border border-neutral-200 hover:border-brand-300 text-neutral-900 rounded transition-colors disabled:opacity-30 disabled:hover:border-brand-300"
                                     >
                                         <IconArrowLeft size={20} />
                                     </button>
@@ -458,7 +458,7 @@ export default function JobsPage() {
                                     <button
                                         onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                                         disabled={page === totalPages}
-                                        className="p-3 bg-white border border-neutral-200 hover:border-teal-300 text-neutral-900 rounded transition-colors disabled:opacity-30 disabled:hover:border-teal-300"
+                                        className="p-3 bg-white border border-neutral-200 hover:border-brand-300 text-neutral-900 rounded transition-colors disabled:opacity-30 disabled:hover:border-brand-300"
                                     >
                                         <IconArrowRight size={20} />
                                     </button>

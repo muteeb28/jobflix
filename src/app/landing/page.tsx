@@ -1,7 +1,8 @@
-
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   BookOpen,
   TerminalSquare,
@@ -13,211 +14,246 @@ import {
   Check,
   TrendingUp,
   Code2,
+  Zap,
+  Sparkles,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { FloatingCard } from "@/components/landing/FloatingCard";
 import { HeroBadge } from "@/components/landing/HeroBadge";
-import { CornerBracket, CrossAccent, CircleCrossAccent } from "@/components/ui/aceternity-decorations";
+import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
+import { FlipWords } from "@/components/ui/flip-words";
+import BentoGridThirdDemo from "@/components/bento-grid-demo-3";
+import WorldMapDemo from "@/components/world-map-demo";
 
-/* ─────────────────────────────────────────────────────────────────────
-   Hero floating card contents
-───────────────────────────────────────────────────────────────────── */
+/* ── Spring presets ─────────────────────────────────────────────── */
+const spring = { type: "spring" as const, stiffness: 80, damping: 20 };
+const springFast = { type: "spring" as const, stiffness: 120, damping: 22 };
 
-/** Left card – upcoming sessions (like Aceternity's meetings list) */
-function SessionsCard() {
-  const sessions = [
-    { icon: <Code2 className="w-3 h-3 text-teal-500" />, title: "Java DSA – Module 4", meta: "Today · Online" },
-    { icon: <TrendingUp className="w-3 h-3 text-teal-500" />, title: "Job Fair – RIMT Univ.", meta: "Apr 10 · In-person" },
-    { icon: <Briefcase className="w-3 h-3 text-teal-500" />, title: "SDE-2 Mock Round", meta: "Apr 14 · Remote" },
-    { icon: <Trophy className="w-3 h-3 text-teal-500" />, title: "GSoC Info Session", meta: "Apr 18 · Online" },
-  ];
+function FadeUp({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
   return (
-    <FloatingCard className="p-4 w-52">
-      <p className="text-[10px] text-neutral-400 uppercase tracking-wider mb-1 font-mono">Level Up</p>
-      <p className="text-[11px] font-semibold text-neutral-600 mb-2.5">Upcoming Sessions</p>
-      {sessions.map((s) => (
-        <div key={s.title} className="flex items-start gap-2 py-1.5 border-b border-neutral-100 last:border-0">
-          <div className="mt-0.5 shrink-0">{s.icon}</div>
-          <div>
-            <p className="text-[11px] font-medium text-neutral-700 leading-tight">{s.title}</p>
-            <p className="text-[10px] text-neutral-400">{s.meta}</p>
-          </div>
-        </div>
-      ))}
-    </FloatingCard>
+    <motion.div
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-48px" }}
+      transition={{ ...spring, delay }}
+      className={className}
+    >
+      {children}
+    </motion.div>
   );
 }
 
-/** Left card – companies currently hiring */
-function CompaniesCard() {
-  const companies = ["Wipro", "TCS", "Infosys", "Razorpay", "Paytm", "CRED"];
+/* ── Hero floating cards ─────────────────────────────────────────── */
+function SessionsCard() {
+  const sessions = [
+    { title: "Meeting with Elon", meta: "10:30 | Hyderabad", type: "Google Meet" },
+    { title: "Jobflix Workshop", meta: "14:30 | Remote", type: "Jobflix Live" },
+    { title: "Interview Series C", meta: "17:00 | Remote", type: "Engineering" },
+  ];
   return (
-    <FloatingCard className="p-4 w-52">
-      <p className="text-[11px] font-semibold text-neutral-600 mb-3">Companies Hiring Now</p>
-      <div className="flex flex-wrap gap-1.5">
-        {companies.map((c) => (
-          <span key={c} className="px-2 py-1 bg-neutral-50 border border-neutral-200 rounded-md text-[10px] font-semibold text-neutral-600">
-            {c}
-          </span>
+    <FloatingCard tabText="Analytics" className="p-4 w-[200px] bg-white/40 dark:bg-zinc-900/40">
+      <div className="space-y-4 pt-1">
+        {sessions.map((s) => (
+          <div key={s.title} className="group/item">
+            <p className="text-[9px] font-bold text-neutral-400 dark:text-zinc-500 mb-0.5 tracking-tight">{s.type}</p>
+            <p className="text-[11px] font-bold text-neutral-800 dark:text-zinc-200 leading-none mb-1 tracking-tight">{s.title}</p>
+            <p className="text-[9px] text-neutral-400 dark:text-zinc-600 font-medium">{s.meta}</p>
+          </div>
         ))}
       </div>
     </FloatingCard>
   );
 }
 
-/** Paperclip decoration (matches Aceternity's right-side paperclip) */
+function CompaniesCard() {
+  const integrations = [
+    { color: "bg-indigo-500", icon: <TrendingUp className="w-3.5 h-3.5 text-white" /> },
+    { color: "bg-pink-500", icon: <Zap className="w-3.5 h-3.5 text-white" /> },
+    { color: "bg-blue-500", icon: <Code2 className="w-3.5 h-3.5 text-white" /> },
+    { color: "bg-brand-500", icon: <Users className="w-3.5 h-3.5 text-white" /> },
+  ];
+  return (
+    <FloatingCard tabText="Integrations" className="p-4 w-[190px] bg-white/40 dark:bg-zinc-900/40">
+      <div className="grid grid-cols-2 gap-3 pt-2">
+        {integrations.map((item, i) => (
+          <div key={i} className={`${item.color} aspect-square rounded-xl flex items-center justify-center shadow-lg shadow-black/[0.05] hover:scale-110 transition-transform cursor-pointer`}>
+            {item.icon}
+          </div>
+        ))}
+      </div>
+    </FloatingCard>
+  );
+}
+
 function PaperclipDecoration({ className }: { className?: string }) {
   return (
-    <svg width="22" height="60" viewBox="0 0 22 60" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
-      {/* Outer loop */}
-      <rect x="1.5" y="1.5" width="19" height="57" rx="9.5" stroke="#94a3b8" strokeWidth="2.5" />
-      {/* Inner clip — starts 1/3 down, shares the bottom curve */}
-      <rect x="5.5" y="17" width="11" height="40.5" rx="5.5" stroke="#94a3b8" strokeWidth="2.5" />
+    <svg 
+      width="24" 
+      height="64" 
+      viewBox="0 0 24 64" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg" 
+      className={`${className} drop-shadow-sm`}
+    >
+      <path 
+        d="M16 4V54C16 58.4183 12.4183 62 8 62C3.58172 62 0 58.4183 0 54V16C0 10.4772 4.47715 6 10 6C15.5228 6 20 10.4772 20 16V48C20 50.2091 18.2091 52 16 52C13.7909 52 12 50.2091 12 48V12" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round" 
+        className="text-neutral-400 dark:text-zinc-500"
+      />
     </svg>
   );
 }
 
-/** Job Fair flyer card with paperclip pinned on top */
 function JobFairCard() {
   return (
-    <div className="relative pt-6 w-52">
-      {/* Paperclip pinned to the top centre of the card */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 drop-shadow-sm">
+    <div className="relative group/parent">
+      <div className="absolute -top-10 left-4 z-30 transition-transform group-hover/parent:rotate-12 group-hover/parent:scale-110 duration-500 pointer-events-none">
         <PaperclipDecoration />
       </div>
-      <FloatingCard className="p-4">
-        <p className="text-[9px] font-mono uppercase tracking-[0.18em] text-emerald-500 mb-1">Level Up · 2026</p>
-        <p className="text-[13px] font-extrabold text-neutral-800 leading-snug mb-1">Job Fair</p>
-        <p className="text-[10px] text-neutral-500 leading-snug mb-3">Top tech companies hiring directly from campus. Register free.</p>
-        <div className="flex flex-wrap gap-1">
-          {["Wipro", "TCS", "CRED", "Razorpay"].map((c) => (
-            <span key={c} className="px-1.5 py-0.5 bg-emerald-50 border border-emerald-200 rounded text-[9px] font-semibold text-emerald-700">{c}</span>
-          ))}
-        </div>
-        <p className="mt-3 text-[9px] text-neutral-400">Apr 10 · RIMT University · In-person</p>
-      </FloatingCard>
+      <Link href="/jobs">
+        <FloatingCard tabText="Synergy Summit" className="p-5 w-[220px] mt-4 hover:shadow-2xl transition-all duration-300 border-indigo-500/20 dark:border-indigo-500/10">
+          <div className="pt-0.5">
+            <h4 className="text-[17px] font-black text-neutral-900 dark:text-zinc-100 tracking-tight leading-tight mb-1 uppercase">Career Synergy Summit</h4>
+            <p className="text-[11px] font-black text-brand-600 dark:text-brand-400 mb-3 tracking-wider uppercase">Mega Job Carnival</p>
+            
+            <div className="space-y-2 mb-4">
+              <div className="flex items-center gap-2">
+                <span className="text-[9px] font-bold text-neutral-400 dark:text-zinc-500 uppercase">Venue</span>
+                <span className="text-[10px] font-bold text-neutral-700 dark:text-zinc-300">RIMT University, Punjab</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-[9px] font-bold text-neutral-400 dark:text-zinc-500 uppercase">Date</span>
+                <span className="text-[10px] font-bold text-neutral-700 dark:text-zinc-300">10-11 April, 2026</span>
+              </div>
+            </div>
+
+            <div className="bg-brand-500/10 border border-brand-500/20 rounded-lg p-2.5 mb-4">
+              <p className="text-[10px] font-black text-brand-700 dark:text-brand-400 uppercase leading-none mb-1">Package: 30+ LPA</p>
+              <p className="text-[9px] font-bold text-brand-600/80 dark:text-brand-400/80">25+ Companies Participating</p>
+            </div>
+
+            <button className="w-full py-2.5 bg-brand-600 text-white font-black text-[10px] uppercase tracking-widest rounded-lg hover:bg-brand-500 active:scale-95 transition-all shadow-lg shadow-brand-500/10">
+              Register Now
+            </button>
+          </div>
+        </FloatingCard>
+      </Link>
     </div>
   );
 }
 
-/** Right cards – student achievements */
 function AchievementCards() {
-  const achievements = [
-    { initials: "AK", color: "bg-teal-500", name: "Arjun Kumar", note: "Placed at Wipro · SDE-1" },
-    { initials: "PS", color: "bg-violet-500", name: "Priya Sharma", note: "Cracked Amazon · SDE-2" },
+  const ach = [
+    { initials: "MJ", name: "Manu's Interview", status: "Candidate is mid.", color: "bg-blue-500" },
+    { initials: "RU", name: "Ruru's Interview", status: "Candidate is good.", color: "bg-brand-500" },
   ];
   return (
-    <div className="flex flex-col gap-2 w-56">
-      {achievements.map((a) => (
-        <FloatingCard key={a.name} showBrackets={false} className="p-3 flex items-center gap-3">
-          <div className={`w-8 h-8 rounded-full ${a.color} flex items-center justify-center text-white text-[10px] font-bold shrink-0`}>
-            {a.initials}
-          </div>
-          <div>
-            <p className="text-[11px] font-semibold text-neutral-700 leading-tight">{a.name}</p>
-            <p className="text-[10px] text-neutral-400">{a.note}</p>
-          </div>
-        </FloatingCard>
+    <div className="flex flex-col gap-6">
+      {ach.map((a, i) => (
+        <div key={a.name} className="relative group/ach">
+          {i === 0 && (
+            <div className="absolute -top-10 -left-6 z-30 rotate-[-12deg] pointer-events-none transition-transform group-hover/ach:rotate-[-5deg]">
+              <PaperclipDecoration />
+            </div>
+          )}
+          <FloatingCard showBrackets={false} className={`p-4 w-[210px] flex items-center gap-3 ${i === 0 ? "rotate-[-1deg]" : "rotate-[1deg]"}`}>
+            <div className={`w-9 h-9 rounded-full ${a.color} flex items-center justify-center text-white text-[11px] font-black shrink-0 shadow-sm`}>
+              {a.initials}
+            </div>
+            <div className="min-w-0 flex-1">
+              <h5 className="text-[12px] font-bold text-neutral-900 dark:text-zinc-100 mb-0.5 tracking-tight group-hover/ach:text-brand-600 dark:group-hover/ach:text-brand-400 transition-colors">{a.name}</h5>
+              <p className="text-[10px] font-medium text-neutral-400 dark:text-zinc-500 tracking-tight">{a.status}</p>
+            </div>
+            <div className="flex flex-col gap-0.5 px-1">
+              <div className="w-1 h-1 rounded-full bg-neutral-300 dark:bg-zinc-700" />
+              <div className="w-1 h-1 rounded-full bg-neutral-300 dark:bg-zinc-700" />
+              <div className="w-1 h-1 rounded-full bg-neutral-300 dark:bg-zinc-700" />
+            </div>
+          </FloatingCard>
+        </div>
       ))}
     </div>
   );
 }
 
-/* ─────────────────────────────────────────────────────────────────────
-   Services data + card
-───────────────────────────────────────────────────────────────────── */
-
+/* ── Services ────────────────────────────────────────────────────── */
 const services = [
   {
     id: "courses",
     title: "Courses",
     punchline: "Production-grade skills, not tutorial fluff.",
-    description:
-      "Build backend and frontend systems the way real teams do—Node.js, TypeScript, Go, SQL, React—through structured, hands-on courses.",
-    bullets: [
-      "Backend-first JavaScript & TypeScript",
-      "Auth systems with Go + JWT",
-      "SQL for real apps and data workflows",
-    ],
+    description: "Build backend and frontend systems the way real teams do—Node.js, TypeScript, Go, SQL, React—through structured, hands-on courses.",
+    bullets: ["Backend-first JavaScript & TypeScript", "Auth systems with Go + JWT", "SQL for real apps and data workflows"],
     ctaText: "Explore Courses",
     href: "/courses",
-    icon: <BookOpen className="w-8 h-8 md:w-10 md:h-10 text-teal-500" />,
+    icon: <BookOpen className="w-5 h-5 text-brand-600 dark:text-brand-400" />,
+    wide: true,
   },
   {
     id: "prepare",
     title: "Prepare",
     punchline: "Practice like it's the real interview.",
-    description:
-      "Simulate real technical interviews in an in-browser workspace—no setup, no guesswork.",
-    bullets: [
-      "Interview-style coding workspace",
-      "Instant test feedback",
-      "Customizable layout + theming",
-    ],
+    description: "Simulate real technical interviews in an in-browser workspace—no setup, no guesswork.",
+    bullets: ["Interview-style coding workspace", "Instant test feedback", "Customizable layout + theming"],
     ctaText: "Start Interview Prep",
     href: "/prepare",
-    icon: <TerminalSquare className="w-8 h-8 md:w-10 md:h-10 text-teal-500" />,
+    icon: <TerminalSquare className="w-5 h-5 text-brand-600 dark:text-brand-400" />,
+    wide: false,
   },
   {
     id: "hackathons",
     title: "Hackathons",
     punchline: "Build proof, not just projects.",
-    description:
-      "Compete in global hackathons, fellowships, and open-source programs that hiring managers actually respect.",
-    bullets: [
-      "GSoC, MLH, ETHIndia, Kaggle",
-      "Cash prizes, stipends, mentorship",
-      "Live events + monthly sprints",
-    ],
+    description: "Compete in global hackathons, fellowships, and open-source programs that hiring managers actually respect.",
+    bullets: ["GSoC, MLH, ETHIndia, Kaggle", "Cash prizes, stipends, mentorship", "Live events + monthly sprints"],
     ctaText: "Explore Live Hackathons",
     href: "/hackathons",
-    icon: <Trophy className="w-8 h-8 md:w-10 md:h-10 text-teal-500" />,
+    icon: <Trophy className="w-5 h-5 text-brand-600 dark:text-brand-400" />,
+    wide: false,
   },
   {
     id: "jobs",
     title: "Jobs",
     punchline: "Jobs that are actually still open.",
-    description:
-      "Fresh engineering roles (Node.js, React, SDE-2) pulled in near real-time—so you're not applying to dead listings.",
-    bullets: [
-      "Minutes-old listings",
-      "Role-focused: frontend, backend, SDE",
-      "Less noise, more signal",
-    ],
+    description: "Fresh engineering roles (Node.js, React, SDE-2) pulled in near real-time—so you're not applying to dead listings.",
+    bullets: ["Minutes-old listings", "Role-focused: frontend, backend, SDE", "Less noise, more signal"],
     ctaText: "Browse Fresh Jobs",
     href: "/jobs",
-    icon: <Briefcase className="w-8 h-8 md:w-10 md:h-10 text-teal-500" />,
+    icon: <Briefcase className="w-5 h-5 text-brand-600 dark:text-brand-400" />,
+    wide: true,
   },
   {
     id: "scholarships",
     title: "Scholarships",
     punchline: "Education without the financial chokehold.",
-    description:
-      "Fully and partially funded scholarships to help you study abroad or upskill—without crushing debt.",
-    bullets: [
-      "Global + regional programs",
-      "Merit-based + need-based",
-      "Clear requirements + timelines",
-    ],
+    description: "Fully and partially funded scholarships to help you study abroad or upskill—without crushing debt.",
+    bullets: ["Global + regional programs", "Merit-based + need-based", "Clear requirements + timelines"],
     ctaText: "Explore Scholarships",
     href: "/study-abroad",
-    icon: <GraduationCap className="w-8 h-8 md:w-10 md:h-10 text-teal-500" />,
+    icon: <GraduationCap className="w-5 h-5 text-brand-600 dark:text-brand-400" />,
+    wide: false,
   },
   {
     id: "mentorship",
     title: "Mentorship",
     punchline: "Guidance from people who've done it.",
-    description:
-      "Get matched with mentors based on the role, company, and career path you're targeting.",
-    bullets: [
-      "Role-specific guidance",
-      "Company-aware advice",
-      "Actionable roadmap sessions",
-    ],
+    description: "Get matched with mentors based on the role, company, and career path you're targeting.",
+    bullets: ["Role-specific guidance", "Company-aware advice", "Actionable roadmap sessions"],
     ctaText: "Find a Mentor",
     href: "/mentorship",
-    icon: <Users className="w-8 h-8 md:w-10 md:h-10 text-teal-500" />,
+    icon: <Users className="w-5 h-5 text-brand-600 dark:text-brand-400" />,
+    wide: false,
   },
 ];
 
@@ -225,268 +261,773 @@ type Service = (typeof services)[number];
 
 function ServiceCard({ service, index }: { service: Service; index: number }) {
   return (
-    <article
-      style={{ animationDelay: `${index * 50}ms` }}
-      className="relative flex flex-col gap-3 rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm hover:border-teal-300 hover:-translate-y-1.5 hover:shadow-[0_4px_20px_rgba(20,184,166,0.12)] transition-all duration-300 animate-fade-in-up"
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-32px" }}
+      transition={{ ...springFast, delay: index * 0.05 }}
+      className={`group relative flex flex-col gap-4 rounded-3xl border border-neutral-200 dark:border-white/[0.07] bg-white dark:bg-[#111113] p-6 shadow-sm dark:shadow-none hover:shadow-md dark:hover:shadow-none hover:border-brand-200 dark:hover:border-brand-500/20 hover:-translate-y-1 transition-all duration-300 ${service.wide ? "md:col-span-2" : "md:col-span-1"}`}
     >
-      <CornerBracket className="absolute top-0 left-0 opacity-60" />
-      <CornerBracket className="absolute top-0 right-0 rotate-90 opacity-60" />
-      <CornerBracket className="absolute bottom-0 left-0 -rotate-90 opacity-60" />
-      <CornerBracket className="absolute bottom-0 right-0 rotate-180 opacity-60" />
-
-      <div className="relative flex items-center justify-between">
-        <div className="p-3 rounded-lg border border-neutral-200 bg-neutral-50">
+      {/* Top row */}
+      <div className="flex items-center justify-between">
+        <div className="p-2.5 rounded-2xl border border-neutral-100 dark:border-white/[0.06] bg-neutral-50 dark:bg-white/[0.03] group-hover:border-brand-100 dark:group-hover:border-brand-500/10 transition-colors">
           {service.icon}
         </div>
-        <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-neutral-400">
-          {`Pillar ${index + 1}/6`}
+        <span className="text-[9px] font-mono uppercase tracking-[0.22em] text-neutral-300 dark:text-zinc-600">
+          {`0${index + 1}`}
         </span>
       </div>
 
-      <div className="relative z-10 flex flex-col gap-1">
-        <h3 className="text-xl font-bold uppercase tracking-wide text-neutral-900">{service.title}</h3>
-        <p className="text-teal-600 text-sm font-mono">{service.punchline}</p>
-        <p className="text-sm text-neutral-500 font-sans leading-relaxed mt-1">{service.description}</p>
+      {/* Text */}
+      <div className="flex flex-col gap-1">
+        <h3 className="text-lg font-bold tracking-tight text-neutral-900 dark:text-zinc-100">{service.title}</h3>
+        <p className="text-brand-600 dark:text-brand-400/80 text-[11px] font-mono tracking-wide">{service.punchline}</p>
+        <p className="text-sm text-neutral-500 dark:text-zinc-500 leading-relaxed mt-1">{service.description}</p>
       </div>
 
-      <ul className="mt-2 space-y-2">
+      {/* Bullets */}
+      <ul className="space-y-1.5">
         {service.bullets.map((bullet) => (
-          <li key={bullet} className="flex items-start gap-2 text-sm text-neutral-500 font-sans">
-            <Check className="w-4 h-4 text-teal-500 mt-[2px] shrink-0" />
+          <li key={bullet} className="flex items-start gap-2 text-sm text-neutral-500 dark:text-zinc-500">
+            <Check className="w-3.5 h-3.5 text-brand-500 mt-[3px] shrink-0" />
             <span>{bullet}</span>
           </li>
         ))}
       </ul>
 
-      <div className="mt-auto pt-3 border-t border-neutral-100">
+      {/* CTA */}
+      <div className="mt-auto pt-4 border-t border-neutral-100 dark:border-white/[0.05]">
         <Link
           href={service.href}
-          className="group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-teal-600 hover:text-teal-700 transition-colors"
+          className="group/link inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors"
         >
           {service.ctaText}
-          <span className="inline-flex transition-transform duration-200 group-hover:translate-x-1">
-            <ArrowRight className="w-4 h-4" />
-          </span>
+          <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/link:translate-x-1" />
         </Link>
       </div>
-    </article>
+    </motion.article>
   );
 }
 
-/* ─────────────────────────────────────────────────────────────────────
-   Page
-───────────────────────────────────────────────────────────────────── */
-
-export default function Landing() {
+/* ── Product mockup panels ──────────────────────────────────────── */
+function PrepMockup() {
   return (
-    <div className="min-h-screen bg-white text-neutral-900 font-sans flex flex-col">
-      <Navbar />
-
-      <main className="flex-grow pt-20 pb-20 px-4 md:px-6 relative overflow-hidden">
-        {/* ── Background ── */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-dot-grid opacity-100" />
-          <div className="absolute -left-28 top-10 w-96 h-96 bg-emerald-100/40 blur-[120px]" />
-          <div className="absolute right-[-120px] bottom-[-80px] w-[520px] h-[520px] bg-emerald-50/60 blur-[140px]" />
+    <div className="h-full flex flex-col">
+      <div className="flex border-b border-neutral-200 dark:border-white/[0.06] px-4 pt-3 gap-1">
+        {["Problem", "Solution", "Tests"].map((t, i) => (
+          <span
+            key={t}
+            className={`px-3 py-1.5 text-[11px] font-medium rounded-t transition-colors ${i === 0 ? "bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-400 border-b-2 border-brand-500" : "text-neutral-400 dark:text-zinc-500"}`}
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+      <div className="flex-1 flex overflow-hidden">
+        {/* Problem statement */}
+        <div className="w-[42%] border-r border-neutral-200 dark:border-white/[0.06] p-4 overflow-y-auto">
+          <h3 className="text-sm font-bold text-neutral-900 dark:text-zinc-100 mb-1">1. Two Sum</h3>
+          <span className="inline-block px-2 py-0.5 text-[9px] font-bold bg-brand-100 dark:bg-brand-500/20 text-brand-700 dark:text-brand-400 rounded-full mb-3">Easy</span>
+          <p className="text-[11px] text-neutral-500 dark:text-zinc-400 leading-relaxed mb-3">
+            Given an array of integers <code className="text-brand-600 dark:text-brand-400 font-mono bg-brand-50 dark:bg-brand-500/10 px-1 rounded">nums</code> and an integer <code className="text-brand-600 dark:text-brand-400 font-mono bg-brand-50 dark:bg-brand-500/10 px-1 rounded">target</code>, return indices of the two numbers such that they add up to target.
+          </p>
+          <div className="bg-neutral-50 dark:bg-white/[0.03] border border-neutral-200 dark:border-white/[0.06] rounded-lg p-3">
+            <p className="text-[10px] font-bold text-neutral-700 dark:text-zinc-300 mb-1.5">Example 1:</p>
+            <p className="font-mono text-[10px] text-neutral-500 dark:text-zinc-400">Input: nums = [2,7,11,15], target = 9</p>
+            <p className="font-mono text-[10px] text-brand-600 dark:text-brand-400 mt-0.5">Output: [0,1]</p>
+          </div>
         </div>
+        {/* Code editor */}
+        <div className="flex-1 p-4 bg-neutral-950 dark:bg-[#0d0d10] font-mono text-[11px] overflow-y-auto">
+          <div className="text-zinc-600 mb-1.5">{"// Two Sum — O(n) solution"}</div>
+          <div className="leading-relaxed">
+            <div><span className="text-violet-400">function</span> <span className="text-sky-400">twoSum</span><span className="text-zinc-300">(nums, target) {"{"}</span></div>
+            <div className="pl-4"><span className="text-violet-400">const</span><span className="text-zinc-300"> map = </span><span className="text-sky-400">new</span><span className="text-zinc-300"> Map();</span></div>
+            <div className="pl-4"><span className="text-violet-400">for</span><span className="text-zinc-300"> (</span><span className="text-violet-400">let</span><span className="text-zinc-300"> i = 0; i {"<"} nums.length; i++) {"{"}</span></div>
+            <div className="pl-8"><span className="text-violet-400">const</span><span className="text-zinc-300"> comp = target - nums[i];</span></div>
+            <div className="pl-8"><span className="text-violet-400">if</span><span className="text-zinc-300"> (map.has(comp)) </span><span className="text-violet-400">return</span><span className="text-zinc-300"> [map.get(comp), i];</span></div>
+            <div className="pl-8"><span className="text-zinc-300">map.set(nums[i], i);</span></div>
+            <div className="pl-4"><span className="text-zinc-300">{"}"}</span></div>
+            <div><span className="text-zinc-300">{"}"}</span></div>
+          </div>
+          <div className="mt-5 pt-3 border-t border-white/[0.06] flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse" />
+            <span className="text-brand-400 text-[10px] font-bold">All 29 test cases passed · Runtime 68ms · Memory 44MB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-        {/* ── Decorative accents ── */}
-        <CircleCrossAccent className="absolute top-16 right-[7%] hidden xl:block pointer-events-none opacity-50 z-10" />
-        <CrossAccent className="absolute bottom-44 right-[12%] hidden xl:block pointer-events-none opacity-25 z-10" />
-
-        <div className="container mx-auto max-w-7xl relative z-10">
-
-          {/* ══════════════════════════════════════════════
-              HERO
-          ══════════════════════════════════════════════ */}
-          <div className="mb-16 md:mb-24">
-
-            {/* ── Desktop: 3-column layout ── */}
-            <div className="hidden lg:grid grid-cols-[210px_1fr_230px] gap-8 items-start rounded-3xl border border-neutral-200/80 bg-white/60 backdrop-blur-sm px-6 pt-4 pb-10 shadow-[0_2px_24px_rgba(0,0,0,0.04)]">
-
-              {/* Left floating cards column — absolute positioning for exact placement */}
-              <div className="relative pointer-events-none" style={{ minHeight: "520px" }}>
-                {/* Sessions card — beside description area */}
-                <div
-                  className="absolute top-[210px] left-0 -rotate-6 animate-fade-in-up"
-                  style={{ animationDelay: "300ms" }}
-                >
-                  <SessionsCard />
-                </div>
-                {/* Companies card — lower, more tilted */}
-                <div
-                  className="absolute top-[400px] left-0 -rotate-12 animate-fade-in-up"
-                  style={{ animationDelay: "480ms" }}
-                >
-                  <CompaniesCard />
-                </div>
+function JobsMockup() {
+  const jobs = [
+    { role: "SDE-2 · Backend Engineer", company: "Razorpay", location: "Bangalore · Hybrid", salary: "₹35–50 LPA", tag: "2m ago", fresh: true },
+    { role: "Frontend Engineer", company: "CRED", location: "Remote", salary: "₹28–42 LPA", tag: "8m ago", fresh: true },
+    { role: "Full-Stack Developer", company: "Paytm", location: "Noida · On-site", salary: "₹20–32 LPA", tag: "15m ago", fresh: false },
+    { role: "Node.js Developer", company: "Swiggy", location: "Bangalore · Remote", salary: "₹24–38 LPA", tag: "1h ago", fresh: false },
+  ];
+  return (
+    <div className="h-full flex flex-col">
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-neutral-200 dark:border-white/[0.06]">
+        <div className="flex-1 bg-neutral-100 dark:bg-white/[0.05] rounded-lg px-3 py-1.5 text-[11px] text-neutral-400 dark:text-zinc-500 font-mono">Search roles, companies...</div>
+        {["Remote", "Backend", "₹20L+"].map((f) => (
+          <span key={f} className="px-2.5 py-1 rounded-full bg-brand-50 dark:bg-brand-500/10 border border-brand-200 dark:border-brand-500/20 text-[10px] font-semibold text-brand-700 dark:text-brand-400">
+            {f}
+          </span>
+        ))}
+      </div>
+      <div className="flex-1 overflow-y-auto divide-y divide-neutral-100 dark:divide-white/[0.04]">
+        {jobs.map((job) => (
+          <div key={job.role + job.company} className="flex items-center justify-between px-4 py-3 hover:bg-neutral-50 dark:hover:bg-white/[0.02] transition-colors">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-neutral-100 dark:bg-white/[0.06] flex items-center justify-center text-[10px] font-bold text-neutral-600 dark:text-zinc-300 border border-neutral-200 dark:border-white/[0.06]">
+                {job.company[0]}
               </div>
-
-              {/* Center text */}
-              <div className="text-center pt-6">
-                <div className="animate-fade-in-up">
-                  <HeroBadge text="Now Live · Level Up Job Fair 2026 — Register Free" />
-                </div>
-
-                <h1
-                  style={{ animationDelay: "100ms", fontFamily: "var(--font-bricolage)" }}
-                  className="text-5xl xl:text-6xl 2xl:text-7xl font-extrabold tracking-tight leading-[1.08] mb-5 animate-fade-in-up text-neutral-900"
-                >
-                  Prepare Smarter.<br />
-                  Land Your Dream Role.
-                </h1>
-
-                <div className="max-w-md mx-auto">
-                  <p
-                    style={{ animationDelay: "200ms" }}
-                    className="text-neutral-500 text-base md:text-lg font-sans leading-relaxed animate-fade-in-up"
-                  >
-                    Curated courses, live mock interviews, and real job opportunities—built for engineers in a tough market.
-                  </p>
-
-                  <div className="mt-8 animate-fade-in-up" style={{ animationDelay: "250ms" }}>
-                    <Link
-                      href="/courses"
-                      className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#10b981] hover:bg-[#059669] text-white font-bold text-sm rounded-full transition-all tracking-wider shadow-[0_0_24px_rgba(16,185,129,0.4)]"
-                    >
-                      Get started — it&apos;s free <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right floating cards column — absolute positioning for exact placement */}
-              <div className="relative pointer-events-none" style={{ minHeight: "520px" }}>
-                {/* Job Fair flyer with paperclip pinned on top */}
-                <div
-                  className="absolute top-[160px] right-2 rotate-2 animate-fade-in-up"
-                  style={{ animationDelay: "280ms" }}
-                >
-                  <JobFairCard />
-                </div>
-                {/* Achievement cards below */}
-                <div
-                  className="absolute top-[380px] right-0 -rotate-1 animate-fade-in-up"
-                  style={{ animationDelay: "420ms" }}
-                >
-                  <AchievementCards />
-                </div>
+              <div>
+                <p className="text-[12px] font-semibold text-neutral-800 dark:text-zinc-200">{job.role}</p>
+                <p className="text-[10px] text-neutral-400 dark:text-zinc-500">{job.company} · {job.location}</p>
               </div>
             </div>
+            <div className="flex items-center gap-3">
+              <span className="text-[11px] font-medium text-neutral-600 dark:text-zinc-400 hidden sm:block">{job.salary}</span>
+              <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${job.fresh ? "bg-brand-100 dark:bg-brand-500/20 text-brand-700 dark:text-brand-400" : "bg-neutral-100 dark:bg-white/[0.05] text-neutral-400 dark:text-zinc-500"}`}>
+                {job.tag}
+              </span>
+              <button className="px-3 py-1 bg-brand-500 hover:bg-brand-400 text-white text-[10px] font-bold rounded-full transition-colors">Apply</button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
-            {/* ── Mobile: single column ── */}
-            <div className="lg:hidden text-center">
-              <div className="animate-fade-in-up">
-                <HeroBadge text="Level Up Job Fair 2026 — Register Free" />
+function CoursesMockup() {
+  const lessons = [
+    { num: "01", title: "Node.js Fundamentals", done: true },
+    { num: "02", title: "Express + REST APIs", done: true },
+    { num: "03", title: "Auth with JWT & Cookies", done: false, active: true },
+    { num: "04", title: "Database Design with SQL", done: false },
+    { num: "05", title: "Testing & CI/CD", done: false },
+  ];
+  return (
+    <div className="h-full flex overflow-hidden">
+      {/* Sidebar */}
+      <div className="w-[200px] border-r border-neutral-200 dark:border-white/[0.06] bg-neutral-50 dark:bg-white/[0.02] flex flex-col shrink-0">
+        <div className="px-4 py-3 border-b border-neutral-200 dark:border-white/[0.06]">
+          <p className="text-[9px] font-mono uppercase tracking-[0.18em] text-brand-600 dark:text-brand-400 mb-0.5">Module 1</p>
+          <p className="text-[12px] font-bold text-neutral-800 dark:text-zinc-200 leading-snug">Backend with Node.js</p>
+          <div className="mt-2.5 h-1 bg-neutral-200 dark:bg-white/[0.07] rounded-full overflow-hidden">
+            <div className="h-full w-2/5 bg-brand-500 rounded-full" />
+          </div>
+          <p className="text-[10px] text-neutral-400 dark:text-zinc-600 mt-1">2 of 5 complete</p>
+        </div>
+        <div className="overflow-y-auto flex-1 py-2">
+          {lessons.map((l) => (
+            <div
+              key={l.num}
+              className={`flex items-center gap-2.5 px-4 py-2 text-[11px] transition-colors ${l.active ? "bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-300 font-semibold" : l.done ? "text-neutral-400 dark:text-zinc-600" : "text-neutral-600 dark:text-zinc-400"}`}
+            >
+              <div className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${l.done ? "bg-brand-500" : l.active ? "border-2 border-brand-500" : "border border-neutral-300 dark:border-white/[0.1]"}`}>
+                {l.done && <Check className="w-2.5 h-2.5 text-white" />}
               </div>
+              <span className="leading-snug">{l.title}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Content */}
+      <div className="flex-1 p-5 overflow-y-auto">
+        <p className="text-[9px] font-mono uppercase tracking-[0.18em] text-brand-600 dark:text-brand-400 mb-2">Lesson 3</p>
+        <h3 className="text-[15px] font-bold text-neutral-900 dark:text-zinc-100 mb-2">Auth with JWT &amp; Cookies</h3>
+        <p className="text-[11px] text-neutral-500 dark:text-zinc-400 leading-relaxed mb-4">
+          Learn how to implement stateless authentication using JSON Web Tokens and secure HttpOnly cookies in production Node.js apps.
+        </p>
+        <div className="bg-neutral-950 dark:bg-[#0d0d10] rounded-lg p-3 font-mono text-[10px] leading-relaxed">
+          <div className="text-zinc-600 mb-1">{"// Generate JWT token"}</div>
+          <div><span className="text-violet-400">const</span><span className="text-zinc-300"> token = jwt.</span><span className="text-sky-400">sign</span><span className="text-zinc-300">(</span></div>
+          <div className="pl-4"><span className="text-zinc-300">{"{ userId: user.id, role: user.role },"}</span></div>
+          <div className="pl-4"><span className="text-sky-400">process.env</span><span className="text-zinc-300">.JWT_SECRET,</span></div>
+          <div className="pl-4"><span className="text-zinc-300">{"{ expiresIn: "}</span><span className="text-amber-400">&quot;7d&quot;</span><span className="text-zinc-300">{" }"}</span></div>
+          <div><span className="text-zinc-300">);</span></div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ProductShowcase() {
+  const [activeTab, setActiveTab] = useState<"prep" | "jobs" | "courses">("prep");
+
+  const tabs = [
+    { id: "prep" as const, label: "Interview Prep", icon: <TerminalSquare className="w-3.5 h-3.5" /> },
+    { id: "jobs" as const, label: "Job Board", icon: <Briefcase className="w-3.5 h-3.5" /> },
+    { id: "courses" as const, label: "Courses", icon: <BookOpen className="w-3.5 h-3.5" /> },
+  ];
+
+  const urls: Record<typeof activeTab, string> = {
+    prep: "levelup.app/prepare",
+    jobs: "levelup.app/jobs",
+    courses: "levelup.app/courses",
+  };
+
+  return (
+    <section className="mb-24">
+      <FadeUp className="mb-10 text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 dark:bg-brand-500/[0.08] border border-brand-200 dark:border-brand-500/20 text-[11px] font-semibold text-brand-700 dark:text-brand-400 mb-5">
+          <Sparkles className="w-3 h-3" />
+          See it in action
+        </div>
+        <h2
+          style={{ fontFamily: "var(--font-bricolage)" }}
+          className="text-4xl md:text-5xl font-extrabold tracking-tighter leading-[1.02] bg-gradient-to-b from-neutral-900 to-neutral-500 dark:from-white dark:to-neutral-400 bg-clip-text text-transparent mb-4"
+        >
+          Built for every stage<br className="hidden md:block" /> of your journey.
+        </h2>
+        <p className="text-neutral-500 dark:text-zinc-400 text-base max-w-lg mx-auto leading-relaxed">
+          From learning and practicing to applying and landing — Level Up is your all-in-one career operating system.
+        </p>
+      </FadeUp>
+
+      {/* Tab switcher */}
+      <FadeUp delay={0.06} className="flex justify-center mb-7">
+        <div className="inline-flex rounded-full border border-neutral-200 dark:border-white/[0.08] bg-neutral-50 dark:bg-white/[0.02] p-1 gap-1">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+                activeTab === tab.id
+                  ? "bg-white dark:bg-white/[0.08] text-neutral-900 dark:text-zinc-100 shadow-sm border border-neutral-200 dark:border-white/[0.1]"
+                  : "text-neutral-400 dark:text-zinc-500 hover:text-neutral-700 dark:hover:text-zinc-300"
+              }`}
+            >
+              {tab.icon}
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </FadeUp>
+
+      {/* Browser mockup */}
+      <FadeUp delay={0.1}>
+        <div className="relative rounded-3xl overflow-hidden border border-brand-100 dark:border-brand-500/20 bg-gradient-to-br from-brand-50/80 via-white to-white dark:from-brand-500/[0.07] dark:via-[#09090b] dark:to-[#09090b] p-3 md:p-6 shadow-[0_24px_80px_rgba(16,185,129,0.07)] dark:shadow-[0_24px_80px_rgba(16,185,129,0.04)]">
+          {/* Decorative glow */}
+          <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-40 bg-brand-100/80 dark:bg-brand-500/[0.06] blur-[70px] rounded-full" />
+
+          <div className="relative rounded-xl overflow-hidden border border-neutral-200 dark:border-white/[0.08] shadow-2xl">
+            {/* Browser chrome */}
+            <div className="bg-neutral-100 dark:bg-[#18181b] px-4 py-2.5 flex items-center gap-3 border-b border-neutral-200 dark:border-white/[0.06]">
+              <div className="flex gap-1.5 shrink-0">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
+                <div className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
+              </div>
+              <div className="flex-1 mx-2 bg-white dark:bg-white/[0.05] border border-neutral-200 dark:border-white/[0.06] rounded-full px-4 py-1 text-[11px] text-neutral-400 dark:text-zinc-500 font-mono text-center">
+                {urls[activeTab]}
+              </div>
+              <div className="w-14 shrink-0" />
+            </div>
+            {/* Animated content */}
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
+              className="bg-white dark:bg-[#09090b] h-[300px] md:h-[400px] overflow-hidden"
+            >
+              {activeTab === "prep" && <PrepMockup />}
+              {activeTab === "jobs" && <JobsMockup />}
+              {activeTab === "courses" && <CoursesMockup />}
+            </motion.div>
+          </div>
+        </div>
+      </FadeUp>
+    </section>
+  );
+}
+
+function OpportunitiesMockup() {
+  const programs = [
+    { name: "Google Summer of Code", org: "Google", stipend: "$3,000", status: "Open", color: "bg-blue-500" },
+    { name: "Mercedes-Benz Fellowship", org: "Mercedes", stipend: "€5,000", status: "Live", color: "bg-neutral-800" },
+    { name: "MLH Fellowship", org: "MLH", stipend: "$5,000", status: "Closing", color: "bg-red-500" },
+  ];
+  return (
+    <div className="p-4 h-full flex flex-col justify-center">
+      <div className="space-y-3">
+        {programs.map((p) => (
+          <div key={p.name} className="flex items-center justify-between p-3 rounded-2xl border border-neutral-100 dark:border-white/[0.05] bg-white/50 dark:bg-white/[0.02] shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className={`w-8 h-8 rounded-lg ${p.color} flex items-center justify-center text-white text-[10px] font-bold`}>
+                {p.org[0]}
+              </div>
+              <div>
+                <p className="text-[11px] font-bold text-neutral-800 dark:text-zinc-200 leading-tight">{p.name}</p>
+                <p className="text-[9px] text-neutral-400 dark:text-zinc-500">{p.stipend} Stipend</p>
+              </div>
+            </div>
+            <span className={`px-2 py-0.5 rounded-full text-[8px] font-bold uppercase tracking-wider ${
+              p.status === "Open" ? "bg-brand-100 dark:bg-brand-500/20 text-brand-600" : 
+              p.status === "Live" ? "bg-blue-100 dark:bg-blue-500/20 text-blue-600" : 
+              "bg-amber-100 dark:bg-amber-500/20 text-amber-600"
+            }`}>
+              {p.status}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ConnectMockup() {
+  return (
+    <div className="p-4 h-full flex items-center justify-center">
+      <div className="relative w-full max-w-[160px] p-4 rounded-3xl border border-brand-100 dark:border-brand-500/20 bg-white dark:bg-[#111113] shadow-xl rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
+        <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-400 to-brand-500 mb-3 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-brand-500/20">
+          AK
+        </div>
+        <h4 className="text-[13px] font-bold text-neutral-900 dark:text-zinc-100 leading-tight">Arjun Kumar</h4>
+        <p className="text-[10px] text-brand-600 dark:text-brand-400 font-medium mb-3 tracking-tight">SDE-2 at Google</p>
+        <button className="w-full py-2 bg-brand-500 text-white text-[9px] font-bold uppercase tracking-widest rounded-xl shadow-lg shadow-brand-500/10">
+          Book Session
+        </button>
+        {/* Floating badge */}
+        <div className="absolute -top-2 -right-2 px-2 py-0.5 bg-amber-400 text-white text-[8px] font-black rounded-full rotate-12 shadow-md">
+          TOP MENTOR
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function JobFairBentoMockup() {
+  return (
+    <div className="p-6 h-full flex flex-col justify-center relative overflow-hidden">
+      <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-100 dark:bg-brand-500/20 border border-brand-200 dark:border-brand-500/30 text-[9px] font-black text-brand-700 dark:text-brand-400 uppercase tracking-widest mb-3">
+            <Sparkles className="w-3 h-3" />
+            Now Live
+          </div>
+          <h3 className="text-2xl md:text-3xl font-black text-neutral-900 dark:text-zinc-100 tracking-tight leading-[0.9] uppercase mb-2">
+            Career Synergy Summit
+          </h3>
+          <p className="text-sm text-neutral-500 dark:text-zinc-400 font-medium max-w-sm">
+            India&apos;s largest offline job carnival at RIMT University, Punjab. 10-11 April, 2026.
+          </p>
+        </div>
+        
+        <div className="flex gap-3">
+          <div className="px-5 py-4 rounded-3xl bg-white dark:bg-white/[0.03] border border-neutral-100 dark:border-white/[0.08] shadow-sm">
+            <p className="text-[24px] font-black text-brand-500 leading-none mb-1">30+</p>
+            <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest">LPA Package</p>
+          </div>
+          <div className="px-5 py-4 rounded-3xl bg-white dark:bg-white/[0.03] border border-neutral-100 dark:border-white/[0.08] shadow-sm">
+            <p className="text-[24px] font-black text-brand-500 leading-none mb-1">25+</p>
+            <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest">Companies</p>
+          </div>
+        </div>
+      </div>
+      
+      {/* Decorative background truth element */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[120px] font-black text-neutral-500/[0.03] dark:text-white/[0.02] select-none pointer-events-none tracking-tighter uppercase whitespace-nowrap">
+        MEGA CARNIVAL
+      </div>
+    </div>
+  );
+}
+
+function FeatureHub() {
+  return (
+    <section className="mb-32">
+      <FadeUp className="mb-12 text-center">
+        <h2
+          style={{ fontFamily: "var(--font-bricolage)" }}
+          className="text-4xl md:text-5xl font-extrabold tracking-tighter leading-[1.02] bg-gradient-to-b from-neutral-900 to-neutral-500 dark:from-white dark:to-neutral-400 bg-clip-text text-transparent mb-4"
+        >
+          Everything else you need<br className="hidden md:block" /> to get ahead.
+        </h2>
+        <p className="text-neutral-500 dark:text-zinc-400 text-base max-w-lg mx-auto leading-relaxed">
+          Beyond practice and courses—exclusive opportunities, 1:1 guidance, and massive hiring events.
+        </p>
+      </FadeUp>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[240px] md:auto-rows-[300px]">
+        {/* Card 1: Opportunities */}
+        <FadeUp delay={0.1} className="md:col-span-2 md:row-span-1 rounded-[40px] border border-neutral-200 dark:border-white/[0.08] bg-neutral-50/50 dark:bg-white/[0.01] overflow-hidden group">
+          <div className="h-full flex flex-col md:flex-row items-center">
+            <div className="w-full md:w-1/2 p-8 md:p-10 flex flex-col justify-center">
+              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-brand-600 dark:text-brand-400/70 mb-3">Fellowships</p>
+              <h3 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-zinc-100 mb-3">Opportunities Hub</h3>
+              <p className="text-sm text-neutral-500 dark:text-zinc-500 leading-relaxed max-w-[240px]">
+                Apply for elite fellowships, hackathons, and open-source programs with high-value stipends.
+              </p>
+              <Link href="/opportunities" className="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400 hover:gap-3 transition-all underline underline-offset-4">
+                Explore Programs
+              </Link>
+            </div>
+            <div className="w-full md:w-1/2 h-full bg-white/40 dark:bg-white/[0.02] border-l border-neutral-100 dark:border-white/[0.05]">
+              <OpportunitiesMockup />
+            </div>
+          </div>
+        </FadeUp>
+
+        {/* Card 2: Connect */}
+        <FadeUp delay={0.2} className="md:col-span-1 md:row-span-1 rounded-[40px] border border-neutral-200 dark:border-white/[0.08] bg-brand-500/[0.02] dark:bg-brand-500/[0.03] overflow-hidden group">
+          <div className="h-full flex flex-col">
+            <div className="p-8 pb-0">
+              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-brand-600 dark:text-brand-400/70 mb-3">Guidance</p>
+              <h3 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-zinc-100 mb-1">Mentor Connect</h3>
+            </div>
+            <div className="flex-1">
+              <ConnectMockup />
+            </div>
+          </div>
+        </FadeUp>
+
+        {/* Card 3: Job Fair */}
+        <FadeUp delay={0.3} className="md:col-span-3 md:row-span-1 rounded-[40px] border border-brand-200/50 dark:border-brand-500/20 bg-gradient-to-br from-brand-50 to-white dark:from-brand-500/[0.04] dark:via-transparent dark:to-transparent overflow-hidden group">
+          <Link href="/jobs" className="block h-full">
+            <JobFairBentoMockup />
+          </Link>
+        </FadeUp>
+      </div>
+    </section>
+  );
+}
+
+/* ── Page ────────────────────────────────────────────────────────── */
+export default function Landing() {
+  return (
+    <div className="min-h-screen bg-white dark:bg-[#09090b] text-neutral-900 dark:text-zinc-100 font-sans flex flex-col transition-colors duration-300">
+      <Navbar />
+
+      <main className="flex-grow pt-14 relative overflow-hidden">
+        <HeroHighlight containerClassName="h-auto py-12 md:py-16 lg:py-24" className="w-full">
+          <div className="relative w-full max-w-7xl mx-auto px-4 md:px-6 z-10 flex flex-col items-center text-center">
+            {/* ════════════════════════════════════════════
+                HERO CONTENT (CENTERED)
+            ════════════════════════════════════════════ */}
+            <motion.div
+              variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: spring } }}
+              initial="hidden"
+              animate="show"
+              className="z-20 w-full max-w-4xl mx-auto"
+            >
+              <Link href="/jobs">
+                <HeroBadge text="Now Live · Career Synergy Summit 2026 — Join Now" className="mb-6 hover:scale-105 cursor-pointer transition-transform" />
+              </Link>
 
               <h1
                 style={{ fontFamily: "var(--font-bricolage)" }}
-                className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.1] mb-5 text-neutral-900 animate-fade-in-up"
+                className="text-[44px] md:text-[68px] lg:text-[84px] font-extrabold tracking-tighter leading-[0.95] mb-8"
               >
-                Prepare Smarter.<br />
-                Land Your Dream Role.
+                <span className="bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-500 dark:from-white dark:via-white dark:to-neutral-400 bg-clip-text text-transparent">
+                  Prepare
+                </span>{" "}
+                <FlipWords words={["Smarter.", "Faster.", "Better.", "Stronger."]} className="text-brand-500" />
+                <br />
+                <span className="bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-500 dark:from-white dark:via-white dark:to-neutral-400 bg-clip-text text-transparent">
+                  Land Your
+                </span>{" "}
+                <Highlight className="text-white dark:text-white">Dream Role.</Highlight>
               </h1>
 
-              <p className="text-neutral-500 text-base leading-relaxed mb-8 animate-fade-in-up max-w-sm mx-auto">
-                Curated courses, live mock interviews, and real job opportunities—built for engineers in a tough market.
+              <p className="text-neutral-500 dark:text-zinc-400 text-sm md:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+                Curated courses, live mock interviews, and real job opportunities—all in one place. Jobflix is your carrier operating system.
               </p>
 
-              <Link
-                href="/courses"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-teal-500 hover:bg-teal-600 text-white font-bold text-sm rounded-full transition-all tracking-wider shadow-[0_0_24px_rgba(20,184,166,0.35)] animate-fade-in-up"
-              >
-                Get started — it&apos;s free <ArrowRight className="w-4 h-4" />
-              </Link>
+              <div className="flex flex-wrap items-center justify-center gap-6 mb-12">
+                <Link
+                  href="/courses"
+                  className="flex items-center justify-center w-64 h-14 bg-gradient-to-b from-brand-500 to-brand-600 dark:from-brand-500/80 dark:to-brand-400 border border-brand-700 rounded-xl text-white font-bold text-lg tracking-tight transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_4px_14.8px_rgba(0,0,0,0.2)]"
+                >
+                  Get started — it&apos;s free <ArrowRight className="ml-2 w-5 h-4" />
+                </Link>
+                <Link
+                  href="/courses"
+                  className="flex items-center justify-center w-64 h-14 border border-neutral-200 dark:border-white/[0.1] rounded-xl text-neutral-800 dark:text-zinc-200 font-bold text-lg transition-all hover:bg-neutral-50 dark:hover:bg-white/[0.05] hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  Explore courses
+                </Link>
+              </div>
+
+              {/* Stats row centered */}
+              <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 pt-8 border-t border-neutral-100 dark:border-white/[0.06]">
+                {[
+                  { value: "6", label: "Learning pillars" },
+                  { value: "70+", label: "Practice problems" },
+                  { value: "Live", label: "Job listings" },
+                ].map((stat) => (
+                  <div key={stat.label} className="text-center">
+                    <p className="text-2xl font-bold text-neutral-900 dark:text-zinc-100 tracking-tight">{stat.value}</p>
+                    <p className="text-[11px] text-neutral-400 dark:text-zinc-500 uppercase tracking-[0.14em]">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Single Floating Element - Left Side */}
+            <motion.div
+              initial={{ opacity: 0, x: -60, y: -20 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ ...spring, delay: 0.6 }}
+              className="hidden lg:block absolute left-2 xl:left-[-120px] 2xl:left-[-220px] top-[35%] pointer-events-auto z-30"
+            >
+              <motion.div animate={{ y: [0, 12, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="rotate-[-5deg]">
+                <JobFairCard />
+              </motion.div>
+            </motion.div>
+
+            {/* Colorful playful circles/blobs */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden select-none">
+              <motion.div
+                animate={{ scale: [1, 1.1, 1], rotate: [0, 90, 0] }}
+                transition={{ duration: 10, repeat: Infinity }}
+                className="absolute top-[10%] left-[10%] w-32 h-32 rounded-full bg-brand-500/10 blur-3xl"
+              />
+              <motion.div
+                animate={{ scale: [1, 1.2, 1], rotate: [0, -90, 0] }}
+                transition={{ duration: 12, repeat: Infinity }}
+                className="absolute bottom-[20%] right-[10%] w-48 h-48 rounded-full bg-brand-500/10 blur-3xl"
+              />
             </div>
           </div>
+        </HeroHighlight>
 
-          {/* ══════════════════════════════════════════════
-              SERVICE HUB
-          ══════════════════════════════════════════════ */}
-          <section
-            id="service-hub"
-            aria-labelledby="service-hub-title"
-            className="bg-white border border-neutral-200 rounded-3xl p-6 md:p-8 shadow-[0_4px_40px_rgba(0,0,0,0.06)]"
-          >
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6 md:mb-8">
-              <div>
-                <h2 id="service-hub-title" className="text-3xl md:text-4xl font-bold tracking-tight mt-1">
-                  Everything You Need to Get Ahead—In One Place
-                </h2>
-                <p className="text-neutral-600 font-sans mt-2">
-                  Built for engineers navigating a brutally competitive market.
-                </p>
-              </div>
+        <div className="container mx-auto max-w-7xl px-4 md:px-6 relative z-10 -mt-16">
+
+          {/* ════════════════════════════════════════════
+              STATS TICKER
+          ════════════════════════════════════════════ */}
+          <FadeUp className="mb-20">
+            <div className="rounded-full border border-neutral-200 dark:border-white/[0.06] bg-neutral-50 dark:bg-white/[0.02] px-6 py-3.5 flex flex-wrap items-center justify-around gap-5">
+              {[
+                { icon: <BookOpen className="w-4 h-4 text-brand-500" />, text: "Production-grade courses" },
+                { icon: <TerminalSquare className="w-4 h-4 text-brand-500" />, text: "70+ interview problems" },
+                { icon: <Briefcase className="w-4 h-4 text-brand-500" />, text: "Real-time job listings" },
+                { icon: <Trophy className="w-4 h-4 text-brand-500" />, text: "Global hackathons" },
+                { icon: <Zap className="w-4 h-4 text-brand-500" />, text: "AI-powered prep" },
+              ].map(({ icon, text }) => (
+                <div key={text} className="flex items-center gap-2">
+                  {icon}
+                  <span className="text-[12px] font-medium text-neutral-500 dark:text-zinc-400 tracking-wide whitespace-nowrap">{text}</span>
+                </div>
+              ))}
             </div>
+          </FadeUp>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
-              {services.map((service, idx) => (
-                <ServiceCard key={service.id} service={service} index={idx} />
+          {/* ════════════════════════════════════════════
+              FEATURES — 3 columns
+          ════════════════════════════════════════════ */}
+          <section className="mb-24">
+            <FadeUp className="mb-12 text-center">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 dark:bg-brand-500/[0.08] border border-brand-200 dark:border-brand-500/20 text-[11px] font-semibold text-brand-700 dark:text-brand-400 mb-5">
+                <Sparkles className="w-3 h-3" />
+                How it works
+              </div>
+              <h2
+                style={{ fontFamily: "var(--font-bricolage)" }}
+                className="text-4xl md:text-5xl font-extrabold tracking-tighter leading-[1.02] bg-gradient-to-b from-neutral-900 to-neutral-500 dark:from-white dark:to-neutral-400 bg-clip-text text-transparent mb-4"
+              >
+                Go from question<br className="hidden md:block" /> to hired.
+              </h2>
+              <p className="text-neutral-500 dark:text-zinc-400 text-base max-w-lg mx-auto leading-relaxed">
+                One platform to practice, apply, and land the job — no bouncing between tools.
+              </p>
+            </FadeUp>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: <TerminalSquare className="w-5 h-5 text-brand-600 dark:text-brand-400" />,
+                  step: "01",
+                  title: "Practice like it\u2019s real",
+                  desc: "Solve interview-style DSA problems in an in-browser workspace. Run code, get instant test feedback, and identify exactly where you need to improve.",
+                },
+                {
+                  icon: <Briefcase className="w-5 h-5 text-brand-600 dark:text-brand-400" />,
+                  step: "02",
+                  title: "Apply to fresh listings",
+                  desc: "Browse job roles pulled in near real-time — no stale postings, no noise. Every listing is verified open and ready for your application.",
+                },
+                {
+                  icon: <Trophy className="w-5 h-5 text-brand-600 dark:text-brand-400" />,
+                  step: "03",
+                  title: "Land your offer",
+                  desc: "Build a strong profile through courses, hackathons, and mentorship. Walk into every interview with confidence backed by real preparation.",
+                },
+              ].map(({ icon, step, title, desc }, i) => (
+                <FadeUp key={step} delay={i * 0.07}>
+                  <div className="relative flex flex-col gap-4 rounded-3xl border border-neutral-200 dark:border-white/[0.07] bg-white dark:bg-[#111113] p-7 h-full hover:border-brand-200 dark:hover:border-brand-500/20 hover:shadow-md dark:hover:shadow-none transition-all duration-300">
+                    <div className="flex items-center justify-between">
+                      <div className="p-2.5 rounded-2xl bg-brand-50 dark:bg-brand-500/10 border border-brand-100 dark:border-brand-500/20">
+                        {icon}
+                      </div>
+                      <span className="text-[9px] font-mono uppercase tracking-[0.22em] text-neutral-300 dark:text-zinc-600">{step}</span>
+                    </div>
+                    <h3 className="text-lg font-bold tracking-tight text-neutral-900 dark:text-zinc-100">{title}</h3>
+                    <p className="text-sm text-neutral-500 dark:text-zinc-500 leading-relaxed">{desc}</p>
+                  </div>
+                </FadeUp>
               ))}
             </div>
           </section>
 
-        </div>
-      </main>
+          {/* ════════════════════════════════════════════
+              PRODUCT SHOWCASE
+          ════════════════════════════════════════════ */}
+          <ProductShowcase />
 
-      {/* ══════════════════════════════════════════════
-          PRICING TEASER
-      ══════════════════════════════════════════════ */}
-      <section className="px-4 pb-16">
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-white border border-neutral-200 rounded-3xl p-6 md:p-8 shadow-sm">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-              <div>
-                <p className="text-xs font-mono uppercase tracking-[0.3em] text-teal-600">Pricing</p>
-                <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-1">
-                  Plans built for engineers in a tough market
-                </h2>
-                <p className="text-neutral-600 font-sans mt-2 max-w-2xl">
-                  Choose the pace that fits you—monthly, quarterly, or annual—all with premium interview prep and learning paths.
-                </p>
-              </div>
-              <Link
-                href="/pricing"
-                className="inline-flex items-center justify-center px-6 py-3 bg-[#10b981] hover:bg-[#059669] text-white font-bold text-xs md:text-sm rounded-full transition-all uppercase tracking-[0.18em] shadow-[0_0_20px_rgba(16,185,129,0.35)] shrink-0"
+          {/* ════════════════════════════════════════════
+              JOBFLIX CORE FEATURES (Bento Grid)
+          ════════════════════════════════════════════ */}
+          <section className="mb-32">
+            <FadeUp className="mb-12 text-center">
+              <h2
+                style={{ fontFamily: "var(--font-bricolage)" }}
+                className="text-4xl md:text-5xl font-extrabold tracking-tighter leading-[1.02] bg-gradient-to-b from-neutral-900 to-neutral-500 dark:from-white dark:to-neutral-400 bg-clip-text text-transparent mb-4"
               >
-                View Pricing
-              </Link>
-            </div>
+                Everything you need<br className="hidden md:block" /> to land the role.
+              </h2>
+              <p className="text-neutral-500 dark:text-zinc-400 text-base max-w-lg mx-auto leading-relaxed">
+                Built for engineers who refuse to compete fair in a brutal market
+              </p>
+            </FadeUp>
+            <BentoGridThirdDemo />
+          </section>
 
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {[
-                { title: "Monthly", price: "₹1,700", cadence: "/month", note: "Billed monthly", href: "/jobs" },
-                { title: "Quarterly", price: "₹1,300", cadence: "/month", note: "Billed quarterly (₹3,700)", href: "/prepare" },
-                { title: "Annual", price: "₹430", cadence: "/month", note: "Billed yearly (₹5,100)", href: "/courses", badge: "Recommended" },
-              ].map((plan) => (
-                <div
-                  key={plan.title}
-                  className={`relative rounded-2xl border bg-neutral-50 p-4 md:p-5 ${plan.badge ? "border-teal-200" : "border-neutral-200"}`}
-                >
-                  {plan.badge && (
-                    <span className="absolute -top-3 right-3 bg-teal-500 text-white text-[10px] font-bold uppercase tracking-[0.16em] px-3 py-1 rounded-full">
-                      {plan.badge}
-                    </span>
-                  )}
-                  <div className="text-sm text-neutral-500 font-bold uppercase tracking-[0.2em]">{plan.title}</div>
-                  <div className="mt-2 flex items-baseline gap-2">
-                    <span className="text-3xl font-bold text-neutral-900">{plan.price}</span>
-                    <span className="text-neutral-500 text-sm">{plan.cadence}</span>
-                  </div>
-                  <div className="text-neutral-400 text-sm mt-1">{plan.note}</div>
-                  <Link
-                    href={plan.href}
-                    className="mt-4 inline-flex w-full items-center justify-center px-4 py-2.5 rounded-full border border-neutral-200 text-neutral-600 font-bold uppercase tracking-[0.16em] hover:bg-teal-500 hover:text-white hover:border-teal-500 transition-colors text-xs"
+          {/* ════════════════════════════════════════════
+              WORLD MAP (Alumni Distribution)
+          ════════════════════════════════════════════ */}
+          <WorldMapDemo />
+
+        </div>
+
+        {/* ════════════════════════════════════════════
+            PRICING
+        ════════════════════════════════════════════ */}
+        <section className="px-4 md:px-6 mb-24">
+          <div className="container mx-auto max-w-7xl">
+            <div className="rounded-3xl border border-neutral-200 dark:border-white/[0.07] bg-neutral-50 dark:bg-[#111113] p-8 md:p-12">
+              <FadeUp className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+                <div>
+                  <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-brand-600 dark:text-brand-400/70 mb-3">Pricing</p>
+                  <h2
+                    style={{ fontFamily: "var(--font-bricolage)" }}
+                    className="text-3xl md:text-4xl font-extrabold tracking-tighter text-neutral-900 dark:text-zinc-100 leading-tight"
                   >
-                    Buy now
-                  </Link>
+                    Plans built for engineers<br className="hidden md:block" /> in a tough market
+                  </h2>
+                  <p className="text-neutral-500 dark:text-zinc-500 text-sm mt-2 max-w-lg leading-relaxed">
+                    Choose the pace that fits you—monthly, quarterly, or annual.
+                  </p>
                 </div>
-              ))}
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-brand-500 hover:bg-brand-400 text-white font-bold text-sm rounded-full transition-all uppercase tracking-[0.14em] hover:shadow-[0_0_32px_8px_rgba(16,185,129,0.15)] hover:scale-[1.02] shrink-0"
+                >
+                  View Pricing
+                </Link>
+              </FadeUp>
+
+              <div className="grid gap-4 md:grid-cols-3">
+                {[
+                  { title: "Monthly", price: "₹1,700", cadence: "/month", note: "Billed monthly", href: "/jobs", badge: null },
+                  { title: "Quarterly", price: "₹1,300", cadence: "/month", note: "Billed quarterly (₹3,700)", href: "/prepare", badge: null },
+                  { title: "Annual", price: "₹430", cadence: "/month", note: "Billed yearly (₹5,100)", href: "/courses", badge: "Best Value" },
+                ].map((plan, i) => (
+                  <motion.div
+                    key={plan.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ ...springFast, delay: i * 0.08 }}
+                    className={`relative rounded-3xl p-6 border transition-all duration-300 ${
+                      plan.badge
+                        ? "border-brand-200 dark:border-brand-500/30 bg-brand-50 dark:bg-brand-500/[0.04]"
+                        : "border-neutral-200 dark:border-white/[0.07] bg-white dark:bg-white/[0.02] hover:border-neutral-300 dark:hover:border-white/[0.12]"
+                    }`}
+                  >
+                    {plan.badge && (
+                      <span className="absolute -top-3 right-5 bg-brand-500 text-white text-[9px] font-bold uppercase tracking-[0.18em] px-3 py-1 rounded-full">
+                        {plan.badge}
+                      </span>
+                    )}
+                    <div className="text-[10px] font-mono text-neutral-400 dark:text-zinc-500 uppercase tracking-[0.22em] mb-3">{plan.title}</div>
+                    <div className="flex items-baseline gap-1.5 mb-1">
+                      <span className="text-3xl font-bold text-neutral-900 dark:text-zinc-100 tracking-tight">{plan.price}</span>
+                      <span className="text-neutral-400 dark:text-zinc-500 text-sm">{plan.cadence}</span>
+                    </div>
+                    <div className="text-neutral-400 dark:text-zinc-600 text-xs mb-6">{plan.note}</div>
+                    <Link
+                      href={plan.href}
+                      className={`inline-flex w-full items-center justify-center px-4 py-2.5 rounded-full font-bold uppercase tracking-[0.14em] text-xs transition-all hover:scale-[1.02] ${
+                        plan.badge
+                          ? "bg-brand-500 hover:bg-brand-400 text-white hover:shadow-[0_0_24px_4px_rgba(16,185,129,0.2)]"
+                          : "border border-neutral-200 dark:border-white/[0.1] hover:border-neutral-300 dark:hover:border-white/[0.2] text-neutral-600 dark:text-zinc-400 hover:text-neutral-900 dark:hover:text-zinc-100 bg-white dark:bg-white/[0.03]"
+                      }`}
+                    >
+                      Get started
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* ════════════════════════════════════════════
+            FINAL CTA
+        ════════════════════════════════════════════ */}
+        <section className="px-4 md:px-6 pb-28">
+          <div className="container mx-auto max-w-7xl">
+            <FadeUp>
+              <div className="relative overflow-hidden rounded-3xl border border-brand-200 dark:border-brand-500/20 bg-gradient-to-br from-brand-50 via-white to-brand-50/30 dark:from-brand-500/10 dark:via-transparent dark:to-transparent p-12 md:p-20 text-center">
+                {/* Glow */}
+                <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-80 h-32 bg-brand-200/60 dark:bg-brand-500/10 blur-[60px] rounded-full" />
+                {/* Grid overlay */}
+                <div className="absolute inset-0 bg-grid-light dark:bg-grid-dark opacity-40" />
+
+                <div className="relative z-10">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-white/[0.06] border border-brand-200 dark:border-brand-500/20 text-[11px] font-semibold text-brand-700 dark:text-brand-400 mb-6">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    Start today — it&apos;s free
+                  </div>
+
+                  <h2
+                    style={{ fontFamily: "var(--font-bricolage)" }}
+                    className="text-4xl md:text-6xl font-extrabold tracking-tighter bg-gradient-to-b from-neutral-900 to-neutral-500 dark:from-white dark:to-neutral-400 bg-clip-text text-transparent mb-4 leading-tight"
+                  >
+                    Your next role is<br /> closer than you think.
+                  </h2>
+                  <p className="text-neutral-500 dark:text-zinc-400 text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+                    Join thousands of engineers leveling up their skills, cracking interviews, and landing top-tier jobs.
+                  </p>
+                  <div className="flex flex-wrap items-center justify-center gap-3">
+                    <Link
+                      href="/courses"
+                      className="inline-flex items-center gap-2 px-8 py-4 bg-neutral-900 dark:bg-white hover:bg-neutral-700 dark:hover:bg-neutral-100 text-white dark:text-neutral-900 font-bold text-sm rounded-full transition-all hover:scale-[1.03] hover:shadow-[0_0_40px_8px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_0_40px_8px_rgba(255,255,255,0.15)]"
+                    >
+                      Start for free <ArrowRight className="w-4 h-4" />
+                    </Link>
+                    <Link
+                      href="/jobs"
+                      className="inline-flex items-center gap-2 px-8 py-4 border border-neutral-200 dark:border-white/[0.1] hover:border-neutral-300 dark:hover:border-white/[0.2] text-neutral-700 dark:text-zinc-300 font-semibold text-sm rounded-full bg-white dark:bg-white/[0.03] transition-all hover:scale-[1.02]"
+                    >
+                      Browse live jobs
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </FadeUp>
+          </div>
+        </section>
+
+      </main>
 
       <Footer />
     </div>

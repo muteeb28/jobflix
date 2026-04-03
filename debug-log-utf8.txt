@@ -1,0 +1,19 @@
+﻿Testing AmbitionBox Scraper...
+
+--- Query: Zomato ---
+[AmbitionBox Scraper] Generated slug: zomato
+[AmbitionBox Scraper] Trying direct URL: https://www.ambitionbox.com/reviews/zomato-reviews
+[AmbitionBox Scraper] Trying direct URL: https://www.ambitionbox.com/reviews/zomato
+[AmbitionBox Scraper] Searching Google for: Zomato
+[AmbitionBox Scraper] No AmbitionBox link found via Google search.
+[AmbitionBox Scraper] Could not determine company URL.
+Result: null
+
+--- Query: Tata Consultancy Services ---
+[AmbitionBox Scraper] Generated slug: tata-consultancy-services
+[AmbitionBox Scraper] Trying direct URL: https://www.ambitionbox.com/reviews/tata-consultancy-services-reviews
+[AmbitionBox Scraper] Trying direct URL: https://www.ambitionbox.com/reviews/tata-consultancy-services
+[AmbitionBox Scraper] Searching Google for: Tata Consultancy Services
+[AmbitionBox Scraper] No AmbitionBox link found via Google search.
+[AmbitionBox Scraper] Could not determine company URL.
+Result: null

@@ -49,7 +49,7 @@ export default function ModernHeader() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             <div className="relative group">
-              <button className="flex items-center text-neutral-900/90 hover:text-teal-600 transition-colors py-2">
+              <button className="flex items-center text-neutral-900/90 hover:text-brand-600 transition-colors py-2">
                 Career Launchpad
                 <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
               </button>
@@ -60,13 +60,13 @@ export default function ModernHeader() {
               </div>
             </div>
 
-            <a href="#" className="text-neutral-900/90 hover:text-teal-600 transition-colors">
+            <a href="#" className="text-neutral-900/90 hover:text-brand-600 transition-colors">
               Professional Courses
             </a>
-            <a href="#" className="text-neutral-900/90 hover:text-teal-600 transition-colors">
+            <a href="#" className="text-neutral-900/90 hover:text-brand-600 transition-colors">
               Healthcare Jobs
             </a>
-            <a href="#" className="text-neutral-900/90 hover:text-teal-600 transition-colors">
+            <a href="#" className="text-neutral-900/90 hover:text-brand-600 transition-colors">
               Study Abroad
             </a>
           </nav>
@@ -101,16 +101,16 @@ export default function ModernHeader() {
           className="lg:hidden overflow-hidden"
         >
           <nav className="py-4 space-y-4 border-t border-neutral-200 mt-4">
-            <a href="#" className="block text-neutral-900/90 hover:text-teal-600 transition-colors py-2">
+            <a href="#" className="block text-neutral-900/90 hover:text-brand-600 transition-colors py-2">
               Career Launchpad
             </a>
-            <a href="#" className="block text-neutral-900/90 hover:text-teal-600 transition-colors py-2">
+            <a href="#" className="block text-neutral-900/90 hover:text-brand-600 transition-colors py-2">
               Professional Courses
             </a>
-            <a href="#" className="block text-neutral-900/90 hover:text-teal-600 transition-colors py-2">
+            <a href="#" className="block text-neutral-900/90 hover:text-brand-600 transition-colors py-2">
               Healthcare Jobs
             </a>
-            <a href="#" className="block text-neutral-900/90 hover:text-teal-600 transition-colors py-2">
+            <a href="#" className="block text-neutral-900/90 hover:text-brand-600 transition-colors py-2">
               Study Abroad
             </a>
             <div className="flex flex-col gap-3 pt-4">

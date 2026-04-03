@@ -10,8 +10,8 @@ export default function HeroSection() {
       {/* Dot grid background */}
       <div className="absolute inset-0 bg-dot-grid opacity-100 pointer-events-none" />
       {/* Glow blobs */}
-      <div className="absolute -left-28 top-10 w-96 h-96 bg-emerald-100/40 blur-[120px] pointer-events-none" />
-      <div className="absolute right-0 bottom-0 w-96 h-96 bg-emerald-50/60 blur-[140px] pointer-events-none" />
+      <div className="absolute -left-28 top-10 w-96 h-96 bg-brand-100/40 blur-[120px] pointer-events-none" />
+      <div className="absolute right-0 bottom-0 w-96 h-96 bg-brand-50/60 blur-[140px] pointer-events-none" />
 
       <div className="relative z-10 max-w-3xl mx-auto text-center">
         {/* Badge */}
@@ -21,8 +21,8 @@ export default function HeroSection() {
           className="inline-flex items-center gap-2.5 px-4 py-[7px] rounded-full bg-[#f0fdf9] border border-[#99f6e4] text-sm text-neutral-800 mb-8"
         >
           <span className="relative flex h-3 w-3 shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-60" />
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-teal-500" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-60" />
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-500" />
           </span>
           <span className="font-medium">New courses added every month</span>
         </motion.div>

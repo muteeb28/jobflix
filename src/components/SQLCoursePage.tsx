@@ -87,7 +87,7 @@ export default function SQLCoursePage() {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-8 py-3 bg-teal-500 text-neutral-900 font-bold text-lg border-b-4 border-r-4 border-neutral-200 uppercase"
+                                className="px-8 py-3 bg-brand-500 text-neutral-900 font-bold text-lg border-b-4 border-r-4 border-neutral-200 uppercase"
                             >
                                 Continue Learning →
                             </motion.button>
@@ -119,13 +119,13 @@ export default function SQLCoursePage() {
                                     {/* Module Header */}
                                     <button
                                         onClick={() => setExpandedModule(isExpanded ? null : moduleIndex)}
-                                        className="w-full flex items-center justify-between p-6 bg-white border-2 border-neutral-200 hover:border-teal-300 transition-colors group text-left"
+                                        className="w-full flex items-center justify-between p-6 bg-white border-2 border-neutral-200 hover:border-brand-300 transition-colors group text-left"
                                     >
                                         <div className="flex items-center gap-6">
                                             <div className="flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 text-neutral-900 font-bold text-xl font-mono border-2 border-neutral-200 group-hover:border-gray-600 transition-colors">
                                                 {moduleIndex + 1}
                                             </div>
-                                            <h3 className="text-xl md:text-2xl font-bold text-neutral-900 group-hover:text-teal-600 transition-colors">
+                                            <h3 className="text-xl md:text-2xl font-bold text-neutral-900 group-hover:text-brand-600 transition-colors">
                                                 {module.title}
                                             </h3>
                                         </div>
@@ -267,7 +267,7 @@ export default function SQLCoursePage() {
                                 <p className="text-neutral-900/60 text-sm mb-3">
                                     Ask question in our community!
                                 </p>
-                                <button className="w-full px-4 py-2 bg-teal-500 text-neutral-900 font-bold hover:bg-neutral-200 transition-colors">
+                                <button className="w-full px-4 py-2 bg-brand-500 text-neutral-900 font-bold hover:bg-neutral-200 transition-colors">
                                     Go To Community
                                 </button>
                             </div>

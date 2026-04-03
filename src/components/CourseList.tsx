@@ -11,7 +11,7 @@ export default function CourseList() {
       <div className="container mx-auto max-w-5xl">
         {/* Section header */}
         <div className="mb-12">
-          <p className="text-xs font-mono uppercase tracking-widest text-emerald-500 mb-2">Frontend</p>
+          <p className="text-xs font-mono uppercase tracking-widest text-brand-500 mb-2">Frontend</p>
           <h2 className="text-3xl md:text-4xl font-extrabold text-neutral-900 tracking-tight mb-3"
             style={{ fontFamily: "var(--font-bricolage)" }}>
             Frontend Courses
@@ -30,7 +30,7 @@ export default function CourseList() {
               transition={{ duration: 0.4, delay: index * 0.08 }}
               viewport={{ once: true }}
               whileHover={{ y: -4 }}
-              className="group relative bg-white rounded-2xl border border-neutral-200 overflow-hidden hover:border-emerald-300 hover:shadow-[0_8px_32px_rgba(16,185,129,0.1)] transition-all duration-300"
+              className="group relative bg-white rounded-2xl border border-neutral-200 overflow-hidden hover:border-brand-300 hover:shadow-[0_8px_32px_rgba(16,185,129,0.1)] transition-all duration-300"
             >
               <CornerBracket className="absolute top-0 left-0 opacity-40 group-hover:opacity-70 transition-opacity z-10" />
               <CornerBracket className="absolute top-0 right-0 rotate-90 opacity-40 group-hover:opacity-70 transition-opacity z-10" />
@@ -48,13 +48,13 @@ export default function CourseList() {
 
               {/* Content */}
               <div className="p-5">
-                <h3 className="text-base font-bold text-neutral-900 mb-1.5 leading-snug group-hover:text-emerald-600 transition-colors">
+                <h3 className="text-base font-bold text-neutral-900 mb-1.5 leading-snug group-hover:text-brand-600 transition-colors">
                   {course.title}
                 </h3>
                 <p className="text-sm text-neutral-400 leading-relaxed mb-4 line-clamp-2">
                   {course.description}
                 </p>
-                <span className="px-2.5 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-[11px] font-semibold text-emerald-700 uppercase tracking-wider">
+                <span className="px-2.5 py-1 bg-brand-50 border border-brand-200 rounded-full text-[11px] font-semibold text-brand-700 uppercase tracking-wider">
                   {course.level}
                 </span>
               </div>

@@ -39,7 +39,7 @@ export default function JobCard({ job }: JobCardProps) {
                         </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-neutral-900 mb-1 group-hover:text-teal-600 transition-colors font-pixel">
+                    <h3 className="text-xl font-bold text-neutral-900 mb-1 group-hover:text-brand-600 transition-colors font-pixel">
                         {job.title}
                     </h3>
                     <p className="text-neutral-900/60 font-mono text-sm mb-4">
@@ -67,7 +67,7 @@ export default function JobCard({ job }: JobCardProps) {
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="w-full px-6 py-3 bg-teal-500 text-neutral-900 font-bold border-b-4 border-r-4 border-neutral-200 active:border-0 active:translate-y-1 transition-all uppercase text-sm tracking-wide"
+                            className="w-full px-6 py-3 bg-brand-500 text-neutral-900 font-bold border-b-4 border-r-4 border-neutral-200 active:border-0 active:translate-y-1 transition-all uppercase text-sm tracking-wide"
                         >
                             Apply Now
                         </motion.button>

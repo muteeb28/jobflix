@@ -41,7 +41,7 @@ export default function ModernServiceCards() {
             minSize={0.4}
             maxSize={1.2}
             particleDensity={120}
-            particleColor="#14b8a6"
+            particleColor="#00B5A3"
             speed={0.4}
             className="w-full h-full"
           />

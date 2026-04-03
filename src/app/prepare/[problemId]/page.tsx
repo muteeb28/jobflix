@@ -60,7 +60,7 @@ const difficultyConfig: Record<
   Difficulty,
   { label: string; color: string; bg: string }
 > = {
-  easy: { label: "Easy", color: "text-emerald-400", bg: "bg-emerald-400/10" },
+  easy: { label: "Easy", color: "text-brand-400", bg: "bg-brand-400/10" },
   medium: { label: "Medium", color: "text-white", bg: "bg-white/10" },
   hard: { label: "Hard", color: "text-red-400", bg: "bg-red-400/10" },
 };
@@ -71,14 +71,14 @@ const languageTemplates: Record<string, string> = {
 };
 
 const statusIcons: Record<string, React.ReactNode> = {
-  AC: <CheckCircle2 className="w-4 h-4 text-emerald-400" />,
+  AC: <CheckCircle2 className="w-4 h-4 text-brand-400" />,
   WA: <XCircle className="w-4 h-4 text-red-400" />,
   TLE: <Clock className="w-4 h-4 text-white" />,
   Error: <AlertTriangle className="w-4 h-4 text-red-400" />,
 };
 
 const statusLabels: Record<string, { text: string; color: string }> = {
-  AC: { text: "Accepted", color: "text-emerald-400" },
+  AC: { text: "Accepted", color: "text-brand-400" },
   WA: { text: "Wrong Answer", color: "text-red-400" },
   TLE: { text: "Time Limit Exceeded", color: "text-white" },
   Error: { text: "Runtime Error", color: "text-red-400" },
@@ -288,7 +288,7 @@ export default function ProblemWorkspace() {
           <button
             onClick={handleSubmit}
             disabled={submitting}
-            className="flex items-center gap-2 px-4 py-1.5 bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 text-black font-bold text-xs uppercase tracking-wider rounded-lg transition-colors"
+            className="flex items-center gap-2 px-4 py-1.5 bg-brand-500 hover:bg-brand-400 disabled:opacity-50 text-black font-bold text-xs uppercase tracking-wider rounded-lg transition-colors"
           >
             {submitting ? (
               <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -396,7 +396,7 @@ export default function ProblemWorkspace() {
               {results && (
                 <span
                   className={`ml-auto text-xs font-bold ${
-                    allPassed ? "text-emerald-400" : "text-red-400"
+                    allPassed ? "text-brand-400" : "text-red-400"
                   }`}
                 >
                   {allPassed
@@ -450,7 +450,7 @@ export default function ProblemWorkspace() {
                                 <span className="text-zinc-600">
                                   Expected:{" "}
                                 </span>
-                                <span className="text-emerald-300">
+                                <span className="text-brand-300">
                                   {r.expected}
                                 </span>
                               </div>
