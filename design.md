@@ -9,14 +9,22 @@ Jobflix (also known as Level-up) is designed with a modern, dynamic, and premium
 - **Premium Feel**: Curated harmonious color palettes, modern typography, smooth gradients, and no generic default colors.
 
 ## Typography
-- **Headings**: Sora (provides a distinct, bold, and modern look for titles and large text).
-- **Body**: DM Sans (ensures high readability and clean scaling for paragraphs and smaller UI text).
+- **Headings**: Bricolage (`var(--font-bricolage)`) — provides a distinct, bold, and modern look for user attention.
+- **Body**: Geist Sans (`var(--font-geist-sans)`) — ensures smooth high readability and clean scaling for paragraphs.
+- **Navigation**: Plus Jakarta (`var(--font-plus-jakarta)`) — used specifically for nav items.
+- **Code**: Geist Mono (`var(--font-geist-mono)`).
 
 ## Color Palette & Theming
-The application supports a robust Light/Dark mode toggle with theme-aware styling. 
-Tokens are managed centrally to ensure consistency across the application.
-- Theme swapping seamlessly transitions between light and dark modes without jarring the user.
-- Deep, immersive dark mode backgrounds contrasted with crisp, accessible text.
+The application uses central design tokens (`src/lib/tokens.ts`) and global CSS properties for theme-aware elements.
+
+### Brand Color
+- **Primary Brand Color**: Emerald Green (`#10b981`)
+- **Brand Variations**: Hover states (`#059669`), subtle backgrounds (`#ecfdf5`).
+
+### Theme Colors (Light / Dark Mode)
+- **Light Mode**: Clean white background (`#FFFFFF` or `oklch(1 0 0)`) with high-contrast text (`#1A1A1A`).
+- **Dark Mode**: Deep immersive dark backgrounds (`#0A0A0A` or `oklch(0.09 0 0)`) contrasted with crisp, accessible white/light text.
+- **Surfaces**: Light surface (`#F9FAFB`) and Dark surface (`#111113`) to support floating cards and overlays.
 
 ## Key Components
 
