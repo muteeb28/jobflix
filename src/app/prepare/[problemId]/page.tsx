@@ -16,6 +16,7 @@ import {
   RotateCcw,
   Terminal,
 } from "lucide-react";
+import { apiClient } from "@/lib/apiClient";
 
 const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
   ssr: false,
@@ -118,8 +119,7 @@ export default function ProblemWorkspace() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`/api/problems/${problemId}`);
-      const data = await res.json();
+      const data = await apiClient.get(`/api/problems/${problemId}`);
       if (data.success && data.data) {
         setProblem(data.data);
       } else {
@@ -147,8 +147,7 @@ export default function ProblemWorkspace() {
   const pollSubmission = useCallback(async (submissionId: string) => {
     pollRef.current = setInterval(async () => {
       try {
-        const res = await fetch(`/api/submissions/${submissionId}`);
-        const data = await res.json();
+        const data = await apiClient.get(`/api/submissions/${submissionId}`);
         const submission: SubmissionResult = data.data;
 
         if (submission.status === "completed") {
@@ -172,17 +171,11 @@ export default function ProblemWorkspace() {
     setSubmissionError(null);
 
     try {
-      const res = await fetch("/api/submissions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          problemId: problem.id,
-          code,
-          language,
-        }),
+      const data = await apiClient.post("/api/submissions", {
+        problemId: problem.id,
+        code,
+        language,
       });
-
-      const data = await res.json();
 
       if (data.success && data.data?.id) {
         pollSubmission(data.data.id);

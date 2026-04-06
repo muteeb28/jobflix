@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { apiClient } from "@/lib/apiClient";
 
 interface UserProgressContextType {
     xp: number;
@@ -19,16 +20,10 @@ export function UserProgressProvider({ children }: { children: React.ReactNode }
     useEffect(() => {
         const fetchProgress = async () => {
             try {
-                const res = await fetch("/api/progress");
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data.userProgress) {
-                        setXp(data.userProgress.totalXp || 0);
-                        // Assuming completedLessonIds is stored in the userProgress record
-                        // If the API returns it differently, we might need to adjust.
-                        // Based on the schema 'UserProgress' has 'completedLessonIds String[]'
-                        setCompletedTopics(data.userProgress.completedLessonIds || []);
-                    }
+                const data = await apiClient.get("/api/progress");
+                if (data.success) {
+                    setXp(data.totalXp || 0);
+                    setCompletedTopics(data.completedTopics || []);
                 }
             } catch (error) {
                 console.error("Failed to fetch progress:", error);
@@ -43,11 +38,7 @@ export function UserProgressProvider({ children }: { children: React.ReactNode }
         setXp((prev) => prev + amount);
 
         try {
-            await fetch("/api/progress", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ xp: amount })
-            });
+            await apiClient.post("/api/progress", { xp: amount });
         } catch (e) {
             console.error("Failed to sync XP:", e);
         }
@@ -60,11 +51,7 @@ export function UserProgressProvider({ children }: { children: React.ReactNode }
             addXp(10); // Default 10 XP per topic
 
             try {
-                await fetch("/api/progress", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ topicId: topicId })
-                });
+                await apiClient.post("/api/progress", { topicId });
             } catch (e) {
                 console.error("Failed to sync completion:", e);
             }

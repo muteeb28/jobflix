@@ -8,6 +8,7 @@ import { MapPin, Calendar, Building2, Zap, ExternalLink } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CornerBracket } from "@/components/ui/aceternity-decorations";
+import { apiClient } from "@/lib/apiClient";
 
 const jobFairs: JobFair[] = [
   {
@@ -287,10 +288,8 @@ export default function JobsPage() {
         setLoading(true);
         setError("");
         try {
-            const res = await fetch(`/api/jobs?page=${pageNum}&limit=${LIMIT}`, { cache: "no-store" });
-            if (!res.ok) throw new Error("Request failed");
-
-            const data = await res.json();
+            const data = await apiClient.get(`/api/jobs?page=${pageNum}&limit=${LIMIT}`, { cache: "no-store" });
+            if (!data.success) throw new Error("Request failed");
             const incomingJobs = Array.isArray(data.jobs) ? data.jobs : [];
             setJobs(incomingJobs);
             setTotal(typeof data.total === "number" ? data.total : incomingJobs.length);

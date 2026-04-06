@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { ChevronDown, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useUserProgress } from "@/context/UserProgressContext";
+import { apiClient } from "@/lib/apiClient";
 
 interface Topic {
     id: string;
@@ -41,11 +42,10 @@ export default function JavaCoursePage() {
     useEffect(() => {
         const fetchCourse = async () => {
             try {
-                const response = await fetch("/api/courses/java-backend");
-                if (!response.ok) {
+                const data = await apiClient.get("/api/courses/java-backend");
+                if (!data.success) {
                     throw new Error("Failed to fetch course data");
                 }
-                const data = await response.json();
                 setCourse({
                     ...data.course,
                     modules: data.modules

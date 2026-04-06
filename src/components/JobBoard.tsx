@@ -5,6 +5,7 @@ import { Job } from "@/lib/data";
 import JobCard from "./JobCard";
 import JobFilter from "./JobFilter";
 import { motion } from "framer-motion";
+import { apiClient } from "@/lib/apiClient";
 
 export default function JobBoard() {
     const [jobs, setJobs] = useState<Job[]>([]);
@@ -33,9 +34,8 @@ export default function JobBoard() {
                     query = "tech jobs";
                 }
 
-                const response = await fetch(`/api/jobs?query=${encodeURIComponent(query)}`);
-                const data = await response.json();
-                const incoming = Array.isArray(data?.data) ? data.data : [];
+                const data = await apiClient.get(`/api/jobs?query=${encodeURIComponent(query)}`);
+                const incoming = Array.isArray(data?.jobs) ? data.jobs : [];
                 setJobs(incoming);
             } catch (error) {
                 console.error("Failed to fetch jobs:", error);

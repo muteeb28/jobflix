@@ -15,6 +15,7 @@ import {
   Braces,
   Layout,
 } from "lucide-react";
+import { apiClient } from "@/lib/apiClient";
 
 type Difficulty = "easy" | "medium" | "hard";
 type Category = "all" | "dsa" | "frontend";
@@ -140,8 +141,7 @@ export default function PreparePage() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/problems");
-      const data = await res.json();
+      const data = await apiClient.get("/api/problems");
       if (data.success && data.data) {
         setProblems(data.data);
       } else {

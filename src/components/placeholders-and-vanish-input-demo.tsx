@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useDebounce } from "@/hooks/use-debounce";
 import { motion, stagger, useAnimate } from "framer-motion";
 import { LinkPreview } from "@/components/ui/link-preview";
+import { apiClient } from "@/lib/apiClient";
 
 const WordWrapper = ({ children }: { children: React.ReactNode }) => {
     if (typeof children !== "string") {
@@ -142,17 +143,12 @@ export default function PlaceholdersAndVanishInputDemo() {
         setResponse("");
 
         try {
-            const res = await fetch("/api/ask", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ prompt: query }),
-            });
-            const data = await res.json().catch(() => ({}));
-            if (!res.ok) {
+            const data = await apiClient.post("/api/ask", { prompt: query }).catch(() => ({}));
+            if (!data?.success && (data?.error || data?.message)) {
                 setResponse(
                     data?.error ||
-                    data?.details ||
-                    "The Ask service is unavailable. Please try again or set API_KEY in .env.local."
+                    data?.message ||
+                    "The Ask service is unavailable. Please try again or set API_KEY in .env."
                 );
                 return;
             }

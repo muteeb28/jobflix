@@ -5,6 +5,7 @@ import { useState } from "react";
 import GradientButton from "@/components/GradientButton";
 import { serviceOptions } from "@/lib/data";
 import Image from "next/image";
+import { apiClient } from "@/lib/apiClient";
 
 export default function QuickApplyForm() {
   const [formData, setFormData] = useState({
@@ -33,20 +34,14 @@ export default function QuickApplyForm() {
     setErrorMessage("");
 
     try {
-      const response = await fetch("/api/apply", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.fullName,
-          email: formData.email,
-          phone: formData.phoneNumber,
-          service: formData.service,
-        }),
+      const data = await apiClient.post("/api/apply", {
+        name: formData.fullName,
+        email: formData.email,
+        phone: formData.phoneNumber,
+        service: formData.service,
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
+      if (!data.success) {
         throw new Error(data.error || "Failed to submit application");
       }
 
