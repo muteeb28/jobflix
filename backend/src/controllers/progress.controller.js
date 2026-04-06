@@ -1,6 +1,8 @@
 const asyncHandler = require("../middlewares/asyncHandler.middleware");
 const AppError = require("../utils/AppError");
-const { prisma } = require("../config/db");
+const User = require("../models/user.model");
+const UserProgress = require("../models/userProgress.model");
+const Topic = require("../models/topic.model");
 
 const SESSION_COOKIE_NAME = "levelup_session";
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year in seconds
@@ -8,7 +10,6 @@ const COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year in seconds
 /**
  * Get or create a user based on the session cookie.
  * @param {object} req
- * @param {object} res
  * @returns {{ user: object, sessionId: string, isNew: boolean }}
  */
 async function getOrCreateUser(req) {
@@ -20,10 +21,10 @@ async function getOrCreateUser(req) {
     isNew = true;
   }
 
-  let user = await prisma.user.findUnique({ where: { sessionId } });
+  let user = await User.findOne({ sessionId });
 
   if (!user) {
-    user = await prisma.user.create({ data: { sessionId } });
+    user = await User.create({ sessionId });
     isNew = true;
   }
 
@@ -38,30 +39,26 @@ async function getOrCreateUser(req) {
 const getProgress = asyncHandler(async (req, res, _next) => {
   const { user, sessionId, isNew } = await getOrCreateUser(req);
 
-  const progress = await prisma.userProgress.findMany({
-    where: { userId: user.id, isCompleted: true },
-    select: {
-      topicId: true,
-      xpEarned: true,
-      completedAt: true,
-    },
-  });
+  const progress = await UserProgress.find({
+    userId: user._id,
+    isCompleted: true,
+  }).select("topicId xpEarned completedAt");
 
   if (isNew) {
     res.cookie(SESSION_COOKIE_NAME, sessionId, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
-      maxAge: COOKIE_MAX_AGE * 1000, // express uses ms
+      maxAge: COOKIE_MAX_AGE * 1000,
     });
   }
 
   res.status(200).json({
     success: true,
     message: "Progress fetched successfully",
-    userId: user.id,
+    userId: user._id,
     totalXp: user.totalXp,
-    completedTopics: progress.map((p) => p.topicId),
+    completedTopics: progress.map((p) => p.topicId.toString()),
     progress,
   });
 });
@@ -79,13 +76,14 @@ const updateProgress = asyncHandler(async (req, res, next) => {
     return next(new AppError("topicId is required", 400));
   }
 
-  const topic = await prisma.topic.findUnique({ where: { id: topicId } });
+  const topic = await Topic.findById(topicId);
   if (!topic) {
     return next(new AppError("Topic not found", 404));
   }
 
-  const existingProgress = await prisma.userProgress.findUnique({
-    where: { userId_topicId: { userId: user.id, topicId } },
+  const existingProgress = await UserProgress.findOne({
+    userId: user._id,
+    topicId: topic._id,
   });
 
   if (existingProgress?.isCompleted) {
@@ -97,27 +95,18 @@ const updateProgress = asyncHandler(async (req, res, next) => {
     });
   }
 
-  const [updatedProgress, updatedUser] = await prisma.$transaction([
-    prisma.userProgress.upsert({
-      where: { userId_topicId: { userId: user.id, topicId } },
-      create: {
-        userId: user.id,
-        topicId,
-        isCompleted: true,
-        xpEarned: topic.xp,
-        completedAt: new Date(),
-      },
-      update: {
-        isCompleted: true,
-        xpEarned: topic.xp,
-        completedAt: new Date(),
-      },
-    }),
-    prisma.user.update({
-      where: { id: user.id },
-      data: { totalXp: { increment: topic.xp } },
-    }),
-  ]);
+  const updatedProgress = await UserProgress.findOneAndUpdate(
+    { userId: user._id, topicId: topic._id },
+    {
+      isCompleted: true,
+      xpEarned: topic.xp,
+      completedAt: new Date(),
+    },
+    { upsert: true, new: true }
+  );
+
+  user.totalXp += topic.xp;
+  await user.save();
 
   if (isNew) {
     res.cookie(SESSION_COOKIE_NAME, sessionId, {
@@ -132,7 +121,7 @@ const updateProgress = asyncHandler(async (req, res, next) => {
     success: true,
     message: "Topic completed",
     xpEarned: topic.xp,
-    totalXp: updatedUser.totalXp,
+    totalXp: user.totalXp,
     progress: updatedProgress,
   });
 });

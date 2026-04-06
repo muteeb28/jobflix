@@ -1,5 +1,5 @@
 const asyncHandler = require("../middlewares/asyncHandler.middleware");
-const { prisma } = require("../config/db");
+const User = require("../models/user.model");
 
 /**
  * @GET_ACTIVE_USERS
@@ -7,7 +7,7 @@ const { prisma } = require("../config/db");
  * @ACCESS Public
  */
 const getActiveUsers = asyncHandler(async (_req, res, _next) => {
-  const count = await prisma.user.count();
+  const count = await User.countDocuments();
 
   res.status(200).json({
     success: true,

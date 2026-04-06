@@ -1,9 +1,7 @@
-const fs = require("fs/promises");
-const path = require("path");
 const { scrapeLinkedInJobs } = require("./scrapers/linkedin-cheerio");
 const { fallbackJobs } = require("../utils/data");
+const Job = require("../models/job.model");
 
-const DB_PATH = path.join(__dirname, "../../src/data/jobs.json");
 const DEFAULT_QUERY = "React developer";
 
 /**
@@ -60,36 +58,21 @@ function normalizeJobs(source) {
 }
 
 /**
- * Persist new jobs to a local JSON file cache.
+ * Persist new jobs to MongoDB via upsert on URL.
  * @param {Array} newJobs
  */
 async function saveJobs(newJobs) {
   try {
-    let existingJobs = [];
-    try {
-      const data = await fs.readFile(DB_PATH, "utf-8");
-      existingJobs = JSON.parse(data);
-    } catch {
-      // File missing — start fresh
-    }
-
-    const jobMap = new Map();
-    existingJobs.forEach((job) =>
-      jobMap.set(job.url || `${job.title}-${job.company}`, job)
-    );
-    newJobs.forEach((job) =>
-      jobMap.set(job.url || `${job.title}-${job.company}`, {
-        ...job,
-        fetchedAt: Date.now(),
-      })
-    );
-
-    const allJobs = Array.from(jobMap.values());
-    const dir = path.dirname(DB_PATH);
-    await fs.mkdir(dir, { recursive: true });
-    await fs.writeFile(DB_PATH, JSON.stringify(allJobs, null, 2));
+    const ops = newJobs.map((job) => ({
+      updateOne: {
+        filter: { url: job.url || `${job.title}-${job.company}` },
+        update: { $set: { ...job, fetchedAt: Date.now() } },
+        upsert: true,
+      },
+    }));
+    await Job.bulkWrite(ops);
   } catch (error) {
-    console.error("Failed to save jobs to cache:", error);
+    console.error("Failed to save jobs to MongoDB:", error);
   }
 }
 
@@ -120,11 +103,21 @@ async function loadLatestJobs(query) {
   );
 
   if (uniqueJobs.length > 0) {
-    // Fire-and-forget cache write
+    // Fire-and-forget cache write to MongoDB
     saveJobs(uniqueJobs).catch((err) =>
       console.error("Background save failed:", err)
     );
     return uniqueJobs;
+  }
+
+  // Try to load from MongoDB cache before falling back to static data
+  try {
+    const cached = await Job.find().sort({ fetchedAt: -1 }).limit(50).lean();
+    if (cached.length > 0) {
+      return cached;
+    }
+  } catch {
+    // MongoDB unavailable — fall through to static fallback
   }
 
   return normalizeJobs(fallbackJobs);

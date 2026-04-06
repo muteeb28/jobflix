@@ -1,6 +1,9 @@
 const asyncHandler = require("../middlewares/asyncHandler.middleware");
 const AppError = require("../utils/AppError");
-const { prisma } = require("../config/db");
+const Course = require("../models/course.model");
+const Module = require("../models/module.model");
+const Topic = require("../models/topic.model");
+const Lesson = require("../models/lesson.model");
 const { getJavaLessonBySlug } = require("../data/javaLessons");
 
 /**
@@ -9,32 +12,30 @@ const { getJavaLessonBySlug } = require("../data/javaLessons");
  * @ACCESS Public
  */
 const getAllCourses = asyncHandler(async (_req, res, _next) => {
-  const courses = await prisma.course.findMany({
-    where: { isActive: true },
-    orderBy: { order: "asc" },
-    include: {
-      modules: {
-        include: {
-          _count: {
-            select: { topics: true },
-          },
-        },
-      },
-    },
-  });
+  const courses = await Course.find({ isActive: true }).sort({ order: 1 });
 
-  const transformedCourses = courses.map((course) => ({
-    id: course.id,
-    slug: course.slug,
-    title: course.title,
-    description: course.description,
-    image: course.image,
-    level: course.level,
-    duration: course.duration,
-    tags: course.tags,
-    moduleCount: course.modules.length,
-    topicCount: course.modules.reduce((sum, mod) => sum + mod._count.topics, 0),
-  }));
+  const transformedCourses = await Promise.all(
+    courses.map(async (course) => {
+      const modules = await Module.find({ courseId: course._id });
+      const topicCounts = await Promise.all(
+        modules.map((mod) => Topic.countDocuments({ moduleId: mod._id }))
+      );
+      const topicCount = topicCounts.reduce((sum, c) => sum + c, 0);
+
+      return {
+        id: course._id,
+        slug: course.slug,
+        title: course.title,
+        description: course.description,
+        image: course.image,
+        level: course.level,
+        duration: course.duration,
+        tags: course.tags,
+        moduleCount: modules.length,
+        topicCount,
+      };
+    })
+  );
 
   res.status(200).json({
     success: true,
@@ -51,51 +52,45 @@ const getAllCourses = asyncHandler(async (_req, res, _next) => {
 const getCourseBySlug = asyncHandler(async (req, res, next) => {
   const { courseSlug } = req.params;
 
-  const course = await prisma.course.findUnique({
-    where: { slug: courseSlug },
-    include: {
-      modules: {
-        orderBy: { order: "asc" },
-        include: {
-          topics: {
-            orderBy: { order: "asc" },
-            select: {
-              id: true,
-              title: true,
-              xp: true,
-              order: true,
-              isFree: true,
-              lesson: { select: { id: true } },
-            },
-          },
-        },
-      },
-    },
-  });
-
+  const course = await Course.findOne({ slug: courseSlug });
   if (!course) {
     return next(new AppError("Course not found", 404));
   }
 
-  const transformedModules = course.modules.map((module) => ({
-    id: module.id,
-    title: module.title,
-    order: module.order,
-    topics: module.topics.map((topic) => ({
-      id: topic.id,
-      title: topic.title,
-      xp: topic.xp,
-      order: topic.order,
-      isFree: topic.isFree,
-      lessonId: topic.lesson?.id || null,
-    })),
-  }));
+  const modules = await Module.find({ courseId: course._id }).sort({ order: 1 });
+
+  const transformedModules = await Promise.all(
+    modules.map(async (mod) => {
+      const topics = await Topic.find({ moduleId: mod._id }).sort({ order: 1 });
+
+      const topicsWithLesson = await Promise.all(
+        topics.map(async (topic) => {
+          const lesson = await Lesson.findOne({ topicId: topic._id }).select("_id");
+          return {
+            id: topic._id,
+            title: topic.title,
+            xp: topic.xp,
+            order: topic.order,
+            isFree: topic.isFree,
+            lessonId: lesson ? lesson._id : null,
+          };
+        })
+      );
+
+      return {
+        id: mod._id,
+        title: mod.title,
+        order: mod.order,
+        topics: topicsWithLesson,
+      };
+    })
+  );
 
   res.status(200).json({
     success: true,
     message: "Course fetched successfully",
     course: {
-      id: course.id,
+      id: course._id,
       slug: course.slug,
       title: course.title,
       description: course.description,

@@ -1,6 +1,7 @@
 const asyncHandler = require("../middlewares/asyncHandler.middleware");
 const AppError = require("../utils/AppError");
-const { prisma } = require("../config/db");
+const User = require("../models/user.model");
+const FormSubmission = require("../models/formSubmission.model");
 
 /**
  * @SUBMIT_APPLICATION
@@ -26,38 +27,35 @@ const submitApplication = asyncHandler(async (req, res, next) => {
   const sessionId = req.cookies?.levelup_session;
 
   if (sessionId) {
-    const user = await prisma.user.findUnique({ where: { sessionId } });
+    const user = await User.findOne({ sessionId });
     if (user) {
-      userId = user.id;
+      userId = user._id;
       if (!user.email) {
-        await prisma.user.update({
-          where: { id: user.id },
-          data: { email, name },
-        });
+        user.email = email;
+        user.name = name;
+        await user.save();
       }
     }
   }
 
-  const submission = await prisma.formSubmission.create({
+  const submission = await FormSubmission.create({
+    userId,
+    formType: "quick_apply",
     data: {
-      userId,
-      formType: "quick_apply",
-      data: {
-        name,
-        email,
-        phone,
-        service,
-        message: message || null,
-        submittedAt: new Date().toISOString(),
-      },
-      status: "pending",
+      name,
+      email,
+      phone,
+      service,
+      message: message || null,
+      submittedAt: new Date().toISOString(),
     },
+    status: "pending",
   });
 
   res.status(201).json({
     success: true,
     message: "Application submitted successfully",
-    submissionId: submission.id,
+    submissionId: submission._id,
   });
 });
 

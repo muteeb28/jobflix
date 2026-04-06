@@ -25,8 +25,8 @@ export function UserProgressProvider({ children }: { children: React.ReactNode }
                     setXp(data.totalXp || 0);
                     setCompletedTopics(data.completedTopics || []);
                 }
-            } catch (error) {
-                console.error("Failed to fetch progress:", error);
+            } catch {
+                // Backend not running — app works offline, progress just won't sync
             }
         };
 
@@ -39,8 +39,8 @@ export function UserProgressProvider({ children }: { children: React.ReactNode }
 
         try {
             await apiClient.post("/api/progress", { xp: amount });
-        } catch (e) {
-            console.error("Failed to sync XP:", e);
+        } catch {
+            // Silently fail — XP already updated optimistically
         }
     };
 
@@ -52,8 +52,8 @@ export function UserProgressProvider({ children }: { children: React.ReactNode }
 
             try {
                 await apiClient.post("/api/progress", { topicId });
-            } catch (e) {
-                console.error("Failed to sync completion:", e);
+            } catch {
+                // Silently fail — completion already updated optimistically
             }
         }
     };

@@ -6,7 +6,7 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-const { connectToDB } = require("./src/config/db");
+const connectDB = require("./src/config/db");
 const errorMiddleware = require("./src/middlewares/error.middleware");
 
 const app = express();
@@ -57,6 +57,6 @@ app.use(errorMiddleware);
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, async () => {
-  await connectToDB();
+  await connectDB();
   console.log(`Jobflix backend running on http://localhost:${PORT}`);
 });

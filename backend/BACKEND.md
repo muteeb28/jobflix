@@ -4,9 +4,8 @@
 ### Backend
 ```bash
 cd backend
-cp .env.example .env   # fill in values
+cp .env.example .env   # fill in MONGODB_URI and other values
 npm install
-npx prisma generate    # generate Prisma client
 npm run dev            # runs on localhost:5000
 ```
 
@@ -21,9 +20,10 @@ npm run dev            # runs on localhost:3001
 ```
 backend/
   src/
-    config/          ← Prisma DB connection
+    config/          ← Mongoose DB connection
     controllers/     ← one file per domain — request/response logic
     middlewares/     ← asyncHandler, error handler
+    models/          ← Mongoose schemas (User, Course, Module, Topic, Lesson, UserProgress, FormSubmission, Job)
     routes/          ← one file per domain — Express Router
     services/        ← core business logic
       scrapers/      ← LinkedIn scraper (moved from Next.js)
@@ -38,7 +38,7 @@ backend/
 | Variable | Purpose |
 |---|---|
 | `PORT` | Express server port (default 5000) |
-| `DATABASE_URL` | Neon PostgreSQL connection string |
+| `MONGODB_URI` | MongoDB connection string (Atlas or local) |
 | `API_KEY` | Google Gemini API key |
 | `RAPIDAPI_KEY` / `LINKEDIN_API_KEY` | LinkedIn company lookup |
 | `PROBLEM_SERVICE_URL` | Optional external problem microservice |
