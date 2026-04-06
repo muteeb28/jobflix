@@ -1,10 +1,3 @@
-# Jobflix Express Backend
-
-## Why Express instead of Next.js API routes?
-- Cleaner separation of frontend and backend
-- Easier to scale and deploy independently (Railway, Render)
-- Same architecture as singhsanket143's reference backends
-- Scraper-heavy routes (LinkedIn, Gemini) run without serverless cold-start limits
 
 ## How to run
 
