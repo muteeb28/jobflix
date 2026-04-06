@@ -16,6 +16,8 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ActiveUsers from "@/components/ActiveUsers";
+import OnlineIndicator from "@/components/ui/OnlineIndicator";
+import SocialProofToast from "@/components/ui/SocialProofToast";
 import { FloatingCard } from "@/components/landing/FloatingCard";
 import { HeroBadge } from "@/components/landing/HeroBadge";
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
@@ -267,9 +269,9 @@ function ProductShowcase() {
   ];
 
   const urls: Record<typeof activeTab, string> = {
-    prep: "levelup.app/prepare",
-    jobs: "levelup.app/jobs",
-    courses: "levelup.app/courses",
+    prep: "jobflix.app/prepare",
+    jobs: "jobflix.app/jobs",
+    courses: "jobflix.app/courses",
   };
 
   return (
@@ -680,6 +682,12 @@ export default function Landing() {
 
       <Footer />
       <ActiveUsers />
+
+      {/* Real-time online indicator and Social Proof toast — fixed bottom-right */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 hover:z-[60]">
+        <SocialProofToast />
+        <OnlineIndicator />
+      </div>
     </div>
   );
 }

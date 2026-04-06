@@ -3,6 +3,8 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
+const { createServer } = require("http");
+const { Server } = require("socket.io");
 
 dotenv.config();
 
@@ -10,6 +12,33 @@ const connectDB = require("./src/config/db");
 const errorMiddleware = require("./src/middlewares/error.middleware");
 
 const app = express();
+const httpServer = createServer(app);
+
+// Socket.io setup
+const io = new Server(httpServer, {
+  cors: {
+    origin: [
+      process.env.FRONTEND_URL || "http://localhost:3000",
+      "http://localhost:3001",
+    ],
+    credentials: true,
+  },
+});
+
+/** In-memory set of connected socket IDs */
+const onlineUsers = new Set();
+
+const ONLINE_INFLATION = 100;
+
+io.on("connection", (socket) => {
+  onlineUsers.add(socket.id);
+  io.emit("onlineCount", onlineUsers.size + ONLINE_INFLATION);
+
+  socket.on("disconnect", () => {
+    onlineUsers.delete(socket.id);
+    io.emit("onlineCount", onlineUsers.size + ONLINE_INFLATION);
+  });
+});
 
 // Middlewares
 app.use(
@@ -29,6 +58,14 @@ app.use(morgan("dev"));
 // Health check
 app.get("/ping", (_req, res) => {
   res.send("Pong");
+});
+
+// Online count REST endpoint (for initial fetch before socket connects)
+app.get("/api/online-count", (_req, res) => {
+  res.status(200).json({
+    success: true,
+    count: onlineUsers.size + ONLINE_INFLATION,
+  });
 });
 
 // Routes
@@ -56,7 +93,7 @@ app.use(errorMiddleware);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, async () => {
+httpServer.listen(PORT, async () => {
   await connectDB();
   console.log(`Jobflix backend running on http://localhost:${PORT}`);
 });
