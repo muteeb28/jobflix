@@ -23,4 +23,44 @@ const fetchJobs = asyncHandler(async (req, res, _next) => {
   });
 });
 
+export const jobFairRegister = async(req, res) => {
+
+  try {
+    const { name, email, phone, college, branch, year, universityRollno } = req.body;
+
+    // Validate required fields
+    if (!name || !email || !phone || !college || !branch || !year || !universityRollno) {
+      return res.status(400).json({ success: false, message: "All fields are required" });
+    }
+
+    // create a new job fair registration document
+    const user = {
+      name,
+      email,
+      phone,
+    }
+    const jobFairRegistration = new JobFair({
+      user,
+      jobFairId: "jbid" + college + Date.now(),
+      college,
+      branch,
+      year,
+      universityRollno,
+    });
+
+    // save the registration to the db
+    await jobFairRegistration.save();
+    res.status(201).json({
+      success: true,
+      message: "Job fair registration successfull",
+    });
+  } catch (error) {
+    console.log("error from jobFairRegister controller", error);
+    res.status(500).json({
+      success: false,
+      message: "Server error while registering for job fair",
+    });
+  }
+}
+
 module.exports = { fetchJobs };
