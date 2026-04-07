@@ -11,6 +11,8 @@ import {
 import "./globals.css";
 import { UserProgressProvider } from "@/context/UserProgressContext";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { Toaster } from "@/components/ui/sonner";
+import { AuthProvider } from "@/components/common/AuthProvider";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -61,8 +63,13 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <ThemeProvider>
-          <UserProgressProvider>{children}</UserProgressProvider>
+          <UserProgressProvider>
+            <AuthProvider>
+              {children}
+            </AuthProvider>
+          </UserProgressProvider>
         </ThemeProvider>
+        <Toaster position="top-center" />
       </body>
     </html>
   );
