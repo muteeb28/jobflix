@@ -1,10 +1,9 @@
-import { clearCookie } from "../scripts/helpers/token.helper";
+import { clearCookie } from "../scripts/helpers/token.helper.js";
 import fetch from "node-fetch";
 
 export const isLoggedIn = async (req, res, next) => {
     try {
         const token = req.cookies?.accessToken;
-        console.log('this is a token: (jobflix-main)', token);
         if (!token) {
             return res.status(401).json({
                 success: false,
@@ -13,21 +12,22 @@ export const isLoggedIn = async (req, res, next) => {
         }
 
         // check if user is logged in (api call to auth service)
-        const response = await fetch(`${process.env.AUTH_SERVICE_URL}/auth/verify-session}`, {
+        const response = await fetch(`${process.env.AUTH_SERVICE_URL}/auth/verify-session`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`,
             }
         });
-        if (!response.success) {
+        const data = await response.json();
+        if (!data.success) {
             clearCookie(res);
             return res.status(401).json({
                 success: false,
                 message: "you don't have a valid session. Please log back in"
             });
         }
-        req.user = response?.user;
+        req.user = data.user;
         next();
     } catch (error) {
         return res.status(500).json({

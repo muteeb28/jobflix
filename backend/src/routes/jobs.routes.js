@@ -1,11 +1,12 @@
 const { Router } = require("express");
 const { fetchJobs, jobFairRegister } = require("../controllers/jobs.controller");
+const { isLoggedIn } = require("../middlewares/isLoggedIn");
 
 const router = Router();
 
 // Both GET and POST hit the same handler (same behaviour as original Next.js route)
 router.get("/", fetchJobs);
 router.post("/", fetchJobs);
-router.post("/jobfair", jobFairRegister);
+router.post("/jobfair", isLoggedIn, jobFairRegister);
 
 module.exports = router;

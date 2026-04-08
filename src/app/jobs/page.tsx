@@ -9,6 +9,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CornerBracket } from "@/components/ui/aceternity-decorations";
 import { apiClient } from "@/lib/apiClient";
+import { useUserStore } from "@/stores/useUserStore";
+import { toast } from "sonner";
 
 const jobFairs: JobFair[] = [
   {
@@ -53,9 +55,27 @@ function RegistrationModal({ fair, onClose }: { fair: JobFair; onClose: () => vo
     name: "", email: "", phone: "", college: "", branch: "", year: "", rollNo: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_JOBFLIX_API_URL}/jobs/jobfair`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...form, jobFairId: fair.id }),
+      });
+  
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+        return;
+      }
+      toast.error(data.message || "Registration failed. Please try again.");
+    } catch (error: any) {
+      toast.error(error.message || "An error occurred. Please try again.");
+    }
   };
 
   return (
@@ -281,6 +301,15 @@ export default function JobsPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [registerFair, setRegisterFair] = useState<JobFair | null>(null);
+    const { user } = useUserStore();
+
+    // to check if registerFair is set and user is loggedin
+    useEffect(() => {
+      if (!registerFair) return;
+      if (!user) {
+        window.location.href = `${process.env.NEXT_PUBLIC_AUTH_VIEW}/login?redirect=${process.env.NEXT_PUBLIC_JOBFLIX_VIEW}/jobs`;
+      }
+    }, [registerFair]);
 
     const LIMIT = 9;
 

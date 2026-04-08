@@ -34,7 +34,7 @@ const jobFairSchema = new Schema(
         required: true,
     },
 
-    universityRollno: {
+    rollNo: {
         type: String,
         reuquired: true,
     }

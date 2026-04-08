@@ -1,5 +1,5 @@
-const asyncHandler = require("../middlewares/asyncHandler.middleware");
-const { getJobs } = require("../services/jobs.service");
+import { getJobs } from "../services/jobs.service.js";
+import JobFair from "../models/jobfair.model.js";
 
 const DEFAULT_QUERY = "React developer";
 
@@ -8,7 +8,7 @@ const DEFAULT_QUERY = "React developer";
  * @ROUTE @GET {{URL}}/api/jobs
  * @ACCESS Public
  */
-const fetchJobs = asyncHandler(async (req, res, _next) => {
+export const fetchJobs = async (req, res, _next) => {
   const query = req.query.query || DEFAULT_QUERY;
   const page = Math.max(1, parseInt(req.query.page || "1", 10));
   const limit = Math.max(1, parseInt(req.query.limit || "20", 10));
@@ -21,15 +21,15 @@ const fetchJobs = asyncHandler(async (req, res, _next) => {
     jobs,
     total,
   });
-});
+};
 
 export const jobFairRegister = async(req, res) => {
 
   try {
-    const { name, email, phone, college, branch, year, universityRollno } = req.body;
+    const { name, email, phone, college, branch, year, rollNo } = req.body;
 
     // Validate required fields
-    if (!name || !email || !phone || !college || !branch || !year || !universityRollno) {
+    if (!name || !email || !phone || !college || !branch || !year || !rollNo) {
       return res.status(400).json({ success: false, message: "All fields are required" });
     }
 
@@ -40,12 +40,13 @@ export const jobFairRegister = async(req, res) => {
       phone,
     }
     const jobFairRegistration = new JobFair({
+      userId: req.user._id,
       user,
       jobFairId: "jbid" + college + Date.now(),
       college,
       branch,
       year,
-      universityRollno,
+      rollNo,
     });
 
     // save the registration to the db
@@ -62,5 +63,3 @@ export const jobFairRegister = async(req, res) => {
     });
   }
 }
-
-module.exports = { fetchJobs };
