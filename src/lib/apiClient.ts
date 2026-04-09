@@ -1,5 +1,5 @@
 const BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  process.env.NEXT_PUBLIC_JOBFLIX_API_URL || "http://localhost:5000";
 
 export const apiClient = {
   get: (path: string, init?: RequestInit) =>
