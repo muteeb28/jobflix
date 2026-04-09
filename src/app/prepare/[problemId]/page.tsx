@@ -119,7 +119,7 @@ export default function ProblemWorkspace() {
     setLoading(true);
     setError(null);
     try {
-      const data = await apiClient.get(`/api/problems/${problemId}`);
+      const data = await apiClient.get(`/problems/${problemId}`);
       if (data.success && data.data) {
         setProblem(data.data);
       } else {

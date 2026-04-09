@@ -141,7 +141,7 @@ export default function PreparePage() {
     setLoading(true);
     setError(null);
     try {
-      const data = await apiClient.get("/api/problems");
+      const data = await apiClient.get("/problems");
       if (data.success && data.data) {
         setProblems(data.data);
       } else {
