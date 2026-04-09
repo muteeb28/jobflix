@@ -40,7 +40,7 @@ export default function ActiveUsers() {
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-500" />
           </span>
           <span className="font-semibold text-zinc-800 dark:text-zinc-100">
-            {count.toLocaleString()} online
+            {count ? count.toLocaleString() : "0"} online
           </span>
         </button>
 
