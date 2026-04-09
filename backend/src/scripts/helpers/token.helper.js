@@ -1,5 +1,5 @@
 
-const clearCookie = (res) => {
+export const clearCookie = (res) => {
     res.clearCookie("accessToken", {
         httpOnly: true, // prevents XSS
         secure: process.env.NODE_ENV === "production", // only HTTPS in production
@@ -7,5 +7,3 @@ const clearCookie = (res) => {
         domain: process.env.DOMAIN, // make cookie accessible to all subdomains
     });
 };
-
-module.exports = { clearCookie };

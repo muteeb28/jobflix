@@ -1,7 +1,7 @@
-const { clearCookie } = require("../scripts/helpers/token.helper.js");
-const fetch = require("node-fetch");
+import { clearCookie } from "../scripts/helpers/token.helper.js";
+import fetch from "node-fetch";
 
-const isLoggedIn = async (req, res, next) => {
+export const isLoggedIn = async (req, res, next) => {
     try {
         const token = req.cookies?.accessToken;
         if (!token) {
@@ -35,6 +35,4 @@ const isLoggedIn = async (req, res, next) => {
             message: "session expired. Try log back in",
         });
     }
-};
-
-module.exports = { isLoggedIn };
+}
