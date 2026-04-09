@@ -426,7 +426,7 @@ export default function Landing() {
               initial={{ opacity: 0, x: -60, y: -20 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ ...spring, delay: 0.6 }}
-              className="hidden lg:block absolute left-2 xl:left-[-115px] 2xl:left-[-220px] top-[35%] pointer-events-auto z-30"
+              className="hidden lg:block absolute left-2 xl:left-[-112px] 2xl:left-[-220px] top-[35%] pointer-events-auto z-30"
             >
               <motion.div animate={{ y: [0, 12, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="rotate-[-5deg]">
                 <JobFairCard />
