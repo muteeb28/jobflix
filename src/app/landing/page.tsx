@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import {
   BookOpen,
@@ -15,15 +16,20 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ActiveUsers from "@/components/ActiveUsers";
-import OnlineIndicator from "@/components/ui/OnlineIndicator";
-import SocialProofToast from "@/components/ui/SocialProofToast";
 import { FloatingCard } from "@/components/landing/FloatingCard";
 import { HeroBadge } from "@/components/landing/HeroBadge";
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { FlipWords } from "@/components/ui/flip-words";
-import BentoGridThirdDemo from "@/components/bento-grid-demo-3";
-import WorldMapDemo from "@/components/world-map-demo";
+
+const ActiveUsers = dynamic(() => import("@/components/ActiveUsers"), { ssr: false });
+const OnlineIndicator = dynamic(() => import("@/components/ui/OnlineIndicator"), { ssr: false });
+const SocialProofToast = dynamic(() => import("@/components/ui/SocialProofToast"), { ssr: false });
+const BentoGridThirdDemo = dynamic(() => import("@/components/bento-grid-demo-3"), {
+  loading: () => <div className="h-96 rounded-3xl bg-neutral-100 dark:bg-white/[0.03] animate-pulse" />,
+});
+const WorldMapDemo = dynamic(() => import("@/components/world-map-demo"), {
+  loading: () => <div className="h-96 rounded-3xl bg-neutral-100 dark:bg-white/[0.03] animate-pulse" />,
+});
 
 /* ── Spring presets ─────────────────────────────────────────────── */
 const spring = { type: "spring" as const, stiffness: 80, damping: 20 };

@@ -63,6 +63,7 @@ export default function WorldMap({
         height="495"
         width="1056"
         draggable={false}
+        loading="lazy"
       />
       <svg
         ref={svgRef}
