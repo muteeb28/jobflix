@@ -317,7 +317,7 @@ export default function JobsPage() {
         setLoading(true);
         setError("");
         try {
-            const data = await apiClient.get(`/api/jobs?page=${pageNum}&limit=${LIMIT}`, { cache: "no-store" });
+            const data = await apiClient.get(`/jobs?page=${pageNum}&limit=${LIMIT}`, { cache: "no-store" });
             if (!data.success) throw new Error("Request failed");
             const incomingJobs = Array.isArray(data.jobs) ? data.jobs : [];
             setJobs(incomingJobs);
