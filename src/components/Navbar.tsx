@@ -103,7 +103,7 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <Link href="/signup" className="mt-4 inline-flex items-center justify-center px-5 py-2.5 bg-brand-500 hover:bg-brand-400 text-white font-bold text-sm rounded-full transition-all" onClick={() => setOpen(false)}>
+            <Link href={process.env.NEXT_PUBLIC_AUTH_VIEW || ''} className="mt-4 inline-flex items-center justify-center px-5 py-2.5 bg-brand-500 hover:bg-brand-400 text-white font-bold text-sm rounded-full transition-all" onClick={() => setOpen(false)}>
               Sign up
             </Link>
           </div>
