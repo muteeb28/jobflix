@@ -1,59 +1,106 @@
 import { create } from "zustand";
+import { persist, createJSONStorage, StateStorage } from "zustand/middleware";
+import Cookies from "js-cookie";
+import api from "@/lib/axios"; // Utilizing your shared Axios configuration instance
 import { toast } from "sonner";
 
+/* ==========================================================================
+   1. Types Configuration (Aligned with structural payload expectations)
+   ========================================================================== */
 interface User {
-    id: string;
-    username: string;
-    email: string;
-    // Add other user properties as needed
+  id: string;
+  username: string;
+  email: string;
+  // Add other shared profile attributes here as your UI grows
 }
 
 interface UserStore {
-    user: User | null;
-    loading: boolean;
-    checkingAuth: boolean;
-    logout: () => Promise<void>;
-    checkAuth: () => Promise<void>;
+  user: User | null;
+  loading: boolean;
+  checkingAuth: boolean;
+  setUser: (user: User | null) => void;
+  updateUser: (data: Partial<User>) => void;
+  logout: () => Promise<void>;
+  checkAuth: () => Promise<void>;
 }
 
-export const useUserStore = create<UserStore>((set) => ({
-    user: null,
-    loading: false,
-    checkingAuth: true,
-    updateUser: (data: Partial<User>) =>
+/* ==========================================================================
+   2. Shared Development/Production Cookie Configuration
+   ========================================================================== */
+const COOKIE_CONFIG = {
+  domain: process.env.NEXT_PUBLIC_NODE_ENV === 'development' ? "localhost" : ".jobflix.in", 
+  expires: 30,
+  secure: true,          
+  sameSite: "Lax" as const,
+};
+
+const crossSubdomainCookieStorage: StateStorage = {
+  getItem: (name: string): string | null => {
+    return Cookies.get(name) || null;
+  },
+  setItem: (name: string, value: string): void => {
+    Cookies.set(name, value, COOKIE_CONFIG);
+  },
+  removeItem: (name: string): void => {
+    Cookies.remove(name, { domain: COOKIE_CONFIG.domain });
+  },
+};
+
+/* ==========================================================================
+   3. Persisted Store Implementation
+   ========================================================================== */
+export const useUserStore = create<UserStore>()(
+  persist(
+    (set) => ({
+      user: null,
+      loading: false,
+      checkingAuth: false,
+
+      setUser: (user) => set({ user }),
+
+      updateUser: (data) =>
         set((state) => ({
-        user: state.user ? { ...state.user, ...data } : null,
-    })),
+          user: state.user ? { ...state.user, ...data } : null,
+        })),
 
-    logout: async () => {
+      logout: async () => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_JOBFILX_APIURL}/auth/logout`, {
-                method: "POST",
-                credentials: "include", // include cookies if your auth uses them
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-            const data = await response.json();
-            set({user: null});
-            window.location.href = data.next;
-        } catch (error: any) {
-            toast.error(error.response?.data?.message || "An error occurred during logout");
-        }
-    },
+          // Instantly clear local frontend state and remove the tracking cookie
+          set({ user: null });
 
-    checkAuth: async () => {
+          const response = await api.post("/auth/logout");
+          const data = response.data;
+
+          if (typeof window !== "undefined") {
+            // Respect the server's targeted landing page directive (e.g. data.next)
+            window.location.href = data.next || "/login";
+          }
+        } catch (error: any) {
+          const errMsg = error.response?.data?.message || "An error occurred during logout";
+          toast.error(errMsg);
+        }
+      },
+
+      checkAuth: async () => {
         set({ checkingAuth: true });
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_JOBFILX_APIURL}/account/profile`, {
-                credentials: "include",
-            });
-
-            const data = await res.json();
-            if (!res.ok) throw new Error();
-            set({ user: data.user, checkingAuth: false });
+          const response = await api.get("/account/profile");
+          
+          // Triggers an auto-update write to the cookie due to the partialize configuration below
+          set({ user: response.data.user });
         } catch {
-            set({ user: null, checkingAuth: false });
+          set({ user: null });
+        } finally {
+          set({ checkingAuth: false });
         }
-    },
-}));
+      },
+    }),
+    {
+      name: "jobflix_user_ui", // 👈 Must match the name parameter key utilized in your first store precisely
+      storage: createJSONStorage(() => crossSubdomainCookieStorage),
+      
+      // ⚠️ Isolates the UI data layer from your runtime engine flags
+      partialize: (state) => ({ user: state.user }),
+    }
+  )
+);
