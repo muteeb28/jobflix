@@ -69,12 +69,7 @@ export const useUserStore = create<UserStore>()(
           set({ user: null });
 
           const response = await api.post("/auth/logout");
-          const data = response.data;
-
-          if (typeof window !== "undefined") {
-            // Respect the server's targeted landing page directive (e.g. data.next)
-            window.location.href = data.next || "/login";
-          }
+          return;
         } catch (error: any) {
           const errMsg = error.response?.data?.message || "An error occurred during logout";
           toast.error(errMsg);

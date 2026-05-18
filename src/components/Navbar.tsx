@@ -7,9 +7,11 @@ import { useState } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useUserStore } from "@/stores/useUserStore";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const links = [
     { name: "Courses", href: "/courses" },
@@ -79,7 +81,7 @@ export default function Navbar() {
                   )}>
                     <a href={`${process.env.NEXT_PUBLIC_AUTH_VIEW}/my-account/dashboard/me`} className={cn("block px-4 py-2 text-sm", isLight ? "text-neutral-700 hover:bg-neutral-100" : "text-slate-200 hover:bg-slate-700")}>Profile</a>
                     <a href={`${process.env.NEXT_PUBLIC_AUTH_VIEW}/my-account/dashboard/me`} className={cn("block px-4 py-2 text-sm", isLight ? "text-neutral-700 hover:bg-neutral-100" : "text-slate-200 hover:bg-slate-700")}>Orders</a>
-                    <button onClick={async () => { await logout(); }} className={cn("w-full text-left px-4 py-2 text-sm", isLight ? "text-neutral-700 hover:bg-neutral-100" : "text-slate-200 hover:bg-slate-700")}>Logout</button>
+                    <button onClick={async () => { await logout(); router.replace('/') }} className={cn("w-full text-left px-4 py-2 text-sm", isLight ? "text-neutral-700 hover:bg-neutral-100" : "text-slate-200 hover:bg-slate-700")}>Logout</button>
                   </div>
                 </div>
               ) : (
