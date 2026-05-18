@@ -27,7 +27,7 @@ export const useUserStore = create<UserStore>((set) => ({
 
     logout: async () => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_AUTH_API_URL}/auth/logout`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_JOBFILX_APIURL}/auth/logout`, {
                 method: "POST",
                 credentials: "include", // include cookies if your auth uses them
                 headers: {
@@ -45,7 +45,7 @@ export const useUserStore = create<UserStore>((set) => ({
     checkAuth: async () => {
         set({ checkingAuth: true });
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_AUTH_API_URL}/account/profile`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_JOBFILX_APIURL}/account/profile`, {
                 credentials: "include",
             });
 
