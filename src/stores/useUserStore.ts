@@ -132,8 +132,8 @@ export const useUserStore = create<UserStore>()(
           set({ user: data.user });
 
           let next = typeof window !== "undefined"
-            ? new URLSearchParams(window.location.search).get("next") || process.env.NEXT_PUBLIC_ROOT_URL
-            : process.env.NEXT_PUBLIC_ROOT_URL;
+            ? new URLSearchParams(window.location.search).get("next") || '/'
+            : '/';
 
           if (data.user && data.user?.jobseekerOnboarding === "pending" && next === process.env.NEXT_PUBLIC_RESUMEASSIST_VIEW) {
             next = "/onboarding/jobseeker";
