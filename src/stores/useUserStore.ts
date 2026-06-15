@@ -12,6 +12,8 @@ interface UserStore {
     user: User | null;
     loading: boolean;
     checkingAuth: boolean;
+    login: (email: string, password: string, turnstileToken: string) => Promise<void>;
+    signup: (name: string, email: string, phone: string, password: string, turnstileToken: string) => Promise<void>;
     logout: () => Promise<void>;
     checkAuth: () => Promise<void>;
 }
@@ -25,9 +27,49 @@ export const useUserStore = create<UserStore>((set) => ({
         user: state.user ? { ...state.user, ...data } : null,
     })),
 
+    login: async (email: string, password: string, turnstileToken: string) => {
+        set({ loading: true });
+        try {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_JOBFILX_APIURL}/auth/login`, {
+                method: "POST",
+                credentials: "include",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password, token: turnstileToken }),
+            });
+            const data = await res.json();
+            if (!res.ok || !data.success) {
+                throw new Error(data.message || "Login failed");
+            }
+            set({ user: data.user, loading: false });
+        } catch (error: any) {
+            set({ loading: false });
+            throw new Error(error.message || "Login failed");
+        }
+    },
+
+    signup: async (name: string, email: string, phone: string, password: string, turnstileToken: string) => {
+        set({ loading: true });
+        try {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_JOBFILX_APIURL}/auth/signup`, {
+                method: "POST",
+                credentials: "include",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, phone, password, token: turnstileToken }),
+            });
+            const data = await res.json();
+            if (!res.ok || !data.success) {
+                throw new Error(data.message || "Signup failed");
+            }
+            set({ user: data.user ?? null, loading: false });
+        } catch (error: any) {
+            set({ loading: false });
+            throw new Error(error.message || "Signup failed");
+        }
+    },
+
     logout: async () => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_AUTH_API_URL}/auth/logout`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_JOBFILX_APIURL_BASE}/api/auth/logout`, {
                 method: "POST",
                 credentials: "include", // include cookies if your auth uses them
                 headers: {
@@ -45,7 +87,7 @@ export const useUserStore = create<UserStore>((set) => ({
     checkAuth: async () => {
         set({ checkingAuth: true });
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_AUTH_API_URL}/account/profile`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_JOBFILX_APIURL_BASE}/api/account/profile`, {
                 credentials: "include",
             });
 
