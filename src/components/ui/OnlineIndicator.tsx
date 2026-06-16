@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+const BASE_URL = process.env.NEXT_PUBLIC_JOBFILX_APIURL_BASE || "http://localhost:5000";
 const FALLBACK_COUNT = 100;
 
 function formatCount(n: number): string {

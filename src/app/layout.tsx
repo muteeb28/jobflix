@@ -12,7 +12,7 @@ import "./globals.css";
 import { UserProgressProvider } from "@/context/UserProgressContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { Toaster } from "@/components/ui/sonner";
-import { AuthProvider } from "@/components/common/AuthProvider";
+import AuthProvider from "@/components/common/AuthProvider";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], display: "swap" });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });

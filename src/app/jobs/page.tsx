@@ -58,7 +58,7 @@ function RegistrationModal({ fair, onClose }: { fair: JobFair; onClose: () => vo
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_JOBFLIX_API_URL}/jobs/jobfair`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_JOBFILX_APIURL}/jobs/jobfair`, {
         method: "POST",
         credentials: "include",
         headers: {

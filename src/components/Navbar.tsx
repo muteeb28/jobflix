@@ -7,9 +7,11 @@ import { useState } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useUserStore } from "@/stores/useUserStore";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const links = [
     { name: "Courses", href: "/courses" },
@@ -77,13 +79,13 @@ export default function Navbar() {
                     "absolute right-0 mt-2 w-40 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-1 group-hover:translate-y-0 transition-all duration-150 z-50 border",
                     isLight ? "bg-white border-neutral-200" : "bg-slate-800 border-slate-700"
                   )}>
-                    <a href="/login" className={cn("block px-4 py-2 text-sm", isLight ? "text-neutral-700 hover:bg-neutral-100" : "text-slate-200 hover:bg-slate-700")}>Profile</a>
-                    <a href="/login" className={cn("block px-4 py-2 text-sm", isLight ? "text-neutral-700 hover:bg-neutral-100" : "text-slate-200 hover:bg-slate-700")}>Orders</a>
-                    <button onClick={async () => { await logout(); }} className={cn("w-full text-left px-4 py-2 text-sm", isLight ? "text-neutral-700 hover:bg-neutral-100" : "text-slate-200 hover:bg-slate-700")}>Logout</button>
+                    <a href="/my-account/dashboard/me" className={cn("block px-4 py-2 text-sm", isLight ? "text-neutral-700 hover:bg-neutral-100" : "text-slate-200 hover:bg-slate-700")}>Profile</a>
+                    <a href="/my-account/dashboard/me" className={cn("block px-4 py-2 text-sm", isLight ? "text-neutral-700 hover:bg-neutral-100" : "text-slate-200 hover:bg-slate-700")}>Orders</a>
+                    <button onClick={async () => { await logout(); router.replace('/') }} className={cn("w-full text-left px-4 py-2 text-sm", isLight ? "text-neutral-700 hover:bg-neutral-100" : "text-slate-200 hover:bg-slate-700")}>Logout</button>
                   </div>
                 </div>
               ) : (
-                <Link href="/login" className="hidden sm:inline-flex px-5 py-2 bg-brand-500 hover:bg-brand-400 text-white font-bold text-sm rounded-full transition-all hover:scale-[1.03] hover:shadow-[0_0_24px_4px_rgba(16,185,129,0.25)]">
+                <Link href='/signup' className="hidden sm:inline-flex px-5 py-2 bg-brand-500 hover:bg-brand-400 text-white font-bold text-sm rounded-full transition-all hover:scale-[1.03] hover:shadow-[0_0_24px_4px_rgba(16,185,129,0.25)]">
                   Sign up
                 </Link>
               )
@@ -103,7 +105,7 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <Link href="/signup" className="mt-4 inline-flex items-center justify-center px-5 py-2.5 bg-brand-500 hover:bg-brand-400 text-white font-bold text-sm rounded-full transition-all" onClick={() => setOpen(false)}>
+            <Link href='/signup' className="mt-4 inline-flex items-center justify-center px-5 py-2.5 bg-brand-500 hover:bg-brand-400 text-white font-bold text-sm rounded-full transition-all" onClick={() => setOpen(false)}>
               Sign up
             </Link>
           </div>
