@@ -26,6 +26,8 @@ type SignupPayload = {
   password: string;
   confirmPassword: string;
   token: string | null;
+  consentAccepted: boolean;
+  phoneConsentAccepted: boolean;
 };
 
 interface UserStore {
@@ -84,12 +86,24 @@ export const useUserStore = create<UserStore>()(
           user: state.user ? { ...state.user, ...data } : null,
         })),
 
-      signup: async ({ name, email, phone, password, confirmPassword, token }) => {
+      signup: async ({ name, email, phone, password, confirmPassword, token, consentAccepted, phoneConsentAccepted }) => {
         set({ loading: true });
 
         if (password !== confirmPassword) {
           set({ loading: false });
           toast.error("Passwords do not match");
+          return;
+        }
+
+        if (!consentAccepted) {
+          set({ loading: false });
+          toast.error("Please accept the signup consent to continue.");
+          return;
+        }
+
+        if (!phoneConsentAccepted) {
+          set({ loading: false });
+          toast.error("Please provide explicit consent to use your phone number.");
           return;
         }
 
@@ -100,6 +114,8 @@ export const useUserStore = create<UserStore>()(
             phone,
             password,
             token,
+            consentAccepted,
+            phoneConsentAccepted,
           });
 
           const data = response.data;

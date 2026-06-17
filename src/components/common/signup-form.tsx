@@ -30,6 +30,8 @@ export function SignupFormLatest() {
   const [showPassword, setShowPassword] = React.useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
+  const [consentAccepted, setConsentAccepted] = React.useState(false);
+  const [phoneConsentAccepted, setPhoneConsentAccepted] = React.useState(false);
 
   const [passwordChecks, setPasswordChecks] = React.useState<PasswordChecks>({
     length: false,
@@ -61,11 +63,22 @@ export function SignupFormLatest() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
-    const res = await signup({ name: fullName, email, phone, password, confirmPassword, token });
+    const res = await signup({
+      name: fullName,
+      email,
+      phone,
+      password,
+      confirmPassword,
+      token,
+      consentAccepted,
+      phoneConsentAccepted,
+    });
     if (res?.redirectTo) {
       navigate(res.redirectTo);
     }
   };
+
+  const canSubmit = allPasswordChecksValid && password === confirmPassword && consentAccepted && phoneConsentAccepted;
 
   return (
     <div className="relative mx-auto w-full max-w-xl rounded-2xl border border-neutral-200 bg-white p-6 md:p-8 shadow-[0_8px_40px_rgba(0,0,0,0.06)]">
@@ -114,6 +127,34 @@ export function SignupFormLatest() {
             required
           />
         </LabelInputContainer>
+
+        <div className="space-y-3 rounded-xl border border-neutral-200 bg-neutral-50 p-4">
+          <label className="flex cursor-pointer items-start gap-3">
+            <input
+              type="checkbox"
+              checked={consentAccepted}
+              onChange={(e) => setConsentAccepted(e.target.checked)}
+              className="mt-1 h-4 w-4 rounded border-neutral-300 text-emerald-600 focus:ring-emerald-500"
+              required
+            />
+            <span className="text-sm leading-6 text-neutral-700">
+              I agree to the <a href="/terms-and-conditions" className="font-medium text-emerald-600 underline underline-offset-4">Terms</a> and <a href="/privacy-policy" className="font-medium text-emerald-600 underline underline-offset-4">Privacy Policy</a>, and I consent to Jobflix processing my personal data to create and manage my account.
+            </span>
+          </label>
+
+          <label className="flex cursor-pointer items-start gap-3">
+            <input
+              type="checkbox"
+              checked={phoneConsentAccepted}
+              onChange={(e) => setPhoneConsentAccepted(e.target.checked)}
+              className="mt-1 h-4 w-4 rounded border-neutral-300 text-emerald-600 focus:ring-emerald-500"
+              required
+            />
+            <span className="text-sm leading-6 text-neutral-700">
+              I explicitly consent to Jobflix collecting, storing, and using my phone number for account security, login support, and important service notifications.
+            </span>
+          </label>
+        </div>
 
         <LabelInputContainer>
           <Label htmlFor="password">Password</Label>
@@ -214,7 +255,7 @@ export function SignupFormLatest() {
         <button
           className="group/btn relative mt-2 flex h-11 w-full items-center justify-center rounded-full bg-[#10b981] hover:bg-[#059669] text-white font-bold uppercase tracking-[0.16em] text-sm transition-all shadow-[0_0_20px_rgba(16,185,129,0.35)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
           type="submit"
-          disabled={!allPasswordChecksValid || password !== confirmPassword}
+          disabled={!canSubmit}
         >
           Sign up
           <BottomGradient />
